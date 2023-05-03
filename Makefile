@@ -3,6 +3,7 @@ LIBFT = libft_def/libft.a
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
+LIBS_FLAGS = -lreadline
 RM = rm -f
 
 BLACK = \033[0;30m
@@ -38,7 +39,7 @@ SRCS = $(SRCS_CMD) $(FILE_MAIN)
 all: libft $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) $(LIBS_FLAGS) -o $(NAME) $(OBJS) $(LIBFT)
 	@echo "$(LBLUE)\n$(NAME) compilado con éxito\n$(RESET)"
 
 clean:
