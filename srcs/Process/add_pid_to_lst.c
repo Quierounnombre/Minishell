@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   await_cmd.c                                        :+:      :+:    :+:   */
+/*   add_pid_to_lst.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:50:04 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/04 15:23:58 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/04 15:17:30 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/04 16:01:57 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*The idea is just a wrapper to await for the user input, eventually it would/
-should be improve in order to accept quotes and other user inputs.*/
-char	*await_cmd(void)
+/*Add the child pid to the lstmng, and update it apropiatly,
+ where is store for future use.*/
+t_bool	add_pid_to_lst(t_lstmng *mng, pid_t pid)
 {
-	char	*s;
+	t_list	*lst;
+	int		*content;
 
-	s = readline("PROMPT>");
-	return (s);
+	content = (int *)malloc(sizeof(pid_t));
+	if (content)
+	{
+		lst = ft_lstnew(content);
+		if (lst)
+		{
+			mng->tail->next = lst;
+			mng->tail = lst;
+			mng->size++;
+			return (true);
+		}
+		free(content);
+	}
+	return (false);
 }

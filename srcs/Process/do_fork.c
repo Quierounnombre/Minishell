@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   await_cmd.c                                        :+:      :+:    :+:   */
+/*   do_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:50:04 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/04 15:23:58 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/04 14:49:40 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/04 16:31:48 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*The idea is just a wrapper to await for the user input, eventually it would/
-should be improve in order to accept quotes and other user inputs.*/
-char	*await_cmd(void)
+/*This method do a fork process, and store its pid in the lst, can return false
+in the case that the lst cant be allocated @param shell is the global struct*/
+t_bool	do_fork(t_shell *shell)
 {
-	char	*s;
+	pid_t	pid;
 
-	s = readline("PROMPT>");
-	return (s);
+	pid = fork();
+	if (add_pid_to_lst(shell->childs, pid))
+	{
+		shell->self_pid = pid;
+		return (true);
+	}
+	return (false);
 }

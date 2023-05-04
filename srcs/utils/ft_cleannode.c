@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   await_cmd.c                                        :+:      :+:    :+:   */
+/*   ft_cleannode.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:50:04 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/04 15:23:58 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/04 15:56:12 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/04 16:55:43 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*The idea is just a wrapper to await for the user input, eventually it would/
-should be improve in order to accept quotes and other user inputs.*/
-char	*await_cmd(void)
+void	ft_cleannode(void *node)
 {
-	char	*s;
+	t_list	*lst;
 
-	s = readline("PROMPT>");
-	return (s);
+	lst = node;
+	free(lst->content);
+	free(lst);
 }

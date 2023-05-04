@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   await_cmd.c                                        :+:      :+:    :+:   */
+/*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:50:04 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/04 15:23:58 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/04 16:56:24 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/04 17:54:23 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*The idea is just a wrapper to await for the user input, eventually it would/
-should be improve in order to accept quotes and other user inputs.*/
-char	*await_cmd(void)
+/*
+Inicializa todas las estructuras y elementos necesarios para el programa
+@param shell recibe la dirección de memoria para cargar el puntero
+@return false en caso de error, true si todo esta bien
+*/
+t_bool	start(t_shell **shell)
 {
-	char	*s;
-
-	s = readline("PROMPT>");
-	return (s);
+	if (init_shell_struct(shell))
+		return (true);
+	return (false);
 }

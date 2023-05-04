@@ -29,12 +29,26 @@ OBJ_MAIN = ./srcs/main.o
 
 FILES_CMD = await_cmd \
 
-PARSE_CMD = ./srcs/cmd/
-SRCS_CMD = $(addprefix $(PARSE_CMD), $(addsuffix .c, $(FILES_CMD)))
-OBJS_CMD = $(addprefix $(PARSE_CMD), $(addsuffix .o, $(FILES_CMD)))
+CMD_DIR = ./srcs/cmd/
+SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
+OBJS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .o, $(FILES_CMD)))
 
-OBJS = $(OBJS_CMD) $(OBJ_MAIN)
-SRCS = $(SRCS_CMD) $(FILE_MAIN)
+FILES_UTILS = ft_cleannode \
+			ft_storenode \
+
+UTILS_DIR = ./srcs/utils/
+SRCS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .c, $(FILES_UTILS)))
+OBJS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .o, $(FILES_UTILS)))
+
+FILES_START = init_shell_struct \
+			start \
+
+START_DIR = ./srcs/startup/
+SRCS_START = $(addprefix $(START_DIR), $(addsuffix .c, $(FILES_START)))
+OBJS_START = $(addprefix $(START_DIR), $(addsuffix .o, $(FILES_START)))
+
+OBJS = $(OBJS_CMD) $(OBJ_MAIN) $(OBJS_UTILS) $(OBJS_START)
+SRCS = $(SRCS_CMD) $(FILE_MAIN) $(SRCS_UTILS) $(SRCS_UTILS)
 
 all: libft $(NAME)
 
@@ -60,5 +74,7 @@ re: fclean libft $(NAME)
 libft:
 	@$(MAKE) -C ./libft_def
 
-.PHONY: all clean fclean re libft
+do_clean:	all clean
+
+.PHONY: all clean fclean re libft do_clean
 .SILENT:
