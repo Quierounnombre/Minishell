@@ -47,8 +47,15 @@ START_DIR = ./srcs/startup/
 SRCS_START = $(addprefix $(START_DIR), $(addsuffix .c, $(FILES_START)))
 OBJS_START = $(addprefix $(START_DIR), $(addsuffix .o, $(FILES_START)))
 
-OBJS = $(OBJS_CMD) $(OBJ_MAIN) $(OBJS_UTILS) $(OBJS_START)
-SRCS = $(SRCS_CMD) $(FILE_MAIN) $(SRCS_UTILS) $(SRCS_UTILS)
+FILES_PROCESS = add_pid_to_lst \
+				do_fork \
+
+PROCESS_DIR = ./srcs/Process/
+SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))
+OBJS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .o, $(FILES_PROCESS)))
+
+OBJS = $(OBJS_CMD) $(OBJ_MAIN) $(OBJS_UTILS) $(OBJS_START) $(OBJS_PROCESS)
+SRCS = $(SRCS_CMD) $(FILE_MAIN) $(SRCS_UTILS) $(SRCS_UTILS) $(SRCS_PROCESS)
 
 all: libft $(NAME)
 

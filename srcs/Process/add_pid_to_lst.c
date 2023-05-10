@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:17:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/04 16:01:57 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:30:11 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 t_bool	add_pid_to_lst(t_lstmng *mng, pid_t pid)
 {
 	t_list	*lst;
-	int		*content;
+	pid_t	*content;
 
-	content = (int *)malloc(sizeof(pid_t));
+	content = (pid_t *)malloc(sizeof(pid_t));
 	if (content)
 	{
+		*content = pid;
 		lst = ft_lstnew(content);
 		if (lst)
 		{
