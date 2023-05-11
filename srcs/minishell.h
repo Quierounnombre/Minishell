@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/04 17:26:28 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/11 19:08:48 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_bool	init_shell_struct(t_shell **shell);
 /*-----CMD-----*/
 
 char	*await_cmd(void);
+char	*search_for_path(char *raw_path);
+void	cmd_manager(t_cmd *cmd, t_shell *shell);
 
 /*-----PROCESS-----*/
 

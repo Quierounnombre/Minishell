@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cleanchild.c                                    :+:      :+:    :+:   */
+/*   cmd_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 16:02:23 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/11 19:09:23 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/11 16:51:41 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-	libera la memoria reservada por un hijo
-	@param node el nodo de la lista con el hijo
+Recibe un cmd, le hace el fork, gestiona los errores y lo ejecuta.
+@param cmd es el comando que se quiere ejecutar.
+@param shell es la estructura general de la consola, necesaria para el fork
 */
-void	ft_cleanchild(void *node)
+void	cmd_manager(t_cmd *cmd, t_shell *shell)
 {
-	t_list	*lst;
-
-	lst = node;
-	free(lst->content);
-	free(lst);
+	if (do_fork(shell))
+	{
+		if (shell->self_pid == 0)
+			execve(cmd->filepath, cmd->argv, cmd->env);
+	}
+	//ERROR?
 }
