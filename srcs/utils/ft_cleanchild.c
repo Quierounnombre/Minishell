@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cleannode.c                                     :+:      :+:    :+:   */
+/*   ft_cleanchild.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 15:56:12 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/04 16:55:43 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/11 16:02:23 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/11 16:07:01 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_cleannode(void *node)
+/*
+	libera la memoria reservada por un hijo
+	@param node el nodo de la lista con el hijo
+*/
+void	ft_cleanchild(void *node)
 {
 	t_list	*lst;
 

@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/04 16:30:18 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:30:09 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ typedef struct s_shell
 	t_lstmng	*childs;
 	pid_t		self_pid;
 }	t_shell;
-
 
 #endif
