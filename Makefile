@@ -28,13 +28,14 @@ FILE_MAIN = ./srcs/main.c
 OBJ_MAIN = ./srcs/main.o
 
 FILES_CMD = await_cmd \
+			cmd_manager \
 
 CMD_DIR = ./srcs/cmd/
 SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
 OBJS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .o, $(FILES_CMD)))
 
-FILES_UTILS = ft_cleannode \
-			ft_storenode \
+FILES_UTILS = ft_cleanchild \
+			ft_storechild \
 
 UTILS_DIR = ./srcs/utils/
 SRCS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .c, $(FILES_UTILS)))
