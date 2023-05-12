@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_manager.c                                    :+:      :+:    :+:   */
+/*   cmd_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/11 16:51:41 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:32:46 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-Recibe un cmd, le hace el fork, gestiona los errores y lo ejecuta.
+Recibe un cmd, hace el fork, gestiona los errores y lo ejecuta.
 @param cmd es el comando que se quiere ejecutar.
 @param shell es la estructura general de la consola, necesaria para el fork
 */

@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_pid_to_lst.c                                   :+:      :+:    :+:   */
+/*   ft_pipe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 15:17:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/12 15:13:06 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/12 14:09:30 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/12 17:12:13 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*Add the child pid to the lstmng, and update it apropiatly,
- where is store for future use.*/
-t_bool	add_pid_to_lst(t_lstmng *mng, pid_t pid)
-{
-	t_list	*lst;
-	pid_t	*content;
+//Hay que tratar de expandir el numero de comandos que acepta de 2 a infinito
 
-	content = (pid_t *)malloc(sizeof(pid_t));
-	if (content)
-	{
-		*content = pid;
-		lst = ft_lstnew(content);
-		if (lst)
-		{
-			mng->tail->next = lst;
-			mng->tail = lst;
-			mng->size++;
-			return (true);
-		}
-		free(content);
-	}
-	return (false);
+/*
+Ejecuta los 2 siguiente comandos de la lista y los encadena
+*/
+void	ft_pipe(t_shell *shell)
+{
+	dup2(shell->fd[0], STDIN_FILENO);
+	dup2(shell->fd[1], STDOUT_FILENO);
+	cmd_manager(shell->cmds->current, shell);
 }
