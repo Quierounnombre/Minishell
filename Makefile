@@ -29,6 +29,7 @@ OBJ_MAIN = ./srcs/main.o
 
 FILES_CMD = await_cmd \
 			cmd_manager \
+			ft_pipe \
 
 CMD_DIR = ./srcs/cmd/
 SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
