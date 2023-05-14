@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/04 17:26:28 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/14 15:27:08 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,19 @@ t_bool	do_fork(t_shell *shell);
 /*-----UTILS-----*/
 
 t_bool	store_node(pid_t pid, t_list **lst);
+
+/*-----PARSE-----*/
+
+void	path_function(char **env, t_main main_struct);
+void	separation(t_main main_struct, char *my_input);
+void	check_size(t_main main_struct, char *my_input);
+void	check_size_pipe(t_main main_struct, char *my_input);
+void	check_size_token(t_main main_struct, char *my_input);
+void	entrecomillada(char *my_input, int *count);
+void	check_pipe(t_main main_struct, char *my_input, int *count);
+void	redirects(t_main main_struct, char *my_input, int *count);
+void	space_tab(char *my_input, int *count);
+void	token_entrecomillada(t_main main_struct, char *my_input, int *count);
+void	comando(char *my_input, char **separate_path);
 
 #endif

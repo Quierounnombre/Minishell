@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/14 15:24:32 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/05/07 16:53:42 by lyandriy          #+#    #+#             */
+/*   Updated: 2023/05/14 15:23:06 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,9 @@
 
 int	main(int argc, char **argv, char **env)
 {
-	t_shell	*shell;
+	t_main	main_struct;
 	char	*my_input;
 
-	if (start(&shell))
-	{
-	while (5)
-	{
-		my_input = readline("Minishell	");
-		if (my_input)
-		{
-			path_function(env, shell);
-			separation(shell, my_input);
-		}
-	}
-	}
+
+	return (0);
 }

@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/14 15:24:32 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/05/07 16:57:17 by lyandriy          #+#    #+#             */
+/*   Updated: 2023/05/13 18:29:26 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef DEFINE
+#define DEFINE
 
-int	main(int argc, char **argv, char **env)
-{
-	t_shell	*shell;
-	char	*my_input;
+/*
+define redirecciones
+*/
+# define REDIRECT_INPUT		160
+# define REDIRECT_OUTPUT	162
+# define HERE_DOC			260
+# define MODO_APPEND		262
 
-	if (start(&shell))
-	{
-	while (5)
-	{
-		my_input = readline("Minishell	");
-		if (my_input)
-		{
-			path_function(env, shell);
-			separation(shell, my_input);
-		}
-	}
-	}
-}
+#endif
