@@ -19,13 +19,6 @@
 
 //NOTA hace falta un limpiador de childs al destruirse trar execve
 
-typedef struct s_lists
-{
-	char			**content;
-	struct s_list	*next;
-}			t_lists;
-
-
 typedef struct s_size
 {
 	int	size_pipe;
