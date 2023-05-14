@@ -6,13 +6,13 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 16:00:52 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/13 16:57:09 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/14 16:05:12 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	path_function(char **env, t_main main_struct)
+void	path_function(char **env, t_shell main_struct)
 {
 	int		count;
 	char	*path;

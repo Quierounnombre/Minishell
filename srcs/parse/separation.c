@@ -6,13 +6,13 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:05:28 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/13 16:55:50 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/14 19:22:41 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	separation(t_main main_struct, char *my_input)
+void	separation(t_shell main_struct, char *my_input)
 {
 	int	count;
 
@@ -22,30 +22,32 @@ void	separation(t_main main_struct, char *my_input)
 	{
 		space_tab(my_input, &count);
 		if (my_input[count] == '\"' || my_input[count] == '\'')
-			token_entrecomillada(main_struct, my_input, &count);
-		if (my_input[count] == "|")
+		{
+			write (1, "hola\n", 5);
+			//token_entrecomillada(main_struct, my_input, &count);
+		}
+		if (my_input[count] == '|')
 			check_pipe(main_struct, my_input, &count);
 	}
 
 }
 
-void	token_entrecomillada(t_main main_struct, char *my_input, int *count)
+void	token_entrecomillada(t_shell main_struct, char *my_input, int *count)
 {
 	int		meter;
 	char	caracter;
 
 	meter = 0;
 	caracter = my_input[*count];
-	*count++;
-	while (my_input[*count] != caracter)
+	*count += 1;
+	/*while (my_input[*count] != caracter)
 	{
 		main_struct.input.
 		*count++;
-	}
+	}*/
 }
 
-
-
+/*
 void	comando(char *my_input, char **separate_path)
 {
 	int		count;
@@ -61,4 +63,4 @@ void	comando(char *my_input, char **separate_path)
 	{
 		
 	}
-}
+}*/

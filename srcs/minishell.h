@@ -6,13 +6,14 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/14 15:27:08 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/14 20:01:19 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include "libs/define.h"
 # include "../libft_def/libft.h"
 # include "libs/structs.h"
 # include "readline/readline.h"
@@ -46,16 +47,16 @@ void	ft_cleancmd(void *node);
 
 /*-----PARSE-----*/
 
-void	path_function(char **env, t_main main_struct);
-void	separation(t_main main_struct, char *my_input);
-void	check_size(t_main main_struct, char *my_input);
-void	check_size_pipe(t_main main_struct, char *my_input);
-void	check_size_token(t_main main_struct, char *my_input);
+void	path_function(char **env, t_shell main_struct);
+void	separation(t_shell main_struct, char *my_input);
+void	check_size(t_shell main_struct, char *my_input);
+void	check_size_pipe(t_shell main_struct, char *my_input);
+void	check_size_token(t_shell main_struct, char *my_input);
 void	entrecomillada(char *my_input, int *count);
-void	check_pipe(t_main main_struct, char *my_input, int *count);
-void	redirects(t_main main_struct, char *my_input, int *count);
+void	check_pipe(t_shell main_struct, char *my_input, int *count);
+void	redirects(t_shell main_struct, char *my_input, int *count);
 void	space_tab(char *my_input, int *count);
-void	token_entrecomillada(t_main main_struct, char *my_input, int *count);
-void	comando(char *my_input, char **separate_path);
+void	token_entrecomillada(t_shell main_struct, char *my_input, int *count);
+void	copy_token(t_shell main_struct, char *my_input, char *content, int *count);
 
 #endif

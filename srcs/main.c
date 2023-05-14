@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/14 15:24:32 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/14 16:06:34 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv, char **env)
 {
-	t_shell	*shell;
+	t_shell	shell;
 	char	*my_input;
 
 	if (start(&shell))
