@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 14:09:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/12 17:48:14 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/14 13:51:10 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //Hay que tratar de expandir el numero de comandos que acepta de 2 a infinito
 
 /*
-Ejecuta los 2 siguiente comandos de la lista y los encadena
+Ejecuta los 2 siguiente comandos de la lista mediante un pipe
 */
 void	ft_pipe(t_shell *shell)
 {
@@ -32,4 +32,6 @@ void	ft_pipe(t_shell *shell)
 		close(fd[1]);
 		close(fd[0]);
 	}
+	else
+		ft_error(shell, 0);
 }
