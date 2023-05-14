@@ -15,15 +15,20 @@
 
 # include "../minishell.h"
 
+//NOTA hace falta un limpiador de childs al destruirse trar execve
+
 /*
 @param childs lista con manager que almacena los hijos
+@param cmds lista con los comandos
 @param self_pid pid propio, sera 0 en caso de ser hijo
 */
 typedef struct s_shell
 {
 	t_lstmng	*childs;
+	t_lstmng	*cmds;
 	pid_t		self_pid;
 }	t_shell;
+
 
 typedef struct s_size
 {
@@ -45,5 +50,17 @@ typedef struct s_main
 	t_list	*input;//comandos con sus argumentos
 	t_red	red_struct;//estuctura para redirecciones
 }		t_main;
+
+/*
+@param filepath es la ruta del archivo
+@param argv son los argumentos del comando
+@param env es la variable env
+*/
+typedef struct s_cmd
+{
+	char	*filepath;
+	char	**argv;
+	char	**env;
+}	t_cmd;
 
 #endif

@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_fork.c                                          :+:      :+:    :+:   */
+/*   ft_cleancmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 14:49:40 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/12 15:14:22 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/14 13:35:05 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/14 13:43:12 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-This method do a fork process, and store its pid in the lst, can return false
-in the case that the lst cant be allocated or the fork fail.
-@param shell is the global struct
-@return devuelve true si ha salido exitosamente, y false si da error
+Libera la memoria reservada para un nodo comando
+@param node el puntero del nodo de cmd a borrar
 */
-t_bool	do_fork(t_shell *shell)
+void	ft_cleancmd(void *node)
 {
-	pid_t	pid;
+	t_list	*lst;
+	t_cmd	*cmd;
+	char	**tmp_argv;
 
-	pid = fork();
-	if (pid > 0 && add_pid_to_lst(shell->childs, pid))
-		return (true);
-	if (pid == 0)
+	lst = node;
+	cmd = lst->content;
+	while (cmd->argv)
 	{
-		shell->self_pid = 0;
-		return (true);
+		tmp_argv = cmd->argv;
+		cmd->argv++;
+		free(tmp_argv);
 	}
-	return (false);
+	free(cmd);
+	free(lst);
 }

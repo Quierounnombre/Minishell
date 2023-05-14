@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_pid_to_lst.c                                   :+:      :+:    :+:   */
+/*   ft_cleanshell.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 15:17:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/12 17:17:46 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/14 13:31:00 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/14 13:53:42 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-Add the child pid to the lstmng, and update it apropiatly,
-where is store for future use.
+Libera la estructura shell y todas las listas asociadas
+@param shell la estructura a liberar
 */
-t_bool	add_pid_to_lst(t_lstmng *mng, pid_t pid)
+void	ft_cleanshell(t_shell *shell)
 {
-	t_list	*lst;
-	pid_t	*content;
-
-	content = (pid_t *)malloc(sizeof(pid_t));
-	if (content)
-	{
-		*content = pid;
-		lst = ft_lstnew(content);
-		if (lst)
-		{
-			mng->tail->next = lst;
-			mng->tail = lst;
-			mng->size++;
-			return (true);
-		}
-		free(content);
-	}
-	return (false);
+	ft_lstclear(&(shell->childs->lst_head), ft_cleanchild);
+	free(shell->childs);
+	ft_lstclear(&(shell->cmds->lst_head), ft_cleancmd);
+	free(shell->cmds);
+	free(shell);
 }

@@ -25,15 +25,24 @@ t_bool	init_shell_struct(t_shell **shell);
 /*-----CMD-----*/
 
 char	*await_cmd(void);
+char	*search_for_path(char *raw_path);
+void	cmd_manager(t_cmd *cmd, t_shell *shell);
 
 /*-----PROCESS-----*/
 
 t_bool	add_pid_to_lst(t_lstmng *mng, pid_t pid);
 t_bool	do_fork(t_shell *shell);
 
+/*-----ERRORMNG-----*/
+
+void	ft_error(t_shell *shell, errno_t error_code);
+void	ft_cleanshell(t_shell *shell);
+
 /*-----UTILS-----*/
 
-t_bool	store_node(pid_t pid, t_list **lst);
+t_bool	store_child(pid_t pid, t_list **lst);
+void	ft_cleanchild(void *node);
+void	ft_cleancmd(void *node);
 
 /*-----PARSE-----*/
 
