@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/11 19:08:48 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/14 13:44:38 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,15 @@ void	cmd_manager(t_cmd *cmd, t_shell *shell);
 t_bool	add_pid_to_lst(t_lstmng *mng, pid_t pid);
 t_bool	do_fork(t_shell *shell);
 
+/*-----ERRORMNG-----*/
+
+void	ft_error(t_shell *shell, errno_t error_code);
+void	ft_cleanshell(t_shell *shell);
+
 /*-----UTILS-----*/
 
-t_bool	store_node(pid_t pid, t_list **lst);
+t_bool	store_child(pid_t pid, t_list **lst);
+void	ft_cleanchild(void *node);
+void	ft_cleancmd(void *node);
 
 #endif

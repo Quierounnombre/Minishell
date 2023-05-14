@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_manager.c                                      :+:      :+:    :+:   */
+/*   ft_cleanshell.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/12 15:32:46 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/14 13:31:00 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/14 13:53:42 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-Recibe un cmd, hace el fork, gestiona los errores y lo ejecuta.
-@param cmd es el comando que se quiere ejecutar.
-@param shell es la estructura general de la consola, necesaria para el fork
+Libera la estructura shell y todas las listas asociadas
+@param shell la estructura a liberar
 */
-void	cmd_manager(t_cmd *cmd, t_shell *shell)
+void	ft_cleanshell(t_shell *shell)
 {
-	if (do_fork(shell))
-	{
-		if (shell->self_pid == 0)
-			execve(cmd->filepath, cmd->argv, cmd->env);
-	}
-	//ERROR?
+	ft_lstclear(&(shell->childs->lst_head), ft_cleanchild);
+	free(shell->childs);
+	ft_lstclear(&(shell->cmds->lst_head), ft_cleancmd);
+	free(shell->cmds);
+	free(shell);
 }

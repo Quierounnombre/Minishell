@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_manager.c                                      :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/12 15:32:46 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/14 13:28:33 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/14 13:47:30 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-Recibe un cmd, hace el fork, gestiona los errores y lo ejecuta.
-@param cmd es el comando que se quiere ejecutar.
-@param shell es la estructura general de la consola, necesaria para el fork
+Gestiona los errores y en caso de ser necesario libera la memoria
+@param shell la estructura general en caso de ser necesario liberarla
+@param error_code el codigo de error
 */
-void	cmd_manager(t_cmd *cmd, t_shell *shell)
+void	ft_error(t_shell *shell, errno_t error_code)
 {
-	if (do_fork(shell))
-	{
-		if (shell->self_pid == 0)
-			execve(cmd->filepath, cmd->argv, cmd->env);
-	}
-	//ERROR?
+	if (shell->self_pid)
+		ft_cleanshell(shell);
+	exit(error_code);
 }

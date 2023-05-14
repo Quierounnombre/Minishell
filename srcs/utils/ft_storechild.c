@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:03:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/11 16:03:36 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/14 13:33:23 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Store a node in this context this will store a pid
 @param lst es la dirección de memoria donde se va a almacenar la lista
 @return true si todo va bien, false si falla
 */
-t_bool	store_node(pid_t pid, t_list **lst)
+t_bool	store_child(pid_t pid, t_list **lst)
 {
 	pid_t	*content;
 	t_list	*node;
