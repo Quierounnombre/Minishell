@@ -6,23 +6,36 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/15 16:04:52 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/15 16:57:48 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-Recibe un cmd, hace el fork, gestiona los errores y lo ejecuta.
-@param cmd es el comando que se quiere ejecutar.
+Seleciona el primer comando, hace el fork, gestiona los errores y lo ejecuta.
 @param shell es la estructura general de la consola, necesaria para el fork
 */
-void	cmd_manager(t_cmd *cmd, t_shell *shell)
+void	cmd_manager(t_shell *shell)
 {
+	t_cmd	*cmd;
+	errno_t	error_code;
+	int		child_status;
+
+	child_status = 0;
+	error_code = 0;
+	cmd = shell->cmds->current->content;
 	if (do_fork(shell))
 	{
 		if (shell->self_pid == 0)
-			execve(cmd->filepath, cmd->argv, shell->env);
+		{
+			error_code = execve(cmd->filepath, cmd->argv, shell->env);
+			ft_error(shell, error_code);
+		}
+		else
+			waitpid(*(pid_t *)(shell->childs->current->content), &child_status,
+				0);
 	}
-	//ERROR?
+	else
+		ft_error(shell, error_code);
 }

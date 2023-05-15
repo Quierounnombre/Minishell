@@ -38,6 +38,7 @@ OBJS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .o, $(FILES_CMD)))
 FILES_UTILS = ft_cleanchild \
 			ft_storechild \
 			ft_cleancmd \
+			ft_storecmd \
 
 UTILS_DIR = ./srcs/utils/
 SRCS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .c, $(FILES_UTILS)))
