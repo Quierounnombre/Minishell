@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/12 15:32:46 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/15 16:04:52 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	cmd_manager(t_cmd *cmd, t_shell *shell)
 	if (do_fork(shell))
 	{
 		if (shell->self_pid == 0)
-			execve(cmd->filepath, cmd->argv, cmd->env);
+			execve(cmd->filepath, cmd->argv, shell->env);
 	}
 	//ERROR?
 }

@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:01:43 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/14 13:53:02 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/15 16:03:37 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ static t_bool	init_lstmng(t_shell *local_shell)
 /*
 Almacena el struct de la shell
 @param shell la dirección de memoria del struct
+@param env el enviroment que se le asigna a la shell
 @return devuelve true, si almacena el struct, false si no
 */
-t_bool	init_shell_struct(t_shell **shell)
+t_bool	init_shell_struct(t_shell **shell, char **env)
 {
 	t_shell	*local_shell;
 
@@ -41,6 +42,7 @@ t_bool	init_shell_struct(t_shell **shell)
 		local_shell->self_pid = getpid();
 		if (init_lstmng(local_shell))
 		{
+			local_shell->env = env;
 			*shell = local_shell;
 			return (true);
 		}
