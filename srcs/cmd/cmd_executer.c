@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_manager.c                                      :+:      :+:    :+:   */
+/*   cmd_executer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/15 16:57:48 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:21:33 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 Seleciona el primer comando, hace el fork, gestiona los errores y lo ejecuta.
 @param shell es la estructura general de la consola, necesaria para el fork
 */
-void	cmd_manager(t_shell *shell)
+void	cmd_executer(t_shell *shell)
 {
 	t_cmd	*cmd;
 	errno_t	error_code;
@@ -29,7 +29,10 @@ void	cmd_manager(t_shell *shell)
 	{
 		if (shell->self_pid == 0)
 		{
-			error_code = execve(cmd->filepath, cmd->argv, shell->env);
+			if (is_built_in(shell))
+				do_build_in(shell);
+			else
+				error_code = execve(cmd->filepath, cmd->argv, shell->env);
 			ft_error(shell, error_code);
 		}
 		else

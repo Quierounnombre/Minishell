@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/15 17:27:54 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:44:59 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ t_bool	init_shell_struct(t_shell **shell, char **env);
 
 char	*await_cmd(void);
 char	*search_for_path(char *raw_path);
-void	cmd_manager(t_shell *shell);
+void	cmd_executer(t_shell *shell);
+t_bool	is_built_in(t_shell *shell);
+void	do_build_in(t_shell *shell);
+void	echo(t_shell *shell);
 
 /*-----PROCESS-----*/
 

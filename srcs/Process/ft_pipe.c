@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 14:09:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/15 16:52:53 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/15 18:38:53 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	ft_pipe(t_shell *shell)
 	if (!pipe(shell->tube))
 	{
 		ft_dupfd(shell);
-		cmd_manager(shell);
+		cmd_executer(shell);
 		if (shell->cmds->current->next != NULL)
 			shell->cmds->current = shell->cmds->current->next;
-		cmd_manager(shell);
+		cmd_executer(shell);
 		close(shell->tube[1]);
 		close(shell->tube[0]);
 	}

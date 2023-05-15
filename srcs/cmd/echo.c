@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/14 13:28:33 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/15 18:23:48 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/15 19:43:02 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/15 19:48:25 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-Gestiona los errores y en caso de ser necesario libera la memoria
-@param shell la estructura general en caso de ser necesario liberarla
-@param error_code el codigo de error
-*/
-void	ft_error(t_shell *shell, errno_t error_code)
+void	echo(t_shell *shell)
 {
-	char	*s;
+	pid_t	pid;
 
-	s = strerror(error_code);
-	perror(s);
-	if (shell->self_pid)
-		ft_cleanshell(shell);
-	exit(error_code);
+	pid = shell->self_pid;
 }

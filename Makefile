@@ -28,8 +28,10 @@ FILE_MAIN = ./srcs/main.c
 OBJ_MAIN = ./srcs/main.o
 
 FILES_CMD = await_cmd \
-			cmd_manager \
-			ft_pipe \
+			cmd_executer \
+			is_built_in \
+			do_built_in \
+			echo \
 
 CMD_DIR = ./srcs/cmd/
 SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
@@ -60,6 +62,7 @@ OBJS_START = $(addprefix $(START_DIR), $(addsuffix .o, $(FILES_START)))
 
 FILES_PROCESS = add_pid_to_lst \
 				do_fork \
+				ft_pipe \
 
 PROCESS_DIR = ./srcs/Process/
 SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))
