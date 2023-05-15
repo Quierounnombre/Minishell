@@ -6,18 +6,18 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:05:28 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/14 19:22:41 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/15 17:16:50 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	separation(t_shell main_struct, char *my_input)
+void	separation(t_shell *shell, char *my_input)
 {
 	int	count;
 
 	count = 0;
-	check_size(main_struct, my_input);
+	check_size(shell, my_input);
 	while (my_input[count] != '\0')
 	{
 		space_tab(my_input, &count);
@@ -27,12 +27,12 @@ void	separation(t_shell main_struct, char *my_input)
 			//token_entrecomillada(main_struct, my_input, &count);
 		}
 		if (my_input[count] == '|')
-			check_pipe(main_struct, my_input, &count);
+			check_pipe(shell, my_input, &count);
 	}
 
 }
 
-void	token_entrecomillada(t_shell main_struct, char *my_input, int *count)
+void	token_entrecomillada(t_shell shell, char *my_input, int *count)
 {
 	int		meter;
 	char	caracter;
@@ -42,7 +42,7 @@ void	token_entrecomillada(t_shell main_struct, char *my_input, int *count)
 	*count += 1;
 	/*while (my_input[*count] != caracter)
 	{
-		main_struct.input.
+		shell.input.
 		*count++;
 	}*/
 }

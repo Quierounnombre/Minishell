@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/14 16:06:34 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/15 17:25:58 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	main(int argc, char **argv, char **env)
 
 	if (start(&shell))
 	{
-	while (5)
-	{
-		my_input = readline("Minishell	");
-		if (my_input)
+		while (5)
 		{
-			path_function(env, shell);
-			separation(shell, my_input);
+			my_input = readline("Minishell	");
+			if (my_input)
+			{
+				path_function(env, &shell);
+				separation(&shell, my_input);
+			}
 		}
-	}
 	}
 }

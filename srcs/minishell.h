@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/14 20:01:19 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:27:10 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,17 @@ void	ft_cleancmd(void *node);
 
 /*-----PARSE-----*/
 
-void	path_function(char **env, t_shell main_struct);
-void	separation(t_shell main_struct, char *my_input);
-void	check_size(t_shell main_struct, char *my_input);
-void	check_size_pipe(t_shell main_struct, char *my_input);
-void	check_size_token(t_shell main_struct, char *my_input);
+void	path_function(char **env, t_shell *shell);
+void	separation(t_shell *shell, char *my_input);
+void	check_size(t_shell *shell, char *my_input);
+void	check_size_pipe(t_shell *shell, char *my_input);
+void	check_size_token(t_shell *shell, char *my_input);
 void	entrecomillada(char *my_input, int *count);
-void	check_pipe(t_shell main_struct, char *my_input, int *count);
-void	redirects(t_shell main_struct, char *my_input, int *count);
+void	check_pipe(t_shell *shell, char *my_input, int *count);
 void	space_tab(char *my_input, int *count);
-void	token_entrecomillada(t_shell main_struct, char *my_input, int *count);
-void	copy_token(t_shell main_struct, char *my_input, char *content, int *count);
+void	token_entrecomillada(t_shell shell, char *my_input, int *count);
+void	ckeck_token_length(t_shell *shell, char *my_input, int count, int count_pipe);
+void	copy_token(t_shell *shell, char *my_input, char *content, int *count);
+void	this_is_size_command_token(t_shell *shell, char *my_input, int *count);
 
 #endif

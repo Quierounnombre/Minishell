@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/14 17:49:49 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:08:27 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,12 @@
 
 //NOTA hace falta un limpiador de childs al destruirse trar execve
 
-typedef struct s_lists
-{
-	char			**content;
-	struct s_list	*next;
-}			t_lists;
-
-
 typedef struct s_size
 {
 	int	size_pipe;
 	int	size_token;
 	int	size_str;
+	int	size_redir;
 }				t_size;
 
 
@@ -49,6 +43,8 @@ typedef struct s_cmd
 {
 	char	*filepath;
 	char	**argv;
+	int		*redirections;
+	void	**type;
 	char	**env;
 }	t_cmd;
 
@@ -62,7 +58,6 @@ typedef struct s_shell
 	char		**separate_path;
 	t_lstmng	*childs;
 	t_lstmng	*cmds;
-	t_lists		*input;
 	t_size		size_input;//cantidad de pipe y comandos
 	t_red		red_struct;//estuctura para redirecciones
 	pid_t		self_pid;
