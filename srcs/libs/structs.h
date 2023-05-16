@@ -15,10 +15,7 @@
 
 # include "../minishell.h"
 
-
-
-//NOTA hace falta un limpiador de childs al destruirse trar execve
-
+//Necesita documentación
 typedef struct s_size
 {
 	int	size_pipe;
@@ -27,7 +24,7 @@ typedef struct s_size
 	int	size_redir;
 }				t_size;
 
-
+//Necesita documentación
 typedef struct s_red
 {
 	int		*redirect_type;
@@ -49,8 +46,11 @@ typedef struct s_cmd
 }	t_cmd;
 
 /*
+@param separate_path path_separado?
 @param childs lista con manager que almacena los hijos
 @param cmds lista con los comandos
+@param size_input cantidad de pipe y comandos
+@param red_struct estructura para redirecciones
 @param self_pid pid propio, sera 0 en caso de ser hijo
 */
 typedef struct s_shell
@@ -58,8 +58,8 @@ typedef struct s_shell
 	char		**separate_path;
 	t_lstmng	*childs;
 	t_lstmng	*cmds;
-	t_size		size_input;//cantidad de pipe y comandos
-	t_red		red_struct;//estuctura para redirecciones
+	t_size		size_input;
+	t_red		red_struct;
 	pid_t		self_pid;
 }	t_shell;
 
