@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 14:09:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/15 18:38:53 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/16 12:35:53 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	ft_dupfd(t_shell *shell)
 
 /*
 Ejecuta los 2 siguiente comandos de la lista mediante un pipe
+@param shell Estructura de uso general
 */
 void	ft_pipe(t_shell *shell)
 {

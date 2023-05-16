@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/15 16:11:35 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/16 12:40:58 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define STRUCTS_H
 
 # include "../minishell.h"
-
-//NOTA hace falta un limpiador de childs al destruirse trar execve
 
 /*
 @param childs lista con manager que almacena los hijos
