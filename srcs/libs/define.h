@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef DEFINE
-#define DEFINE
+# define DEFINE
 
 /*
 define redirecciones
