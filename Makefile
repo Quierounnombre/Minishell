@@ -63,6 +63,7 @@ OBJS_START = $(addprefix $(START_DIR), $(addsuffix .o, $(FILES_START)))
 FILES_PROCESS = add_pid_to_lst \
 				do_fork \
 				ft_pipe \
+				input_redirect \
 
 PROCESS_DIR = ./srcs/Process/
 SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))

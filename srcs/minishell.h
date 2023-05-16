@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/16 12:10:45 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/16 17:02:35 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	echo(t_shell *shell);
 
 t_bool	add_pid_to_lst(t_lstmng *mng, pid_t pid);
 t_bool	do_fork(t_shell *shell);
+void	ft_pipe(t_shell *shell);
+void	input_redirect(t_shell *shell);
 
 /*-----ERRORMNG-----*/
 
