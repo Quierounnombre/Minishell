@@ -12,6 +12,8 @@
 
 #include "minishell.h"
 
+//Documentación pls + esto no lo íbamos a meterlo en una función parse?
+
 int	main(int argc, char **argv, char **env)
 {
 	t_shell	shell;
