@@ -1,0 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mng_redirections.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/17 14:22:05 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/17 14:30:46 by vicgarci         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../minishell.h"
+
+//Gestiona las redirecciones de input
+static void	mng_input(t_shell *shell)
+{
+	t_cmd	*cmd;
+
+	cmd = shell->cmds->current->content;
+	if (cmd->redir_in->tipe != FT_RED_STD)
+	{
+		if (cmd->redir_in->tipe == FT_RED_IN)
+			input_redirect(shell);
+	}
+}
+
+/*
+Gestiona las redirecciones dentro de un comando, tanto las de input
+como las de output
+@param t_shell Estructura general con la información
+*/
+void	mng_redirections(t_shell *shell)
+{
+	mng_input(shell);
+}

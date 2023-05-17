@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/16 17:02:35 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/17 14:31:12 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft_def/libft.h"
 # include <sys/wait.h>
 # include "libs/structs.h"
+# include "libs/define.h"
 # include "readline/readline.h"
 
 /*-----STARUP-----*/
@@ -38,7 +39,7 @@ t_bool	add_pid_to_lst(t_lstmng *mng, pid_t pid);
 t_bool	do_fork(t_shell *shell);
 void	ft_pipe(t_shell *shell);
 void	input_redirect(t_shell *shell);
-
+void	mng_redirections(t_shell *shell);
 /*-----ERRORMNG-----*/
 
 void	ft_error(t_shell *shell, errno_t error_code);
