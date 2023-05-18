@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/17 14:31:12 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/18 16:21:08 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_bool	do_fork(t_shell *shell);
 void	ft_pipe(t_shell *shell);
 void	input_redirect(t_shell *shell);
 void	mng_redirections(t_shell *shell);
+void	output_redirection(t_shell *shell);
+
 /*-----ERRORMNG-----*/
 
 void	ft_error(t_shell *shell, errno_t error_code);

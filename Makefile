@@ -64,6 +64,8 @@ FILES_PROCESS = add_pid_to_lst \
 				do_fork \
 				ft_pipe \
 				input_redirect \
+				mng_redirections \
+				output_redirection \
 
 PROCESS_DIR = ./srcs/Process/
 SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))
