@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:22:05 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/18 16:26:04 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/22 10:33:45 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static void	mng_output(t_shell *shell)
 	{
 		if (cmd->redir_out->tipe == FT_RED_OUT)
 			output_redirection(shell);
+		if (cmd->redir_out->tipe == FT_RED_APPEND)
+			output_append(shell);
 	}
 }
 

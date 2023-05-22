@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:15:21 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/18 16:25:14 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/22 10:25:08 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 
 # ifndef FT_RED_OUT
 #  define FT_RED_OUT 42
+# endif
+
+# ifndef FT_RED_APPEND
+#  define FT_RED_APPEND 84
 # endif
 
 #endif
