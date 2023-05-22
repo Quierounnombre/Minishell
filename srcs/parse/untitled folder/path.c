@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 16:55:04 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/22 17:02:04 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/05/08 16:00:52 by lyandriy          #+#    #+#             */
+/*   Updated: 2023/05/15 17:16:06 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
-recorre espacios y tabulaciones
-*/
-void	space_tab(char *my_input, int *count)
+void	path_function(char **env, t_shell *main_struct)
 {
-	while (my_input[*count] == ' ' || my_input[*count] == '\t')
-		*count += 1;
+	int		count;
+	char	*path;
+
+	count = 0;
+	path = NULL;
+	while (path == NULL && env[count] != NULL)
+	{
+		path = ft_strnstr(env[count], "PATH=", ft_strlen(env[count]));
+		count++;
+	}
+	if (env[count] == NULL)
+	{}
+	main_struct->separate_path = ft_split(&path[5], ':');
 }

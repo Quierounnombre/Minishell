@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/15 19:27:10 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/22 20:22:58 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,15 @@ void	ft_cleancmd(void *node);
 
 /*-----PARSE-----*/
 
-void	path_function(char **env, t_shell *shell);
-void	separation(t_shell *shell, char *my_input);
-void	check_size(t_shell *shell, char *my_input);
-void	check_size_pipe(t_shell *shell, char *my_input);
-void	check_size_token(t_shell *shell, char *my_input);
-void	entrecomillada(char *my_input, int *count);
-void	check_pipe(t_shell *shell, char *my_input, int *count);
+int		parse(t_shell *shell, char *input, char **env);
+int		check_pipes(t_shell *shell, char *my_input);
+void	quotation_marks(char *my_input, int *count);
+int		separation(t_shell *shell, char *my_input, char **env);
+int		start_nodo(t_cmd *new_cmd);
 void	space_tab(char *my_input, int *count);
-void	token_entrecomillada(t_shell shell, char *my_input, int *count);
-void	ckeck_token_length(t_shell *shell, char *my_input, int count, int count_pipe);
-void	copy_token(t_shell *shell, char *my_input, char *content, int *count);
-void	this_is_size_command_token(t_shell *shell, char *my_input, int *count);
+void	create_node(t_shell *shell, char *my_input, int *count, t_cmd *new_cmd);
+void	copy_cmd_token(char *my_input, int count, t_cmd *new_cmd);
+void	copy_doble_quotation_marks(char *my_input, int *count, char *content);
+void	copy_simple_quotation_marks(char *my_input, int *count, char *content);
 
 #endif

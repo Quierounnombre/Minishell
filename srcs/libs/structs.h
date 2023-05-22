@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/15 19:08:27 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:52:41 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ typedef struct s_size
 	int	size_redir;
 }				t_size;
 
-//Necesita documentación
+
 typedef struct s_red
 {
-	int		*redirect_type;
-	char	*redrect_file;
-}			t_red;
+	char	*file;
+	int		tipe;
+	int		fd;
+}	t_red;
 
 /*
 @param filepath es la ruta del archivo
@@ -43,6 +44,8 @@ typedef struct s_cmd
 	int		*redirections;
 	void	**type;
 	char	**env;
+	//t_red	*redir_in;
+	//t_red	*redir_out;
 }	t_cmd;
 
 /*

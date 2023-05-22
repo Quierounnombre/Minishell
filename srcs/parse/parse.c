@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 16:55:04 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/22 17:02:04 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/05/22 15:51:33 by lyandriy          #+#    #+#             */
+/*   Updated: 2023/05/22 16:45:23 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
-recorre espacios y tabulaciones
+parse revisa la entrada y si esta bien devuelve true
+check_input revisa la string de entrada
 */
-void	space_tab(char *my_input, int *count)
+static int	check_input(t_shell *shell, char *my_input, char **env)
 {
-	while (my_input[*count] == ' ' || my_input[*count] == '\t')
-		*count += 1;
+	if (check_pipes(shell, my_input))
+		return (1);
+	if (separation(shell, my_input, env))
+		return (1);
+	return (0);
+}
+
+int	parse(t_shell *shell, char *input, char **env)
+{
+	if (check_input(&shell, input, env))
+		return (1);
+	return (0);
 }
