@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:07:50 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/23 15:10:34 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:17:27 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*ft_open_file(t_shell *shell)
 	char		*s;
 
 	s = NULL;
-	seed = (((int)&seed) / 4) >> 2;
+	seed = ((((int)&seed) / 4) >> 2) * -1;
 	while (true)
 	{
 		s = ft_itoa(seed);

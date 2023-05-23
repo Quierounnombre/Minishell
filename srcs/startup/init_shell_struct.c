@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:01:43 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/16 12:13:15 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:16:43 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_bool	init_shell_struct(t_shell **shell, char **env)
 		if (init_lstmng(local_shell))
 		{
 			local_shell->env = env;
+			local_shell->tube_file = NULL;
 			*shell = local_shell;
 			return (true);
 		}

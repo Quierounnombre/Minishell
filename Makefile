@@ -42,6 +42,7 @@ FILES_UTILS = ft_cleanchild \
 			ft_cleancmd \
 			ft_storecmd \
 			ft_open_file \
+			ft_delete_file \
 
 UTILS_DIR = ./srcs/utils/
 SRCS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .c, $(FILES_UTILS)))

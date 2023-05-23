@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cleanshell.c                                    :+:      :+:    :+:   */
+/*   ft_delete_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/14 13:31:00 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/23 16:18:43 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/23 16:09:07 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/23 16:14:17 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-Libera la estructura shell y todas las listas asociadas
-@param shell la estructura a liberar
+Borra el archivo con el nombre/ruta del file
+@param shell estructura general en caso de error
+@param file archivo a ser eliminado
 */
-void	ft_cleanshell(t_shell *shell)
+void	ft_delete_file(t_shell *shell, char *file)
 {
-	ft_lstclear(&(shell->childs->lst_head), ft_cleanchild);
-	free(shell->childs);
-	ft_lstclear(&(shell->cmds->lst_head), ft_cleancmd);
-	free(shell->cmds);
-	ft_delete_file(shell, shell->tube_file);
-	free(shell->tube_file);
-	free(shell);
+	if (unlink(file))
+		ft_error(shell, errno);
 }

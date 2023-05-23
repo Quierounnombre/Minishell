@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/23 15:11:50 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:14:34 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ t_bool	ft_storecmd(t_cmd *cmd, t_lstmng *mng);
 void	ft_cleanchild(void *node);
 void	ft_cleancmd(void *node);
 char	*ft_open_file(t_shell *shell);
+void	ft_delete_file(t_shell *shell, char *file);
 
 #endif
