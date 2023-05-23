@@ -41,6 +41,7 @@ FILES_UTILS = ft_cleanchild \
 			ft_storechild \
 			ft_cleancmd \
 			ft_storecmd \
+			ft_open_file \
 
 UTILS_DIR = ./srcs/utils/
 SRCS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .c, $(FILES_UTILS)))
@@ -62,11 +63,11 @@ OBJS_START = $(addprefix $(START_DIR), $(addsuffix .o, $(FILES_START)))
 
 FILES_PROCESS = add_pid_to_lst \
 				do_fork \
-				ft_pipe \
 				input_redirect \
 				mng_redirections \
 				output_redirection \
 				output_append \
+				ft_pipe \
 
 PROCESS_DIR = ./srcs/Process/
 SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))

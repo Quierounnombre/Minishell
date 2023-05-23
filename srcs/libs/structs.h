@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/16 15:42:21 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:21:52 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Estructura general
 @param cmds lista con los comandos
 @param self_pid pid propio, sera 0 en caso de ser hijo
 @param env es el enviroment
-@param tube[2] es el fd de la tuberia;
+@param tube_file es la dirección del archivo temporal de la tuberia
 */
 typedef struct s_shell
 {
@@ -29,7 +29,7 @@ typedef struct s_shell
 	t_lstmng	*cmds;
 	pid_t		self_pid;
 	char		**env;
-	int			tube[2];
+	char		*tube_file;
 }	t_shell;
 
 /*

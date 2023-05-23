@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/22 10:32:15 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:11:50 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "libs/structs.h"
 # include "libs/define.h"
 # include "readline/readline.h"
+# include <sys/stat.h>
+# include <errno.h>
 
 /*-----STARUP-----*/
 
@@ -54,5 +56,6 @@ t_bool	store_child(pid_t pid, t_list **lst);
 t_bool	ft_storecmd(t_cmd *cmd, t_lstmng *mng);
 void	ft_cleanchild(void *node);
 void	ft_cleancmd(void *node);
+char	*ft_open_file(t_shell *shell);
 
 #endif

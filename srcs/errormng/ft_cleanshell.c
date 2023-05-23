@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:31:00 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/15 18:11:25 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:22:18 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	ft_cleanshell(t_shell *shell)
 	free(shell->childs);
 	ft_lstclear(&(shell->cmds->lst_head), ft_cleancmd);
 	free(shell->cmds);
+	free(shell->tube_file);
 	free(shell);
 }

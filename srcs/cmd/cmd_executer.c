@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/17 14:33:35 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:19:07 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static void	ft_child(t_shell *shell)
 		error_code = execve(cmd->filepath, cmd->argv, shell->env);
 	ft_error(shell, error_code);
 }
-
 
 //BUILT-IN que pasa con el path????? no deberiamos ejecutar primero el std si
 //podemos y en caso contrario el built-in???????????????? VICENTE LAS COSAS

@@ -6,43 +6,64 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 14:09:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/16 17:00:21 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:41:11 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-//Hay que tratar de expandir el numero de comandos que acepta de 2 a infinito
+//Comproeba si se puede ejecutar un pipe
+static t_bool	can_be_pipe(t_shell *shell)
+{
+	t_cmd	*cmd;
+	t_cmd	*cmd_next;
 
-static void	ft_dupfd(t_shell *shell)
-{	
-	errno_t	error_code;
+	cmd = shell->cmds->current->content;
+	if (shell->cmds->current->next)
+	{
+		cmd_next = shell->cmds->current->next->content;
+		if (cmd->redir_out->tipe != FT_RED_STD)
+			return (false);
+		if (cmd_next->redir_in->tipe != FT_RED_STD)
+			return (false);
+		return (true);
+	}
+	return (false);
+}
 
-	error_code = dup2(shell->tube[0], STDOUT_FILENO);
-	if (error_code)
-		ft_error(shell, error_code);
-	dup2(shell->tube[1], STDIN_FILENO);
-	if (error_code)
-		ft_error(shell, error_code);
+//Expulsa el output del archivo dentro del arrchivo pipe
+static void	dump_into_file(t_shell *shell)
+{
+	int		fd;
+
+	fd = open(shell->tube_file, O_WRONLY, O_TRUNC);
+	if (fd < 0)
+		ft_error(shell, errno);
+	dup2(fd, STDOUT_FILENO);
+	cmd_executer(shell);
+	close(fd);
 }
 
 /*
-Ejecuta los 2 siguiente comandos de la lista mediante un pipe
-@param shell Estructura de uso general
+Ejecuta el siguiente comando de la lista y si procede vuelca su contenido en
+el pipe_file, luego si corresponde modifica el input del siguiente comando
+@param shell Estructura de uso general, en este caso para acceso a cmds y error
 */
 void	ft_pipe(t_shell *shell)
 {
-	if (!pipe(shell->tube))
+	t_cmd	*cmd;
+	t_cmd	*cmd_next;
+
+	if (can_be_pipe(shell))
 	{
-		ft_dupfd(shell);
-		cmd_executer(shell);
-		if (shell->cmds->current->next != NULL)
-			shell->cmds->current = shell->cmds->current->next;
-		ft_dupfd(shell);
-		cmd_executer(shell);
-		close(shell->tube[1]);
-		close(shell->tube[0]);
+		cmd = shell->cmds->current->content;
+		if (cmd->redir_out->tipe == FT_RED_STD)
+			dump_into_file(shell);
+		cmd_next = shell->cmds->current->next->content;
+		if (cmd_next->redir_in->tipe == FT_RED_STD)
+		{
+			cmd_next->redir_in->tipe = FT_RED_IN;
+			cmd_next->redir_in->file = shell->tube_file;
+		}
 	}
-	else
-		ft_error(shell, 0);
 }
