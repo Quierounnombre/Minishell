@@ -24,8 +24,6 @@ int	main(int argc, char **argv, char **env)
 			input = readline("Minishell	");
 			if (parse(shell, input, env))
 				process();
-			else
-				break;
 		}
 	}
 }
