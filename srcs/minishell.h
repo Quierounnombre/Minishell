@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/22 20:22:58 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/24 19:32:27 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,9 @@ void	create_node(t_shell *shell, char *my_input, int *count, t_cmd *new_cmd);
 void	copy_cmd_token(char *my_input, int count, t_cmd *new_cmd);
 void	copy_doble_quotation_marks(char *my_input, int *count, char *content);
 void	copy_simple_quotation_marks(char *my_input, int *count, char *content);
+int		this_is_dollar(char *my_input, int *count, t_cmd *new_cmd, int *count_token);
+int		this_is_quotation_marks(char *my_input, int *count, t_cmd *new_cmd, int *count_token);
+void	this_is_environment_variabl(t_cmd *new_cmd, char *my_input, int *count, int *count_token);
+
 
 #endif

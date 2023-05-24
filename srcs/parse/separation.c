@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   separation1.c                                      :+:      :+:    :+:   */
+/*   separation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 19:45:19 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/22 17:18:47 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/24 20:14:50 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,43 @@ static int	special_token(t_shell *shell, char *my_input, t_cmd *new_cmd, int *co
 		if (my_input[count + 1] != '\0' && my_input[count + 1] != ' ' &&
 			my_input[count + 1] != '\t' && (my_input[count - 1] == '\t' ||
 			my_input[count - 1] != '\0') && count != 0)
-		{
-			shell->size_input.size_token++;
-			//this_is_environment_variabl(shell, my_input, &count);
-		}
+			write (1, "hola\n", 5);
+			//this_is_environment_variabl(new_cmd, my_input, &count, shell);
 	}
 	return (count);
+}
+
+static void	Expand_Environment_Strings(t_cmd *new_cmd, char *my_input, char *environment_variabl, t_shell *shell)
+{
+	int		count;
+	char	*ptr;
+	char	*expand_variabl;
+
+	count = 0;
+	ptr = NULL;
+	expand_variabl = NULL;
+	while (ptr == NULL && new_cmd->env[count])
+	{
+		ptr = ft_strnstr(env[count], environment_variabl, ft_strlen(env[count]));
+		if (ptr)
+		{
+			expand_variabl = ft_strdup(ptr);
+			count = 0;
+			while (expand_variabl[count])
+			{
+				if (expand_variabl[count] == ' ' || expand_variabl[count] == '\t')
+				{
+					space_tab(expand_variabl, &count);
+					shell->size_input.size_token++;
+				}
+				count++;
+			}
+			free(expand_variabl);
+			break;
+		}
+		count++;
+	}
+	free(environment_variabl);
 }
 
 int	separation(t_shell *shell, char *my_input, char **env)
@@ -122,6 +153,7 @@ int	separation(t_shell *shell, char *my_input, char **env)
 	count_redirections = 0;
 	new_cmd = NULL;
 	shell->cmds->current = NULL;
+	shell->size_input.size_token = 0;
 	if (start_nodo(new_cmd))
 	{
 		while (my_input[count] != '\0')

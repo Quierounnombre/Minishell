@@ -64,12 +64,15 @@ PROCESS_DIR = ./srcs/Process/
 SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))
 OBJS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .o, $(FILES_PROCESS)))
 
-FILES_PARSE = check_size_pipe \
-			  check_size_token \
+FILES_PARSE = parse \
+			  check_pipes \
 			  ckeck_token_length \
+			  copy_quotation_marks \
+			  environment_variabl \
 			  path \
+			  quotation_marks \
 			  separation \
-			  size \
+			  separation_nodo \
 			  utils \
 
 PARSE_DIR = ./srcs/parse/
