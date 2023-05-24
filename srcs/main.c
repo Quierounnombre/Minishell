@@ -27,9 +27,5 @@ int	main(int argc, char **argv, char **env)
 			else
 				break;
 		}
-		while (argc && argv)
-		{
-			free(await_cmd());
-		}
 	}
 }
