@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   size.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/22 16:24:51 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/05/13 16:53:41 by lyandriy          #+#    #+#             */
+/*   Updated: 2023/05/15 17:17:46 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **env)
+void	check_size(t_shell *shell, char *my_input)
 {
-	t_shell	*shell;
-	char	*input;
-
-	if (start(&shell, env))
-	{
-		while (1)
-		{
-			input = readline("Minishell	");
-			if (parse(shell, input, env))
-				process();
-		}
-	}
+	check_size_pipe(shell, my_input);
+	check_size_token(shell, my_input);
 }

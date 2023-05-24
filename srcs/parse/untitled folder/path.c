@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/22 16:24:51 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/05/08 16:00:52 by lyandriy          #+#    #+#             */
+/*   Updated: 2023/05/15 17:16:06 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **env)
+void	path_function(char **env, t_shell *main_struct)
 {
-	t_shell	*shell;
-	char	*input;
+	int		count;
+	char	*path;
 
-	if (start(&shell, env))
+	count = 0;
+	path = NULL;
+	while (path == NULL && env[count] != NULL)
 	{
-		while (1)
-		{
-			input = readline("Minishell	");
-			if (parse(shell, input, env))
-				process();
-		}
+		path = ft_strnstr(env[count], "PATH=", ft_strlen(env[count]));
+		count++;
 	}
+	if (env[count] == NULL)
+	{}
+	main_struct->separate_path = ft_split(&path[5], ':');
 }

@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/22 16:24:51 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/05/13 16:55:04 by lyandriy          #+#    #+#             */
+/*   Updated: 2023/05/22 17:02:04 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **env)
+/*
+recorre espacios y tabulaciones
+*/
+void	space_tab(char *my_input, int *count)
 {
-	t_shell	*shell;
-	char	*input;
-
-	if (start(&shell, env))
-	{
-		while (1)
-		{
-			input = readline("Minishell	");
-			if (parse(shell, input, env))
-				process();
-		}
-	}
+	while (my_input[*count] == ' ' || my_input[*count] == '\t')
+		*count += 1;
 }

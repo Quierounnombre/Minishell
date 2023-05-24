@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/22 16:24:51 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/05/22 15:51:33 by lyandriy          #+#    #+#             */
+/*   Updated: 2023/05/22 16:45:23 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **env)
+/*
+parse revisa la entrada y si esta bien devuelve true
+check_input revisa la string de entrada
+*/
+static int	check_input(t_shell *shell, char *my_input, char **env)
 {
-	t_shell	*shell;
-	char	*input;
+	if (check_pipes(shell, my_input))
+		return (1);
+	if (separation(shell, my_input, env))
+		return (1);
+	return (0);
+}
 
-	if (start(&shell, env))
-	{
-		while (1)
-		{
-			input = readline("Minishell	");
-			if (parse(shell, input, env))
-				process();
-		}
-	}
+int	parse(t_shell *shell, char *input, char **env)
+{
+	if (check_input(&shell, input, env))
+		return (1);
+	return (0);
 }

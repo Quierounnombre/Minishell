@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/14 13:44:38 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/22 20:22:58 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include "libs/define.h"
 # include "../libft_def/libft.h"
 # include "libs/structs.h"
 # include "readline/readline.h"
@@ -43,5 +44,18 @@ void	ft_cleanshell(t_shell *shell);
 t_bool	store_child(pid_t pid, t_list **lst);
 void	ft_cleanchild(void *node);
 void	ft_cleancmd(void *node);
+
+/*-----PARSE-----*/
+
+int		parse(t_shell *shell, char *input, char **env);
+int		check_pipes(t_shell *shell, char *my_input);
+void	quotation_marks(char *my_input, int *count);
+int		separation(t_shell *shell, char *my_input, char **env);
+int		start_nodo(t_cmd *new_cmd);
+void	space_tab(char *my_input, int *count);
+void	create_node(t_shell *shell, char *my_input, int *count, t_cmd *new_cmd);
+void	copy_cmd_token(char *my_input, int count, t_cmd *new_cmd);
+void	copy_doble_quotation_marks(char *my_input, int *count, char *content);
+void	copy_simple_quotation_marks(char *my_input, int *count, char *content);
 
 #endif
