@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:15:21 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/22 10:25:08 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:50:34 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,28 @@
 
 # ifndef FT_RED_APPEND
 #  define FT_RED_APPEND 84
+# endif
+
+//Redefinidos sus valores para el que codigo sea compatible
+
+# ifndef REDIRECT_INPUT
+#  define REDIRECT_INPUT 21
+# endif
+
+# ifndef REDIRECT_OUTPUT
+#  define REDIRECT_OUTPUT 42
+# endif
+
+# ifndef HERE_DOC
+#  define HERE_DOC 260
+# endif
+
+# ifndef MODO_APPEND
+#  define MODO_APPEND 84
+# endif
+
+# ifndef NO_REDIRECT
+#  define NO_REDIRECT 5
 # endif
 
 #endif

@@ -6,13 +6,14 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/23 16:14:34 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:45:14 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include "libs/define.h"
 # include "../libft_def/libft.h"
 # include <sys/wait.h>
 # include "libs/structs.h"
@@ -58,5 +59,18 @@ void	ft_cleanchild(void *node);
 void	ft_cleancmd(void *node);
 char	*ft_open_file(t_shell *shell);
 void	ft_delete_file(t_shell *shell, char *file);
+
+/*-----PARSE-----*/
+
+int		parse(t_shell *shell, char *input, char **env);
+int		check_pipes(t_shell *shell, char *my_input);
+void	quotation_marks(char *my_input, int *count);
+int		separation(t_shell *shell, char *my_input, char **env);
+int		start_nodo(t_cmd *new_cmd);
+void	space_tab(char *my_input, int *count);
+void	create_node(t_shell *shell, char *my_input, int *count, t_cmd *new_cmd);
+void	copy_cmd_token(char *my_input, int count, t_cmd *new_cmd);
+void	copy_doble_quotation_marks(char *my_input, int *count, char *content);
+void	copy_simple_quotation_marks(char *my_input, int *count, char *content);
 
 #endif
