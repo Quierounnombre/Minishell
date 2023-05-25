@@ -32,6 +32,7 @@ FILES_CMD = await_cmd \
 			is_built_in \
 			do_built_in \
 			echo \
+			process_executer \
 
 CMD_DIR = ./srcs/cmd/
 SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
@@ -74,11 +75,15 @@ PROCESS_DIR = ./srcs/Process/
 SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))
 OBJS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .o, $(FILES_PROCESS)))
 
-FILES_PARSE = check_size_pipe \
-			  check_size_token \
+FILES_PARSE = check_pipes \
 			  ckeck_token_length \
+			  copy_quotation_marks \
+			  environment_variabl \
+			  parse \
 			  path \
 			  separation \
+			  question_marks \
+			  separation_nodo \
 			  size \
 			  utils \
 

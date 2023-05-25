@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   separation_nodo.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:55:43 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/22 18:31:54 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/25 10:46:28 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 /*
 start_nodo hace malloc para variables del nodo y env del nuevo nodo apunta a env

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   quotation_marks.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:33:59 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/22 20:21:26 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/25 10:46:25 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 /*
 quotation_marks revisa las comillas

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 15:51:33 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/22 16:45:23 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/25 10:48:10 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 /*
 parse revisa la entrada y si esta bien devuelve true
@@ -27,7 +27,7 @@ static int	check_input(t_shell *shell, char *my_input, char **env)
 
 int	parse(t_shell *shell, char *input, char **env)
 {
-	if (check_input(&shell, input, env))
+	if (check_input(shell, input, env))
 		return (1);
 	return (0);
 }

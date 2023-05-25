@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   process_executer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/25 10:39:44 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/25 10:39:00 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-int	main(int argc, char **argv, char **env)
+void	process_executer(t_shell *shell)
 {
-	char	*s;
-	t_shell	*shell;
-	char	*input;
+	t_list	*lst;
 
-	if (start(&shell))
+	lst = shell->cmds->current;
+	while (lst)
 	{
-		s = ft_open_file(shell);
-		while (argc && argv)
-		{
-			input = readline("Minishell	");
-			if (parse(shell, input, env))
-				process_executer(shell);
-		}
+		cmd_executer(shell);
+		lst = lst->next;
 	}
+	ft_lstclear(&(shell->cmds->lst_head), ft_cleancmd);
+	ft_lstclear(&(shell->childs->lst_head->next), ft_cleanchild);
 }

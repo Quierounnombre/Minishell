@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 16:00:52 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/21 20:22:12 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/25 10:48:32 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 void	path_function(char **env, t_shell *main_struct)
 {
@@ -35,7 +35,7 @@ void	variabl_function(char *my_input, int *count, t_cmd *new_cmd, int count_toke
 	char	*variabl;
 
 	count_env = 0;
-	new_cmd->argv[] = NULL;
+	new_cmd->argv = NULL;
 	while ((my_input[*count] == ' ' || my_input[*count] == '\t' ||
 			my_input[*count] == '|' || my_input[*count] == '\0'))
 	{

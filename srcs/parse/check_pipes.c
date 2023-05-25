@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_pipes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 21:21:07 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/22 16:49:11 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/25 10:45:57 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 /*
 check_pipes revisa las comillas y si los pipes estan bieny la cantidad de redirecciones

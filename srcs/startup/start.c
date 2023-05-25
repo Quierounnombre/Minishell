@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:56:24 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/15 16:04:09 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/25 10:40:15 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ Inicializa todas las estructuras y elementos necesarios para el programa
 @param env el enviroment que se le pasa a la shell
 @return false en caso de error, true si todo esta bien
 */
-t_bool	start(t_shell **shell, char **env)
+t_bool	start(t_shell **shell)
 {
-	if (init_shell_struct(shell, env))
+	if (init_shell_struct(shell))
 		return (true);
 	return (false);
 }

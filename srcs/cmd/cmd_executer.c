@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/22 16:19:07 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:29:07 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ft_child(t_shell *shell)
 	if (is_built_in(shell))
 		do_build_in(shell);
 	else
-		error_code = execve(cmd->filepath, cmd->argv, shell->env);
+		error_code = execve(cmd->filepath, cmd->argv, cmd->env);
 	ft_error(shell, error_code);
 }
 

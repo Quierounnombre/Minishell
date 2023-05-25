@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   separation1.c                                      :+:      :+:    :+:   */
+/*   separation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 19:45:19 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/22 17:18:47 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/25 10:46:32 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 /*
 separation separa los comandos con argumentos creando una lista enlazada
