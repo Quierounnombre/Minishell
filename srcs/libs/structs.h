@@ -41,11 +41,9 @@ typedef struct s_cmd
 {
 	char	*filepath;
 	char	**argv;
-	int		*redirections;
-	void	**type;
 	char	**env;
-	//t_red	*redir_in;
-	//t_red	*redir_out;
+	t_red	*redir_in;
+	t_red	*redir_out;
 }	t_cmd;
 
 /*
