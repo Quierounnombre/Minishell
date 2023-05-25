@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:15:21 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/24 16:50:34 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/25 11:59:30 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 
 # ifndef FT_RED_APPEND
 #  define FT_RED_APPEND 84
+# endif
+
+# ifndef FT_RED_HEREDOC
+#  define FT_RED_HEREDOC 260
 # endif
 
 //Redefinidos sus valores para el que codigo sea compatible

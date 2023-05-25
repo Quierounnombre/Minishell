@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/24 17:29:07 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:02:05 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,22 @@ Seleciona el primer comando, hace el fork, gestiona los errores y lo ejecuta.
 void	cmd_executer(t_shell *shell)
 {
 	t_cmd	*cmd;
-	errno_t	error_code;
 	int		child_status;
 
 	child_status = 0;
-	error_code = 0;
 	cmd = shell->cmds->current->content;
 	if (do_fork(shell))
 	{
 		if (shell->self_pid == 0)
 			ft_child(shell);
 		else
+		{
 			waitpid(*(pid_t *)(shell->childs->current->content), &child_status,
 				0);
+			if (cmd->redir_in->tipe == FT_RED_HEREDOC)
+				ft_delete_file(shell, cmd->redir_in->file);
+		}
 	}
 	else
-		ft_error(shell, error_code);
+		ft_error(shell, errno);
 }

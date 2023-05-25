@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 14:09:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/23 15:41:11 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:19:48 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,6 @@ void	ft_pipe(t_shell *shell)
 			cmd_next->redir_in->file = shell->tube_file;
 		}
 	}
+	else
+		cmd_executer(shell);
 }

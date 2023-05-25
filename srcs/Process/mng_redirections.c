@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:22:05 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/22 10:33:45 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/25 11:58:53 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void	mng_input(t_shell *shell)
 	if (cmd->redir_in->tipe != FT_RED_STD)
 	{
 		if (cmd->redir_in->tipe == FT_RED_IN)
+			input_redirect(shell);
+		if (cmd->redir_in->tipe == FT_RED_HEREDOC)
 			input_redirect(shell);
 	}
 }
