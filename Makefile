@@ -32,6 +32,7 @@ FILES_CMD = await_cmd \
 			is_built_in \
 			do_built_in \
 			echo \
+			pwd \
 			process_executer \
 
 CMD_DIR = ./srcs/cmd/

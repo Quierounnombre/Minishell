@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/25 12:58:36 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/25 12:44:42 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/25 12:57:37 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-int	main(int argc, char **argv, char **env)
+/*
+Muestra por consola la variable de entorno PWD
+*/
+void	ft_pwd(void)
 {
-	t_shell	*shell;
-	char	*input;
+	char	*env;
 
-	if (start(&shell))
-	{
-		while (argc && argv)
-		{
-			input = readline("Minishell	");
-			if (env) //parse(shell, input, env))
-				process_executer(shell);
-		}
-	}
+	env = getenv("PWD");
+	ft_printf("%s\n", env);
 }
