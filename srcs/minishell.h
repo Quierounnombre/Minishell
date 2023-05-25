@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/25 12:56:56 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/25 13:11:58 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_bool	is_built_in(t_shell *shell);
 void	do_build_in(t_shell *shell);
 void	echo(t_shell *shell);
 void	ft_pwd(void);
+void	ft_env(char **env);
 
 /*-----PROCESS-----*/
 
