@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   find_string.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 12:44:42 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/26 15:05:27 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/26 14:59:30 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/26 15:00:48 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-Muestra por consola la variable de entorno PWD
+Localiza un str en un env
 @param env el enviroment donde buscar
+@param target el string a encontrar
+@return la posición del string
 */
-void	ft_pwd(char **env)
+int	find_string(char **env, char *target)
 {
 	int		i;
 
-	i = find_string(env, "PWD=");
-	ft_printf("%s\n", env[i]);
+	i = 0;
+	while (env[i])
+	{
+		if (!ft_strncmp(target, env[i], ft_strlen(target)))
+			return (i);
+		i++;
+	}
+	return (i);
 }

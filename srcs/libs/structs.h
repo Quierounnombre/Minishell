@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/25 10:43:15 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:19:21 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_cmd
 @param size_input cantidad de pipe y comandos
 @param tube_file es la dirección del archivo temporal de la tuberia
 @param self_pid pid propio, sera 0 en caso de ser hijo
+@param env guarda el entorno para la instancia de minishell
 */
 typedef struct s_shell
 {
@@ -69,6 +70,7 @@ typedef struct s_shell
 	t_size		size_input;
 	char		*tube_file;
 	pid_t		self_pid;
+	char		**env;
 }	t_shell;
 
 #endif

@@ -35,6 +35,7 @@ FILES_CMD = await_cmd \
 			pwd \
 			env \
 			process_executer \
+			cd \
 
 CMD_DIR = ./srcs/cmd/
 SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
@@ -46,6 +47,7 @@ FILES_UTILS = ft_cleanchild \
 			ft_storecmd \
 			ft_open_file \
 			ft_delete_file \
+			find_string \
 
 UTILS_DIR = ./srcs/utils/
 SRCS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .c, $(FILES_UTILS)))
@@ -59,6 +61,7 @@ SRCS_ERRORMNG = $(addprefix $(ERRORMNG_DIR), $(addsuffix .c, $(FILES_ERRORMNG)))
 OBJS_ERRORMNG = $(addprefix $(ERRORMNG_DIR), $(addsuffix .o, $(FILES_ERRORMNG)))
 
 FILES_START = init_shell_struct \
+			clone_env \
 			start \
 
 START_DIR = ./srcs/startup/

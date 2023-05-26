@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/25 13:11:58 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:02:39 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 
 /*-----STARUP-----*/
 
-t_bool	start(t_shell **shell);
+t_bool	start(t_shell **shell, char **env);
 t_bool	init_shell_struct(t_shell **shell);
+t_bool	clone_env(char **env, t_shell *shell);
 
 /*-----CMD-----*/
 
@@ -36,8 +37,9 @@ void	cmd_executer(t_shell *shell);
 t_bool	is_built_in(t_shell *shell);
 void	do_build_in(t_shell *shell);
 void	echo(t_shell *shell);
-void	ft_pwd(void);
+void	ft_pwd(char **env);
 void	ft_env(char **env);
+void	ft_cd(const char *dir, t_shell *shell);
 
 /*-----PROCESS-----*/
 
@@ -62,6 +64,7 @@ void	ft_cleanchild(void *node);
 void	ft_cleancmd(void *node);
 char	*ft_open_file(t_shell *shell);
 void	ft_delete_file(t_shell *shell, char *file);
+int		find_string(char **env, char *target);
 
 /*-----PARSE-----*/
 
