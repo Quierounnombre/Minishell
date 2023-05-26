@@ -36,6 +36,7 @@ FILES_CMD = await_cmd \
 			env \
 			process_executer \
 			cd \
+			export \
 
 CMD_DIR = ./srcs/cmd/
 SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
