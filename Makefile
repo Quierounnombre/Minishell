@@ -27,8 +27,7 @@ RESET = \033[0m
 FILE_MAIN = ./srcs/main.c
 OBJ_MAIN = ./srcs/main.o
 
-FILES_CMD = await_cmd \
-			cmd_executer \
+FILES_CMD = cmd_executer \
 			is_built_in \
 			do_built_in \
 			echo \
@@ -37,6 +36,7 @@ FILES_CMD = await_cmd \
 			process_executer \
 			cd \
 			export \
+			unset \
 
 CMD_DIR = ./srcs/cmd/
 SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
