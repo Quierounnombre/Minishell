@@ -37,6 +37,7 @@ FILES_CMD = cmd_executer \
 			cd \
 			export \
 			unset \
+			exit \
 
 CMD_DIR = ./srcs/cmd/
 SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))

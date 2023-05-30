@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/30 18:54:53 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/30 18:52:01 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/30 18:53:53 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-int	main(int argc, char **argv, char **env)
+/*
+Detiene la ejecución y sale de la shell, aparte imprime un exit al salir
+@param shell, la estructura general a liberar
+*/
+void	ft_exit(t_shell *shell)
 {
-	t_shell	*shell;
-	char	*input;
-
-	if (start(&shell, env))
-	{
-		while (argc && argv)
-		{
-			input = readline("Minishell	");
-			if (env) //parse(shell, input, env))
-				process_executer(shell);
-		}
-	}
+	ft_printf("exit\n");
+	ft_error(shell, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/26 16:52:39 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/30 18:54:05 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_env(char **env);
 void	ft_cd(const char *dir, t_shell *shell);
 void	ft_export(t_shell *shell, char	*s);
 void	ft_unset(t_shell *shell, char *s);
+void	ft_exit(t_shell *shell);
 
 /*-----PROCESS-----*/
 

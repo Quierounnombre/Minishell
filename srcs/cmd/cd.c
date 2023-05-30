@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:52:38 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/26 14:59:44 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/30 18:48:02 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,6 @@ void	ft_cd(const char *dir, t_shell *shell)
 		free(shell->env[pos_pwd]);
 		shell->env[pos_pwd] = s_old;
 	}
+	else
+		ft_error(shell, errno);
 }
