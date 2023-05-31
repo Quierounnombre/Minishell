@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 14:09:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/25 12:19:48 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:00:47 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,27 @@ static void	dump_into_file(t_shell *shell)
 {
 	int		fd;
 
-	fd = open(shell->tube_file, O_WRONLY, O_TRUNC);
+	fd = open(shell->tube_file, O_WRONLY, O_TRUNC, O_CREAT);
 	if (fd < 0)
 		ft_error(shell, errno);
 	dup2(fd, STDOUT_FILENO);
 	cmd_executer(shell);
 	close(fd);
+}
+
+//Lee de la nada, aka en el caso de que la pipe tenga una redicción
+static void	read_from_trash(t_shell *shell)
+{
+	int		fd;
+	t_cmd	*cmd_next;
+
+	cmd_next = shell->cmds->current->next->content;
+	fd = open(shell->tube_file, O_WRONLY, O_TRUNC, O_CREAT);
+	if (fd < 0)
+		ft_error(shell, errno);
+	close(fd);
+	cmd_next->redir_in->tipe = FT_RED_IN;
+	cmd_next->redir_in->file = shell->tube_file;
 }
 
 /*
@@ -57,15 +72,17 @@ void	ft_pipe(t_shell *shell)
 	if (can_be_pipe(shell))
 	{
 		cmd = shell->cmds->current->content;
-		if (cmd->redir_out->tipe == FT_RED_STD)
-			dump_into_file(shell);
+		dump_into_file(shell);
 		cmd_next = shell->cmds->current->next->content;
-		if (cmd_next->redir_in->tipe == FT_RED_STD)
-		{
-			cmd_next->redir_in->tipe = FT_RED_IN;
-			cmd_next->redir_in->file = shell->tube_file;
-		}
+		cmd_next->redir_in->tipe = FT_RED_IN;
+		cmd_next->redir_in->file = shell->tube_file;
 	}
 	else
+	{
+		if (cmd_next->redir_in->tipe == FT_RED_STD)
+			dump_into_file(shell);
+		else if (cmd->redir_out->tipe == FT_RED_STD)
+			read_from_trash(shell);
 		cmd_executer(shell);
+	}
 }

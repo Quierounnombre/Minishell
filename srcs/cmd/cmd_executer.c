@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/25 12:02:05 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/31 15:57:07 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,19 @@
 static void	ft_child(t_shell *shell)
 {
 	t_cmd	*cmd;
-	errno_t	error_code;
 
 	cmd = shell->cmds->current->content;
-	error_code = 0;
 	mng_redirections(shell);
 	if (is_built_in(shell))
 		do_build_in(shell);
 	else
-		error_code = execve(cmd->filepath, cmd->argv, cmd->env);
-	ft_error(shell, error_code);
+	{
+		if (cmd->filepath)
+			execve(cmd->filepath, cmd->argv, cmd->env);
+		else
+			ft_error(shell, ENOENT);
+	}
+	ft_error(shell, errno);
 }
 
 //BUILT-IN que pasa con el path????? no deberiamos ejecutar primero el std si
