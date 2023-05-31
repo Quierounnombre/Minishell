@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:21:06 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/15 19:44:06 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/31 14:59:20 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void	do_build_in(t_shell *shell)
 		if (ft_strcmp(cmd->filepath, "echo"))
 			echo(shell);
 		if (ft_strcmp(cmd->filepath, "cd"))
-			echo(shell);
+			ft_cd(cmd->argv[1], shell);
 		if (ft_strcmp(cmd->filepath, "pwd"))
-			echo(shell);
+			ft_pwd(shell->env);
 		if (ft_strcmp(cmd->filepath, "export"))
-			echo(shell);
+			ft_export(shell, cmd->argv[1]);
 		if (ft_strcmp(cmd->filepath, "unset"))
-			echo(shell);
+			ft_unset(shell, cmd->argv[1]);
 		if (ft_strcmp(cmd->filepath, "env"))
-			echo(shell);
+			ft_env(shell->env);
 		if (ft_strcmp(cmd->filepath, "exit"))
-			echo(shell);
+			ft_exit(shell);
 	}
 }
