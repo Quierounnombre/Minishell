@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:52:38 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/30 18:48:02 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:19:01 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ void	ft_cd(const char *dir, t_shell *shell)
 	s = ft_strjoin("PWD=", dir);
 	if (s)
 	{
-		if (chdir(dir))
+		if (chdir(dir) == -1)
+		{
+			free(s);
 			ft_error(shell, errno);
+		}
 		s_old = shell->env[pos_pwd];
 		shell->env[pos_pwd] = s;
 		pos_pwd = find_string(shell->env, "OLDPWD=");

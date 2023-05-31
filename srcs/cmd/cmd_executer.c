@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/31 15:57:07 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:15:30 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,8 @@ static void	ft_child(t_shell *shell)
 		else
 			ft_error(shell, ENOENT);
 	}
-	ft_error(shell, errno);
+	ft_error(shell, 0);
 }
-
-//BUILT-IN que pasa con el path????? no deberiamos ejecutar primero el std si
-//podemos y en caso contrario el built-in???????????????? VICENTE LAS COSAS
-//CLARAAAAAAAAAAAS
 
 /*
 Seleciona el primer comando, hace el fork, gestiona los errores y lo ejecuta.
