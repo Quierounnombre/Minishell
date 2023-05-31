@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:28:33 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/16 17:23:39 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/31 15:15:19 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,14 @@ void	ft_error(t_shell *shell, errno_t error_code)
 	t_cmd	*cmd;
 	char	*s;
 
-	cmd = shell->cmds->current->content;
-	s = strerror(error_code);
-	perror(s);
+	if (shell && shell->cmds && shell->cmds->current
+		&& shell->cmds->current->content)
+		cmd = shell->cmds->current->content;
+	if (error_code)
+	{
+		s = strerror(error_code);
+		perror(s);
+	}
 	if (shell->self_pid)
 		ft_cleanshell(shell);
 	else
