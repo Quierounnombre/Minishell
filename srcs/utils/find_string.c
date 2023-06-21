@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   find_string.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 15:51:33 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/25 10:48:10 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/26 14:59:30 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/26 15:00:48 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-parse revisa la entrada y si esta bien devuelve true
-check_input revisa la string de entrada
+Localiza un str en un env
+@param env el enviroment donde buscar
+@param target el string a encontrar
+@return la posición del string
 */
-static int	check_input(t_shell *shell, char *my_input, char **env)
+int	find_string(char **env, char *target)
 {
-	if (check_pipes(shell, my_input))
-		return (1);
-	if (separation(shell, my_input, env))
-		return (1);
-	return (0);
-}
+	int		i;
 
-int	parse(t_shell *shell, char *input, char **env)
-{
-	if (check_input(shell, input, env))
-		return (1);
-	return (0);
+	i = 0;
+	while (env[i])
+	{
+		if (!ft_strncmp(target, env[i], ft_strlen(target)))
+			return (i);
+		i++;
+	}
+	return (i);
 }

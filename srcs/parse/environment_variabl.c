@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   environment_variabl.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:37:51 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/18 19:06:12 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/25 10:46:14 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 static void	Expand_Environment_Strings(t_shell *shell, char *environment_variabl);
 

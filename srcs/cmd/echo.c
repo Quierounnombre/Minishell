@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 15:51:33 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/25 10:48:10 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/15 19:43:02 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/31 15:02:46 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-parse revisa la entrada y si esta bien devuelve true
-check_input revisa la string de entrada
+Imprime el texto que se le indica por consola.
+En el caso de tener la flag -n no imprime el salto de linea
 */
-static int	check_input(t_shell *shell, char *my_input, char **env)
+void	echo(t_shell *shell)
 {
-	if (check_pipes(shell, my_input))
-		return (1);
-	if (separation(shell, my_input, env))
-		return (1);
-	return (0);
-}
+	t_cmd	*cmd;
 
-int	parse(t_shell *shell, char *input, char **env)
-{
-	if (check_input(shell, input, env))
-		return (1);
-	return (0);
+	cmd = shell->cmds->current->content;
+	if (ft_strcmp("-n", cmd->argv[1]))
+		ft_printf("%s", cmd->argv[2]);
+	else
+		ft_printf("%s\n", cmd->argv[1]);
 }

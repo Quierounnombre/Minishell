@@ -27,9 +27,17 @@ RESET = \033[0m
 FILE_MAIN = ./srcs/main.c
 OBJ_MAIN = ./srcs/main.o
 
-FILES_CMD = await_cmd \
-			cmd_manager \
-			ft_pipe \
+FILES_CMD = cmd_executer \
+			is_built_in \
+			do_built_in \
+			echo \
+			pwd \
+			env \
+			process_executer \
+			cd \
+			export \
+			unset \
+			exit \
 
 CMD_DIR = ./srcs/cmd/
 SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
@@ -38,6 +46,10 @@ OBJS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .o, $(FILES_CMD)))
 FILES_UTILS = ft_cleanchild \
 			ft_storechild \
 			ft_cleancmd \
+			ft_storecmd \
+			ft_open_file \
+			ft_delete_file \
+			find_string \
 
 UTILS_DIR = ./srcs/utils/
 SRCS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .c, $(FILES_UTILS)))
@@ -51,6 +63,7 @@ SRCS_ERRORMNG = $(addprefix $(ERRORMNG_DIR), $(addsuffix .c, $(FILES_ERRORMNG)))
 OBJS_ERRORMNG = $(addprefix $(ERRORMNG_DIR), $(addsuffix .o, $(FILES_ERRORMNG)))
 
 FILES_START = init_shell_struct \
+			clone_env \
 			start \
 
 START_DIR = ./srcs/startup/
@@ -59,25 +72,34 @@ OBJS_START = $(addprefix $(START_DIR), $(addsuffix .o, $(FILES_START)))
 
 FILES_PROCESS = add_pid_to_lst \
 				do_fork \
+				input_redirect \
+				mng_redirections \
+				output_redirection \
+				output_append \
+				ft_pipe \
 
 PROCESS_DIR = ./srcs/Process/
 SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))
 OBJS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .o, $(FILES_PROCESS)))
 
-FILES_PARSE = check_size_pipe \
-			  check_size_token \
+#FILES_PARSE = check_pipes \
 			  ckeck_token_length \
+			  copy_quotation_marks \
+			  environment_variabl \
+			  parse \
 			  path \
 			  separation \
+			  question_marks \
+			  separation_nodo \
 			  size \
 			  utils \
 
-PARSE_DIR = ./srcs/parse/
-SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))
-OBJS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .o, $(FILES_PARSE)))
+#PARSE_DIR = ./srcs/parse/
+#SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))
+#OBJS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .o, $(FILES_PARSE)))
 
-OBJS = $(OBJS_CMD) $(OBJ_MAIN) $(OBJS_UTILS) $(OBJS_START) $(OBJS_PROCESS) $(OBJS_ERRORMNG) $(OBJS_PARSE)
-SRCS = $(SRCS_CMD) $(FILE_MAIN) $(SRCS_UTILS) $(SRCS_UTILS) $(SRCS_PROCESS) $(SRCS_ERRORMNG) $(SRCS_PARSE)
+OBJS = $(OBJS_CMD) $(OBJ_MAIN) $(OBJS_UTILS) $(OBJS_START) $(OBJS_PROCESS) $(OBJS_ERRORMNG) #$(OBJS_PARSE)
+SRCS = $(SRCS_CMD) $(FILE_MAIN) $(SRCS_UTILS) $(SRCS_UTILS) $(SRCS_PROCESS) $(SRCS_ERRORMNG) #$(SRCS_PARSE)
 
 all: libft $(NAME)
 

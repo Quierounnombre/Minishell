@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ckeck_token_length.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:47:04 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/22 20:22:40 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/25 10:46:02 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 /*
 copy_cmd_token gestiona los comandos y los argumentos

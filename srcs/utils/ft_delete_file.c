@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_manager.c                                      :+:      :+:    :+:   */
+/*   ft_delete_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/12 15:32:46 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/23 16:09:07 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/23 16:14:17 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-Recibe un cmd, hace el fork, gestiona los errores y lo ejecuta.
-@param cmd es el comando que se quiere ejecutar.
-@param shell es la estructura general de la consola, necesaria para el fork
+Borra el archivo con el nombre/ruta del file
+@param shell estructura general en caso de error
+@param file archivo a ser eliminado
 */
-void	cmd_manager(t_cmd *cmd, t_shell *shell)
+void	ft_delete_file(t_shell *shell, char *file)
 {
-	if (do_fork(shell))
-	{
-		if (shell->self_pid == 0)
-			execve(cmd->filepath, cmd->argv, cmd->env);
-	}
-	//ERROR?
+	if (unlink(file))
+		ft_error(shell, errno);
 }

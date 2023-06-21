@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   await_cmd.c                                        :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:50:04 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/04 15:23:58 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/30 18:52:01 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/30 18:53:53 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*The idea is just a wrapper to await for the user input, eventually it would/
-should be improve in order to accept quotes and other user inputs.*/
-char	*await_cmd(void)
+/*
+Detiene la ejecución y sale de la shell, aparte imprime un exit al salir
+@param shell, la estructura general a liberar
+*/
+void	ft_exit(t_shell *shell)
 {
-	char	*s;
-
-	s = readline("PROMPT>");
-	return (s);
+	ft_printf("exit\n");
+	ft_error(shell, 0);
 }

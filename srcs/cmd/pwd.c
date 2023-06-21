@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 16:55:04 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/14 19:21:20 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/05/25 12:44:42 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/26 15:05:27 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-void	space_tab(char *my_input, int *count)
+/*
+Muestra por consola la variable de entorno PWD
+@param env el enviroment donde buscar
+*/
+void	ft_pwd(char **env)
 {
-	while (my_input[*count] == ' ' || my_input[*count] == '\t')
-		*count += 1;
+	int		i;
+
+	i = find_string(env, "PWD=");
+	ft_printf("%s\n", env[i]);
 }

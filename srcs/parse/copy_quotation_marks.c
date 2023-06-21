@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   copy_quotation_marks.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 20:19:12 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/22 20:23:51 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/05/25 10:46:09 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 /*
 copy_simple_quotation_marks copia token de simple comilla

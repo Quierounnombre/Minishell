@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   size.c                                             :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 16:53:41 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/15 17:17:46 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/05/25 13:01:27 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/25 13:12:18 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-void	check_size(t_shell *shell, char *my_input)
+/*
+Muestra el env por consola
+@param env el env que queremos mostrar
+*/
+void	ft_env(char	**env)
 {
-	check_size_pipe(shell, my_input);
-	check_size_token(shell, my_input);
+	int		i;
+
+	i = 0;
+	while (env[i])
+	{
+		ft_printf("%s\n", env[i]);
+		i++;
+	}
 }
