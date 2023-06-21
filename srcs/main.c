@@ -12,14 +12,6 @@
 
 #include "../minishell.h"
 
-static int	start_(t_shell *shell)
-{
-	shell->separate_path = NULL;
-	shell->env = NULL;
-	shell->cmds = malloc(sizeof(t_lstmng));
-	return (1);
-}
-
 int	main(int argc, char **argv, char **env)
 {
 	t_shell	*shell;
@@ -27,8 +19,7 @@ int	main(int argc, char **argv, char **env)
 
 	(void) argc;
 	(void) argv;
-	shell = malloc(sizeof(t_shell));
-	if (start_(shell))
+	if (start(&shell, env))
 	{
 		while (1)
 		{

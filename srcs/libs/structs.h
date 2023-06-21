@@ -63,10 +63,10 @@ typedef struct s_cmd
 typedef struct s_shell
 {
 	char		**separate_path;
+	t_lstmng	*childs;
 	char		**env;
 	t_lstmng	*cmds;
 	t_size		size_input;
-	t_lstmng	childs;
 	pid_t		self_pid;
 }	t_shell;
 
