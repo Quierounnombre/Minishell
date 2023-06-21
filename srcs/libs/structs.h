@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/24 19:44:23 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:45:26 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,22 @@ typedef struct s_size
 	int	size_pipe;
 	int	size_token;
 	int	size_str;
-	int	size_redir;
+	int	size_in;
+	int	size_out;
 }				t_size;
 
-
+/*
+Estruct general para la redireciones.
+@param file Es el archivo el cual queremos abrir/usar.
+@param tipe Como vamos a usarlo, es un heredoc? es un append, etc.
+@param fd El fd al cual se redirije;
+*/
 typedef struct s_red
 {
 	char	*file;
 	int		tipe;
-	int		fd;
+	int		fd;//???
+	struct s_red	*next;
 }	t_red;
 
 /*
@@ -41,7 +48,6 @@ typedef struct s_cmd
 {
 	char	*filepath;
 	char	**argv;
-	char	**env;
 	t_red	*redir_in;
 	t_red	*redir_out;
 }	t_cmd;
@@ -57,10 +63,10 @@ typedef struct s_cmd
 typedef struct s_shell
 {
 	char		**separate_path;
-	t_lstmng	*childs;
+	char		**env;
 	t_lstmng	*cmds;
 	t_size		size_input;
-	t_red		red_struct;
+	t_lstmng	childs;
 	pid_t		self_pid;
 }	t_shell;
 

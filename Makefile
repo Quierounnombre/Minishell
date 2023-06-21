@@ -2,7 +2,7 @@ NAME = minishell
 LIBFT = libft_def/libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 LIBS_FLAGS = -lreadline
 RM = rm -f
 
@@ -24,63 +24,29 @@ LYELLOW = \033[1;33m
 WHITE = \033[1;37m
 RESET = \033[0m
 
-FILE_MAIN = ./srcs/main.c
-OBJ_MAIN = ./srcs/main.o
+#FILE_MAIN = ./srcs/main.c
+#OBJ_MAIN = ./srcs/main.o
 
-FILES_CMD = await_cmd \
-			cmd_manager \
-			ft_pipe \
-
-CMD_DIR = ./srcs/cmd/
-SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
-OBJS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .o, $(FILES_CMD)))
-
-FILES_UTILS = ft_cleanchild \
-			ft_storechild \
-			ft_cleancmd \
-
-UTILS_DIR = ./srcs/utils/
-SRCS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .c, $(FILES_UTILS)))
-OBJS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .o, $(FILES_UTILS)))
-
-FILES_ERRORMNG = ft_cleanshell \
-				ft_error \
-
-ERRORMNG_DIR = ./srcs/errormng/
-SRCS_ERRORMNG = $(addprefix $(ERRORMNG_DIR), $(addsuffix .c, $(FILES_ERRORMNG)))
-OBJS_ERRORMNG = $(addprefix $(ERRORMNG_DIR), $(addsuffix .o, $(FILES_ERRORMNG)))
-
-FILES_START = init_shell_struct \
-			start \
-
-START_DIR = ./srcs/startup/
-SRCS_START = $(addprefix $(START_DIR), $(addsuffix .c, $(FILES_START)))
-OBJS_START = $(addprefix $(START_DIR), $(addsuffix .o, $(FILES_START)))
-
-FILES_PROCESS = add_pid_to_lst \
-				do_fork \
-
-PROCESS_DIR = ./srcs/Process/
-SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))
-OBJS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .o, $(FILES_PROCESS)))
-
-FILES_PARSE = parse \
-			  check_pipes \
-			  ckeck_token_length \
-			  copy_quotation_marks \
-			  environment_variabl \
-			  path \
+FILES_PARSE = check_pipes \
+			  main \
+			  copy_token_env \
+			  count_env \
+			  env \
+			  fill_node \
+			  parse \
 			  quotation_marks \
-			  separation \
+			  redirection \
 			  separation_nodo \
+			  separation \
 			  utils \
+			  variable_qw \
 
 PARSE_DIR = ./srcs/parse/
 SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))
 OBJS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .o, $(FILES_PARSE)))
 
-OBJS = $(OBJS_CMD) $(OBJ_MAIN) $(OBJS_UTILS) $(OBJS_START) $(OBJS_PROCESS) $(OBJS_ERRORMNG) $(OBJS_PARSE)
-SRCS = $(SRCS_CMD) $(FILE_MAIN) $(SRCS_UTILS) $(SRCS_UTILS) $(SRCS_PROCESS) $(SRCS_ERRORMNG) $(SRCS_PARSE)
+OBJS = $(OBJS_PARSE) #$(OBJ_MAIN)
+SRCS = $(SRCS_PARSE) #$(SRCS_MAIN)
 
 all: libft $(NAME)
 
