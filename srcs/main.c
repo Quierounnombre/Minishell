@@ -6,19 +6,11 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/21 16:46:00 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/22 20:37:44 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
-
-static int	start_(t_shell *shell)
-{
-	shell->separate_path = NULL;
-	shell->env = NULL;
-	shell->cmds = malloc(sizeof(t_lstmng));
-	return (1);
-}
+#include "/minishell.h"
 
 int	main(int argc, char **argv, char **env)
 {

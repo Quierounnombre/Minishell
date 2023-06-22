@@ -28,7 +28,6 @@ RESET = \033[0m
 #OBJ_MAIN = ./srcs/main.o
 
 FILES_PARSE = check_pipes \
-			  main \
 			  copy_token_env \
 			  count_env \
 			  env \
@@ -39,7 +38,7 @@ FILES_PARSE = check_pipes \
 			  separation_nodo \
 			  separation \
 			  utils \
-			  variable_qw \
+			  variable_qm \
 
 PARSE_DIR = ./srcs/parse/
 SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))

@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:27:07 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/19 16:11:01 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/22 18:56:59 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 /*
 @function count_env cuenta la cantidad de token que hay en una variable
 @function check_env busca la variable dentro de env
-@function pass_evn cuenta la cantidad de caracteres que tiene el nombre de la variable
+@function pass_evn cuenta la cantidad de caracteres que tiene el nombre
+de la variable
 @function copy_env copia el nombre de variable de entorno
-@function manage_count_env copia y busca la variable y cuenta la cantidad de token que tiene, al final libera el nombre
+@function manage_count_env copia y busca la variable y cuenta la
+cantidad de token que tiene, al final libera el nombre
 */
 static void	count_env(t_shell *shell, char *ptr)
 {
@@ -49,10 +51,11 @@ static void	check_env(t_shell *shell, char *environment_variabl)
 
 void	pass_evn(char *input, int *count)
 {
-	while (input[*count] != ' ' && input[*count] != '\t' &&
-		input[*count] != '$' && input[*count] != '\0' &&
-		input[*count] != '|' && input[*count] != '\"' &&
-		input[*count] != '\'' && input[*count] != '<' && input[*count] != '>')
+	while (input[*count] != ' ' && input[*count] != '\t'
+		&& input[*count] != '$' && input[*count] != '\0'
+		&& input[*count] != '|' && input[*count] != '\"'
+		&& input[*count] != '\'' && input[*count] != '<'
+		&& input[*count] != '>')
 		*count += 1;
 }
 
@@ -69,11 +72,11 @@ int	copy_env(t_shell *shell, char *input, char **environment_variabl)
 		if (!*environment_variabl)
 			exit (1);
 		count = 0;
-		while (input[count] != ' ' && input[count] != '\t' &&
-			input[count] != '$' && input[count] != '\0' &&
-			input[count] != '|' && input[count] != '\"' &&
-			input[count] != '<' && input[count] != '>' &&
-			input[count] != '\'' && input[count] != '=')
+		while (input[count] != ' ' && input[count] != '\t'
+			&& input[count] != '$' && input[count] != '\0'
+			&& input[count] != '|' && input[count] != '\"'
+			&& input[count] != '<' && input[count] != '>'
+			&& input[count] != '\'' && input[count] != '=')
 		{
 			environment_variabl[0][count] = input[count];
 			count++;

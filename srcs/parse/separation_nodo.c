@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:39:31 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/21 16:45:19 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/22 18:44:13 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 /*
 @function check_size_redir revisa si hay alguna redireccion
-@function create_node creara el nodo lo llenara de informacion y lo añade a la lista
+@function create_node creara el nodo lo llenara de informacion y lo añade a la
+lista
 */
 void	create_node(t_shell *shell, t_cmd *new_cmd, char *my_input)
 {
