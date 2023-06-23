@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/21 16:46:00 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:17:05 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../minishell.h"
 
@@ -21,11 +22,11 @@ int	main(int argc, char **argv, char **env)
 	(void) argv;
 	if (start(&shell, env))
 	{
-		while (1)
+		while (argc && argv)
 		{
 			input = readline("Minishell	");
-			if (parse(shell, input, env))
-				process();
+			if (env) //parse(shell, input, env))
+				process_executer(shell);
 		}
 	}
 }

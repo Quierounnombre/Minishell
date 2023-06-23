@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   await_cmd.c                                        :+:      :+:    :+:   */
+/*   ft_delete_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:50:04 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/04 15:23:58 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/23 16:09:07 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/23 16:14:17 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*The idea is just a wrapper to await for the user input, eventually it would/
-should be improve in order to accept quotes and other user inputs.*/
-char	*await_cmd(void)
+/*
+Borra el archivo con el nombre/ruta del file
+@param shell estructura general en caso de error
+@param file archivo a ser eliminado
+*/
+void	ft_delete_file(t_shell *shell, char *file)
 {
-	char	*s;
-
-	s = readline("PROMPT>");
-	return (s);
+	if (unlink(file))
+		ft_error(shell, errno);
 }

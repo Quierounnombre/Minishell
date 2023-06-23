@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:17:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/12 17:17:46 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:59:55 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 /*
 Add the child pid to the lstmng, and update it apropiatly,
 where is store for future use.
+@param mng lista con manager donde vamos a añadir el pid
+@param pid el pid que queremos añadir a la lista
+@return true, si todo va bien, false en caso de error
 */
 t_bool	add_pid_to_lst(t_lstmng *mng, pid_t pid)
 {

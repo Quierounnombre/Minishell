@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start.c                                            :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 16:56:24 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:27:31 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/30 18:52:01 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/30 18:53:53 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../minishell.h"
 
 /*
-Inicializa todas las estructuras y elementos necesarios para el programa
-@param shell recibe la dirección de memoria para cargar el puntero
-@param env el enviroment que se le pasa a la shell
-@return false en caso de error, true si todo esta bien
+Detiene la ejecución y sale de la shell, aparte imprime un exit al salir
+@param shell, la estructura general a liberar
 */
-t_bool	start(t_shell **shell, char **env)
+void	ft_exit(t_shell *shell)
 {
-	if (init_shell_struct(shell))
-	{
-		if (clone_env(env, *shell))
-		{
-			return (true);
-		}
-		ft_cleanshell(*shell);
-	}
-	return (false);
+	ft_printf("exit\n");
+	ft_error(shell, 0);
 }
