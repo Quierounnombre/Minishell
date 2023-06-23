@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell_struct.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:01:43 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/31 18:28:45 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:25:32 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../minishell.h"
 

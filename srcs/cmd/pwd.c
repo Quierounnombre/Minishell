@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_manager.c                                      :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/12 15:32:46 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/25 12:44:42 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/26 15:05:27 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-Recibe un cmd, hace el fork, gestiona los errores y lo ejecuta.
-@param cmd es el comando que se quiere ejecutar.
-@param shell es la estructura general de la consola, necesaria para el fork
+Muestra por consola la variable de entorno PWD
+@param env el enviroment donde buscar
 */
-void	cmd_manager(t_cmd *cmd, t_shell *shell)
+void	ft_pwd(char **env)
 {
-	if (do_fork(shell))
-	{
-		if (shell->self_pid == 0)
-			execve(cmd->filepath, cmd->argv, cmd->env);
-	}
-	//ERROR?
+	int		i;
+
+	i = find_string(env, "PWD=");
+	ft_printf("%s\n", env[i]);
 }

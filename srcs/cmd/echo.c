@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start.c                                            :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 16:56:24 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:27:31 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/15 19:43:02 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/31 15:02:46 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../minishell.h"
 
 /*
-Inicializa todas las estructuras y elementos necesarios para el programa
-@param shell recibe la dirección de memoria para cargar el puntero
-@param env el enviroment que se le pasa a la shell
-@return false en caso de error, true si todo esta bien
+Imprime el texto que se le indica por consola.
+En el caso de tener la flag -n no imprime el salto de linea
 */
-t_bool	start(t_shell **shell, char **env)
+void	echo(t_shell *shell)
 {
-	if (init_shell_struct(shell))
-	{
-		if (clone_env(env, *shell))
-		{
-			return (true);
-		}
-		ft_cleanshell(*shell);
-	}
-	return (false);
+	t_cmd	*cmd;
+
+	cmd = shell->cmds->current->content;
+	if (ft_strcmp("-n", cmd->argv[1]))
+		ft_printf("%s", cmd->argv[2]);
+	else
+		ft_printf("%s\n", cmd->argv[1]);
 }

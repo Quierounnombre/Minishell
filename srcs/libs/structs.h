@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/21 16:45:26 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:26:29 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,18 @@ Estruct general para la redireciones.
 */
 typedef struct s_red
 {
-	char	*file;
-	int		tipe;
-	int		fd;//???
+	char			*file;
+	int				tipe;
+	int				fd;
 	struct s_red	*next;
 }	t_red;
 
 /*
-@param filepath es la ruta del archivo
-@param argv son los argumentos del comando
-@param env es la variable env
+Estructura con la información relativa a 1 comando.
+@param filepath es la ruta del archivo.
+@param argv son los argumentos del comando.
+@param redir_in redirección de entrada.
+@param redir_in redirección de salida.
 */
 typedef struct s_cmd
 {
@@ -57,8 +59,9 @@ typedef struct s_cmd
 @param childs lista con manager que almacena los hijos
 @param cmds lista con los comandos
 @param size_input cantidad de pipe y comandos
-@param red_struct estructura para redirecciones
+@param tube_file es la dirección del archivo temporal de la tuberia
 @param self_pid pid propio, sera 0 en caso de ser hijo
+@param env guarda el entorno para la instancia de minishell
 */
 typedef struct s_shell
 {
@@ -67,7 +70,9 @@ typedef struct s_shell
 	char		**env;
 	t_lstmng	*cmds;
 	t_size		size_input;
+	char		*tube_file;
 	pid_t		self_pid;
+	char		**env;
 }	t_shell;
 
 #endif

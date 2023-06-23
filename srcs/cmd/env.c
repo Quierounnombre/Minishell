@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:34:38 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/05/25 13:01:27 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/25 13:12:18 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "../minishell.h"
 
-int	main(int argc, char **argv, char **env)
+/*
+Muestra el env por consola
+@param env el env que queremos mostrar
+*/
+void	ft_env(char	**env)
 {
-	t_shell	*shell;
-	char	*input;
+	int		i;
 
-	(void) argc;
-	(void) argv;
-	if (start(&shell, env))
+	i = 0;
+	while (env[i])
 	{
-		while (argc && argv)
-		{
-			input = readline("Minishell	");
-			if (env) //parse(shell, input, env))
-				process_executer(shell);
-		}
+		ft_printf("%s\n", env[i]);
+		i++;
 	}
 }

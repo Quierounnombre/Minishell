@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start.c                                            :+:      :+:    :+:   */
+/*   find_string.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 16:56:24 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:27:31 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/26 14:59:30 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/05/26 15:00:48 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../minishell.h"
 
 /*
-Inicializa todas las estructuras y elementos necesarios para el programa
-@param shell recibe la dirección de memoria para cargar el puntero
-@param env el enviroment que se le pasa a la shell
-@return false en caso de error, true si todo esta bien
+Localiza un str en un env
+@param env el enviroment donde buscar
+@param target el string a encontrar
+@return la posición del string
 */
-t_bool	start(t_shell **shell, char **env)
+int	find_string(char **env, char *target)
 {
-	if (init_shell_struct(shell))
+	int		i;
+
+	i = 0;
+	while (env[i])
 	{
-		if (clone_env(env, *shell))
-		{
-			return (true);
-		}
-		ft_cleanshell(*shell);
+		if (!ft_strncmp(target, env[i], ft_strlen(target)))
+			return (i);
+		i++;
 	}
-	return (false);
+	return (i);
 }
