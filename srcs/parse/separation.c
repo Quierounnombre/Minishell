@@ -5,138 +5,121 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
+/*   Created: 2023/05/27 21:40:40 by lyandriy          #+#    #+#             */
+/*   Updated: 2023/06/19 17:16:20 by lyandriy         ###   ########.fr       */
+=======
 /*   Created: 2023/05/19 19:45:19 by lyandriy          #+#    #+#             */
 /*   Updated: 2023/05/25 10:46:32 by vicgarci         ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-separation separa los comandos con argumentos creando una lista enlazada
-special_token reccorre los token especiales ("", '', $, <)
-redirects indica el tipo de redireccion y copia el nombre
-copy_redirection copy el nombre de la redireccion
-this_is_size_command_token cuenta la cantidad de comandos y argumentos
+@function count_quotation_marks si encuentra comillas recorre el contenido
+@function count_command_token recorre el contenido de un argumento normal
+@function count_redirects cuenta redirecciones y los recorre
+@function count_size cuenta el tamaño de los tokens
+@function separation cuenta tamaño de la entrada (los tokens) y crea la lista con el contenido
 */
-static void	this_is_size_command_token(t_shell *shell, char *my_input, int *count)
+int	count_quotation_marks(t_shell *shell, char *my_input)
+{
+	int	count;
+
+	count = 0;
+	(void) shell;
+	while (my_input[count] == my_input[0])
+	{
+		count++;
+		while (my_input[count] != my_input[0])
+		{
+			if (my_input[count] == '\0')
+				break;
+			count++;
+		}
+		if (my_input[count] == my_input[0])
+			count++;
+	}
+	return (count);
+}
+
+static int	count_command_token(t_shell *shell, char *my_input)
+{
+	int	count;
+
+	count = 0;
+	while(my_input[count] != ' ' && my_input[count] != '\t' &&
+		my_input[count] != '\0' && my_input[count] != '|' &&
+		my_input[count] != '<' && my_input[count] != '>')
+	{
+		if (my_input[count] == '\"' || my_input[count] == '\'')
+			count += count_quotation_marks(shell, &my_input[count]);
+		else
+			count++;
+	}
+	space_tab(my_input, &count);
+	shell->size_input.size_token++;
+	return (count);
+}
+
+int	count_redirects(t_shell *shell, char *my_input)
+{
+	int	count;
+
+	count = 0;
+	if (my_input[count] == '<')
+		shell->size_input.size_in += 1;
+	if (my_input[count] == '>')
+		shell->size_input.size_out += 1;
+	count++;
+	if (my_input[count] == '<' || my_input[count] == '>')
+		count++;
+	space_tab(my_input, &count);
+	while (my_input[count] != ' ' && my_input[count] != '\t' &&
+		my_input[count] != '\0' && my_input[count] != '|' &&
+		my_input[count] != '<' && my_input[count] != '>')
+		count++;
+	space_tab(my_input, &count);
+	return (count);
+}
+
+static void	count_size(t_shell *shell, char *my_input, int *count)
 {
 	space_tab(my_input, count);
-	while(my_input[*count] != ' ' && my_input[*count] != '\t' && my_input[*count] != '\0')
-	{
-		if (my_input[*count] == '<' || my_input[*count] == '>')
-			return ;
-		*count += 1;
-	}
-	shell->size_input.size_token++;
+	if (my_input[*count] == '$')
+		*count += manage_count_env(shell, &my_input[*count]);
+	if (my_input[*count] == '<' || my_input[*count] == '>')
+		*count += count_redirects(shell, &my_input[*count]);
+	if (my_input[*count] != '\0' && my_input[*count] != '|' &&
+		my_input[*count] != '$' && my_input[*count] != '<' &&
+		my_input[*count] != '>')
+		*count += count_command_token(shell, &my_input[*count]);
 }
 
-static int	copy_redirection(char *my_input, t_cmd *new_cmd, int *count_redirections, int *tam_red_str)
-{
-	int	count;
-
-	count = 0;
-	while (my_input[count] != ' ' && my_input[count] != '\t' && my_input[count] != '\0')
-	{
-		*tam_red_str += 1;
-		count++;
-	}
-	new_cmd->type[*count_redirections] = malloc(sizeof(char) * (*tam_red_str + 1));
-	if (!new_cmd->type)
-	{
-		write (1, "hola\n", 5);
-		//ft_error();
-	}
-	new_cmd->type[*count_redirections][*tam_red_str] = '\0';
-	count -= *tam_red_str;
-	*tam_red_str = 0;
-	while (my_input[count] != ' ' && my_input[count] != '\t' && my_input[count] != '\0')
-	{
-		new_cmd->type[*count_redirections][*tam_red_str] = my_input[count];
-		count++;
-		tam_red_str++;
-	}
-	return (count);
-}
-
-static int	redirects(char *my_input, t_cmd *new_cmd, int *count_redirections)
-{
-	int	count;
-	int	tam_red_str;
-
-	count = 0;
-	tam_red_str = 0;
-	if (my_input[count] == '<' && my_input[count + 1] != '<')
-		new_cmd->redirections[*count_redirections] = REDIRECT_INPUT;
-	if (my_input[count] == '>' && my_input[count + 1] != '>')
-		new_cmd->redirections[*count_redirections] = REDIRECT_OUTPUT;
-	if (my_input[count] == '<' && my_input[count + 1] == '<')
-		new_cmd->redirections[*count_redirections] = HERE_DOC;
-	if (my_input[count] == '>' && my_input[count + 1] == '>')
-		new_cmd->redirections[*count_redirections] = MODO_APPEND;
-	count++;
-	space_tab(my_input, &count);
-	count += copy_redirection(&my_input[count], new_cmd, count_redirections, &tam_red_str);
-	*count_redirections += 1;
-	return (count);
-}
-
-static int	special_token(t_shell *shell, char *my_input, t_cmd *new_cmd, int *count_redirections)
-{
-	int	count;
-
-	count = 0;
-	space_tab(my_input, &count);
-	if (my_input[count] == '\"' || my_input[count] == '\'')
-	{
-		quotation_marks(my_input, &count);
-		shell->size_input.size_token++;
-	}
-	if (my_input[count] == '<' || my_input[count] == '>')
-		count += redirects(&my_input[count], new_cmd, count_redirections);
-	if (my_input[count] == '$')
-	{
-		if (my_input[count + 1] == '?')
-		{
-			write (1, "hola\n", 5);
-			//pipe_exit_code();
-		}
-		if (my_input[count + 1] != '\0' && my_input[count + 1] != ' ' &&
-			my_input[count + 1] != '\t' && (my_input[count - 1] == '\t' ||
-			my_input[count - 1] != '\0') && count != 0)
-		{
-			shell->size_input.size_token++;
-			//this_is_environment_variabl(shell, my_input, &count);
-		}
-	}
-	return (count);
-}
-
-int	separation(t_shell *shell, char *my_input, char **env)
+void	separation(t_shell *shell, char *my_input)
 {
 	int		count;
-	int		count_redirections;
+	int		start;
 	t_cmd	*new_cmd;
 
 	count = 0;
-	count_redirections = 0;
-	new_cmd = NULL;
-	shell->cmds->current = NULL;
-	if (start_nodo(new_cmd))
+	new_cmd = malloc(sizeof(t_cmd));
+	if (!new_cmd)
+		exit (1);
+	start_nodo(new_cmd);
+	while (my_input[count] != '\0')
 	{
-		while (my_input[count] != '\0')
+		start = count;
+		start_new_nodo(shell);
+		while (my_input[count] != '|' && my_input[count] != '\0')
+			count_size(shell, my_input, &count);
+		if (my_input[count] == '|' || my_input[count] == '\0')
 		{
-			space_tab(my_input, &count);
-			count += special_token(shell, &my_input[count], new_cmd, &count_redirections);
-			if (my_input[count] != '|' && my_input[count] != '\0')
-				this_is_size_command_token(shell, my_input, &count);
-			if (my_input[count] == '|' || my_input[count] == '\0')
-			{
-				create_node(shell, my_input, &count, new_cmd);
-				if (my_input[count] == '|')
-					count++;
-			}
+			create_node(shell, new_cmd, &my_input[start]);
+			if (my_input[count] == '|')
+				count++;
 		}
 	}
-	return(0);
 }

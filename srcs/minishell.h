@@ -6,9 +6,10 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/30 18:54:05 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:24:14 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -69,16 +70,26 @@ void	ft_delete_file(t_shell *shell, char *file);
 int		find_string(char **env, char *target);
 
 /*-----PARSE-----*/
-
 int		parse(t_shell *shell, char *input, char **env);
 int		check_pipes(t_shell *shell, char *my_input);
-void	quotation_marks(char *my_input, int *count);
-int		separation(t_shell *shell, char *my_input, char **env);
-int		start_nodo(t_cmd *new_cmd);
+void	separation(t_shell *shell, char *my_input);
 void	space_tab(char *my_input, int *count);
-void	create_node(t_shell *shell, char *my_input, int *count, t_cmd *new_cmd);
-void	copy_cmd_token(char *my_input, int count, t_cmd *new_cmd);
-void	copy_doble_quotation_marks(char *my_input, int *count, char *content);
-void	copy_simple_quotation_marks(char *my_input, int *count, char *content);
+void	create_node(t_shell *shell, t_cmd *new_cmd, char *my_input);
+void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *my_input);
+int		this_is_env(t_shell *shell, t_cmd *new_cmd, char *input, int *count_token);
+char	*copy_token_env(char *ptr, int *count);
+int		count_quotation_marks(t_shell *shell, char *my_input);
+int		manage_count_env(t_shell *shell, char *my_input);
+int		count_redirects(t_shell *shell, char *my_input);
+int		copy_env(t_shell *shell, char *my_input, char **environment_variabl);
+int		this_is_qm(t_shell *shell, t_cmd *new_cmd, char *my_input, int *count_token);
+int		this_is_redirection(t_shell *shell, t_cmd *new_cmd, char *my_input);
+void	pass_evn(char *input, int *count);
+int		manage_count_env_qw(t_shell *shell, char *my_input, int *size);
+int		exp_var_qm(t_shell *shell, char *my_input, char *argv, int *count_copy);
+char	*get_ptr(t_shell *shell, char *ev);
+int		strncmp_qm(const char *s1, const char *s2);
+void	start_new_nodo(t_shell *shell);
+void	start_nodo(t_cmd *new_cmd);
 
 #endif

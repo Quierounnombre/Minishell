@@ -6,17 +6,20 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/31 15:15:47 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:17:05 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+
+#include "../minishell.h"
 
 int	main(int argc, char **argv, char **env)
 {
 	t_shell	*shell;
 	char	*input;
 
+	(void) argc;
+	(void) argv;
 	if (start(&shell, env))
 	{
 		while (argc && argv)

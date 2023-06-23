@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/26 12:19:21 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:26:29 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ typedef struct s_size
 	int	size_pipe;
 	int	size_token;
 	int	size_str;
-	int	size_redir;
+	int	size_in;
+	int	size_out;
 }				t_size;
 
 /*
@@ -32,9 +33,10 @@ Estruct general para la redireciones.
 */
 typedef struct s_red
 {
-	char	*file;
-	int		tipe;
-	int		fd;
+	char			*file;
+	int				tipe;
+	int				fd;
+	struct s_red	*next;
 }	t_red;
 
 /*
@@ -48,7 +50,6 @@ typedef struct s_cmd
 {
 	char	*filepath;
 	char	**argv;
-	char	**env;
 	t_red	*redir_in;
 	t_red	*redir_out;
 }	t_cmd;
@@ -66,6 +67,7 @@ typedef struct s_shell
 {
 	char		**separate_path;
 	t_lstmng	*childs;
+	char		**env;
 	t_lstmng	*cmds;
 	t_size		size_input;
 	char		*tube_file;
