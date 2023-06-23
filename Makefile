@@ -93,7 +93,7 @@ FILES_PARSE = check_pipes \
 			  separation_nodo \
 			  separation \
 			  utils \
-			  variable_qw \
+			  variable_qm \
 
 #PARSE_DIR = ./srcs/parse/
 #SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))

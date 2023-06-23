@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   variable_qw.c                                      :+:      :+:    :+:   */
+/*   variable_qm.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:16:12 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/19 16:22:49 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/22 20:41:24 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-@function expand_variable_qw
+@function expand_variable_qw expande la variable entre las " "
+@function exp_var_qm copia el nombre lo busca en el env y lo copia
+@function count_env_qw cuenta la cantidad de caracteres de la variable expandida
+@function check_env_qw busca el puntero de la variable para luego buscarla
+@function manage_count_env_qw gestiona las variables dentro del las " "
 */
-static void	expand_env_qw(char *ptr, char *argv, int *count_copy)
+static void	expand_env_qm(char *ptr, char *argv, int *count_copy)
 {
 	int	count;
 	int	count_ptr;
@@ -48,48 +52,37 @@ int	exp_var_qm(t_shell *shell, char *my_input, char *argv, int *count_copy)
 	{
 		ptr = get_ptr(shell, environment_variabl);
 		if (ptr)
-			expand_env_qw(ptr, argv, count_copy);
+			expand_env_qm(ptr, argv, count_copy);
 		free (environment_variabl);
 	}
 	return (count);
 }
-/*
-static void	count_env_qw(t_shell *shell, char *ptr)
+
+static void	count_env_qm(char *ptr, int *size)
 {
 	int	count;
 
 	count = 0;
 	while (ptr[count] != '\0')
 	{
-		if (ptr[count] == ' ' || ptr[count] == '\t')
-		{
-			space_tab(ptr, &count);
-			shell->size_input.size_token++;
-		}
 		count++;
+		if (ptr[count] != '\0')
+			*size += 1;
 	}
-	shell->size_input.size_token++;
 }
 
-static void	check_env_qw(t_shell *shell, char *environment_variabl)
+static void	check_env_qm(t_shell *shell, char *environment_variabl, int *size)
 {
 	int		count;
 	char	*ptr;
 
 	count = 0;
-	ptr = NULL;
-	while (ptr == NULL && shell->env[count] != NULL &&
-		environment_variabl != NULL) 
-	{
-		ptr = ft_strnstr(shell->env[count], environment_variabl,
-				ft_strlen(shell->env[count]));
-		count++;
-	}
+	ptr = get_ptr(shell, environment_variabl);
 	if (ptr)
-		count_env_qw(shell, &ptr[ft_strlen(environment_variabl)]);
+		count_env_qm(&ptr[ft_strlen(environment_variabl)], size);
 }
 
-int	manage_count_env_qw(t_shell *shell, char *my_input)
+int	manage_count_env_qm(t_shell *shell, char *my_input, int *size)
 {
 	int		count;
 	char	*environment_variabl;
@@ -97,15 +90,13 @@ int	manage_count_env_qw(t_shell *shell, char *my_input)
 	count = 1;
 	environment_variabl = NULL;
 	if (my_input[count] == '?')
-		count++;
+		*size += 1;
 	else
 	{
 		count += copy_env(shell, &my_input[count], &environment_variabl);
-		if (my_input[count] == '\"' && my_input[count + 1] == '\0')
-			count++;
-		check_env(shell, environment_variabl);
+		check_env_qm(shell, environment_variabl, size);
 		free(environment_variabl);
 	}
 	space_tab(my_input, &count);
 	return (count);
-}*/
+}

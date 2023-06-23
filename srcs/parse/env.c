@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 13:16:52 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/19 17:10:31 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/22 20:28:28 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 /*
 @function this_is_env copia, busca y expande la variable
 @function get_ptr busca la variable en env
-@function expand_env expande la variable 
+@function expand_env expande la variable
+@function strncmp_qm busca el nombre de la variable dentro de env
 */
 static void	expand_env(t_shell *shell, t_cmd *new_cmd, char *ptr, int *coun_t)//coun_t copunt_token
 {
@@ -93,53 +94,5 @@ int	this_is_env(t_shell *shell, t_cmd *new_cmd, char *input, int *count_token)
 			free (environment_variabl);
 		}
 	}
-	return (count);
-}
-
-
-
-
-
-
-
-static void	count_env_qw(char *ptr, int *size)
-{
-	int	count;
-
-	count = 0;
-	while (ptr[count] != '\0')
-	{
-		*size += 1;
-		count++;
-	}
-}
-
-static void	check_env_qw(t_shell *shell, char *environment_variabl, int *size)
-{
-	int		count;
-	char	*ptr;
-
-	count = 0;
-	ptr = get_ptr(shell, environment_variabl);
-	if (ptr)
-		count_env_qw(&ptr[ft_strlen(environment_variabl)], size);
-}
-
-int	manage_count_env_qw(t_shell *shell, char *my_input, int *size)
-{
-	int		count;
-	char	*environment_variabl;
-
-	count = 1;
-	environment_variabl = NULL;
-	if (my_input[count] == '?')
-		size++;
-	else
-	{
-		count += copy_env(shell, &my_input[count], &environment_variabl);
-		check_env_qw(shell, environment_variabl, size);
-		free(environment_variabl);
-	}
-	space_tab(my_input, &count);
 	return (count);
 }

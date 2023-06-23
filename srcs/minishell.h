@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:24:14 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:35:33 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -85,11 +84,17 @@ int		copy_env(t_shell *shell, char *my_input, char **environment_variabl);
 int		this_is_qm(t_shell *shell, t_cmd *new_cmd, char *my_input, int *count_token);
 int		this_is_redirection(t_shell *shell, t_cmd *new_cmd, char *my_input);
 void	pass_evn(char *input, int *count);
-int		manage_count_env_qw(t_shell *shell, char *my_input, int *size);
+int		manage_count_env_qm(t_shell *shell, char *my_input, int *size);
 int		exp_var_qm(t_shell *shell, char *my_input, char *argv, int *count_copy);
 char	*get_ptr(t_shell *shell, char *ev);
 int		strncmp_qm(const char *s1, const char *s2);
 void	start_new_nodo(t_shell *shell);
 void	start_nodo(t_cmd *new_cmd);
+int		copy_qm(t_shell *shell, char *argv, char *my_input, int *count_copy);
+int		argv_with_qm(t_shell *shell, char *my_input, char skip, int *size);
+void	lstadd_back_nodo(t_red **lst, t_red *new);
+void	ft_path(t_shell *shell, t_cmd *new_cmd);
+int		copy_qm(t_shell *shell, char *argv, char *my_input, int *count_copy);
+int		count_size_red(t_shell *shell, char *input);
 
 #endif

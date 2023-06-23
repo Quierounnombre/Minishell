@@ -3,15 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   separation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
 /*   Created: 2023/05/27 21:40:40 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/19 17:16:20 by lyandriy         ###   ########.fr       */
-=======
-/*   Created: 2023/05/19 19:45:19 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/05/25 10:46:32 by vicgarci         ###   ########.fr       */
->>>>>>> master
+/*   Updated: 2023/06/23 17:37:00 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +17,8 @@
 @function count_command_token recorre el contenido de un argumento normal
 @function count_redirects cuenta redirecciones y los recorre
 @function count_size cuenta el tamaño de los tokens
-@function separation cuenta tamaño de la entrada (los tokens) y crea la lista con el contenido
+@function separation cuenta tamaño de la entrada (los tokens) y crea la lista
+con el contenido
 */
 int	count_quotation_marks(t_shell *shell, char *my_input)
 {
@@ -36,7 +32,7 @@ int	count_quotation_marks(t_shell *shell, char *my_input)
 		while (my_input[count] != my_input[0])
 		{
 			if (my_input[count] == '\0')
-				break;
+				break ;
 			count++;
 		}
 		if (my_input[count] == my_input[0])
@@ -50,9 +46,9 @@ static int	count_command_token(t_shell *shell, char *my_input)
 	int	count;
 
 	count = 0;
-	while(my_input[count] != ' ' && my_input[count] != '\t' &&
-		my_input[count] != '\0' && my_input[count] != '|' &&
-		my_input[count] != '<' && my_input[count] != '>')
+	while (my_input[count] != ' ' && my_input[count] != '\t'
+		&& my_input[count] != '\0' && my_input[count] != '|'
+		&& my_input[count] != '<' && my_input[count] != '>')
 	{
 		if (my_input[count] == '\"' || my_input[count] == '\'')
 			count += count_quotation_marks(shell, &my_input[count]);
@@ -77,9 +73,9 @@ int	count_redirects(t_shell *shell, char *my_input)
 	if (my_input[count] == '<' || my_input[count] == '>')
 		count++;
 	space_tab(my_input, &count);
-	while (my_input[count] != ' ' && my_input[count] != '\t' &&
-		my_input[count] != '\0' && my_input[count] != '|' &&
-		my_input[count] != '<' && my_input[count] != '>')
+	while (my_input[count] != ' ' && my_input[count] != '\t'
+		&& my_input[count] != '\0' && my_input[count] != '|'
+		&& my_input[count] != '<' && my_input[count] != '>')
 		count++;
 	space_tab(my_input, &count);
 	return (count);
@@ -92,9 +88,9 @@ static void	count_size(t_shell *shell, char *my_input, int *count)
 		*count += manage_count_env(shell, &my_input[*count]);
 	if (my_input[*count] == '<' || my_input[*count] == '>')
 		*count += count_redirects(shell, &my_input[*count]);
-	if (my_input[*count] != '\0' && my_input[*count] != '|' &&
-		my_input[*count] != '$' && my_input[*count] != '<' &&
-		my_input[*count] != '>')
+	if (my_input[*count] != '\0' && my_input[*count] != '|'
+		&& my_input[*count] != '$' && my_input[*count] != '<'
+		&& my_input[*count] != '>')
 		*count += count_command_token(shell, &my_input[*count]);
 }
 
