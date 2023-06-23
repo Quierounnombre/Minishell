@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:26:29 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:45:17 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ typedef struct s_shell
 {
 	char		**separate_path;
 	t_lstmng	*childs;
-	char		**env;
 	t_lstmng	*cmds;
 	t_size		size_input;
 	char		*tube_file;

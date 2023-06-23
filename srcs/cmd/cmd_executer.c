@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/31 16:15:30 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:45:33 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ft_child(t_shell *shell)
 	else
 	{
 		if (cmd->filepath)
-			execve(cmd->filepath, cmd->argv, cmd->env);
+			execve(cmd->filepath, cmd->argv, shell->env);
 		else
 			ft_error(shell, ENOENT);
 	}
