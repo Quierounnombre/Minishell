@@ -6,13 +6,19 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:34:38 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/24 16:10:47 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
 
-
-#include "../minishell.h"
+static int	start_(t_shell *shell)
+{
+	shell->separate_path = NULL;
+	shell->env = NULL;
+	shell->cmds = malloc(sizeof(t_lstmng));
+	return (1);
+}
 
 int	main(int argc, char **argv, char **env)
 {
@@ -21,13 +27,15 @@ int	main(int argc, char **argv, char **env)
 
 	(void) argc;
 	(void) argv;
-	if (start(&shell, env))
+	shell = malloc (sizeof(t_shell));
+	if (start_(shell))
 	{
 		while (argc && argv)
 		{
 			input = readline("Minishell	");
-			if (env) //parse(shell, input, env))
-				process_executer(shell);
+			if (parse(shell, input, env))
+				printf("\n");
+				//process_executer(shell);
 		}
 	}
 }
