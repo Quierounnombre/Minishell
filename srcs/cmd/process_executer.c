@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/29 12:01:03 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/29 15:51:19 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,17 @@ void	process_executer(t_shell *shell)
 	t_list	*lst;
 
 	lst = shell->cmds->current;
-	if (shell->cmds->size > 1)
+	if (make_childs(shell))
 	{
-		while (lst)
+		if (conect_childs(shell))
 		{
-			lst = lst->next;
-			shell->cmds->current = lst;
+			while (lst)
+			{
+				lst = lst->next;
+				shell->cmds->current = lst;
+			}
 		}
+		ft_lstclear(&(shell->childs->lst_head->next), ft_cleanchild);
 	}
-	else
-		cmd_executer(shell);
 	ft_lstclear(&(shell->cmds->lst_head), ft_cleancmd);
-	ft_lstclear(&(shell->childs->lst_head->next), ft_cleanchild);
 }

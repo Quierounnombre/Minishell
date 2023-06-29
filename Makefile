@@ -75,6 +75,7 @@ FILES_PROCESS = do_fork \
 				mng_redirections \
 				output_redirection \
 				output_append \
+				conect_childs \
 				make_childs \
 
 PROCESS_DIR = ./srcs/Process/

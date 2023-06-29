@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/29 12:49:55 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/29 15:49:37 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	input_redirect(t_shell *shell);
 void	mng_redirections(t_shell *shell);
 void	output_redirection(t_shell *shell);
 void	output_append(t_shell *shell);
+t_bool	make_childs(t_shell *shell);
+t_bool	conect_childs(t_shell *shell);
 
 /*-----ERRORMNG-----*/
 
