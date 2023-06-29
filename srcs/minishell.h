@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/29 11:45:14 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:12:34 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	ft_exit(t_shell *shell);
 
 t_bool	add_pid_to_lst(t_lstmng *mng, pid_t pid);
 t_bool	do_fork(t_shell *shell);
-void	ft_pipe(t_shell *shell);
 void	input_redirect(t_shell *shell);
 void	mng_redirections(t_shell *shell);
 void	output_redirection(t_shell *shell);
@@ -69,6 +68,7 @@ void	ft_delete_file(t_shell *shell, char *file);
 int		find_string(char **env, char *target);
 
 /*-----PARSE-----*/
+
 int		parse(t_shell *shell, char *input, char **env);
 int		check_pipes(t_shell *shell, char *my_input);
 void	separation(t_shell *shell, char *my_input);

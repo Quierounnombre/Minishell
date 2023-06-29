@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/25 12:16:13 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:01:03 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	process_executer(t_shell *shell)
 	{
 		while (lst)
 		{
-			ft_pipe(shell);
 			lst = lst->next;
 			shell->cmds->current = lst;
 		}
@@ -35,6 +34,4 @@ void	process_executer(t_shell *shell)
 		cmd_executer(shell);
 	ft_lstclear(&(shell->cmds->lst_head), ft_cleancmd);
 	ft_lstclear(&(shell->childs->lst_head->next), ft_cleanchild);
-	ft_delete_file(shell, shell->tube_file);
-	free(shell->tube_file);
 }

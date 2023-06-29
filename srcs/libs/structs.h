@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/29 11:43:42 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/29 11:55:20 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ typedef struct s_child
 }	t_child;
 
 /*
+Estructura de uso general con toda laa información necesaria
 @param separate_path path_separado?
 @param childs lista con manager que almacena los hijos
 @param cmds lista con los comandos
 @param size_input cantidad de pipe y comandos
-@param tube_file es la dirección del archivo temporal de la tuberia
 @param self_pid pid propio, sera 0 en caso de ser hijo
 @param env guarda el entorno para la instancia de minishell
 */
@@ -82,7 +82,6 @@ typedef struct s_shell
 	t_lstmng	*childs;
 	t_lstmng	*cmds;
 	t_size		size_input;
-	char		*tube_file;
 	pid_t		self_pid;
 	char		**env;
 }	t_shell;
