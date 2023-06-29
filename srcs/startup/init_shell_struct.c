@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:01:43 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:25:32 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/29 11:47:42 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,11 @@
 //Inicializa los mngs
 static t_bool	init_lstmng(t_shell *local_shell)
 {
-	t_list	*lst_pid;
-
-	lst_pid = NULL;
-	if (store_child(local_shell->self_pid, &lst_pid))
+	if (ft_lstmngnew(NULL, &(local_shell->childs)))
 	{
-		if (ft_lstmngnew(lst_pid, &(local_shell->childs)))
-		{
-			if (ft_lstmngnew(NULL, &(local_shell->cmds)))
-				return (true);
-			free(local_shell->childs);
-		}
-		free(lst_pid);
+		if (ft_lstmngnew(NULL, &(local_shell->cmds)))
+			return (true);
+		free(local_shell->childs);
 	}
 	return (false);
 }

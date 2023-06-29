@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:45:17 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/29 11:43:42 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,19 @@ typedef struct s_cmd
 	t_red	*redir_in;
 	t_red	*redir_out;
 }	t_cmd;
+
+/*
+Estructura con la información que gestionan cada hijo
+@param cmd comando que va a ejecutar el hijo
+@param pid pid propio del hijo
+@param fd[2] redirecciones via pipe
+*/
+typedef struct s_child
+{
+	t_cmd	*cmd;
+	pid_t	pid;
+	int		fd[2];
+}	t_child;
 
 /*
 @param separate_path path_separado?
