@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/29 12:12:34 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:49:55 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_cleanshell(t_shell *shell);
 
 /*-----UTILS-----*/
 
-t_bool	store_child(pid_t pid, t_list **lst, t_shell *shell);
+t_bool	store_child(pid_t pid, t_shell *shell);
 t_bool	ft_storecmd(t_cmd *cmd, t_lstmng *mng);
 void	ft_cleanchild(void *node);
 void	ft_cleancmd(void *node);

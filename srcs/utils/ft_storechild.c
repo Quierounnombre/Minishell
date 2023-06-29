@@ -6,20 +6,21 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:03:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/29 11:44:57 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:50:06 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+static void	store_in_lst(t_shell *shell, t_list *node);
+
 /*
 Store a node of the list of childs
 @param pid the value of the pid to be store
-@param lst es la dirección de memoria donde se va a almacenar la lista
 @param shell es la estructura general
 @return true si todo va bien, false si falla
 */
-t_bool	store_child(pid_t pid, t_list **lst, t_shell *shell)
+t_bool	store_child(pid_t pid, t_shell *shell)
 {
 	t_child	*content;
 	t_list	*node;
@@ -32,10 +33,27 @@ t_bool	store_child(pid_t pid, t_list **lst, t_shell *shell)
 		node = ft_lstnew(content);
 		if (node)
 		{
-			*lst = node;
+			store_in_lst(shell, node);
 			return (true);
 		}
 		free(content);
 	}
 	return (false);
+}
+
+//Almacena el nodo en la lista
+static void	store_in_lst(t_shell *shell, t_list *node)
+{
+	if (shell->childs->lst_head)
+	{
+		shell->childs->tail->next = node;
+		shell->childs->size += 1;
+	}
+	else
+	{
+		shell->childs->current = node;
+		shell->childs->lst_head = node;
+		shell->childs->size = 1;
+		shell->childs->tail = node;
+	}
 }

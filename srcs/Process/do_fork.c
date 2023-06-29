@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:49:40 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/12 15:14:22 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:50:26 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_bool	do_fork(t_shell *shell)
 	pid_t	pid;
 
 	pid = fork();
-	if (pid > 0 && add_pid_to_lst(shell->childs, pid))
+	if (pid > 0)
 		return (true);
 	if (pid == 0)
 	{
