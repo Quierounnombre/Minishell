@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:16:12 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/22 20:41:24 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/29 20:27:28 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ int	exp_var_qm(t_shell *shell, char *my_input, char *argv, int *count_copy)
 	count = 1;
 	ptr = NULL;
 	environment_variabl = NULL;
+	if (my_input[count] = '?')
+	{
+		ptr = argv;
+		argv = ft_strjoin(ptr, ft_itoa(shell->child_status));
+		free(ptr);//se puede liberar????
+	}
 	count += copy_env(shell, &my_input[count], &environment_variabl);
 	if (environment_variabl)
 	{
@@ -90,13 +96,15 @@ int	manage_count_env_qm(t_shell *shell, char *my_input, int *size)
 	count = 1;
 	environment_variabl = NULL;
 	if (my_input[count] == '?')
-		*size += 1;
+		count++;
 	else
 	{
 		count += copy_env(shell, &my_input[count], &environment_variabl);
-		check_env_qm(shell, environment_variabl, size);
-		free(environment_variabl);
+		if (environment_variabl)
+		{
+			check_env_qm(shell, environment_variabl, size);
+			free(environment_variabl);
+		}
 	}
-	space_tab(my_input, &count);
 	return (count);
 }

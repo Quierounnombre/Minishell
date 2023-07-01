@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:49:35 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/22 20:40:13 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/29 19:53:20 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ que tienen dentro
 y los copia
 @function copy_cmd_token copia los comandos argumentos redirecciones
 */
-static void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input, int *i)//i count_copy
+static void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input, int *i)
 {
-	int		count;
+	int		count;//i count_copy
 	int		copy;
 
 	count = 0;
@@ -34,11 +34,22 @@ static void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input, int *i)//i co
 		if (input[count] == '\"' || input[count] == '\'')
 			count += copy_qm(shell, new_cmd->argv[*i], &input[count], &copy);
 		if (input[count] == '$')
-			count += exp_var_qm(shell, &input[count], new_cmd->argv[*i], &copy);
-		if (input[count] != ' ' && input[count] != '\t'
+		{
+			if (!ft_isalnum(input[count + 1]) && input[count + 1] != '?'
+				&& input[count + 1] != '\0')
+			{
+				new_cmd->argv[*i][copy] = '$';
+				count += 2;
+				copy++;
+			}
+			else
+				count += exp_var_qm(shell, &input[count], new_cmd->argv[*i], &copy);
+		}
+		else if (input[count] != ' ' && input[count] != '\t'
 			&& input[count] != '\0' && input[count] != '>'
 			&& input[count] != '|' && input[count] != '<'
-			&& input[count] != '\"' && input[count] != '\'')
+			&& input[count] != '\"' && input[count] != '\''
+			&& input[count] != '$')//////////////
 		{
 			new_cmd->argv[*i][copy] = input[count];
 			count++;
@@ -53,10 +64,19 @@ int	argv_with_qm(t_shell *shell, char *my_input, char skip, int *size)
 	int	count;
 
 	count = 1;
-	while (my_input[count] != skip)
+	while (my_input[count] != skip && my_input[count] != '\0')
 	{
 		if (my_input[count] == '$' && my_input[0] == '\"')
-			count += manage_count_env_qm(shell, &my_input[count], size);
+		{
+			if (!ft_isalnum(my_input[count + 1]) && my_input[count + 1] != '?'
+				&& my_input[count] != skip)
+			{
+				*size += 1;
+				count += 2;
+			}
+			else
+				count += manage_count_env_qm(shell, &my_input[count], size);
+		}
 		else
 		{
 			*size += 1;
@@ -80,23 +100,32 @@ static int	count_tam_argv(t_shell *shell, char *input, int *count)
 		if (input[*count] == '\"' || input[*count] == '\'')
 			*count += argv_with_qm(shell, &input[*count], input[*count], &size);
 		if (input[*count] == '$')
-			*count += manage_count_env_qm(shell, &input[*count], &size);
+		{
+			if (!ft_isalnum(input[*count + 1]) && input[*count + 1] != '?'
+				&& input[*count + 1] != '\0')
+			{
+				size++;
+				*count += 2;
+			}
+			else
+				*count += manage_count_env_qm(shell, &input[*count], &size);
+		}
 		if (input[*count] != ' ' && input[*count] != '\t'
 			&& input[*count] != '\0' && input[*count] != '>'
 			&& input[*count] != '|' && input[*count] != '<'
-			&& input[*count] != '\"' && input[*count] != '\'')
+			&& input[*count] != '\"' && input[*count] != '\''
+			&& input[*count] != '$')
 		{
 			size++;
 			*count += 1;
 		}
 	}
-	//space_tab(my_input, count);
 	return (size);
 }
 
-static int	this_is_argv(t_shell *shell, t_cmd *new_cmd, char *my_input, int *i)//i count_token
+static int	this_is_argv(t_shell *shell, t_cmd *new_cmd, char *my_input, int *i)
 {
-	int	count;
+	int	count;//i count_token
 	int	size;
 
 	size = 0;
@@ -123,7 +152,25 @@ void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *input)
 	{
 		space_tab(input, &count);
 		if (input[count] == '$')
-			count += this_is_env(shell, new_cmd, &input[count], &count_token);
+		{
+			new_cmd->argv[count_token] = NULL;
+			while (input[count] == '$')
+			{
+				if (!ft_isalnum(input[count + 1]) && input[count + 1] != '?')
+				{
+					new_cmd->argv[count_token] = malloc(sizeof(char) * 2);
+					new_cmd->argv[count_token][0] = '$';
+					new_cmd->argv[count_token][1] = '\0';
+					count_token++;
+					count += 2;
+				}
+				else
+					count += this_is_env(shell, new_cmd, &input[count], &count_token);
+			}
+			if (new_cmd->argv[count_token])
+				count_token++;
+			space_tab(input, &count);
+		}
 		if (input[count] == '<' || input[count] == '>')
 			count += this_is_redirection(shell, new_cmd, &input[count]);
 		if (input[count] != '\0' && input[count] != '|'
@@ -131,5 +178,6 @@ void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *input)
 			&& input[count] != '>')
 			count += this_is_argv(shell, new_cmd, &input[count], &count_token);
 	}
-	ft_path(shell, new_cmd);
+	if (new_cmd->argv[0])
+		ft_path(shell, new_cmd);
 }

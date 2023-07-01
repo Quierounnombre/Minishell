@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 15:51:33 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/29 15:35:37 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/06/26 18:28:26 by lyandriy          #+#    #+#             */
+/*   Updated: 2023/06/29 17:52:14 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-@function parse revisa la entrada y si esta bien devuelve true
+
 */
-int	parse(t_shell *shell, char *input, char **env)
+int	print_error(char *text)
 {
-	shell->env = env;
-	if (!check_pipes(shell, input))
-		return (0);
-	separation(shell, input);
-	return (1);
+	ft_printf("%s\n", text);
+	return (0);
 }

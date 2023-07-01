@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:35:33 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/26 20:40:24 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *my_input);
 int		this_is_env(t_shell *shell, t_cmd *new_cmd, char *input, int *count_token);
 char	*copy_token_env(char *ptr, int *count);
 int		count_quotation_marks(t_shell *shell, char *my_input);
-int		manage_count_env(t_shell *shell, char *my_input);
+int		manage_count_env(t_shell *shell, char *my_input, int *flag);
 int		count_redirects(t_shell *shell, char *my_input);
 int		copy_env(t_shell *shell, char *my_input, char **environment_variabl);
 int		this_is_qm(t_shell *shell, t_cmd *new_cmd, char *my_input, int *count_token);
@@ -96,5 +96,6 @@ void	lstadd_back_nodo(t_red **lst, t_red *new);
 void	ft_path(t_shell *shell, t_cmd *new_cmd);
 int		copy_qm(t_shell *shell, char *argv, char *my_input, int *count_copy);
 int		count_size_red(t_shell *shell, char *input);
+int		print_error(char *text);
 
 #endif

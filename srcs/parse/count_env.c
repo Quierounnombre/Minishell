@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:27:07 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/22 18:56:59 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/29 19:47:48 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	count_env(t_shell *shell, char *ptr)
 		}
 		count++;
 	}
-	shell->size_input.size_token++;
 }
 
 static void	check_env(t_shell *shell, char *environment_variabl)
@@ -49,50 +48,37 @@ static void	check_env(t_shell *shell, char *environment_variabl)
 		count_env(shell, &ptr[ft_strlen(environment_variabl)]);
 }
 
-void	pass_evn(char *input, int *count)
-{
-	while (input[*count] != ' ' && input[*count] != '\t'
-		&& input[*count] != '$' && input[*count] != '\0'
-		&& input[*count] != '|' && input[*count] != '\"'
-		&& input[*count] != '\'' && input[*count] != '<'
-		&& input[*count] != '>')
-		*count += 1;
-}
-
 int	copy_env(t_shell *shell, char *input, char **environment_variabl)
 {
 	int	count;
 
 	count = 0;
 	(void) shell;
-	pass_evn(input, &count);
+	while (ft_isalnum(input[count]) && input[count] != '\0')
+		count += 1;
 	if (count != 0)
 	{
 		*environment_variabl = malloc(sizeof(char) * (count + 1));
 		if (!*environment_variabl)
 			exit (1);
 		count = 0;
-		while (input[count] != ' ' && input[count] != '\t'
-			&& input[count] != '$' && input[count] != '\0'
-			&& input[count] != '|' && input[count] != '\"'
-			&& input[count] != '<' && input[count] != '>'
-			&& input[count] != '\'' && input[count] != '=')
+		while (ft_isalnum(input[count]))
 		{
 			environment_variabl[0][count] = input[count];
 			count++;
 		}
 		environment_variabl[0][count] = '\0';
 	}
-	space_tab(input, &count);
 	return (count);
 }
 
-int	manage_count_env(t_shell *shell, char *my_input)
+int	manage_count_env(t_shell *shell, char *my_input, int *flag)
 {
 	int		count;
 	char	*environment_variabl;
 
 	count = 1;
+	*flag = 0;
 	environment_variabl = NULL;
 	if (my_input[count] == '?')
 		shell->size_input.size_token++;
@@ -101,6 +87,7 @@ int	manage_count_env(t_shell *shell, char *my_input)
 		count += copy_env(shell, &my_input[count], &environment_variabl);
 		if (environment_variabl)
 		{
+			*flag = 1;
 			check_env(shell, environment_variabl);
 			free(environment_variabl);
 		}

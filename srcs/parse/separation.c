@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:40:40 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/23 17:37:00 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/29 19:58:28 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,25 @@ int	count_redirects(t_shell *shell, char *my_input)
 
 static void	count_size(t_shell *shell, char *my_input, int *count)
 {
+	int	flag;
+
+	flag = 0;
 	space_tab(my_input, count);
 	if (my_input[*count] == '$')
-		*count += manage_count_env(shell, &my_input[*count]);
+	{
+		while (my_input[*count] == '$')
+		{
+			if (!ft_isalnum(my_input[*count + 1]) && my_input[*count + 1] != '?')
+			{
+				shell->size_input.size_token++;
+				*count += 2;
+			}
+			else
+				*count += manage_count_env(shell, &my_input[*count], &flag);
+		}
+		if(flag)
+			shell->size_input.size_token++;
+	}
 	if (my_input[*count] == '<' || my_input[*count] == '>')
 		*count += count_redirects(shell, &my_input[*count]);
 	if (my_input[*count] != '\0' && my_input[*count] != '|'

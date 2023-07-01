@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:45:17 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/29 20:06:41 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_cmd
 @param tube_file es la dirección del archivo temporal de la tuberia
 @param self_pid pid propio, sera 0 en caso de ser hijo
 @param env guarda el entorno para la instancia de minishell
+@param child_status Codigo de ejecución del ultimo hijo
 */
 typedef struct s_shell
 {
@@ -71,7 +72,7 @@ typedef struct s_shell
 	t_size		size_input;
 	char		*tube_file;
 	pid_t		self_pid;
-	char		**env;
+	int		child_status;
 }	t_shell;
 
 #endif

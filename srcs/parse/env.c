@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 13:16:52 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/22 20:28:28 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/06/29 20:08:00 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 @function expand_env expande la variable
 @function strncmp_qm busca el nombre de la variable dentro de env
 */
-static void	expand_env(t_shell *shell, t_cmd *new_cmd, char *ptr, int *coun_t)//coun_t copunt_token
+static void	expand_env(t_shell *shell, t_cmd *new_cmd, char *ptr, int *coun_t)
 {
-	int	count;
+	int		count;
+	char	*temp;
+	int		tam;
 
 	count = 0;
-	(void) shell;
+	(void) shell;//coun_t copunt_token
 	while (ptr[count] != '=')
 		count++;
 	if (ptr[count] == '=')
@@ -31,8 +33,25 @@ static void	expand_env(t_shell *shell, t_cmd *new_cmd, char *ptr, int *coun_t)//
 	while (ptr[count] != '\0')
 	{
 		space_tab(ptr, &count);
-		new_cmd->argv[*coun_t] = copy_token_env(ptr, &count);
-		*coun_t += 1;
+		if (new_cmd->argv[*coun_t] != NULL)
+		{
+			temp = new_cmd->argv[*coun_t];
+			new_cmd->argv[*coun_t] = ft_strjoin(temp,
+				copy_token_env(ptr, &count));
+			free(temp);
+		}
+		if (new_cmd->argv[*coun_t] == NULL)
+			new_cmd->argv[*coun_t] = copy_token_env(ptr, &count);
+		if (ptr[count] == ' ' || ptr[count] == '\t')
+		{
+			space_tab(ptr, &count);
+			*coun_t += 1;
+			tam = 0;
+			while(ptr[count + tam] != ' ' && ptr[count + tam] != '\t'
+				&& ptr[count + tam] != '\0')
+				tam++;
+			new_cmd->argv[*coun_t] = ft_calloc((tam + 1), sizeof(char));
+		}
 	}
 }
 
@@ -79,9 +98,8 @@ int	this_is_env(t_shell *shell, t_cmd *new_cmd, char *input, int *count_token)
 	environment_variabl = NULL;
 	if (input[count] == '?')
 	{
-		new_cmd->argv[*count_token] = malloc(sizeof(char) * 3);
-		new_cmd->argv[*count_token] = "$?";
-		*count_token += 1;
+		new_cmd->argv[*count_token] = ft_itoa(shell->child_status);
+		count++;
 	}
 	else
 	{
