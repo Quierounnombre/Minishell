@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 14:09:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/31 16:00:47 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:49:21 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,10 @@ void	ft_pipe(t_shell *shell)
 	t_cmd	*cmd;
 	t_cmd	*cmd_next;
 
+	cmd = shell->cmds->current->content;
+	cmd_next = shell->cmds->current->next->content;
 	if (can_be_pipe(shell))
 	{
-		cmd = shell->cmds->current->content;
 		dump_into_file(shell);
 		cmd_next = shell->cmds->current->next->content;
 		cmd_next->redir_in->tipe = FT_RED_IN;

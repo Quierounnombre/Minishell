@@ -68,7 +68,6 @@ typedef struct s_shell
 {
 	char		**separate_path;
 	t_lstmng	*childs;
-	char		**env;
 	t_lstmng	*cmds;
 	t_size		size_input;
 	char		*tube_file;
