@@ -62,6 +62,7 @@ typedef struct s_cmd
 @param tube_file es la dirección del archivo temporal de la tuberia
 @param self_pid pid propio, sera 0 en caso de ser hijo
 @param env guarda el entorno para la instancia de minishell
+@param child_status Codigo de ejecución del ultimo hijo
 */
 typedef struct s_shell
 {
@@ -72,7 +73,7 @@ typedef struct s_shell
 	t_size		size_input;
 	char		*tube_file;
 	pid_t		self_pid;
-	int			child_status;
+	int		child_status;
 }	t_shell;
 
 #endif
