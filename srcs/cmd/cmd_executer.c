@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/05 12:47:44 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:02:54 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@
 Seleciona el primer comando, hace el fork, gestiona los errores y lo ejecuta.
 @param shell es la estructura general de la consola, necesaria para el fork
 */
-void	cmd_executer(t_cmd *cmd)
+void	cmd_executer(t_cmd *cmd, t_shell *shell)
 {
-	mng_redirections(shell);
-	if (is_built_in(shell))
-		do_build_in(shell);
+	if (is_built_in(cmd))
+		do_build_in(cmd, shell);
 	else
 	{
 		if (cmd->filepath)

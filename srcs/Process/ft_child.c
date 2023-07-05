@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:58:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/05 12:57:00 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:49:22 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	ft_child(t_shell *shell, t_child *child)
 	}
 	close(shell->fd[PIPE_OG][WRITE]);
 	close(shell->fd[PIPE_NEW][READ]);
-	mng_redirections(child->cmd);
-	cmd_executer(child->cmd);
+	mng_redirections(child->cmd, shell);
+	cmd_executer(child->cmd, shell);
 }

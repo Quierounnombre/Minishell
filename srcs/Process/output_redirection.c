@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:42:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/18 14:56:44 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:49:02 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@
 Gestiona la redirección del tipo '>'
 @param shell Estructura general con la información necesaria
 */
-void	output_redirection(t_shell *shell)
+void	output_redirection(t_cmd *cmd, t_shell *shell)
 {
 	int		fd_output;
 	int		error_code;
-	t_cmd	*cmd;
 
-	cmd = shell->cmds->current->content;
 	error_code = 0;
 	fd_output = 0;
 	fd_output = open(cmd->redir_out->file, O_CREAT | O_TRUNC | O_WRONLY, 644);

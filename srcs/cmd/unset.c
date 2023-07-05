@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 16:23:56 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:47:03 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:01:10 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,5 @@ void	ft_unset(t_shell *shell, char *s)
 	if (shell->env[i] != NULL)
 		make_new_env(shell, i, size_env);
 	free(target);
+	exit(0);
 }
-
-

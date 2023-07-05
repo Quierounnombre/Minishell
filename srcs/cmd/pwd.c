@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:44:42 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/26 15:05:27 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/05 13:59:52 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void	ft_pwd(char **env)
 
 	i = find_string(env, "PWD=");
 	ft_printf("%s\n", env[i]);
+	exit(0);
 }

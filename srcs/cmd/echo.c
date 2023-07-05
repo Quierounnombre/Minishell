@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:43:02 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/31 15:02:46 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/05 13:59:09 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void	echo(t_shell *shell)
 		ft_printf("%s", cmd->argv[2]);
 	else
 		ft_printf("%s\n", cmd->argv[1]);
+	exit(0);
 }
