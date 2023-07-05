@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/29 15:49:37 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/05 13:44:37 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ void	ft_exit(t_shell *shell);
 t_bool	add_pid_to_lst(t_lstmng *mng, pid_t pid);
 t_bool	do_fork(t_shell *shell);
 void	input_redirect(t_shell *shell);
-void	mng_redirections(t_shell *shell);
+void	mng_redirections(t_cmd *cmd);
 void	output_redirection(t_shell *shell);
 void	output_append(t_shell *shell);
 t_bool	make_childs(t_shell *shell);
 t_bool	conect_childs(t_shell *shell);
+void	ft_child(t_shell *shell, t_child *child);
 
 /*-----ERRORMNG-----*/
 

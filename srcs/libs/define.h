@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 16:57:17 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/23 17:23:57 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/05 12:24:39 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,25 @@ define redirecciones
 
 # ifndef NO_REDIR
 #  define NO_REDIR 5
+# endif
+
+//------------------------------------------------------------
+//Define para facilitar el uso de las pipes
+
+# ifndef READ
+#  define READ 0
+# endif
+
+# ifndef WRITE
+#  define WRITE 1
+# endif
+
+# ifndef PIPE_OG
+#  define PIPE_OG 0
+# endif
+
+# ifndef PIPE_NEW
+#  define PIPE_NEW 1
 # endif
 
 #endif

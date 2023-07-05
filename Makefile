@@ -75,8 +75,8 @@ FILES_PROCESS = do_fork \
 				mng_redirections \
 				output_redirection \
 				output_append \
-				conect_childs \
 				make_childs \
+				ft_child \
 
 PROCESS_DIR = ./srcs/Process/
 SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))
