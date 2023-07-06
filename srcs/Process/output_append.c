@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 10:25:48 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/05 14:49:08 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/06 15:04:25 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	output_append(t_cmd *cmd, t_shell *shell)
 		if (error_code)
 			ft_error(shell, error_code);
 		cmd->redir_out->fd = fd_output;
+		close(fd_output);
 	}
 	else
 		ft_error(shell, fd_output);
