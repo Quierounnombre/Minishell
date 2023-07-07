@@ -33,7 +33,6 @@ FILES_CMD = cmd_executer \
 			echo \
 			pwd \
 			env \
-			process_executer \
 			cd \
 			export \
 			unset \
@@ -70,13 +69,14 @@ START_DIR = ./srcs/startup/
 SRCS_START = $(addprefix $(START_DIR), $(addsuffix .c, $(FILES_START)))
 OBJS_START = $(addprefix $(START_DIR), $(addsuffix .o, $(FILES_START)))
 
-FILES_PROCESS = do_fork \
-				input_redirect \
+FILES_PROCESS = input_redirect \
 				mng_redirections \
 				output_redirection \
 				output_append \
 				make_childs \
 				ft_child \
+				process_executer \
+				fork_child \
 
 PROCESS_DIR = ./srcs/Process/
 SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))

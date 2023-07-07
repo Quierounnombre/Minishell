@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:03:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/29 12:50:06 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/07 13:35:10 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ t_bool	store_child(pid_t pid, t_shell *shell)
 	{
 		content->pid = pid;
 		content->cmd = shell->cmds->current->content;
+		content->is_limit_end = false;
+		content->is_limit_sta = false;
 		node = ft_lstnew(content);
 		if (node)
 		{

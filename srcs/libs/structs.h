@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/05 11:44:12 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/07 1 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,15 @@ typedef struct s_cmd
 
 /*
 Estructura con la información que gestionan cada hijo
+@param is_limit_end	gestiona el caso del final, para que no redireccione
+@param is_limit_sta gestiona el caso del inicio, para que no redireccione
 @param cmd comando que va a ejecutar el hijo
 @param pid pid propio del hijo
 */
 typedef struct s_child
 {
+	t_bool	is_limit_end;
+	t_bool	is_limit_sta;
 	t_cmd	*cmd;
 	pid_t	pid;
 }	t_child;

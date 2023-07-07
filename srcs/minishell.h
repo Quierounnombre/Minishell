@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/05 14:50:24 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:32:58 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@ t_bool	clone_env(char **env, t_shell *shell);
 
 /*-----CMD-----*/
 
-void	process_executer(t_shell *shell);
-char	*search_for_path(char *raw_path);
 void	cmd_executer(t_cmd *cmd, t_shell *shell);
 t_bool	is_built_in(t_cmd *cmd);
 void	do_build_in(t_cmd *cmd, t_shell *shell);
-void	echo(t_shell *shell);
+void	echo(t_cmd *cmd);
 void	ft_pwd(char **env);
 void	ft_env(char **env);
 void	ft_cd(const char *dir, t_shell *shell);
@@ -46,13 +44,14 @@ void	ft_exit(t_shell *shell);
 /*-----PROCESS-----*/
 
 t_bool	add_pid_to_lst(t_lstmng *mng, pid_t pid);
-t_bool	do_fork(t_shell *shell);
 void	input_redirect(t_cmd *cmd, t_shell *shell);
 void	mng_redirections(t_cmd *cmd, t_shell *shell);
 void	output_redirection(t_cmd *cmd, t_shell *shell);
 void	output_append(t_cmd *cmd, t_shell *shell);
 t_bool	make_childs(t_shell *shell);
 void	ft_child(t_shell *shell, t_child *child);
+void	fork_child(t_shell *shell);
+void	process_executer(t_shell *shell);
 
 /*-----ERRORMNG-----*/
 
