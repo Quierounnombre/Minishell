@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/12 17:41:56 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:51:10 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ int		find_string(char **env, char *target);
 
 /*-----PARSE-----*/
 
+int		parse(t_shell *shell, char *input, char **env);
+int		check_pipes(t_shell *shell, char *my_input);
+void	separation(t_shell *shell, char *my_input);
 int		copy_env(t_shell *shell, char *input, char **environment_variabl);
 char	*get_ptr(t_shell *shell, char *ev);
 void	find_start_of_str(char *ptr, int *ptr_count);
@@ -84,6 +87,10 @@ char	*find_env(t_shell *shell, char *input, int *count);
 int		exp_var_qm(t_shell *shell, char *my_input, char *argv, int *count_copy);
 void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *input);
 void	create_node(t_shell *shell, t_cmd *new_cmd, char *my_input);
+void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *my_input);
+int		this_is_env(t_shell *shell,
+			t_cmd *new_cmd, char *input, int *count_token);
+char	*copy_token_env(char *ptr, int *count);
 void	start_nodo(t_cmd *new_cmd);
 void	start_new_nodo(t_shell *shell);
 void	count_dollar(t_shell *shell, char *my_input, int *count);
@@ -92,16 +99,32 @@ int		ft_calclen2(int temp);
 void	expand_env_qm(char *ptr, char *argv, int *count_copy);
 void	ft_aux(t_shell *shell, char *argv, int *count_copy);
 int		manage_count_env(t_shell *shell, char *my_input, int *flag);
+int		count_redirects(t_shell *shell, char *my_input);
+int		copy_env(t_shell *shell, char *my_input, char **environment_variabl);
+int		this_is_qm(t_shell *shell,
+			t_cmd *new_cmd, char *my_input, int *count_token);
+int		this_is_redirection(t_shell *shell, t_cmd *new_cmd, char *my_input);
+void	pass_evn(char *input, int *count);
 char	*copy_tex_argv(char *input, int *c);
 void	expand_env(char *ptr, t_cmd *new_cmd, int *i, int *copy);
 char	*copy_text_qm(t_shell *shell, char *my_input, int *count);
 int		manage_count_env_qm(t_shell *shell, char *my_input, int *size);
+int		exp_var_qm(t_shell *shell, char *my_input, char *argv, int *count_copy);
+char	*get_ptr(t_shell *shell, char *ev);
+int		strncmp_qm(const char *s1, const char *s2);
+void	start_new_nodo(t_shell *shell);
+void	start_nodo(t_cmd *new_cmd);
 void	argv_alnum(char *argv, int *count_copy, int *count);
 int		this_is_env(t_shell *shell, t_cmd *new_cmd, char *input, int *count_t);
 void	copy_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c);
 int		copy_qm(t_shell *shell, char *argv, char *my_input, int *count_copy);
+int		argv_with_qm(t_shell *shell, char *my_input, char skip, int *size);
+void	lstadd_back_nodo(t_red **lst, t_red *new);
+void	ft_path(t_shell *shell, t_cmd *new_cmd);
+int		copy_qm(t_shell *shell, char *argv, char *my_input, int *count_copy);
+int		count_size_red(t_shell *shell, char *input);
+int		print_error(char *text);
 void	check_argv(t_shell *shell, t_cmd *new_cmd);
 void	else_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c);
-
 
 #endif
