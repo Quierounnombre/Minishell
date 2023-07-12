@@ -6,12 +6,11 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:16:12 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/29 20:27:28 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:02:46 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
 /*
 @function expand_variable_qw expande la variable entre las " "
 @function exp_var_qm copia el nombre lo busca en el env y lo copia
@@ -19,7 +18,7 @@
 @function check_env_qw busca el puntero de la variable para luego buscarla
 @function manage_count_env_qw gestiona las variables dentro del las " "
 */
-static void	expand_env_qm(char *ptr, char *argv, int *count_copy)
+void	expand_env_qm(char *ptr, char *argv, int *count_copy)
 {
 	int	count;
 	int	count_ptr;
@@ -38,30 +37,26 @@ static void	expand_env_qm(char *ptr, char *argv, int *count_copy)
 	}
 }
 
-int	exp_var_qm(t_shell *shell, char *my_input, char *argv, int *count_copy)
+void	ft_aux(t_shell *shell, char *argv, int *count_copy)
 {
-	char	*environment_variabl;
-	char	*ptr;
-	int		count;
+	int	len;
 
-	count = 1;
-	ptr = NULL;
-	environment_variabl = NULL;
-	if (my_input[count] = '?')
+	len = ft_calclen2(shell->child_status);
+	len += *count_copy;
+	if (shell->child_status == 0)
 	{
-		ptr = argv;
-		argv = ft_strjoin(ptr, ft_itoa(shell->child_status));
-		free(ptr);//se puede liberar????
+		argv[*count_copy] = '0';
+		*count_copy += 1;
 	}
-	count += copy_env(shell, &my_input[count], &environment_variabl);
-	if (environment_variabl)
+	else
 	{
-		ptr = get_ptr(shell, environment_variabl);
-		if (ptr)
-			expand_env_qm(ptr, argv, count_copy);
-		free (environment_variabl);
+		*count_copy = len;
+		while (shell->child_status > 0)
+		{
+			argv[--len] = (shell->child_status % 10) + '0';
+			shell->child_status = shell->child_status / 10;
+		}
 	}
-	return (count);
 }
 
 static void	count_env_qm(char *ptr, int *size)
@@ -96,7 +91,10 @@ int	manage_count_env_qm(t_shell *shell, char *my_input, int *size)
 	count = 1;
 	environment_variabl = NULL;
 	if (my_input[count] == '?')
+	{
+		*size += ft_calclen2(shell->child_status);
 		count++;
+	}
 	else
 	{
 		count += copy_env(shell, &my_input[count], &environment_variabl);

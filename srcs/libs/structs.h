@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/29 20:06:41 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:53:10 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_size
 	int	size_str;
 	int	size_in;
 	int	size_out;
+	int	ctoken;
+	int	copy;
 }				t_size;
 
 /*
@@ -58,7 +60,7 @@ typedef struct s_cmd
 @param separate_path path_separado?
 @param childs lista con manager que almacena los hijos
 @param cmds lista con los comandos
-@param size_input cantidad de pipe y comandos
+@param s_i cantidad de pipe y comandos
 @param tube_file es la dirección del archivo temporal de la tuberia
 @param self_pid pid propio, sera 0 en caso de ser hijo
 @param env guarda el entorno para la instancia de minishell
@@ -69,7 +71,7 @@ typedef struct s_shell
 	char		**separate_path;
 	t_lstmng	*childs;
 	t_lstmng	*cmds;
-	t_size		size_input;
+	t_size		s_i;
 	char		*tube_file;
 	pid_t		self_pid;
 	int		child_status;
