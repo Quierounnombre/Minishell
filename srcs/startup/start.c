@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 12:44:42 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/05 13:59:52 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/05/04 16:56:24 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/07/01 17:46:32 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../minishell.h"
 
 /*
-Muestra por consola la variable de entorno PWD
-@param env el enviroment donde buscar
+Inicializa todas las estructuras y elementos necesarios para el programa
+@param shell recibe la dirección de memoria para cargar el puntero
+@param env el enviroment que se le pasa a la shell
+@return false en caso de error, true si todo esta bien
 */
-void	ft_pwd(char **env)
+t_bool	start(t_shell **shell, char **env)
 {
-	int		i;
-
-	i = find_string(env, "PWD=");
-	ft_printf("%s\n", env[i]);
-	exit(0);
+	if (init_shell_struct(shell))
+	{
+		if (clone_env(env, *shell))
+		{
+			return (true);
+		}
+		ft_cleanshell(*shell);
+	}
+	return (false);
 }

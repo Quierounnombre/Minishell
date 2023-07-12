@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/12 17:12:27 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:41:56 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@ t_bool	clone_env(char **env, t_shell *shell);
 
 /*-----CMD-----*/
 
-void	process_executer(t_shell *shell);
-char	*search_for_path(char *raw_path);
-void	cmd_executer(t_shell *shell);
-t_bool	is_built_in(t_shell *shell);
-void	do_build_in(t_shell *shell);
-void	echo(t_shell *shell);
+void	cmd_executer(t_cmd *cmd, t_shell *shell);
+t_bool	is_built_in(t_cmd *cmd);
+void	do_build_in(t_cmd *cmd, t_shell *shell);
+void	echo(t_cmd *cmd);
 void	ft_pwd(char **env);
 void	ft_env(char **env);
 void	ft_cd(const char *dir, t_shell *shell);
@@ -46,12 +44,14 @@ void	ft_exit(t_shell *shell);
 /*-----PROCESS-----*/
 
 t_bool	add_pid_to_lst(t_lstmng *mng, pid_t pid);
-t_bool	do_fork(t_shell *shell);
-void	ft_pipe(t_shell *shell);
-void	input_redirect(t_shell *shell);
-void	mng_redirections(t_shell *shell);
-void	output_redirection(t_shell *shell);
-void	output_append(t_shell *shell);
+void	input_redirect(t_cmd *cmd, t_shell *shell);
+void	mng_redirections(t_cmd *cmd, t_shell *shell);
+void	output_redirection(t_cmd *cmd, t_shell *shell);
+void	output_append(t_cmd *cmd, t_shell *shell);
+t_bool	make_childs(t_shell *shell);
+void	ft_child(t_shell *shell, t_child *child);
+void	fork_child(t_shell *shell);
+void	process_executer(t_shell *shell);
 
 /*-----ERRORMNG-----*/
 
@@ -60,7 +60,7 @@ void	ft_cleanshell(t_shell *shell);
 
 /*-----UTILS-----*/
 
-t_bool	store_child(pid_t pid, t_list **lst);
+t_bool	store_child(pid_t pid, t_shell *shell);
 t_bool	ft_storecmd(t_cmd *cmd, t_lstmng *mng);
 void	ft_cleanchild(void *node);
 void	ft_cleancmd(void *node);
@@ -69,6 +69,7 @@ void	ft_delete_file(t_shell *shell, char *file);
 int		find_string(char **env, char *target);
 
 /*-----PARSE-----*/
+
 int		copy_env(t_shell *shell, char *input, char **environment_variabl);
 char	*get_ptr(t_shell *shell, char *ev);
 void	find_start_of_str(char *ptr, int *ptr_count);

@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_fork.c                                          :+:      :+:    :+:   */
+/*   fork_child.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 14:49:40 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/12 15:14:22 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/07/06 15:44:09 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/07/06 15:51:39 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
-This method do a fork process, and store its pid in the lst, can return false
-in the case that the lst cant be allocated or the fork fail.
-@param shell is the global struct
-@return devuelve true si ha salido exitosamente, y false si da error
+Inicia un hijo y lo ejecuta
+@param estructura con información de uso general
 */
-t_bool	do_fork(t_shell *shell)
+void	fork_child(t_shell *shell)
 {
+	t_child	*child;
 	pid_t	pid;
 
 	pid = fork();
-	if (pid > 0 && add_pid_to_lst(shell->childs, pid))
-		return (true);
-	if (pid == 0)
-	{
-		shell->self_pid = 0;
-		return (true);
-	}
-	return (false);
+	child = shell->childs->current->content;
+	if (pid)
+		ft_child(shell, child);
 }

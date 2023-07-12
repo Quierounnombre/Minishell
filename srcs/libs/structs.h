@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/10 19:53:10 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:40:19 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,29 @@ typedef struct s_cmd
 }	t_cmd;
 
 /*
+Estructura con la información que gestionan cada hijo
+@param is_limit_end	gestiona el caso del final, para que no redireccione
+@param is_limit_sta gestiona el caso del inicio, para que no redireccione
+@param cmd comando que va a ejecutar el hijo
+@param pid pid propio del hijo
+*/
+typedef struct s_child
+{
+	t_bool	is_limit_end;
+	t_bool	is_limit_sta;
+	t_cmd	*cmd;
+	pid_t	pid;
+}	t_child;
+
+/*
+Estructura de uso general con toda la información necesaria
 @param separate_path path_separado?
 @param childs lista con manager que almacena los hijos
 @param cmds lista con los comandos
-@param s_i cantidad de pipe y comandos
-@param tube_file es la dirección del archivo temporal de la tuberia
 @param self_pid pid propio, sera 0 en caso de ser hijo
 @param env guarda el entorno para la instancia de minishell
+@param fd almacena los fd para la gestión de los pipes
+@param s_i cantidad de pipe y comandos
 @param child_status Codigo de ejecución del ultimo hijo
 */
 typedef struct s_shell
@@ -71,10 +87,11 @@ typedef struct s_shell
 	char		**separate_path;
 	t_lstmng	*childs;
 	t_lstmng	*cmds;
+	char		**env;
+	int			fd[2][2];
 	t_size		s_i;
-	char		*tube_file;
 	pid_t		self_pid;
-	int		child_status;
+	int			child_status;
 }	t_shell;
 
 #endif

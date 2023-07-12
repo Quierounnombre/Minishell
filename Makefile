@@ -27,23 +27,22 @@ RESET = \033[0m
 FILE_MAIN = ./srcs/main.c
 OBJ_MAIN = ./srcs/main.o
 
-#FILES_CMD = cmd_executer \
+FILES_CMD = cmd_executer \
 			is_built_in \
 			do_built_in \
 			echo \
 			pwd \
 			env \
-			process_executer \
 			cd \
 			export \
 			exit \
 			unset \
 
-#CMD_DIR = ./srcs/cmd/
-#SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
-#OBJS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .o, $(FILES_CMD)))
+CMD_DIR = ./srcs/cmd/
+SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
+OBJS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .o, $(FILES_CMD)))
 
-#FILES_UTILS = ft_cleanchild \
+FILES_UTILS = ft_cleanchild \
 			ft_storechild \
 			ft_cleancmd \
 			ft_storecmd \
@@ -51,36 +50,37 @@ OBJ_MAIN = ./srcs/main.o
 			ft_delete_file \
 			find_string \
 
-#UTILS_DIR = ./srcs/utils/
-#SRCS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .c, $(FILES_UTILS)))
-#OBJS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .o, $(FILES_UTILS)))
+UTILS_DIR = ./srcs/utils/
+SRCS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .c, $(FILES_UTILS)))
+OBJS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .o, $(FILES_UTILS)))
 
-#FILES_ERRORMNG = ft_cleanshell \
+FILES_ERRORMNG = ft_cleanshell \
 				ft_error \
 
-#ERRORMNG_DIR = ./srcs/errormng/
-#SRCS_ERRORMNG = $(addprefix $(ERRORMNG_DIR), $(addsuffix .c, $(FILES_ERRORMNG)))
-#OBJS_ERRORMNG = $(addprefix $(ERRORMNG_DIR), $(addsuffix .o, $(FILES_ERRORMNG)))
+ERRORMNG_DIR = ./srcs/errormng/
+SRCS_ERRORMNG = $(addprefix $(ERRORMNG_DIR), $(addsuffix .c, $(FILES_ERRORMNG)))
+OBJS_ERRORMNG = $(addprefix $(ERRORMNG_DIR), $(addsuffix .o, $(FILES_ERRORMNG)))
 
-#FILES_START = init_shell_struct \
+FILES_START = init_shell_struct \
 			clone_env \
 			start \
 
-#START_DIR = ./srcs/startup/
-#SRCS_START = $(addprefix $(START_DIR), $(addsuffix .c, $(FILES_START)))
-#OBJS_START = $(addprefix $(START_DIR), $(addsuffix .o, $(FILES_START)))
+START_DIR = ./srcs/startup/
+SRCS_START = $(addprefix $(START_DIR), $(addsuffix .c, $(FILES_START)))
+OBJS_START = $(addprefix $(START_DIR), $(addsuffix .o, $(FILES_START)))
 
-#FILES_PROCESS = add_pid_to_lst \
-				do_fork \
-				input_redirect \
+FILES_PROCESS = input_redirect \
 				mng_redirections \
 				output_redirection \
 				output_append \
-				ft_pipe \
+				make_childs \
+				ft_child \
+				process_executer \
+				fork_child \
 
-#PROCESS_DIR = ./srcs/Process/
-#SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))
-#OBJS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .o, $(FILES_PROCESS)))
+PROCESS_DIR = ./srcs/Process/
+SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))
+OBJS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .o, $(FILES_PROCESS)))
 
 FILES_PARSE = check_pipes \
 			  check_pipes2 \
@@ -107,8 +107,8 @@ PARSE_DIR = ./srcs/parse/
 SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))
 OBJS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .o, $(FILES_PARSE)))
 
-OBJS = $(OBJS_PARSE) $(OBJ_MAIN) #$(OBJS_CMD) $(OBJS_UTILS) $(OBJS_START) $(OBJS_PROCESS) $(OBJS_ERRORMNG)
-SRCS = $(SRCS_PARSE) $(FILE_MAIN) #$(SRCS_CMD) $(SRCS_UTILS) $(SRCS_UTILS) $(SRCS_PROCESS) $(SRCS_ERRORMNG)
+OBJS = $(OBJS_CMD) $(OBJ_MAIN) $(OBJS_UTILS) $(OBJS_START) $(OBJS_PROCESS) $(OBJS_ERRORMNG) $(OBJS_PARSE)
+SRCS = $(SRCS_CMD) $(FILE_MAIN) $(SRCS_UTILS) $(SRCS_UTILS) $(SRCS_PROCESS) $(SRCS_ERRORMNG) $(SRCS_PARSE)
 
 all: libft $(NAME)
 

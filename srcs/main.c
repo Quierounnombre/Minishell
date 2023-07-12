@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/24 16:10:47 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:41:17 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int	main(int argc, char **argv, char **env)
 		{
 			input = readline("Minishell	");
 			if (parse(shell, input, env))
-				printf("\n");
-				//process_executer(shell);
+				process_executer(shell);
 		}
 	}
 }

@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 16:23:56 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 18:19:53 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:37:30 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
 
 //Libera el env en caso de error
 static t_bool	free_clone_env(char **env)
@@ -102,6 +101,5 @@ void	ft_unset(t_shell *shell, char *s)
 	if (shell->env[i] != NULL)
 		make_new_env(shell, i, size_env);
 	free(target);
+	exit(0);
 }
-
-

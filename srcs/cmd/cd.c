@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:52:38 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/31 16:19:01 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:37:57 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ void	ft_cd(const char *dir, t_shell *shell)
 	}
 	else
 		ft_error(shell, errno);
+	exit(0);
 }
