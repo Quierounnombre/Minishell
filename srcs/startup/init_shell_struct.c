@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:01:43 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/29 11:59:09 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/12 19:01:37 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ static t_bool	init_lstmng(t_shell *local_shell)
 {
 	if (ft_lstmngnew(NULL, &(local_shell->childs)))
 	{
-		if (ft_lstmngnew(NULL, &(local_shell->cmds)))
+		if (ft_lstmngnew(ft_lstnew(NULL), &(local_shell->cmds)))
+		{
 			return (true);
+		}
 		free(local_shell->childs);
 	}
 	return (false);

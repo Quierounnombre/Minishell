@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/07 14:51:09 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/12 18:19:47 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ la ejecución de los comandos
 void	process_executer(t_shell *shell)
 {
 	shell->childs->current = shell->childs->lst_head;
+	ft_printf("CHECKPOINT 1\n");
 	if (make_childs(shell))
 	{
+		ft_printf("FURULA\n", shell);
 		if (init_pipes(shell))
 		{
 			while (shell->childs->current)

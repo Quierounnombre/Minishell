@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_nodo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:30:06 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 16:32:42 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/12 19:03:16 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	start_new_nodo(t_shell *shell)
 {
 	shell->s_i.size_in = 0;
 	shell->s_i.size_out = 0;
-	shell->cmds = malloc(sizeof(t_lstmng));
-	if (!shell->cmds)
-		exit (1);
-	shell->cmds->current = NULL;
 	shell->s_i.size_token = 0;
+	shell->s_i.copy = 0;
+	shell->s_i.ctoken = 0;
+	shell->s_i.size_pipe = 0;
+	shell->s_i.size_str = 0;
 }
 
 void	start_nodo(t_cmd *new_cmd)

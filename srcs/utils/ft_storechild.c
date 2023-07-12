@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:03:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/07 13:35:10 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/12 18:27:14 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,18 @@ t_bool	store_child(pid_t pid, t_shell *shell)
 	t_child	*content;
 	t_list	*node;
 
+	ft_printf("CH 3\n");
 	content = (t_child *)malloc(sizeof(t_child));
 	if (content)
 	{
 		content->pid = pid;
+		ft_printf("shell %p\n", shell);
+		ft_printf("shell->cmds %p\n", shell->cmds);
+		ft_printf("shell->cmds->current %p\n", shell->cmds->current);
+		ft_printf("shell->cmds->head %p\n", shell->cmds->lst_head);
+		ft_printf("shell->cmds->current->content %p\n", shell->cmds->current->content);
 		content->cmd = shell->cmds->current->content;
+		ft_printf("CH 4\n");
 		content->is_limit_end = false;
 		content->is_limit_sta = false;
 		node = ft_lstnew(content);
