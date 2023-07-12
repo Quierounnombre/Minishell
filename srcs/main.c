@@ -6,13 +6,19 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/06/23 17:57:57 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:41:17 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "minishell.h"
+
+static int	start_(t_shell *shell)
+{
+	shell->separate_path = NULL;
+	shell->env = NULL;
+	shell->cmds = malloc(sizeof(t_lstmng));
+	return (1);
+}
 
 int	main(int argc, char **argv, char **env)
 {
@@ -21,7 +27,8 @@ int	main(int argc, char **argv, char **env)
 
 	(void) argc;
 	(void) argv;
-	if (start(&shell, env))
+	shell = malloc (sizeof(t_shell));
+	if (start_(shell))
 	{
 		while (argc && argv)
 		{

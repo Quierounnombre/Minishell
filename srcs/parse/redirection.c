@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 17:35:26 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/22 20:40:36 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:54:18 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ int	count_size_red(t_shell *shell, char *input)
 			count += manage_count_env_qm(shell, &input[count], &size);
 		if (input[count] != ' ' && input[count] != '\t'
 			&& input[count] != '\0' && input[count] != '|'
-			&& input[count] != '<' && input[count] != '>')
+			&& input[count] != '<' && input[count] != '>'
+			&& input[count] != '\"' && input[count] != '\''
+			&& input[count] != '$')
 		{
 			size++;
 			count++;
@@ -59,11 +61,12 @@ static void	copy_red(t_shell *shell, char *my_input, char *file)
 		if (my_input[count] == '\"' || my_input[count] == '\'')
 			count += copy_qm(shell, file, &my_input[count], &count_copy);
 		if (my_input[count] == '$')
-			count += exp_var_qm(shell, &my_input[count], file, &count_copy);
+				count += exp_var_qm(shell, &my_input[count], file, &count_copy);
 		if (my_input[count] != ' ' && my_input[count] != '\t'
 			&& my_input[count] != '\0' && my_input[count] != '|'
 			&& my_input[count] != '<' && my_input[count] != '>'
-			&& my_input[count] != '\"' && my_input[count] != '\'')
+			&& my_input[count] != '\"' && my_input[count] != '\''
+			&& my_input[count] != '$')
 		{
 			file[count_copy] = my_input[count];
 			count++;
@@ -94,8 +97,7 @@ static t_red	*lstnewred(t_shell *shell, t_cmd *new_cmd, char *input, int red)
 		exit (1);
 	copy_red(shell, &input[count], lst->file);
 	printf("%s\n", lst->file);
-	shell->size_input.size_in += 1;
-	/*abrir fd;*/
+	shell->s_i.size_in += 1;
 	return (lst);
 }
 

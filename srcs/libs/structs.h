@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/07 1 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:40:19 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_size
 	int	size_str;
 	int	size_in;
 	int	size_out;
+	int	ctoken;
+	int	copy;
 }				t_size;
 
 /*
@@ -74,20 +76,22 @@ Estructura de uso general con toda la información necesaria
 @param separate_path path_separado?
 @param childs lista con manager que almacena los hijos
 @param cmds lista con los comandos
-@param size_input cantidad de pipe y comandos
 @param self_pid pid propio, sera 0 en caso de ser hijo
 @param env guarda el entorno para la instancia de minishell
 @param fd almacena los fd para la gestión de los pipes
+@param s_i cantidad de pipe y comandos
+@param child_status Codigo de ejecución del ultimo hijo
 */
 typedef struct s_shell
 {
 	char		**separate_path;
 	t_lstmng	*childs;
 	t_lstmng	*cmds;
-	t_size		size_input;
-	pid_t		self_pid;
 	char		**env;
 	int			fd[2][2];
+	t_size		s_i;
+	pid_t		self_pid;
+	int			child_status;
 }	t_shell;
 
 #endif

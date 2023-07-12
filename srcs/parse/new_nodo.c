@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   new_nodo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 15:51:33 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/29 15:35:37 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/07/12 16:30:06 by lyandriy          #+#    #+#             */
+/*   Updated: 2023/07/12 16:32:42 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-@function parse revisa la entrada y si esta bien devuelve true
-*/
-int	parse(t_shell *shell, char *input, char **env)
+void	start_new_nodo(t_shell *shell)
 {
-	shell->env = env;
-	if (!check_pipes(shell, input))
-		return (0);
-	separation(shell, input);
-	return (1);
+	shell->s_i.size_in = 0;
+	shell->s_i.size_out = 0;
+	shell->cmds = malloc(sizeof(t_lstmng));
+	if (!shell->cmds)
+		exit (1);
+	shell->cmds->current = NULL;
+	shell->s_i.size_token = 0;
+}
+
+void	start_nodo(t_cmd *new_cmd)
+{
+	new_cmd->filepath = NULL;
+	new_cmd->argv = NULL;
+	new_cmd->redir_in = NULL;
+	new_cmd->redir_out = NULL;
 }

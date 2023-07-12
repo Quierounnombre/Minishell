@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:40:40 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/23 17:37:00 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:32:18 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,6 @@
 @function separation cuenta tamaño de la entrada (los tokens) y crea la lista
 con el contenido
 */
-int	count_quotation_marks(t_shell *shell, char *my_input)
-{
-	int	count;
-
-	count = 0;
-	(void) shell;
-	while (my_input[count] == my_input[0])
-	{
-		count++;
-		while (my_input[count] != my_input[0])
-		{
-			if (my_input[count] == '\0')
-				break ;
-			count++;
-		}
-		if (my_input[count] == my_input[0])
-			count++;
-	}
-	return (count);
-}
-
 static int	count_command_token(t_shell *shell, char *my_input)
 {
 	int	count;
@@ -52,11 +31,13 @@ static int	count_command_token(t_shell *shell, char *my_input)
 	{
 		if (my_input[count] == '\"' || my_input[count] == '\'')
 			count += count_quotation_marks(shell, &my_input[count]);
+		if (my_input[count] == '$')
+			count_dollar(shell, my_input, &count);
 		else
 			count++;
 	}
 	space_tab(my_input, &count);
-	shell->size_input.size_token++;
+	shell->s_i.size_token++;
 	return (count);
 }
 
@@ -66,9 +47,9 @@ int	count_redirects(t_shell *shell, char *my_input)
 
 	count = 0;
 	if (my_input[count] == '<')
-		shell->size_input.size_in += 1;
+		shell->s_i.size_in += 1;
 	if (my_input[count] == '>')
-		shell->size_input.size_out += 1;
+		shell->s_i.size_out += 1;
 	count++;
 	if (my_input[count] == '<' || my_input[count] == '>')
 		count++;
@@ -81,17 +62,40 @@ int	count_redirects(t_shell *shell, char *my_input)
 	return (count);
 }
 
-static void	count_size(t_shell *shell, char *my_input, int *count)
+void	is_exit_code(t_shell *shell, int *count, char *input)
 {
-	space_tab(my_input, count);
-	if (my_input[*count] == '$')
-		*count += manage_count_env(shell, &my_input[*count]);
-	if (my_input[*count] == '<' || my_input[*count] == '>')
-		*count += count_redirects(shell, &my_input[*count]);
-	if (my_input[*count] != '\0' && my_input[*count] != '|'
-		&& my_input[*count] != '$' && my_input[*count] != '<'
-		&& my_input[*count] != '>')
-		*count += count_command_token(shell, &my_input[*count]);
+	*count += 1;
+	if (*count == 1 && (input[*count + 1] == '\t'
+			|| input[*count + 1] == '|' || input[*count + 1] == ' '
+			|| input[*count + 1] == '<' || input[*count + 1] == '>'))
+	{
+		shell->s_i.size_token++;
+		*count += 1;
+	}
+	else if ((input[*count - 2] == '|' || input[*count - 2] == ' '
+			|| input[*count - 2] == '<' || input[*count - 2] == '>'
+			|| input[*count - 2] == '\t') && (input[*count + 1] == '\t'
+			|| input[*count + 1] == '|' || input[*count + 1] == ' '
+			|| input[*count + 1] == '<' || input[*count + 1] == '>'))
+	{
+		shell->s_i.size_token++;
+		*count += 1;
+	}
+	else
+		*count += 1;
+}
+
+static void	count_size(t_shell *shell, char *input, int *count)
+{
+	int	flag;
+
+	flag = 0;
+	space_tab(input, count);
+	if (input[*count] == '<' || input[*count] == '>')
+		*count += count_redirects(shell, &input[*count]);
+	if (input[*count] != '\0' && input[*count] != '|'
+		&& input[*count] != '<' && input[*count] != '>')
+		*count += count_command_token(shell, &input[*count]);
 }
 
 void	separation(t_shell *shell, char *my_input)

@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:49:35 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/22 20:40:13 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:59:36 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,94 +20,93 @@ que tienen dentro
 y los copia
 @function copy_cmd_token copia los comandos argumentos redirecciones
 */
-static void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input, int *i)//i count_copy
+char	*find_env(t_shell *shell, char *input, int *count)
 {
-	int		count;
-	int		copy;
+	char	*ptr;
+	int		ptr_count;
+	char	*environment_variabl;
 
-	count = 0;
-	copy = 0;
-	while (input[count] != ' ' && input[count] != '\t'
-		&& input[count] != '\0' && input[count] != '|'
-		&& input[count] != '<' && input[count] != '>')
+	ptr = NULL;
+	ptr_count = 0;
+	*count += 1;
+	environment_variabl = NULL;
+	*count += copy_env(shell, &input[*count], &environment_variabl);
+	if (environment_variabl)
 	{
-		if (input[count] == '\"' || input[count] == '\'')
-			count += copy_qm(shell, new_cmd->argv[*i], &input[count], &copy);
-		if (input[count] == '$')
-			count += exp_var_qm(shell, &input[count], new_cmd->argv[*i], &copy);
-		if (input[count] != ' ' && input[count] != '\t'
-			&& input[count] != '\0' && input[count] != '>'
-			&& input[count] != '|' && input[count] != '<'
-			&& input[count] != '\"' && input[count] != '\'')
-		{
-			new_cmd->argv[*i][copy] = input[count];
-			count++;
-			copy++;
-		}
+		ptr = get_ptr(shell, environment_variabl);
+		if (ptr)
+			find_start_of_str(ptr, &ptr_count);
 	}
-	new_cmd->argv[*i][copy] = '\0';
+	if (ptr)
+	{
+		free(environment_variabl);
+		return (&ptr[ptr_count]);
+	}
+	free(environment_variabl);
+	return (NULL);
 }
 
-int	argv_with_qm(t_shell *shell, char *my_input, char skip, int *size)
+static int	manage_count_env_with_space(t_shell *shell, char *input, int *size)
 {
-	int	count;
+	int		count;
+	char	*ptr;
+	char	*environment_variabl;
 
 	count = 1;
-	while (my_input[count] != skip)
+	environment_variabl = NULL;
+	count += copy_env(shell, &input[count], &environment_variabl);
+	if (environment_variabl)
 	{
-		if (my_input[count] == '$' && my_input[0] == '\"')
-			count += manage_count_env_qm(shell, &my_input[count], size);
-		else
-		{
-			*size += 1;
-			count++;
-		}
+		ptr = get_ptr(shell, environment_variabl);
+		if (ptr)
+			ptr_exists(ptr, size);
+		free(environment_variabl);
 	}
-	if (my_input[count] == skip)
-		count++;
 	return (count);
 }
 
-static int	count_tam_argv(t_shell *shell, char *input, int *count)
+static int	count_tam_argv(t_shell *shell, char *input, int *c)
 {
 	int	size;
 
 	size = 0;
-	while (input[*count] != ' ' && input[*count] != '\t'
-		&& input[*count] != '>' && input[*count] != '\0'
-		&& input[*count] != '|' && input[*count] != '<')
+	while (input[*c] != ' ' && input[*c] != '\t' && input[*c] != '>'
+		&& input[*c] != '\0' && input[*c] != '|' && input[*c] != '<')
 	{
-		if (input[*count] == '\"' || input[*count] == '\'')
-			*count += argv_with_qm(shell, &input[*count], input[*count], &size);
-		if (input[*count] == '$')
-			*count += manage_count_env_qm(shell, &input[*count], &size);
-		if (input[*count] != ' ' && input[*count] != '\t'
-			&& input[*count] != '\0' && input[*count] != '>'
-			&& input[*count] != '|' && input[*count] != '<'
-			&& input[*count] != '\"' && input[*count] != '\'')
+		if (input[*c] == '\"' || input[*c] == '\'')
+			*c += argv_with_qm(shell, &input[*c], input[*c], &size);
+		if (input[*c] == '$'
+			&& !ft_isalnum(input[*c + 1]) && input[*c + 1] != '?')
 		{
 			size++;
-			*count += 1;
+			*c += 1;
+		}
+		else if (input[*c] == '$')
+			*c += manage_count_env_with_space(shell, &input[*c], &size);
+		else if (input[*c] != ' ' && input[*c] != '\t' && input[*c] != '\0'
+			&& input[*c] != '>' && input[*c] != '|' && input[*c] != '<'
+			&& input[*c] != '\"' && input[*c] != '\'' && input[*c] != '$')
+		{
+			size++;
+			*c += 1;
 		}
 	}
-	//space_tab(my_input, count);
 	return (size);
 }
 
-static int	this_is_argv(t_shell *shell, t_cmd *new_cmd, char *my_input, int *i)//i count_token
+static int	this_is_argv(t_shell *shell, t_cmd *new_cmd, char *my_input)
 {
 	int	count;
 	int	size;
 
 	size = 0;
 	count = 0;
-	(void) shell;
 	size = count_tam_argv(shell, my_input, &count);
-	new_cmd->argv[*i] = malloc(sizeof(char) * (size + 1));
-	if (!new_cmd->argv[*i])
+	new_cmd->argv[shell->s_i.ctoken] = malloc(sizeof(char) * (size + 1));
+	if (!new_cmd->argv[shell->s_i.ctoken])
 		exit (1);
-	copy_argv(shell, new_cmd, my_input, i);
-	*i += 1;
+	copy_argv(shell, new_cmd, my_input);
+	shell->s_i.ctoken += 1;
 	space_tab(my_input, &count);
 	return (count);
 }
@@ -115,21 +114,18 @@ static int	this_is_argv(t_shell *shell, t_cmd *new_cmd, char *my_input, int *i)/
 void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *input)
 {
 	int	count;
-	int	count_token;
 
 	count = 0;
-	count_token = 0;
+	shell->s_i.ctoken = 0;
 	while (input[count] != '|' && input[count] != '\0')
 	{
 		space_tab(input, &count);
-		if (input[count] == '$')
-			count += this_is_env(shell, new_cmd, &input[count], &count_token);
 		if (input[count] == '<' || input[count] == '>')
 			count += this_is_redirection(shell, new_cmd, &input[count]);
 		if (input[count] != '\0' && input[count] != '|'
-			&& input[count] != '$' && input[count] != '<'
-			&& input[count] != '>')
-			count += this_is_argv(shell, new_cmd, &input[count], &count_token);
+			&& input[count] != '<' && input[count] != '>')
+			count += this_is_argv(shell, new_cmd, &input[count]);
 	}
-	ft_path(shell, new_cmd);
+	if (new_cmd->argv[0])
+		ft_path(shell, new_cmd);
 }

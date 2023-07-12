@@ -2,7 +2,7 @@ NAME = minishell
 LIBFT = libft_def/libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 LIBS_FLAGS = -lreadline
 RM = rm -f
 
@@ -35,8 +35,8 @@ FILES_CMD = cmd_executer \
 			env \
 			cd \
 			export \
-			unset \
 			exit \
+			unset \
 
 CMD_DIR = ./srcs/cmd/
 SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
@@ -83,10 +83,16 @@ SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))
 OBJS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .o, $(FILES_PROCESS)))
 
 FILES_PARSE = check_pipes \
+			  check_pipes2 \
 			  copy_token_env \
 			  count_env \
+			  count  \
 			  env \
 			  fill_node \
+			  fill_node2 \
+			  fill_node3 \
+			  fill_node4 \
+			  new_nodo \
 			  parse \
 			  quotation_marks \
 			  redirection \
@@ -94,6 +100,8 @@ FILES_PARSE = check_pipes \
 			  separation \
 			  utils \
 			  variable_qm \
+			  variable_qm2 \
+			  error \
 
 PARSE_DIR = ./srcs/parse/
 SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))

@@ -6,11 +6,10 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 16:23:56 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/05 14:01:10 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:37:30 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
 
 //Libera el env en caso de error
 static t_bool	free_clone_env(char **env)
