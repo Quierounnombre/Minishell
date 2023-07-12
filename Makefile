@@ -63,6 +63,7 @@ OBJS_ERRORMNG = $(addprefix $(ERRORMNG_DIR), $(addsuffix .o, $(FILES_ERRORMNG)))
 
 FILES_START = init_shell_struct \
 			start \
+			clone_env \
 
 START_DIR = ./srcs/startup/
 SRCS_START = $(addprefix $(START_DIR), $(addsuffix .c, $(FILES_START)))

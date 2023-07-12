@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_pipes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 21:21:07 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 16:52:37 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/12 18:14:21 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	check_pipe_end(t_shell *shell, char *my_input, int *count)
 	return (1);
 }
 
-static int	check_redirection(t_shell *shell, char *my_input, int *count)
+int	check_redirection(t_shell *shell, char *my_input, int *count)
 {
 	*count += 1;
 	if (my_input[*count] == my_input[*count - 1])
