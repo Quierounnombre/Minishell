@@ -27,7 +27,7 @@ static t_bool	free_clone_env(char **env)
 	return (false);
 }
 
-static void	copy_env(t_shell *shell, int target, char **local_env)
+static void	local_copy_env(t_shell *shell, int target, char **local_env)
 {
 	int		i;
 	int		correction;
@@ -59,7 +59,7 @@ static void	make_new_env(t_shell *shell, int target, int size)
 	local_env = (char **)ft_calloc(sizeof(char *), (size));
 	if (!local_env)
 		ft_error(shell, errno);
-	copy_env(shell, target, local_env);
+	local_copy_env(shell, target, local_env);
 	if (!free_clone_env(shell->env))
 		shell->env = local_env;
 }

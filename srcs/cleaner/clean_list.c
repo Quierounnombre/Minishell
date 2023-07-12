@@ -12,9 +12,7 @@
 
 #include "../minishell.h"
 
-/*
-*/
-void	free_list_redirection(t_red *redir)
+static void	free_list_redirection(t_red *redir)
 {
 	t_red	*temp;
 
@@ -29,7 +27,7 @@ void	free_list_redirection(t_red *redir)
 	}
 }
 
-void	free_commands(t_list *temp)
+static void	free_commands(t_list *temp)
 {
 	int	count;
 
@@ -48,6 +46,10 @@ void	free_commands(t_list *temp)
 	free(temp);
 }
 
+/*
+@brief Limpia/libera los datos alocados del parseo
+@param shell estructura de uso general
+*/
 void	clean_list(t_shell *shell)
 {
 	t_list	*temp;
