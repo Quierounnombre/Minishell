@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:58:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/07 13:30:17 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/12 19:24:35 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_child(t_shell *shell, t_child *child)
 	close(shell->fd[PIPE_OG][READ]);
 	close(shell->fd[PIPE_NEW][WRITE]);
 	close(shell->fd[PIPE_NEW][READ]);
+	ft_printf("pid hijo %d\n", child->pid);
 	mng_redirections(child->cmd, shell);
 	cmd_executer(child->cmd, shell);
 	exit(0);

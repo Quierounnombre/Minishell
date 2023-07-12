@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:39:31 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 18:55:37 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/12 19:18:29 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ void	create_node(t_shell *shell, t_cmd *new_cmd, char *my_input)
 
 	shell->s_i.size_out = 0;
 	shell->s_i.size_in = 0;
-	ft_printf("PIPI CALZASLARGAS\n");
-	ft_printf("new_cmd -> %p\n", new_cmd);
-	ft_printf("%d copies\n", shell->s_i.size_token);
 	new_cmd->argv = malloc(sizeof(char *) * (shell->s_i.size_token + 1));
 	if (!new_cmd->argv)
 		exit (1);

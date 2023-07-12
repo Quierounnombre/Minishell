@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/12 18:19:47 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/12 19:33:37 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static t_bool	init_pipes(t_shell *shell);
 static t_bool	make_pipes(t_shell *shell);
+static void		wait_for_all(t_shell *shell);
 
 /*
 Wraper principal, es la función que gestiona todo lo que esta relacionado con
@@ -23,23 +24,38 @@ la ejecución de los comandos
 void	process_executer(t_shell *shell)
 {
 	shell->childs->current = shell->childs->lst_head;
-	ft_printf("CHECKPOINT 1\n");
 	if (make_childs(shell))
 	{
-		ft_printf("FURULA\n", shell);
 		if (init_pipes(shell))
 		{
 			while (shell->childs->current)
 			{
 				fork_child(shell);
+				ft_printf("sheeeeeeeeelllll %p\n", shell->cmds->lst_head);
 				shell->childs->current = shell->childs->current->next;
 				if (!make_pipes(shell))
 					break ;
 			}
+			wait_for_all(shell);
 		}
-		ft_lstclear(&(shell->childs->lst_head->next), ft_cleanchild);
+		if (shell->childs->lst_head)
+			ft_lstclear(&(shell->childs->lst_head->next), ft_cleanchild);
 	}
-	ft_lstclear(&(shell->cmds->lst_head), ft_cleancmd);
+	if (shell->cmds->lst_head)
+		ft_lstclear(&(shell->cmds->lst_head), ft_cleancmd);
+}
+
+static void	wait_for_all(t_shell *shell)
+{
+	t_child	*child;
+
+	shell->childs->current = shell->childs->lst_head;
+	while (shell->childs->current)
+	{
+		child = shell->childs->current->content;
+		waitpid(child->pid, &(shell->child_status), 0);
+		shell->childs->current = shell->childs->current->next;
+	}
 }
 
 static t_bool	init_pipes(t_shell *shell)

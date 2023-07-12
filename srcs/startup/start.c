@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:56:24 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/01 17:46:32 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/12 19:31:43 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_bool	start(t_shell **shell, char **env)
 	{
 		if (clone_env(env, *shell))
 		{
+			(*shell)->child_status = 0;
 			return (true);
 		}
 		ft_cleanshell(*shell);
