@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 17:35:26 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/26 17:58:38 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:54:18 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static t_red	*lstnewred(t_shell *shell, t_cmd *new_cmd, char *input, int red)
 		exit (1);
 	copy_red(shell, &input[count], lst->file);
 	printf("%s\n", lst->file);
-	shell->size_input.size_in += 1;
+	shell->s_i.size_in += 1;
 	return (lst);
 }
 

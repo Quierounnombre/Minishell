@@ -83,10 +83,16 @@ OBJ_MAIN = ./srcs/main.o
 #OBJS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .o, $(FILES_PROCESS)))
 
 FILES_PARSE = check_pipes \
+			  check_pipes2 \
 			  copy_token_env \
 			  count_env \
+			  count  \
 			  env \
 			  fill_node \
+			  fill_node2 \
+			  fill_node3 \
+			  fill_node4 \
+			  new_nodo \
 			  parse \
 			  quotation_marks \
 			  redirection \
@@ -94,6 +100,7 @@ FILES_PARSE = check_pipes \
 			  separation \
 			  utils \
 			  variable_qm \
+			  variable_qm2 \
 			  error \
 
 PARSE_DIR = ./srcs/parse/

@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:27:07 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/29 19:47:48 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/10 21:03:02 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	count_env(t_shell *shell, char *ptr)
 		if (ptr[count] == ' ' || ptr[count] == '\t')
 		{
 			space_tab(ptr, &count);
-			shell->size_input.size_token++;
+			shell->s_i.size_token++;
 		}
 		count++;
 	}
@@ -78,20 +78,21 @@ int	manage_count_env(t_shell *shell, char *my_input, int *flag)
 	char	*environment_variabl;
 
 	count = 1;
-	*flag = 0;
-	environment_variabl = NULL;
-	if (my_input[count] == '?')
-		shell->size_input.size_token++;
-	else
+	if (my_input[0] == '$')
 	{
-		count += copy_env(shell, &my_input[count], &environment_variabl);
-		if (environment_variabl)
+		*flag = 0;
+		environment_variabl = NULL;
+		if (my_input[count] != '?')
 		{
-			*flag = 1;
-			check_env(shell, environment_variabl);
-			free(environment_variabl);
+			count += copy_env(shell, &my_input[count], &environment_variabl);
+			if (environment_variabl)
+			{
+				*flag = 1;
+				check_env(shell, environment_variabl);
+				free(environment_variabl);
+			}
 		}
+		space_tab(my_input, &count);
 	}
-	space_tab(my_input, &count);
 	return (count);
 }

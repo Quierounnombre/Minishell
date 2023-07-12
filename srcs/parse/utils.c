@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 16:55:04 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/24 18:11:42 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:41:16 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,12 @@ void	space_tab(char *my_input, int *count)
 		*count += 1;
 }
 
-void	start_new_nodo(t_shell *shell)
+void	find_start_of_str(char *ptr, int *ptr_count)
 {
-	shell->size_input.size_in = 0;
-	shell->size_input.size_out = 0;
-	shell->cmds = malloc(sizeof(t_lstmng));
-	if (!shell->cmds)
-		exit (1);
-	shell->cmds->current = NULL;
-	shell->size_input.size_token = 0;
-}
-
-void	start_nodo(t_cmd *new_cmd)
-{
-	new_cmd->filepath = NULL;
-	new_cmd->argv = NULL;
-	new_cmd->redir_in = NULL;
-	new_cmd->redir_out = NULL;
+	while (ptr[*ptr_count] != '=')
+		*ptr_count += 1;
+	if (ptr[*ptr_count] == '=')
+		*ptr_count += 1;
 }
 
 void	lstadd_back_nodo(t_red **lst, t_red *new)
@@ -58,6 +47,13 @@ void	lstadd_back_nodo(t_red **lst, t_red *new)
 	}
 	else
 		*lst = new;
+}
+
+void	fill_argv(t_cmd *new_cmd, char *path_with_command)
+{
+	free(new_cmd->argv[0]);
+		new_cmd->argv[0] = ft_strdup(path_with_command);
+		new_cmd->filepath = ft_strdup(path_with_command);
 }
 
 void	ft_path(t_shell *shell, t_cmd *new_cmd)
@@ -82,10 +78,6 @@ void	ft_path(t_shell *shell, t_cmd *new_cmd)
 		count++;
 	}
 	if (access(path_with_command, F_OK) == 0)
-	{
-		free(new_cmd->argv[0]);
-		new_cmd->argv[0] = ft_strdup(path_with_command);
-		new_cmd->filepath = ft_strdup(path_with_command);
-	}
+		fill_argv(new_cmd, path_with_command);
 	free(path_with_command);
 }
