@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 17:35:26 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/10 19:54:18 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/13 18:59:07 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static t_red	*lstnewred(t_shell *shell, t_cmd *new_cmd, char *input, int red)
 
 	count = 1;
 	(void) new_cmd;
-	lst = malloc(sizeof(*lst));
+	lst = malloc(sizeof(t_red));
 	if (!lst)
 		exit (1);
 	lst->tipe = red;

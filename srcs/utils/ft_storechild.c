@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_storechild.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:03:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/13 16:14:38 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/13 19:12:21 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ t_bool	store_child(pid_t pid, t_shell *shell)
 	if (content)
 	{
 		content->pid = pid;
+		ft_printf("CONTENT_3 -> %p\n", shell->cmds->current->content);
 		content->cmd = shell->cmds->current->content;
-		ft_printf("child_cmd -> %p\n", content->cmd);
+		ft_printf("CONTENT_4 -> %p\n", shell->cmds->current->content);
 		content->is_limit_end = false;
 		content->is_limit_sta = false;
 		node = ft_lstnew(content);
