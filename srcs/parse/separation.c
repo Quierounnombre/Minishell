@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:40:40 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 18:58:50 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:35:33 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static int	count_command_token(t_shell *shell, char *my_input)
 	}
 	space_tab(my_input, &count);
 	shell->s_i.size_token++;
-	ft_printf("%p\n", shell->s_i.size_token);
 	return (count);
 }
 
@@ -106,14 +105,7 @@ void	separation(t_shell *shell, char *my_input)
 	t_cmd	*new_cmd;
 
 	count = 0;
-	new_cmd = malloc(sizeof(t_cmd));
-	if (!new_cmd)
-		exit (1);
-	start_nodo(new_cmd);
 	start_new_nodo(shell);
-	shell->cmds->current->content = new_cmd;
-	shell->cmds->lst_head->content = new_cmd;
-	shell->cmds->tail->content = new_cmd;
 	while (my_input[count] != '\0')
 	{
 		start = count;
@@ -121,6 +113,7 @@ void	separation(t_shell *shell, char *my_input)
 			count_size(shell, my_input, &count);
 		if (my_input[count] == '|' || my_input[count] == '\0')
 		{
+			new_cmd = NULL;
 			create_node(shell, new_cmd, &my_input[start]);
 			if (my_input[count] == '|')
 				count++;

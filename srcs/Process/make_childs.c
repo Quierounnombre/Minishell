@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 12:17:24 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/12 19:19:20 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:24:22 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_bool	make_childs(t_shell *shell)
 	shell->cmds->current = shell->cmds->lst_head;
 	while (shell->cmds->current)
 	{
+		t_cmd *a = shell->cmds->current->content;
+		ft_printf("here _> %s\n", a->argv);
 		if (store_child(0, shell))
 			shell->cmds->current = shell->cmds->current->next;
 		else

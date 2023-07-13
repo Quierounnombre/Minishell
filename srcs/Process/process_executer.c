@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/12 19:33:37 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:07:25 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	process_executer(t_shell *shell)
 			while (shell->childs->current)
 			{
 				fork_child(shell);
-				ft_printf("sheeeeeeeeelllll %p\n", shell->cmds->lst_head);
 				shell->childs->current = shell->childs->current->next;
 				if (!make_pipes(shell))
 					break ;
@@ -41,8 +40,6 @@ void	process_executer(t_shell *shell)
 		if (shell->childs->lst_head)
 			ft_lstclear(&(shell->childs->lst_head->next), ft_cleanchild);
 	}
-	if (shell->cmds->lst_head)
-		ft_lstclear(&(shell->cmds->lst_head), ft_cleancmd);
 }
 
 static void	wait_for_all(t_shell *shell)

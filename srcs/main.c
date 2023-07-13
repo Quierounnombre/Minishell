@@ -6,11 +6,17 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/12 19:17:37 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:12:44 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	salida(void)
+{
+	system("leaks -q Minishell");
+	system("lsof -c Minishell");
+}
 
 int	main(int argc, char **argv, char **env)
 {
@@ -19,6 +25,7 @@ int	main(int argc, char **argv, char **env)
 
 	(void) argc;
 	(void) argv;
+	atexit(salida);
 	shell = malloc (sizeof(t_shell));
 	if (start(&shell, env))
 	{

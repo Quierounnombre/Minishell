@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 15:44:09 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/12 19:23:06 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:01:28 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	fork_child(t_shell *shell)
 	pid_t	pid;
 
 	pid = fork();
-	ft_printf("pid %d\n", pid);
 	child = shell->childs->current->content;
 	if (pid)
 		ft_child(shell, child);

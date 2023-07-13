@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 16:42:02 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/05/16 12:15:11 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:31:10 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_bool	ft_storecmd(t_cmd *cmd, t_lstmng *mng)
 		}
 		mng->tail->next = node;
 		mng->tail = mng->tail->next;
+		mng->size++;
 		return (true);
 	}
 	return (false);
