@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:58:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/13 18:54:32 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/13 19:31:04 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	ft_child(t_shell *shell, t_child *child)
 static void	std_red(t_child *child, t_shell *shell)
 {
 		printf("fork hola\n");
-		printf("fork %p\n", child->cmd);
 	if (child->cmd->redir_in->tipe == FT_RED_STD)
 	{
+		printf("fork %p\n", child->cmd->redir_in);
 		if (!(child->is_limit_sta))
 			dup2(shell->fd[PIPE_OG][WRITE], shell->fd[PIPE_NEW][READ]);
 		if (!(child->is_limit_end))

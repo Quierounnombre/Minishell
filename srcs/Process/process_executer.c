@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/13 18:47:45 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/13 19:48:36 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	process_executer(t_shell *shell)
 			while (shell->childs->current)
 			{
 				fork_child(shell);
-				printf("ghola\n");
 				shell->childs->current = shell->childs->current->next;
 				if (!make_pipes(shell))
 					break ;
