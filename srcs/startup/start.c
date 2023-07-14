@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:56:24 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/12 19:31:43 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/14 15:21:52 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,17 @@ Inicializa todas las estructuras y elementos necesarios para el programa
 */
 t_bool	start(t_shell **shell, char **env)
 {
-	if (init_shell_struct(shell))
+	if (shell && *shell)
 	{
-		if (clone_env(env, *shell))
+		if (init_shell_struct(shell))
 		{
-			(*shell)->child_status = 0;
-			return (true);
+			if (clone_env(env, *shell))
+			{
+				(*shell)->child_status = 0;
+				return (true);
+			}
+			ft_cleanshell(*shell);
 		}
-		ft_cleanshell(*shell);
 	}
 	return (false);
 }
