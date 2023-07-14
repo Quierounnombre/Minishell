@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:58:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/14 15:11:59 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/14 16:41:55 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_child(t_shell *shell, t_child *child)
 static void	std_red(t_child *child, t_shell *shell)
 {
 	fix_the_stdred_struct(child, NULL);
-	if (child->cmd->redir_in->tipe == FT_RED_STD)
+	if (child->cmd->redir_in->tipe == FT_RED_STD && shell->childs->size > 1)
 	{
 		if (!(child->is_limit_sta))
 			dup2(shell->fd[PIPE_OG][WRITE], shell->fd[PIPE_NEW][READ]);

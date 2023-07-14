@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:03:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/14 14:23:08 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/14 16:43:10 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void	store_in_lst(t_shell *shell, t_list *node)
 	{
 		shell->childs->tail->next = node;
 		shell->childs->size += 1;
+		node->next = NULL;
 	}
 	else
 	{

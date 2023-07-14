@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/14 15:24:11 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/14 16:53:19 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv, char **env)
 {
 	t_shell	*shell;
 	char	*input;
-	int		i = 2;
+	int		i = 4;
 
 	(void) argc;
 	(void) argv;
@@ -32,13 +32,12 @@ int	main(int argc, char **argv, char **env)
 	{
 		while (i--)
 		{
-			input = readline("Minishell	");
-			if (input && *input && parse(shell, input, env))
-			{
-				process_executer(shell);
-			}
-			free(input);
 			input = NULL;
+			input = readline("Minishell	");
+			fprintf(stderr, "%p\n", input);
+			if (input && parse(shell, input, env))
+				process_executer(shell);
+			free(input);
 		}
 	}
 }

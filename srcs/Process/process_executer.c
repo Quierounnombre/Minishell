@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/14 15:17:05 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/14 16:57:41 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ la ejecución de los comandos
 void	process_executer(t_shell *shell)
 {
 	shell->childs->current = shell->childs->lst_head;
-	if (shell->cmds->lst_head->content)
+	if (shell->cmds->lst_head && shell->cmds->lst_head->content)
 	{
 		if (make_childs(shell))
 		{
@@ -41,7 +41,6 @@ void	process_executer(t_shell *shell)
 			}
 			if (shell->childs->lst_head)
 				ft_lstclear(&(shell->childs->lst_head->next), ft_cleanchild);
-			fprintf(stderr, "HOLA\n");
 		}
 	}
 }
@@ -50,6 +49,10 @@ static void	wait_for_all(t_shell *shell)
 {
 	t_child	*child;
 
+	close(shell->fd[PIPE_OG][READ]);
+	close(shell->fd[PIPE_OG][WRITE]);
+	close(shell->fd[PIPE_NEW][READ]);
+	close(shell->fd[PIPE_NEW][WRITE]);
 	shell->childs->current = shell->childs->lst_head;
 	while (shell->childs->current)
 	{

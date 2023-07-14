@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cleancmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:35:05 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/13 19:39:28 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/14 16:50:02 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@ void	ft_cleancmd(void *node)
 	{
 		tmp_argv = cmd->argv;
 		cmd->argv++;
-			write (2, "hla\n", 4);
 		if (tmp_argv)
 			free(tmp_argv);
 	}
 	free(cmd);
-				write (2, "hooooooooola\n", 4);
 	free(lst);
 }
