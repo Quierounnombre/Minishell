@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   separation_nodo.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:39:31 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/13 19:27:33 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:20:58 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ lista
 void	create_node(t_shell *shell, t_cmd *new_cmd, char *my_input)
 {
 	new_cmd = (t_cmd *)malloc(sizeof(t_cmd));
-	printf("new_cmd %p\n", new_cmd);
 	if (!new_cmd)
 		exit(1);
 	if (ft_storecmd(new_cmd, shell->cmds))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_childs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 12:17:24 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/13 19:13:48 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:20:23 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@ numero de comandos
 */
 t_bool	make_childs(t_shell *shell)
 {
-	ft_printf("CONTENT -> %p\n", shell->cmds->current->content);
-	ft_printf("CONTENT current -> %p\n", shell->cmds->current);
 	shell->cmds->current = shell->cmds->lst_head;
-	ft_printf("CONTENT_2 -> %p\n", shell->cmds->current->content);
 	while (shell->cmds->current)
 	{
 		if (store_child(0, shell))
 			shell->cmds->current = shell->cmds->current->next;
 		else
 			return (free_child(shell));
+		ft_printf("He creado 1 hijo\n");
 	}
 	set_limits(shell);
 	return (true);
