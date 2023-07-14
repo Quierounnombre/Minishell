@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/13 16:12:44 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:02:37 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv, char **env)
 		while (true)
 		{
 			input = readline("Minishell	");
-			if (parse(shell, input, env))
+			if (*input && parse(shell, input, env))
 				process_executer(shell);
 		}
 	}
