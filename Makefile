@@ -2,7 +2,7 @@ NAME = minishell
 LIBFT = libft_def/libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+#CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
 LIBS_FLAGS = -lreadline
 RM = rm -f
 
