@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 12:17:24 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/14 13:20:23 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:20:29 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_bool	make_childs(t_shell *shell)
 			shell->cmds->current = shell->cmds->current->next;
 		else
 			return (free_child(shell));
-		ft_printf("He creado 1 hijo\n");
 	}
 	set_limits(shell);
 	return (true);

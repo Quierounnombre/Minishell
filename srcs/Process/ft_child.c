@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:58:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/14 13:35:10 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:52:11 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,23 @@ static void	std_red(t_child *child, t_shell *shell)
 static void	fix_the_stdred_struct(t_child	*child, t_red *red)
 {
 	red = child->cmd->redir_in;
-	while (red->next)
+	while (red->next && red->tipe != FT_RED_STD)
 	{
-		if (red->tipe != FT_RED_STD)
-		{
-			open(child->cmd->redir_in->file, O_CREAT | O_TRUNC);
-			close(child->cmd->redir_in->fd);
-		}
-		free(red);
+		child->cmd->redir_in->fd = open(child->cmd->redir_in->file,
+				O_CREAT | O_TRUNC);
+		close(child->cmd->redir_in->fd);
 		child->cmd->redir_in = child->cmd->redir_in->next;
+		free(red);
 		red = child->cmd->redir_in;
 	}
 	red = child->cmd->redir_out;
-	while (red->next)
+	while (red->next && red->tipe != FT_RED_STD)
 	{
-		if (red->tipe != FT_RED_STD)
-		{
-			open(child->cmd->redir_in->file, O_CREAT | O_TRUNC);
-			close(child->cmd->redir_in->fd);
-		}
-		free(red);
+		child->cmd->redir_in->fd = open(child->cmd->redir_in->file,
+				O_CREAT | O_TRUNC);
+		close(child->cmd->redir_in->fd);
 		child->cmd->redir_in = child->cmd->redir_in->next;
+		free(red);
 		red = child->cmd->redir_in;
 	}
 }
