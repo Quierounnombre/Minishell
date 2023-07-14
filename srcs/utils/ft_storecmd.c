@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_storecmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 16:42:02 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/13 16:31:10 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/13 18:46:29 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ t_bool	ft_storecmd(t_cmd *cmd, t_lstmng *mng)
 			mng->lst_head = node;
 			mng->current = node;
 			mng->tail = node;
+			mng->tail->next = NULL;
 			mng->size = 1;
 			return (true);
 		}
 		mng->tail->next = node;
 		mng->tail = mng->tail->next;
+		mng->tail->next = NULL;
 		mng->size++;
 		return (true);
 	}

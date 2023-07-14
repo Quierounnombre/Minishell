@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_childs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 12:17:24 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/13 16:24:22 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/13 19:13:48 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ numero de comandos
 */
 t_bool	make_childs(t_shell *shell)
 {
+	ft_printf("CONTENT -> %p\n", shell->cmds->current->content);
+	ft_printf("CONTENT current -> %p\n", shell->cmds->current);
 	shell->cmds->current = shell->cmds->lst_head;
+	ft_printf("CONTENT_2 -> %p\n", shell->cmds->current->content);
 	while (shell->cmds->current)
 	{
-		t_cmd *a = shell->cmds->current->content;
-		ft_printf("here _> %s\n", a->argv);
 		if (store_child(0, shell))
 			shell->cmds->current = shell->cmds->current->next;
 		else
