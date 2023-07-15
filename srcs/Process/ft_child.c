@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:58:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/14 21:56:41 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/15 17:19:02 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_child(t_shell *shell, t_child *child)
 static void	std_red(t_child *child, t_shell *shell)
 {
 	fix_the_stdred_struct(child, NULL);
-	if (child->cmd->redir_in->tipe == FT_RED_STD && shell->childs->size > 1)
+	if (child->cmd->redir_in/*->tipe == FT_RED_STD*/ && shell->childs->size > 1)
 	{
 		if (!(child->is_limit_sta))
 			dup2(shell->fd[PIPE_OG][WRITE], shell->fd[PIPE_NEW][READ]);
@@ -51,23 +51,29 @@ static void	std_red(t_child *child, t_shell *shell)
 static void	fix_the_stdred_struct(t_child	*child, t_red *red)
 {
 	red = child->cmd->redir_in;
-	while (red->next && red->tipe != FT_RED_STD)
+	if (red)//si no hay redirecciones redir_in == NULL;
 	{
-		child->cmd->redir_in->fd = open(child->cmd->redir_in->file,
-				O_CREAT | O_TRUNC);
-		close(child->cmd->redir_in->fd);
-		child->cmd->redir_in = child->cmd->redir_in->next;
-		free(red);
-		red = child->cmd->redir_in;
+		while (red->next && red->tipe != FT_RED_STD)
+		{
+			child->cmd->redir_in->fd = open(child->cmd->redir_in->file,
+					O_CREAT | O_TRUNC, 0644);//No tenian permisos
+			close(child->cmd->redir_in->fd);
+			child->cmd->redir_in = child->cmd->redir_in->next;
+			free(red);
+			red = child->cmd->redir_in;
+		}
 	}
 	red = child->cmd->redir_out;
-	while (red->next && red->tipe != FT_RED_STD)
+	if (red)
 	{
-		child->cmd->redir_in->fd = open(child->cmd->redir_in->file,
-				O_CREAT | O_TRUNC);
-		close(child->cmd->redir_in->fd);
-		child->cmd->redir_in = child->cmd->redir_in->next;
-		free(red);
-		red = child->cmd->redir_in;
+		while (red->next && red->tipe != FT_RED_STD)// aqui todos los redir_out eran redir_in
+		{
+			child->cmd->redir_out->fd = open(child->cmd->redir_out->file,
+					O_CREAT | O_TRUNC, 0644);//No tenian permisos
+			close(child->cmd->redir_out->fd);
+			child->cmd->redir_out = child->cmd->redir_out->next;
+			free(red);
+			red = child->cmd->redir_out;
+		}
 	}
 }

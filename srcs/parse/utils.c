@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 16:55:04 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/13 19:03:43 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/15 15:02:20 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	lstadd_back_nodo(t_red **lst, t_red *new)
 	}
 	else
 		*lst = new;
-	new->next = NULL;
 }
 
 void	fill_argv(t_cmd *new_cmd, char *path_with_command)

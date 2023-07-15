@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:22:05 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/15 14:14:35 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/15 15:49:38 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void	mng_input(t_cmd *cmd, t_shell *shell)
 //Gestiona las redirecciones de output
 static void	mng_output(t_cmd *cmd, t_shell *shell)
 {
-	//fprintf(stderr, "tipo de redirccion %d\n", cmd->redir_out->tipe);
 	if (cmd->redir_out->tipe != FT_RED_STD)
 	{
 		if (cmd->redir_out->tipe == FT_RED_OUT)
@@ -45,6 +44,8 @@ como las de output
 */
 void	mng_redirections(t_cmd *cmd, t_shell *shell)
 {
-	mng_input(cmd, shell);
-	mng_output(cmd, shell);
+	if (cmd->redir_out)
+		mng_output(cmd, shell);
+	if (cmd->redir_in)
+		mng_input(cmd, shell);
 }
