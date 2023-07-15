@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:40:40 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/13 18:47:14 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/14 21:44:14 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,16 @@ static int	count_command_token(t_shell *shell, char *my_input)
 	int	count;
 
 	count = 0;
-	while (my_input[count] != ' ' && my_input[count] != '\t'
+	/*while (my_input[count] != ' ' && my_input[count] != '\t'
 		&& my_input[count] != '\0' && my_input[count] != '|'
-		&& my_input[count] != '<' && my_input[count] != '>')
+		&& my_input[count] != '<' && my_input[count] != '>')*/
+	while (my_input[count] != '\0' && !ft_strchr("| \t><", my_input[count]))
 	{
 		if (my_input[count] == '\"' || my_input[count] == '\'')
 			count += count_quotation_marks(shell, &my_input[count]);
 		if (my_input[count] == '$')
 			count_dollar(shell, my_input, &count);
-		else
+		if (my_input[count] != '\0' && !ft_strchr("| \t><", my_input[count]))
 			count++;
 	}
 	space_tab(my_input, &count);

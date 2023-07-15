@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:31:23 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 16:32:24 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/14 20:33:43 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ int	count_quotation_marks(t_shell *shell, char *my_input)
 		if (my_input[count] == my_input[0])
 			count++;
 	}
+	/*if (ft_strchr("|><", my_input[0]) || ft_strchr("|><", my_input[count])
+		|| my_input[count] != '\0')*/
+
 	return (count);
 }
 
