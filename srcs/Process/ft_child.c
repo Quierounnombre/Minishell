@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:58:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/15 17:19:02 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/15 19:11:45 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,12 @@ static void	std_red(t_child *child, t_shell *shell)
 		if (!(child->is_limit_end))
 			dup2(shell->fd[PIPE_NEW][WRITE], shell->fd[PIPE_OG][READ]);
 		if (child->is_limit_sta)
-			dup2(STDIN_FILENO, shell->fd[PIPE_OG][READ]);
-		if (child->is_limit_end)
+		{
+			dup2(shell->fd[PIPE_OG][READ], STDIN_FILENO);
+		/*	if (!(child->is_limit_end))
+				dup2(shell->fd[PIPE_NEW][WRITE], STDOUT_FILENO);*/
+		}
+		else if (child->is_limit_end)
 			dup2(shell->fd[PIPE_OG][WRITE], STDOUT_FILENO);
 	}
 }
@@ -51,7 +55,7 @@ static void	std_red(t_child *child, t_shell *shell)
 static void	fix_the_stdred_struct(t_child	*child, t_red *red)
 {
 	red = child->cmd->redir_in;
-	if (red)//si no hay redirecciones redir_in == NULL;
+	if (red)//si no hay redirecciones. redir_in == NULL;
 	{
 		while (red->next && red->tipe != FT_RED_STD)
 		{
