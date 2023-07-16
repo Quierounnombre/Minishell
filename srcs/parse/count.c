@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:31:23 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/14 20:33:43 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/16 19:01:26 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,13 @@ void	count_dollar(t_shell *shell, char *my_input, int *count)
 			&& my_input[*count] != '<' && my_input[*count] != '>'
 			&& my_input[*count] != '\"' && my_input[*count] != '\'')
 		{
-			if (my_input[*count] == '$')
-				count += manage_count_env(shell, &my_input[*count], &flag);
+			if (my_input[*count] == '$' && ft_strchr("| \t><", my_input[*count - 1]))
+			{
+				*count += manage_count_env(shell, &my_input[*count], &flag);
+				shell->s_i.size_token++;
+			}
 			else
-				count++;
+				*count += 1;
 		}
 	}
 }

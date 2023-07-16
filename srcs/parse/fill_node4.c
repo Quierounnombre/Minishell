@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:44:36 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 17:09:45 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/16 18:40:55 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ int	check_spaces(t_cmd *new_cmd, char **argv_env, int *count_env, int *i)
 	while (argv_env[*count_env])
 	{
 		new_cmd->argv[*i] = argv_env[*count_env];
-		count_env++;
+		*count_env += 1;
+		//printf("%d\n", argv_env[*count_env]);
 		if (argv_env[*count_env])
 		{
 			copy = ft_strlen(new_cmd->argv[*i]);

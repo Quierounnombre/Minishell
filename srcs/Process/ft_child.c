@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:58:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/15 19:11:45 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/16 19:03:33 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,14 @@ void	ft_child(t_shell *shell, t_child *child)
 static void	std_red(t_child *child, t_shell *shell)
 {
 	fix_the_stdred_struct(child, NULL);
-	if (child->cmd->redir_in/*->tipe == FT_RED_STD*/ && shell->childs->size > 1)
+	if (!(child->cmd->redir_in)/*->tipe == FT_RED_STD*/ && shell->childs->size > 1)
 	{
 		if (!(child->is_limit_sta))
 			dup2(shell->fd[PIPE_OG][WRITE], shell->fd[PIPE_NEW][READ]);
 		if (!(child->is_limit_end))
 			dup2(shell->fd[PIPE_NEW][WRITE], shell->fd[PIPE_OG][READ]);
 		if (child->is_limit_sta)
-		{
 			dup2(shell->fd[PIPE_OG][READ], STDIN_FILENO);
-		/*	if (!(child->is_limit_end))
-				dup2(shell->fd[PIPE_NEW][WRITE], STDOUT_FILENO);*/
-		}
 		else if (child->is_limit_end)
 			dup2(shell->fd[PIPE_OG][WRITE], STDOUT_FILENO);
 	}

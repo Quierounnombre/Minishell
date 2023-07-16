@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:33:29 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 16:38:02 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/16 18:40:53 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ static void	copy_next_var(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 	else
 	{
 		ptr = find_env(shell, input, c);
-		expand_env(ptr, new_cmd, &shell->s_i.ctoken, &shell->s_i.copy);
+		if (ptr)
+			expand_env(ptr, new_cmd, &shell->s_i.ctoken, &shell->s_i.copy);
 	}
 }
 
