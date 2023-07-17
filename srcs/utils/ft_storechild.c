@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:03:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/17 17:26:29 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/17 19:03:30 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static void	store_in_lst(t_shell *shell, t_list *node)
 	if (shell->childs->lst_head)
 	{
 		shell->childs->tail->next = node;
+		shell->childs->tail = node;
 		shell->childs->size += 1;
-		node->next = NULL;
 	}
 	else
 	{
@@ -59,4 +59,5 @@ static void	store_in_lst(t_shell *shell, t_list *node)
 		shell->childs->size = 1;
 		shell->childs->tail = node;
 	}
+	node->next = NULL;
 }

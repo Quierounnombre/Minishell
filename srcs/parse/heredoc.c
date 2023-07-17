@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 20:30:14 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/17 18:14:27 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/17 19:39:05 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	heredoc(t_red *tmp)
 			{
 				free(tmp->file);
 				tmp->file = name;
-				fprintf(stderr, "heredoc %s\n", tmp->file);
 				close(fd);
 				free(line);
 				return ;
