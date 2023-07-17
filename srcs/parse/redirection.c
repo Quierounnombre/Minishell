@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 17:35:26 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/15 16:35:52 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/17 17:57:03 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ static void	ft_input_output(t_shell *shell, t_cmd *new_cmd, char *input)
 	if (input[0] == '<' && input[1] == '<')
 	{
 		tmp = lstnewred(shell, new_cmd, input, HERE_DOC);
+		heredoc(tmp);
 		lstadd_back_nodo(&new_cmd->redir_in, tmp);
 	}
 	if (input[0] == '>' && input[1] != '>')

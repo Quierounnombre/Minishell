@@ -102,6 +102,7 @@ FILES_PARSE = check_pipes \
 			  variable_qm \
 			  variable_qm2 \
 			  error \
+			  heredoc \
 
 PARSE_DIR = ./srcs/parse/
 SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))

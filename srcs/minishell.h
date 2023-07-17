@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/12 18:13:58 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/17 17:47:00 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,7 @@ void	separation(t_shell *shell, char *my_input);
 int		check_pipes(t_shell *shell, char *my_input);
 void	lstadd_back_nodo(t_red **lst, t_red *new);
 int		parse(t_shell *shell, char *input, char **env);
+void	heredoc(t_red *tmp);
+void	heredoc_unlink(t_shell *shell);
 
 #endif
