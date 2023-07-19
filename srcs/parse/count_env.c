@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:27:07 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/10 21:03:02 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/19 18:02:45 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,8 @@ static void	count_env(t_shell *shell, char *ptr)
 
 static void	check_env(t_shell *shell, char *environment_variabl)
 {
-	int		count;
 	char	*ptr;
 
-	count = 0;
 	ptr = get_ptr(shell, environment_variabl);
 	if (ptr)
 		count_env(shell, &ptr[ft_strlen(environment_variabl)]);

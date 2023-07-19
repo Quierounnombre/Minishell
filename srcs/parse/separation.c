@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   separation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:40:40 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/16 19:02:00 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/19 18:03:10 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,6 @@ void	is_exit_code(t_shell *shell, int *count, char *input)
 
 static void	count_size(t_shell *shell, char *input, int *count)
 {
-	int	flag;
-
-	flag = 0;
 	space_tab(input, count);
 	if (input[*count] == '<' || input[*count] == '>')
 		*count += count_redirects(shell, &input[*count]);

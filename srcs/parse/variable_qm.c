@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   variable_qm.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:16:12 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 17:02:46 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/19 18:03:43 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@
 */
 void	expand_env_qm(char *ptr, char *argv, int *count_copy)
 {
-	int	count;
 	int	count_ptr;
 
-	count = 0;
 	count_ptr = 0;
 	while (ptr[count_ptr] != '=')
 		count_ptr++;
@@ -74,10 +72,8 @@ static void	count_env_qm(char *ptr, int *size)
 
 static void	check_env_qm(t_shell *shell, char *environment_variabl, int *size)
 {
-	int		count;
 	char	*ptr;
 
-	count = 0;
 	ptr = get_ptr(shell, environment_variabl);
 	if (ptr)
 		count_env_qm(&ptr[ft_strlen(environment_variabl)], size);

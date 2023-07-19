@@ -6,12 +6,15 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 16:57:17 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/07 12:11:51 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/19 17:59:21 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINE_H
 # define DEFINE_H
+
+//EN MI CASA PETA SIN ESTO
+typedef int errno_t;
 
 # include "../minishell.h"
 /*
