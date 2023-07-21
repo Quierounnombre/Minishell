@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 15:19:08 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 16:23:16 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 16:42:14 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 @function
 @function
 */
-static void	copy_token(char *ptr, char *argv, int *copy)
+/*static void	copy_token(char *ptr, char *argv, int *copy)
 {
 	int	count_char;
 
@@ -50,4 +50,4 @@ char	*copy_token_env(char *ptr, int *count)
 	argv[count_char] = '\0';
 	copy_token(ptr, argv, &copy_count);
 	return (argv);
-}
+}*/

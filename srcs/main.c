@@ -6,11 +6,16 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/14 19:31:18 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/19 20:46:39 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	seeleaks()
+{
+	system("leaks -q minishell");
+}
 
 int	main(int argc, char **argv, char **env)
 {
@@ -22,6 +27,7 @@ int	main(int argc, char **argv, char **env)
 	shell = malloc (sizeof(t_shell));
 	if (start(&shell, env))
 	{
+		//atexit(&seeleaks);
 		while (true)
 		{
 			input = readline("Minishell	");

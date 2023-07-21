@@ -6,12 +6,13 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:31:23 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/16 19:01:26 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:30:15 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+//si es un token de comillas lo recorre
 int	count_quotation_marks(t_shell *shell, char *my_input)
 {
 	int	count;
@@ -30,12 +31,10 @@ int	count_quotation_marks(t_shell *shell, char *my_input)
 		if (my_input[count] == my_input[0])
 			count++;
 	}
-	/*if (ft_strchr("|><", my_input[0]) || ft_strchr("|><", my_input[count])
-		|| my_input[count] != '\0')*/
-
 	return (count);
 }
 
+//cuenta los argumentos de las variables
 void	count_dollar(t_shell *shell, char *my_input, int *count)
 {
 	int	flag;

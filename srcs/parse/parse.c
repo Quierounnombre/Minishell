@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 15:51:33 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/14 19:23:53 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/19 19:22:28 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 int	parse(t_shell *shell, char *input, char **env)
 {
-	shell->env = env;
+	(void) env;
 	if (!check_pipes(shell, input))
 		return (0);
 	separation(shell, input);

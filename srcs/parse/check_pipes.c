@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_pipes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 21:21:07 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 18:14:21 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/19 19:32:42 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 @function check_pipes revisa las comillas y si los pipes estan bien y la
 cantidad de comandos
 */
+//revisa si los pipes estan bien escritas
 static int	check_pipe_end(t_shell *shell, char *my_input, int *count)
 {
 	int	check_pipe;
@@ -38,6 +39,7 @@ static int	check_pipe_end(t_shell *shell, char *my_input, int *count)
 	return (1);
 }
 
+//revisa si las redirecciones estan bien escritas
 int	check_redirection(t_shell *shell, char *my_input, int *count)
 {
 	*count += 1;
@@ -64,6 +66,7 @@ int	check_redirection(t_shell *shell, char *my_input, int *count)
 	return (1);
 }
 
+//revisa si las comillas estan cerradas
 static int	quotation_marks(char *my_input, int *count)
 {
 	char	skip;
@@ -80,6 +83,7 @@ static int	quotation_marks(char *my_input, int *count)
 	return (0);
 }
 
+//revisa las comillas pipe y redirecciones
 static int	check_special(t_shell *shell, char *my_input, int *count)
 {
 	if (my_input[*count] == '\"' || my_input[*count] == '\'')
@@ -103,6 +107,7 @@ static int	check_special(t_shell *shell, char *my_input, int *count)
 	return (1);
 }
 
+//revisa si la entrada esta bien escrita
 int	check_pipes(t_shell *shell, char *my_input)
 {
 	int	count;

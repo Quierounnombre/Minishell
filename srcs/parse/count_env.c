@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:27:07 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/10 21:03:02 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:30:05 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ de la variable
 @function manage_count_env copia y busca la variable y cuenta la
 cantidad de token que tiene, al final libera el nombre
 */
+//cuenta la cantidad de token que tiene la variable
 static void	count_env(t_shell *shell, char *ptr)
 {
 	int	count;
@@ -37,6 +38,7 @@ static void	count_env(t_shell *shell, char *ptr)
 	}
 }
 
+//busca la variable en env y cuenta la cantidad de token que tiene la variable
 static void	check_env(t_shell *shell, char *environment_variabl)
 {
 	int		count;
@@ -48,6 +50,7 @@ static void	check_env(t_shell *shell, char *environment_variabl)
 		count_env(shell, &ptr[ft_strlen(environment_variabl)]);
 }
 
+//copia el nombre de la variable
 int	copy_env(t_shell *shell, char *input, char **environment_variabl)
 {
 	int	count;
@@ -72,6 +75,7 @@ int	copy_env(t_shell *shell, char *input, char **environment_variabl)
 	return (count);
 }
 
+//expande la variable y cuenta los tokens que tiene
 int	manage_count_env(t_shell *shell, char *my_input, int *flag)
 {
 	int		count;

@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:28:33 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/16 18:29:46 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:45:52 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_error(t_shell *shell, errno_t error_code)
 	if (error_code && shell)
 	{
 		s = strerror(error_code);
-		perror(s);
+		perror(s);		
 	}
 	exit(error_code);
 }

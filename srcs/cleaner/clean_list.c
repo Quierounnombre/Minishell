@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 19:28:35 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/06/23 20:36:07 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:59:54 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	free_list_redirection(t_red *redir)
 		temp = redir;
 		free(temp->file);
 		free(temp->tipe);
-		//free(redir->fd);
 		redir->next = redir;
 		free(temp);
 	}

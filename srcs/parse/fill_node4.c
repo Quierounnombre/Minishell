@@ -6,12 +6,13 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:44:36 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/16 18:40:55 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:33:10 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+//copia la variable expandiendola y separandola en varios argv si hace falta
 void	copy_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 {
 	if (!ft_isalnum(input[*c + 1]) && input[*c + 1] != '?')
@@ -33,6 +34,7 @@ void	copy_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 		else_variable(shell, new_cmd, input, c);
 }
 
+//copia el arg
 void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input)
 {
 	int	c;
@@ -71,7 +73,6 @@ int	check_spaces(t_cmd *new_cmd, char **argv_env, int *count_env, int *i)
 	{
 		new_cmd->argv[*i] = argv_env[*count_env];
 		*count_env += 1;
-		//printf("%d\n", argv_env[*count_env]);
 		if (argv_env[*count_env])
 		{
 			copy = ft_strlen(new_cmd->argv[*i]);
@@ -97,6 +98,7 @@ void	expand_env(char *ptr, t_cmd *new_cmd, int *i, int *copy)
 			new_cmd->argv[*i] = ft_strjoin(ptr, argv_env[count_env]);
 			*copy += ft_strlen(argv_env[count_env]);
 			free(ptr);
+			free(argv_env[count_env]);//si existe argv, juntamos el argv con la cadena de la variable hasta el espacio(cuando esta juntado hacemos el free de primera cadena, el resto no hace falta liberar, porque seran otros argv)
 		}
 	}
 	else
@@ -109,6 +111,7 @@ void	expand_env(char *ptr, t_cmd *new_cmd, int *i, int *copy)
 	*copy = ft_strlen(new_cmd->argv[*i]);
 }
 
+//cuenta la longitud de argv que es una variable con espacios, lo cuenta hasta el primer espacio que encuentra
 void	ptr_exists(char *ptr, int *size)
 {
 	int	count_ptr;

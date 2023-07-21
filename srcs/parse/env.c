@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 13:16:52 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 17:09:29 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:38:50 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 @function expand_env expande la variable
 @function strncmp_qm busca el nombre de la variable dentro de env
 */
-void	space_in_env(char *ptr, int *count, int *coun_t, t_cmd *new_cmd)
+/*void	space_in_env(char *ptr, int *count, int *coun_t, t_cmd *new_cmd)
 {
 	int	tam;
 
@@ -29,7 +29,7 @@ void	space_in_env(char *ptr, int *count, int *coun_t, t_cmd *new_cmd)
 		&& ptr[*count + tam] != '\0')
 			tam++;
 	new_cmd->argv[*coun_t] = ft_calloc((tam + 1), sizeof(char));
-}
+}*/
 
 int	strncmp_qm(const char *s1, const char *s2)
 {
@@ -49,6 +49,7 @@ int	strncmp_qm(const char *s1, const char *s2)
 	return (0);
 }
 
+//busca la variable en env
 char	*get_ptr(t_shell *shell, char *ev)
 {
 	int		count;
@@ -64,6 +65,7 @@ char	*get_ptr(t_shell *shell, char *ev)
 	return (NULL);
 }
 
+//trata el $?
 int	this_is_env(t_shell *shell, t_cmd *new_cmd, char *input, int *count_t)
 {
 	int		count;
@@ -75,14 +77,18 @@ int	this_is_env(t_shell *shell, t_cmd *new_cmd, char *input, int *count_t)
 	if (input[count] == '?')
 	{
 		environment_variabl = ft_itoa(shell->child_status);
-		if (new_cmd->argv[*count_t])
+		if (environment_variabl)
 		{
-			ptr = new_cmd->argv[*count_t];
-			new_cmd->argv[*count_t] = ft_strjoin(ptr, environment_variabl);
-			free(ptr);
+			if (new_cmd->argv[*count_t])
+			{
+				ptr = new_cmd->argv[*count_t];
+				new_cmd->argv[*count_t] = ft_strjoin(ptr, environment_variabl);
+				free(ptr);
+			}
+			else
+				new_cmd->argv[*count_t] = environment_variabl;
+			free(environment_variabl);
 		}
-		else
-			new_cmd->argv[*count_t] = ft_itoa(shell->child_status);
 		count++;
 	}
 	return (count);

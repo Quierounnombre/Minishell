@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:33:59 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 16:20:09 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:33:46 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char *my_input, int *count_token)
 	return (count);
 }
 
+//copia $ seguido de caracter alfanumerico
 void	argv_alnum(char *argv, int *count_copy, int *count)
 {
 	argv[*count_copy] = '$';
@@ -68,6 +69,7 @@ void	argv_alnum(char *argv, int *count_copy, int *count)
 	*count_copy += 1;
 }
 
+//copia el nombre de redireccion si esta entre comillas
 int	copy_qm(t_shell *shell, char *argv, char *my_input, int *count_copy)
 {
 	char	skip;
