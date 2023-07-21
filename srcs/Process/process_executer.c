@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_executer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/17 18:54:37 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 19:13:11 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ void	process_executer(t_shell *shell)
 				wait_for_all(shell);
 				heredoc_unlink(shell);
 			}
-			if (shell->childs->lst_head)
-				ft_lstclear(&(shell->childs->lst_head->next), ft_cleanchild);
 		}
 	}
+	reset_shell(shell);
 }
 
 static void	wait_for_all(t_shell *shell)

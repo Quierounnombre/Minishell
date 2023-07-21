@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/19 17:52:51 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/21 19:12:10 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_bool	make_childs(t_shell *shell);
 void	ft_child(t_shell *shell, t_child *child);
 void	fork_child(t_shell *shell);
 void	process_executer(t_shell *shell);
+void	reset_shell(t_shell *shell);
 
 /*-----ERRORMNG-----*/
 
