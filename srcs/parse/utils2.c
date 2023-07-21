@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 20:35:20 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/21 18:35:14 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:20:09 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ void	fill_argv(t_cmd *new_cmd, char *path_with_command)
 {
 	free(new_cmd->argv[0]);
 	new_cmd->argv[0] = ft_strdup(path_with_command);
-	//new_cmd->filepath = ft_strdup(path_with_command);
 	new_cmd->filepath = path_with_command;
 }
-//67
+
 void	ft_path(t_shell *shell, t_cmd *new_cmd)
 {
 	int		count;
@@ -44,7 +43,9 @@ void	ft_path(t_shell *shell, t_cmd *new_cmd)
 	ptr = get_ptr(shell, "PATH");
 	if (ptr)
 	{
-		separate_path = ft_split(ptr, ':');
+		find_start_of_str(ptr, &count);
+		separate_path = ft_split(&ptr[count], ':');
+		count = 0;
 		path_with_command = ft_strdup(new_cmd->argv[0]);
 		while (access(path_with_command, F_OK) == -1 && separate_path[count])
 		{
@@ -56,7 +57,6 @@ void	ft_path(t_shell *shell, t_cmd *new_cmd)
 		}
 		if (access(path_with_command, F_OK) == 0)
 			fill_argv(new_cmd, path_with_command);
-		//free(path_with_command);
 		free_path(separate_path);
 	}
 }

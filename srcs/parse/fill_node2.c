@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:33:29 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/21 18:32:16 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 19:25:27 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,6 @@ static void	copy_str(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 	free(ptr);
 	free(tex_argv);
 }
-
-/*static void	copy_var_qm(t_shell *shell, t_cmd *new_cmd, char *input, int *c)//60
-{
-	char	*ptr;
-
-	ptr = NULL;
-	if (new_cmd->argv[shell->s_i.ctoken])
-		new_cmd->argv[shell->s_i.ctoken][shell->s_i.copy] = '\0';
-	ptr = new_cmd->argv[shell->s_i.ctoken];
-	new_cmd->argv[shell->s_i.ctoken]
-		= ft_strjoin(ptr, copy_text_qm(shell, input, c));
-	shell->s_i.copy = ft_strlen(new_cmd->argv[shell->s_i.ctoken]);
-	free(ptr);
-}*/
 
 static void	copy_var_qm(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 {

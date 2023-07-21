@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:40:40 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/21 18:34:48 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:26:52 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,6 @@ void	is_exit_code(t_shell *shell, int *count, char *input)
 //cuenta la cantidad de argumentos de cada comando y las redirecciones
 static void	count_size(t_shell *shell, char *input, int *count)
 {
-	int	flag;
-
-	flag = 0;
 	space_tab(input, count);
 	if (input[*count] == '<' || input[*count] == '>')
 		*count += count_redirects(shell, &input[*count]);

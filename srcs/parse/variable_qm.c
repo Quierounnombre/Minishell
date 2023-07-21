@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:16:12 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/21 18:35:36 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:23:38 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,10 @@
 @function check_env_qw busca el puntero de la variable para luego buscarla
 @function manage_count_env_qw gestiona las variables dentro del las " "
 */
-//expande la variable que esta dentro de las comillas
 void	expand_env_qm(char *ptr, char *argv, int *count_copy)
 {
-	int	count;
 	int	count_ptr;
 
-	count = 0;
 	count_ptr = 0;
 	while (ptr[count_ptr] != '=')
 		count_ptr++;
@@ -38,7 +35,6 @@ void	expand_env_qm(char *ptr, char *argv, int *count_copy)
 	}
 }
 
-//$?
 void	ft_aux(t_shell *shell, char *argv, int *count_copy)
 {
 	int	len;
@@ -76,16 +72,13 @@ static void	count_env_qm(char *ptr, int *size)
 
 static void	check_env_qm(t_shell *shell, char *environment_variabl, int *size)
 {
-	int		count;
 	char	*ptr;
 
-	count = 0;
 	ptr = get_ptr(shell, environment_variabl);
 	if (ptr)
 		count_env_qm(&ptr[ft_strlen(environment_variabl)], size);
 }
 
-//tamaño de las variables expandidas si estan entre comillas
 int	manage_count_env_qm(t_shell *shell, char *my_input, int *size)
 {
 	int		count;

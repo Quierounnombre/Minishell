@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:27:07 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/21 18:30:05 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:27:14 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,8 @@ static void	count_env(t_shell *shell, char *ptr)
 //busca la variable en env y cuenta la cantidad de token que tiene la variable
 static void	check_env(t_shell *shell, char *environment_variabl)
 {
-	int		count;
 	char	*ptr;
 
-	count = 0;
 	ptr = get_ptr(shell, environment_variabl);
 	if (ptr)
 		count_env(shell, &ptr[ft_strlen(environment_variabl)]);

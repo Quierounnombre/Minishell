@@ -6,14 +6,13 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/21 18:40:30 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:27:39 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "libs/define.h"
 # include "../libft_def/libft.h"
 # include <sys/wait.h>
 # include "libs/structs.h"
@@ -21,6 +20,7 @@
 # include "readline/readline.h"
 # include <sys/stat.h>
 # include <errno.h>
+# include "libs/define.h"
 
 /*-----STARUP-----*/
 
