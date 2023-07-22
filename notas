@@ -1,3 +1,0 @@
-dprintf(2, "hay un malloc en %s:%d\n", __FILE__, __LINE__);
-
-

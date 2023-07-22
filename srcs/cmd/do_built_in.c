@@ -6,29 +6,42 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:21:06 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/21 20:30:54 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 21:43:57 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+
 void	do_build_in(t_cmd *cmd, t_shell *shell)
 {
-	if (!ft_strchr(cmd->filepath, '/'))
+	if (!ft_strchr(cmd->argv[0], '/'))
 	{
-		if (ft_strcmp(cmd->filepath, "echo"))
+		printf("holaaaaaaa1\n");
+		printf("0hola %s\n", cmd->argv[0]);
+		if (!ft_strcmp(cmd->argv[0], "echo"))
 			echo(cmd);
-		if (ft_strcmp(cmd->filepath, "cd"))
+		printf("1hola %s\n", cmd->argv[0]);
+		if (!ft_strcmp(cmd->argv[0], "cd"))
 			ft_cd(cmd->argv[1], shell);
-		if (ft_strcmp(cmd->filepath, "pwd"))
+		printf("2hola %s\n", cmd->argv[0]);
+		if (!ft_strcmp(cmd->argv[0], "pwd"))
 			ft_pwd(shell->env);
-		if (ft_strcmp(cmd->filepath, "export"))
+		printf("3hola %s\n", cmd->argv[0]);
+		if (!ft_strcmp(cmd->argv[0], "export"))
 			ft_export(shell, cmd->argv[1]);
-		if (ft_strcmp(cmd->filepath, "unset"))
+		printf("4hola %s\n", cmd->argv[0]);
+		if (!ft_strcmp(cmd->argv[0], "unset"))
 			ft_unset(shell, cmd->argv[1]);
-		if (ft_strcmp(cmd->filepath, "env"))
+		printf("5hola %s\n", cmd->argv[0]);
+		if (!ft_strcmp(cmd->argv[0], "env"))
+		{
+			printf("hooooo\n");
 			ft_env(shell->env);
-		if (ft_strcmp(cmd->argv[0], "exit"))
+		}
+		printf("6hola %s\n", cmd->argv[0]);
+		if (!ft_strcmp(cmd->argv[0], "exit"))
 			ft_exit(shell);
+		printf("7hola %s\n", cmd->argv[0]);
 	}
 }
