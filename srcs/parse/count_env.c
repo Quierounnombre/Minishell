@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:27:07 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/21 20:27:14 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/22 15:51:02 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ int	manage_count_env(t_shell *shell, char *my_input, int *flag)
 				free(environment_variabl);
 			}
 		}
-		space_tab(my_input, &count);
 	}
 	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/21 21:39:00 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/22 14:30:42 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,6 @@ Wraper principal, es la función que gestiona todo lo que esta relacionado con
 la ejecución de los comandos
 @param Estructura de uso general
 */
-int	check_built_in(t_shell *shell)
-{
-	t_child	*child;
-
-	if (!(shell->childs->current->next))
-	{
-		child = shell->childs->current->content;
-		if (is_built_in(child->cmd))
-		{
-			do_build_in(child->cmd, shell);
-			return (1);
-		}
-	}
-	return (0);
-}
-
 void	process_executer(t_shell *shell)
 {
 	shell->childs->current = shell->childs->lst_head;
@@ -46,23 +30,19 @@ void	process_executer(t_shell *shell)
 		{
 			if (init_pipes(shell))
 			{
-				if (!check_built_in(shell))//si hay solo un comando y es built_in se ejecutan en el padre no en el hijo
+				while (shell->childs->current)
 				{
-					while (shell->childs->current)
-					{
-						fork_child(shell);
-						shell->childs->current = shell->childs->current->next;
-						if (!make_pipes(shell))
-							break ;
-					}
-					wait_for_all(shell);
-					heredoc_unlink(shell);
+					fork_child(shell);
+					shell->childs->current = shell->childs->current->next;
+					if (!make_pipes(shell))
+						break ;
 				}
+				wait_for_all(shell);
+				heredoc_unlink(shell);
 			}
-			if (shell->childs->lst_head)
-				ft_lstclear(&(shell->childs->lst_head->next), ft_cleanchild);
 		}
 	}
+	reset_shell(shell);
 }
 
 static void	wait_for_all(t_shell *shell)
