@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 16:06:24 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/22 17:18:07 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	ft_child(t_shell *shell, t_child *child);
 void	fork_child(t_shell *shell);
 void	process_executer(t_shell *shell);
 void	reset_shell(t_shell *shell);
+void	fix_the_stdred_struct(t_child	*child, t_red *red);
+t_bool	ftt_strcmp(char const *s1, char const *s2);
 
 /*-----ERRORMNG-----*/
 

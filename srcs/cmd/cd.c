@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:52:38 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 16:06:17 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/22 17:27:43 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,4 @@ void	ft_cd(const char *dir, t_shell *shell)
 	}
 	else
 		ft_error(shell, errno);
-	exit(0);
 }

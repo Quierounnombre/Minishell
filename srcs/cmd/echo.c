@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:43:02 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/06 14:32:36 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/22 17:43:18 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,29 @@ En el caso de tener la flag -n no imprime el salto de linea
 */
 void	echo(t_cmd *cmd)
 {
-	if (ft_strcmp("-n", cmd->argv[1]))
-		ft_printf("%s", cmd->argv[2]);
+	int	i;
+
+	if (ftt_strcmp("-n", cmd->argv[1]))
+	{
+		i = 2;
+		while (cmd->argv[i])
+		{
+			printf("%s ", cmd->argv[i]);
+			i++;
+		}
+	}
 	else
-		ft_printf("%s\n", cmd->argv[1]);
-	exit(0);
+	{
+		i = 1;
+		while (cmd->argv[i])
+		{
+			printf("%s ", cmd->argv[i]);
+			i++;
+		}
+		printf("\n");
+	}
 }
+/*
+- solo te imprimia una palabra
+- funcion ft_strcmp no iba bien, la he sustituido
+*/

@@ -6,14 +6,13 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:58:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 14:30:57 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/22 17:03:32 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 static void	std_red(t_child *child, t_shell *shell);
-static void	fix_the_stdred_struct(t_child	*child, t_red *red);
 
 /*
 Gestiona los fd del proceso hijo y ejecuta el cmd dado
@@ -49,7 +48,7 @@ static void	std_red(t_child *child, t_shell *shell)
 	}
 }
 
-static void	fix_the_stdred_struct(t_child	*child, t_red *red)
+void	fix_the_stdred_struct(t_child	*child, t_red *red)
 {
 	red = child->cmd->redir_in;
 	while (red && red->next && red->tipe != FT_RED_STD)

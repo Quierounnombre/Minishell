@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 20:35:20 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/21 20:20:09 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/22 17:14:45 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,26 @@ void	ft_path(t_shell *shell, t_cmd *new_cmd)
 	char	*path_with_slash;
 
 	count = 0;
-	ptr = get_ptr(shell, "PATH");
-	if (ptr)
+	if (!is_built_in(new_cmd))
 	{
-		find_start_of_str(ptr, &count);
-		separate_path = ft_split(&ptr[count], ':');
-		count = 0;
-		path_with_command = ft_strdup(new_cmd->argv[0]);
-		while (access(path_with_command, F_OK) == -1 && separate_path[count])
+		ptr = get_ptr(shell, "PATH");
+		if (ptr)
 		{
-			free(path_with_command);
-			path_with_slash = ft_strjoin(separate_path[count], "/");
-			path_with_command = ft_strjoin(path_with_slash, new_cmd->argv[0]);
-			free(path_with_slash);
-			count++;
+			find_start_of_str(ptr, &count);
+			separate_path = ft_split(&ptr[count], ':');
+			count = 0;
+			path_with_command = ft_strdup(new_cmd->argv[0]);
+			while (access(path_with_command, F_OK) == -1 && separate_path[count])
+			{
+				free(path_with_command);
+				path_with_slash = ft_strjoin(separate_path[count], "/");
+				path_with_command = ft_strjoin(path_with_slash, new_cmd->argv[0]);
+				free(path_with_slash);
+				count++;
+			}
+			if (access(path_with_command, F_OK) == 0)
+				fill_argv(new_cmd, path_with_command);
+			free_path(separate_path);
 		}
-		if (access(path_with_command, F_OK) == 0)
-			fill_argv(new_cmd, path_with_command);
-		free_path(separate_path);
 	}
 }

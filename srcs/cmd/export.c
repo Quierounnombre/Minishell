@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 15:31:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/06 14:40:28 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/22 17:31:22 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,4 @@ void	ft_export(t_shell *shell, char	*s)
 			ft_error(shell, errno);
 	}
 	free(target);
-	exit(0);
 }

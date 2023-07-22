@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 16:03:09 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/22 17:32:21 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv, char **env)
 	shell = malloc (sizeof(t_shell));
 	if (start(&shell, env))
 	{
-		//atexit(&seeleaks);
+		atexit(&seeleaks);
 		while (true)
 		{
 			input = readline("Minishell	");

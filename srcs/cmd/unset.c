@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 16:23:56 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/12 17:44:54 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/22 17:31:31 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,4 @@ void	ft_unset(t_shell *shell, char *s)
 	if (shell->env[i] != NULL)
 		make_new_env(shell, i, size_env);
 	free(target);
-	exit(0);
 }

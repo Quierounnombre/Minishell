@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:44:42 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/05 13:59:52 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/22 17:26:56 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,15 @@ Muestra por consola la variable de entorno PWD
 */
 void	ft_pwd(char **env)
 {
-	int		i;
+	int	i;
+	int	count;
 
+	count = 0;
 	i = find_string(env, "PWD=");
-	ft_printf("%s\n", env[i]);
-	exit(0);
+	find_start_of_str(env[i], &count);
+	ft_printf("%s\n", &env[i][count]);
 }
+/*
+- imprimias PWD=/Users/lyandriy/Desktop/Minishell en vez de /Users/lyandriy/Desktop/Minishell
+- exit (0) tiene que hacerlo solo si esta ejecutandose en el hijo
+*/
