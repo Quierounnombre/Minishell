@@ -6,13 +6,14 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 12:00:29 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/22 12:08:19 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include "libs/define.h"
 # include "../libft_def/libft.h"
 # include <sys/wait.h>
 # include "libs/structs.h"
@@ -20,7 +21,6 @@
 # include "readline/readline.h"
 # include <sys/stat.h>
 # include <errno.h>
-# include "libs/define.h"
 
 /*-----STARUP-----*/
 
