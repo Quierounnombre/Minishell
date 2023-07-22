@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 17:35:26 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/17 17:57:03 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:34:17 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 @function ft_input_output indica que tipo de redireccion es
 @function this_is_redirection gestiona las redirecciones y las copia
 */
-int	count_size_red(t_shell *shell, char *input)
+//cuenta el tamaño del nombre de la redireccion
+int	count_size_red(t_shell *shell, char *input)//19
 {
 	int	count;
 	int	size;
@@ -47,6 +48,7 @@ int	count_size_red(t_shell *shell, char *input)
 	return (size);
 }
 
+//copia el nombre de redireccion
 static void	copy_red(t_shell *shell, char *my_input, char *file)
 {
 	int	count;
@@ -76,6 +78,7 @@ static void	copy_red(t_shell *shell, char *my_input, char *file)
 	file[count_copy] = '\0';
 }
 
+//copia el nombre de la redireccion
 static t_red	*lstnewred(t_shell *shell, t_cmd *new_cmd, char *input, int red)
 {
 	t_red	*lst;
@@ -100,6 +103,7 @@ static t_red	*lstnewred(t_shell *shell, t_cmd *new_cmd, char *input, int red)
 	return (lst);
 }
 
+//copia las redirecciones e indica que tipo de redirecion es
 static void	ft_input_output(t_shell *shell, t_cmd *new_cmd, char *input)
 {
 	t_red	*tmp;
@@ -127,6 +131,7 @@ static void	ft_input_output(t_shell *shell, t_cmd *new_cmd, char *input)
 	}
 }
 
+//copia las redirecciones e indica que tipo de redirecion es
 int	this_is_redirection(t_shell *shell, t_cmd *new_cmd, char *my_input)
 {
 	int	count;

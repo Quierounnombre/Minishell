@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/21 19:12:10 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/22 12:00:29 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ void	lstadd_back_nodo(t_red **lst, t_red *new);
 int		parse(t_shell *shell, char *input, char **env);
 void	heredoc(t_red *tmp);
 void	heredoc_unlink(t_shell *shell);
+void	seeleaks();
 
 #endif

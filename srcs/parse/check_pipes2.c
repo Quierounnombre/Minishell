@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:51:51 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 16:52:41 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 15:18:22 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	check_error_redirect(char *ptr, int *ptr_count, char *envir_var)
 {
 	if (!ptr)
 	{
-		ft_printf("Minishell %s: ambiguous redirect\n", envir_var);
+		ft_printf("Minishell $%s: ambiguous redirect\n", envir_var);
 		return (0);
 	}
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_built_in.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:21:06 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/06 14:43:31 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:30:54 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	do_build_in(t_cmd *cmd, t_shell *shell)
 			ft_unset(shell, cmd->argv[1]);
 		if (ft_strcmp(cmd->filepath, "env"))
 			ft_env(shell->env);
-		if (ft_strcmp(cmd->filepath, "exit"))
+		if (ft_strcmp(cmd->argv[0], "exit"))
 			ft_exit(shell);
 	}
 }

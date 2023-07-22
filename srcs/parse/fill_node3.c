@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:33:32 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/15 16:19:32 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:32:46 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	*copy_tex_argv(char *input, int *c)
 	return (str);
 }
 
+//tamaño de redireccion con el nombre que tiene comillas
 int	argv_with_qm(t_shell *shell, char *my_input, char skip, int *size)
 {
 	int	count;

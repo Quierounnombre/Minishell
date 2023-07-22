@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:33:29 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/16 18:40:53 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 19:25:27 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,37 @@
 static void	copy_str(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 {
 	char	*ptr;
+	char	*tex_argv;
 
 	ptr = NULL;
 	if (new_cmd->argv[shell->s_i.ctoken][shell->s_i.copy] != '\0')
 		new_cmd->argv[shell->s_i.ctoken][shell->s_i.copy] = '\0';
 	ptr = new_cmd->argv[shell->s_i.ctoken];
-	new_cmd->argv[shell->s_i.ctoken] = ft_strjoin(ptr, copy_tex_argv(input, c));
+	tex_argv = copy_tex_argv(input, c);
+	new_cmd->argv[shell->s_i.ctoken] = ft_strjoin(ptr, tex_argv);
 	shell->s_i.copy = ft_strlen(new_cmd->argv[shell->s_i.ctoken]);
 	free(ptr);
+	free(tex_argv);
 }
 
 static void	copy_var_qm(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 {
 	char	*ptr;
+	char	*copy_text;
 
 	ptr = NULL;
+	copy_text = copy_text_qm(shell, input, c);
 	if (new_cmd->argv[shell->s_i.ctoken])
+	{
 		new_cmd->argv[shell->s_i.ctoken][shell->s_i.copy] = '\0';
-	ptr = new_cmd->argv[shell->s_i.ctoken];
-	new_cmd->argv[shell->s_i.ctoken]
-		= ft_strjoin(ptr, copy_text_qm(shell, input, c));
+		ptr = new_cmd->argv[shell->s_i.ctoken];
+		new_cmd->argv[shell->s_i.ctoken] = ft_strjoin(ptr, copy_text);
+		free(copy_text);
+		free(ptr);
+	}
+	else
+		new_cmd->argv[shell->s_i.ctoken] = copy_text;
 	shell->s_i.copy = ft_strlen(new_cmd->argv[shell->s_i.ctoken]);
-	free(ptr);
 }
 
 static void	variable_exit_code(t_shell *shell, t_cmd *new_cmd, int *c)
@@ -51,8 +60,7 @@ static void	variable_exit_code(t_shell *shell, t_cmd *new_cmd, int *c)
 		if (new_cmd->argv[shell->s_i.ctoken])
 			new_cmd->argv[shell->s_i.ctoken][shell->s_i.copy] = '\0';
 		ptr = new_cmd->argv[shell->s_i.ctoken];
-		new_cmd->argv[shell->s_i.ctoken]
-			= ft_strjoin(new_cmd->argv[shell->s_i.ctoken], temp);
+		new_cmd->argv[shell->s_i.ctoken] = ft_strjoin(ptr, temp);
 		shell->s_i.copy = ft_strlen(new_cmd->argv[shell->s_i.ctoken]);
 		free(ptr);
 		free(temp);
@@ -84,6 +92,7 @@ static void	copy_next_var(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 	}
 }
 
+// busca la variable en env y la copia y divide en argv
 void	else_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 {
 	char	*ptr;

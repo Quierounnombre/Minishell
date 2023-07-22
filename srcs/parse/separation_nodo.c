@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:39:31 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/16 19:02:08 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 19:33:45 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 @function create_node creara el nodo lo llenara de informacion y lo añade a la
 lista
 */
+//llena los nodos de informacion y crea una lista enlazada
 void	create_node(t_shell *shell, t_cmd *new_cmd, char *my_input)
 {
 	new_cmd = (t_cmd *)malloc(sizeof(t_cmd));

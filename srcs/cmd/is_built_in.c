@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:57:56 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/13 19:34:05 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:33:17 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_bool	is_built_in(t_cmd *cmd)
 			return (true);
 		if (ft_strcmp(cmd->filepath, "env"))
 			return (true);
-		if (ft_strcmp(cmd->filepath, "exit"))
+		if (ft_strcmp(cmd->argv[0], "exit"))
 			return (true);
 	}
 	return (false);

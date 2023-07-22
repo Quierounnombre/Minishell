@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:35:05 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/21 19:14:33 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/22 11:57:04 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ void	ft_cleancmd(void *node)
 		if (*tmp_argv)
 			free(tmp_argv);
 	}
+	if (cmd->redir_in)
+		free(cmd->redir_in);
+	if (cmd->redir_out)
+		free(cmd->redir_out);
 	free(cmd);
 	free(lst);
 }

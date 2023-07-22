@@ -100,6 +100,7 @@ FILES_PARSE = check_pipes \
 			  separation_nodo \
 			  separation \
 			  utils \
+			  utils2 \
 			  variable_qm \
 			  variable_qm2 \
 			  error \

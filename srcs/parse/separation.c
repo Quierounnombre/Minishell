@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   separation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:40:40 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/19 18:03:10 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:26:52 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 @function separation cuenta tamaño de la entrada (los tokens) y crea la lista
 con el contenido
 */
+//cuenta los argumentos de cada comando
 static int	count_command_token(t_shell *shell, char *my_input)
 {
 	int	count;
@@ -39,6 +40,7 @@ static int	count_command_token(t_shell *shell, char *my_input)
 	return (count);
 }
 
+//cuenta la cantidad de reedirecciones que hay en cada comando
 int	count_redirects(t_shell *shell, char *my_input)
 {
 	int	count;
@@ -83,6 +85,8 @@ void	is_exit_code(t_shell *shell, int *count, char *input)
 		*count += 1;
 }
 
+
+//cuenta la cantidad de argumentos de cada comando y las redirecciones
 static void	count_size(t_shell *shell, char *input, int *count)
 {
 	space_tab(input, count);
@@ -93,6 +97,7 @@ static void	count_size(t_shell *shell, char *input, int *count)
 		*count += count_command_token(shell, &input[*count]);
 }
 
+//separa el input en comandos, argumentos y redirecciones
 void	separation(t_shell *shell, char *my_input)
 {
 	int		count;

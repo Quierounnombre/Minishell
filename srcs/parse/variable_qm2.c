@@ -6,12 +6,13 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:28:46 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 17:01:40 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:36:02 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+//expande la variable que esta dentro de las comillas
 int	exp_var_qm(t_shell *shell, char *my_input, char *argv, int *count_copy)
 {
 	char	*environment_variabl;
