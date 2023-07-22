@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:43:02 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 17:43:18 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/22 18:35:39 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	echo(t_cmd *cmd)
 {
 	int	i;
 
-	if (ftt_strcmp("-n", cmd->argv[1]))
+	if (ft_strcmp("-n", cmd->argv[1]))
 	{
 		i = 2;
 		while (cmd->argv[i])
@@ -40,7 +40,3 @@ void	echo(t_cmd *cmd)
 		printf("\n");
 	}
 }
-/*
-- solo te imprimia una palabra
-- funcion ft_strcmp no iba bien, la he sustituido
-*/

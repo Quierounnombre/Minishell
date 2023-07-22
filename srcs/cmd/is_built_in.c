@@ -3,48 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   is_built_in.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:57:56 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 17:36:39 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/22 18:34:43 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_bool	ftt_strcmp(char const *s1, char const *s2)// tu funcion ft_strcmp no va bien
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] || s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
-	}
-	if (s1[i] || s2[i])
-		return (0);
-	return (1);
-}
-
 t_bool	is_built_in(t_cmd *cmd)
 {
-	if (cmd->argv[0])//los built_in los tenemos que hacer nosotros no el execv
+	if (cmd->argv[0])
 	{
-		if (ftt_strcmp(cmd->argv[0], "echo"))
+		if (ft_strcmp(cmd->argv[0], "echo"))
 			return (true);
-		if (ftt_strcmp(cmd->argv[0], "cd"))
+		if (ft_strcmp(cmd->argv[0], "cd"))
 			return (true);
-		if (ftt_strcmp(cmd->argv[0], "pwd"))
+		if (ft_strcmp(cmd->argv[0], "pwd"))
 			return (true);
-		if (ftt_strcmp(cmd->argv[0], "export"))
+		if (ft_strcmp(cmd->argv[0], "export"))
 			return (true);
-		if (ftt_strcmp(cmd->argv[0], "unset"))
+		if (ft_strcmp(cmd->argv[0], "unset"))
 			return (true);
-		if (ftt_strcmp(cmd->argv[0], "env"))
+		if (ft_strcmp(cmd->argv[0], "env"))
 			return (true);
-		if (ftt_strcmp(cmd->argv[0], "exit"))
+		if (ft_strcmp(cmd->argv[0], "exit"))
 			return (true);
 	}
 	return (false);

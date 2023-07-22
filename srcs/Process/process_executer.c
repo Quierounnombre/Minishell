@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_executer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 17:16:33 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/22 18:25:29 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,13 @@
 static t_bool	init_pipes(t_shell *shell);
 static t_bool	make_pipes(t_shell *shell);
 static void		wait_for_all(t_shell *shell);
+static int		check_built_in(t_shell *shell);
 
 /*
 Wraper principal, es la función que gestiona todo lo que esta relacionado con
 la ejecución de los comandos
 @param Estructura de uso general
 */
-static int	check_built_in(t_shell *shell)
-{
-	t_child	*child;
-
-	if (!shell->childs->current->next)
-	{
-		child = shell->childs->current->content;
-		if (is_built_in(child->cmd))
-		{
-			fix_the_stdred_struct(child, NULL);
-			mng_redirections(child->cmd, shell);
-			do_build_in(child->cmd, shell);
-		}
-		return (1);
-	}
-	return(0);
-}
-
 void	process_executer(t_shell *shell)
 {
 	shell->childs->current = shell->childs->lst_head;
@@ -65,6 +48,25 @@ void	process_executer(t_shell *shell)
 	}
 	reset_shell(shell);
 }
+
+static int	check_built_in(t_shell *shell)
+{
+	t_child	*child;
+
+	if (!shell->childs->current->next)
+	{
+		child = shell->childs->current->content;
+		if (is_built_in(child->cmd))
+		{
+			fix_the_stdred_struct(child, NULL);
+			mng_redirections(child->cmd, shell);
+			do_build_in(child->cmd, shell);
+		}
+		return (1);
+	}
+	return(0);
+}
+
 
 static void	wait_for_all(t_shell *shell)
 {

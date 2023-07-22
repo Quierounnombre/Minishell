@@ -2,7 +2,7 @@ NAME = minishell
 LIBFT = libft_def/libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 LIBS_FLAGS = -lreadline
 RM = rm -f
 
@@ -78,6 +78,7 @@ FILES_PROCESS = input_redirect \
 				process_executer \
 				fork_child \
 				reset_shell \
+				fix_the_stdred_struct \
 
 PROCESS_DIR = ./srcs/Process/
 SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))
