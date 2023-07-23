@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:44:36 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/21 18:33:10 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:21:31 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,21 @@ void	copy_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 			= input[*c + 1];
 		shell->s_i.copy += 2;
 		*c += 2;
+		while (!ft_strchr("| \t><$", input[*c]) && input[*c])
+		{
+			new_cmd->argv[shell->s_i.ctoken][shell->s_i.copy] = input[*c];
+			shell->s_i.copy += 1;
+			*c += 1;
+		}
 	}
-	if (input[*c + 1] == '?')
+	if (input[*c] && input[*c + 1] == '?')
 	{
 		if (new_cmd->argv[shell->s_i.ctoken])
 			new_cmd->argv[shell->s_i.ctoken][shell->s_i.copy] = '\0';
 		*c += this_is_env(shell, new_cmd, &input[*c], &shell->s_i.ctoken);
 		shell->s_i.copy = ft_strlen(new_cmd->argv[shell->s_i.ctoken]);
 	}
-	else
+	else if (input[*c])
 		else_variable(shell, new_cmd, input, c);
 }
 

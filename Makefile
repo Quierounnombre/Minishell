@@ -37,6 +37,7 @@ FILES_CMD = cmd_executer \
 			export \
 			exit \
 			unset \
+			more_built_in \
 
 CMD_DIR = ./srcs/cmd/
 SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
@@ -78,6 +79,7 @@ FILES_PROCESS = input_redirect \
 				process_executer \
 				fork_child \
 				reset_shell \
+				fix_the_stdred_struct \
 
 PROCESS_DIR = ./srcs/Process/
 SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))
@@ -85,7 +87,6 @@ OBJS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .o, $(FILES_PROCESS)))
 
 FILES_PARSE = check_pipes \
 			  check_pipes2 \
-			  copy_token_env \
 			  count_env \
 			  count  \
 			  env \

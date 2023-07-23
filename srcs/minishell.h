@@ -6,14 +6,13 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 17:18:07 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:44:02 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "libs/define.h"
 # include "../libft_def/libft.h"
 # include <sys/wait.h>
 # include "libs/structs.h"
@@ -21,6 +20,7 @@
 # include "readline/readline.h"
 # include <sys/stat.h>
 # include <errno.h>
+# include "libs/define.h"
 
 /*-----STARUP-----*/
 
@@ -40,6 +40,8 @@ void	ft_cd(const char *dir, t_shell *shell);
 void	ft_export(t_shell *shell, char	*s);
 void	ft_unset(t_shell *shell, char *s);
 void	ft_exit(t_shell *shell);
+void	do_export(t_cmd *cmd, t_shell *shell);
+void	do_unset(t_cmd *cmd, t_shell *shell);
 
 /*-----PROCESS-----*/
 
@@ -54,7 +56,6 @@ void	fork_child(t_shell *shell);
 void	process_executer(t_shell *shell);
 void	reset_shell(t_shell *shell);
 void	fix_the_stdred_struct(t_child	*child, t_red *red);
-t_bool	ftt_strcmp(char const *s1, char const *s2);
 
 /*-----ERRORMNG-----*/
 

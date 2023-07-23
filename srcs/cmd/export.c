@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 15:31:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 18:38:58 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/23 16:59:57 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,45 @@ static void	make_new_env(t_shell *shell, char *s, int size)
 		shell->env = local_env;
 }
 
+static	int	check_name(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (!ft_isalnum(s[i]))
+		{
+			perror(s);
+			free(s);
+			return (false);
+		}
+		i++;
+	}
+	return (true);
+}
+
 static char	*load_target(char *s)
 {
 	char	*target;
 	int		i;
 
 	i = 0;
-	while (s[i] != '=')
+	while (s[i] != '=' && s[i])//es posible que el argumento de export no tiene = (eje: export hola)
 		i++;
 	target = NULL;
 	target = (char *)malloc(sizeof(char) * (i + 1));
 	if (target)
-		ft_strlcpy(target, s, i);
+		ft_strlcpy(target, s, (i + 1));//ultimo caracter del nombre de la variable no copiabas
+	if (!check_name(target))//hay que comprobar si el nombre de la variable es alfanumerico
+		return (NULL);
+	i = 0;
+	while (s[i] != '=' && s[i])//es posible que el argumento de export no tiene = (eje: export hola)
+	{
+		i++;
+		if (s[i] == '\0')
+			return (NULL);
+	}
 	return (target);
 }
 
@@ -85,8 +112,8 @@ void	ft_export(t_shell *shell, char	*s)
 	target = NULL;
 	size_env = 0;
 	target = load_target(s);
-	if (!target)
-		ft_error(shell, errno);
+	if (!target)//cuando no existe targer bash no manda mensaje de error
+		return ;//por eso hacemos solo return
 	i = 0;
 	while (shell->env[size_env])
 		size_env++;

@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 16:23:56 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 17:31:31 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/23 16:29:45 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static char	*load_target(char *s)
 	target = NULL;
 	target = (char *)ft_calloc(sizeof(char), (i + 1));
 	if (target)
-		ft_strlcpy(target, s, i);
+		ft_strlcpy(target, s, (i + 1));
 	return (target);
 }
 

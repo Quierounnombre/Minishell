@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 20:01:16 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/23 12:02:45 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static t_bool	init_pipes(t_shell *shell);
 static t_bool	make_pipes(t_shell *shell);
 static void		wait_for_all(t_shell *shell);
+static int		check_built_in(t_shell *shell);
 
 /*
 Wraper principal, es la función que gestiona todo lo que esta relacionado con
@@ -36,6 +37,8 @@ static int	check_built_in(t_shell *shell)
 			fd[STDIN_FILENO] = dup(STDIN_FILENO);
 			fd[STDOUT_FILENO] = dup(STDOUT_FILENO);
 			mng_redirections(child->cmd, shell);
+			if (ft_strcmp(child->cmd->argv[0], "exit"))
+				ft_printf("exit\n");
 			do_build_in(child->cmd, shell);
 			if(dup2(fd[STDIN_FILENO], STDIN_FILENO) == -1)
 				exit(1);

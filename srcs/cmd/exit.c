@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 18:52:01 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/05 14:43:48 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/23 18:03:26 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@ Detiene la ejecución y sale de la shell, aparte imprime un exit al salir
 */
 void	ft_exit(t_shell *shell)
 {
-	ft_printf("exit\n");
 	ft_error(shell, 0);
 }

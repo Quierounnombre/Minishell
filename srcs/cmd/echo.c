@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:43:02 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 17:43:18 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/23 11:46:41 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,24 @@
 Imprime el texto que se le indica por consola.
 En el caso de tener la flag -n no imprime el salto de linea
 */
+static void	print_echo(t_cmd *cmd, int i)
+{
+	while (cmd->argv[i])
+	{
+		printf("%s", cmd->argv[i]);
+		i++;
+		if (cmd->argv[i])
+			printf(" ");
+	}
+}
+
 void	echo(t_cmd *cmd)
 {
-	int	i;
-
-	if (ftt_strcmp("-n", cmd->argv[1]))
-	{
-		i = 2;
-		while (cmd->argv[i])
-		{
-			printf("%s ", cmd->argv[i]);
-			i++;
-		}
-	}
+	if (ft_strcmp("-n", cmd->argv[1]))
+		print_echo(cmd, 2);
 	else
 	{
-		i = 1;
-		while (cmd->argv[i])
-		{
-			printf("%s ", cmd->argv[i]);
-			i++;
-		}
+		print_echo(cmd, 1);
 		printf("\n");
 	}
 }
-/*
-- solo te imprimia una palabra
-- funcion ft_strcmp no iba bien, la he sustituido
-*/
