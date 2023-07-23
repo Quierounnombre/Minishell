@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 17:16:33 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/22 20:01:16 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ Wraper principal, es la función que gestiona todo lo que esta relacionado con
 la ejecución de los comandos
 @param Estructura de uso general
 */
+//ejecuta los built_in si es solo un comando
 static int	check_built_in(t_shell *shell)
 {
 	t_child	*child;
+	int	fd[2];
 
 	if (!shell->childs->current->next)
 	{
@@ -31,10 +33,16 @@ static int	check_built_in(t_shell *shell)
 		if (is_built_in(child->cmd))
 		{
 			fix_the_stdred_struct(child, NULL);
+			fd[STDIN_FILENO] = dup(STDIN_FILENO);
+			fd[STDOUT_FILENO] = dup(STDOUT_FILENO);
 			mng_redirections(child->cmd, shell);
 			do_build_in(child->cmd, shell);
+			if(dup2(fd[STDIN_FILENO], STDIN_FILENO) == -1)
+				exit(1);
+			if (dup2(fd[STDOUT_FILENO], STDOUT_FILENO) == -1)
+				exit(1);
+			return (1);
 		}
-		return (1);
 	}
 	return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 17:43:39 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/22 20:36:06 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	cmd_executer(t_cmd *cmd, t_shell *shell)
 	{
 		if (cmd->filepath)
 			execve(cmd->filepath, cmd->argv, shell->env);
-		else
+		else if (cmd->argv[0])
 			ft_error(shell, ENOENT);
 	}
 	ft_error(shell, 0);

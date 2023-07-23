@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:44:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/17 17:59:16 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/22 20:14:48 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,13 @@ Gestiona la apertura de la redirección del tipo '<'.
 void	input_redirect(t_cmd *cmd, t_shell *shell)
 {
 	int		fd_input;
-	int		error_code;
 
-	error_code = 0;
 	fd_input = 0;
 	fd_input = open(cmd->redir_in->file, O_RDONLY);
 	if (fd_input > 0)
 	{
-		error_code = dup2(fd_input, STDIN_FILENO);
-		if (error_code == -1)//el dup2 en caso de error devuelve un -1
-			ft_error(shell, error_code);
+		if (dup2(fd_input, STDIN_FILENO) == -1)//el dup2 en caso de error devuelve un -1
+			ft_error(shell, errno);
 		cmd->redir_in->fd = fd_input;
 		close(fd_input);
 	}

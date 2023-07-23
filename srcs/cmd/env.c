@@ -6,7 +6,7 @@
 /*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 13:01:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 17:31:36 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/22 20:58:04 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Muestra el env por consola
 */
 void	ft_env(char	**env)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (env[i])
