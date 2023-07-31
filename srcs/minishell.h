@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/23 15:44:02 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/31 16:09:53 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,28 @@
 # define MINISHELL_H
 
 # include "../libft_def/libft.h"
+# include "sys/ioctl.h"
 # include <sys/wait.h>
 # include "libs/structs.h"
 # include "libs/define.h"
-# include "readline/readline.h"
+# include <readline/readline.h>
+# include <readline/history.h>
 # include <sys/stat.h>
 # include <errno.h>
 # include "libs/define.h"
+
+t_shell	*g_shell;
 
 /*-----STARUP-----*/
 
 t_bool	start(t_shell **shell, char **env);
 t_bool	init_shell_struct(t_shell **shell);
 t_bool	clone_env(char **env, t_shell *shell);
+t_bool	init_signals(struct sigaction *sact);
+
+/*-----SIGNAL-----*/
+
+void	sig_handler(int sig);
 
 /*-----CMD-----*/
 
@@ -115,6 +124,5 @@ void	lstadd_back_nodo(t_red **lst, t_red *new);
 int		parse(t_shell *shell, char *input, char **env);
 void	heredoc(t_red *tmp);
 void	heredoc_unlink(t_shell *shell);
-void	seeleaks();
 
 #endif

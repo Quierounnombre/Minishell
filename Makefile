@@ -2,8 +2,12 @@ NAME = minishell
 LIBFT = libft_def/libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address $(RL_INC)
 LIBS_FLAGS = -lreadline
+
+RL_LIB = -L /Users/$(USER)/.brew/opt/readline/lib
+RL_INC = -I /Users/$(USER)/.brew/opt/readline/include
+
 RM = rm -f
 
 BLACK = \033[0;30m
@@ -64,6 +68,7 @@ OBJS_ERRORMNG = $(addprefix $(ERRORMNG_DIR), $(addsuffix .o, $(FILES_ERRORMNG)))
 FILES_START = init_shell_struct \
 			clone_env \
 			start \
+			init_signals \
 
 START_DIR = ./srcs/startup/
 SRCS_START = $(addprefix $(START_DIR), $(addsuffix .c, $(FILES_START)))
@@ -110,13 +115,19 @@ PARSE_DIR = ./srcs/parse/
 SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))
 OBJS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .o, $(FILES_PARSE)))
 
-OBJS = $(OBJS_CMD) $(OBJ_MAIN) $(OBJS_UTILS) $(OBJS_START) $(OBJS_PROCESS) $(OBJS_ERRORMNG) $(OBJS_PARSE)
-SRCS = $(SRCS_CMD) $(FILE_MAIN) $(SRCS_UTILS) $(SRCS_UTILS) $(SRCS_PROCESS) $(SRCS_ERRORMNG) $(SRCS_PARSE)
+FILES_SIGNAL = sig_handler \
+
+SIGNAL_DIR = ./srcs/signal/
+SRCS_SIGNAl = $(addprefix $(SIGNAL_DIR), $(addsuffix .c, $(FILES_SIGNAL)))
+OBJS_SIGNAL = $(addprefix $(SIGNAL_DIR), $(addsuffix .o, $(FILES_SIGNAL)))
+
+OBJS = $(OBJS_CMD) $(OBJ_MAIN) $(OBJS_UTILS) $(OBJS_START) $(OBJS_PROCESS) $(OBJS_ERRORMNG) $(OBJS_PARSE) $(OBJS_SIGNAL)
+SRCS = $(SRCS_CMD) $(FILE_MAIN) $(SRCS_UTILS) $(SRCS_UTILS) $(SRCS_PROCESS) $(SRCS_ERRORMNG) $(SRCS_PARSE) $(SRCS_SIGNAl)
 
 all: libft $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(LIBS_FLAGS) -o $(NAME) $(OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) $(LIBS_FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(RL_LIB)
 	@echo "$(LBLUE)\n$(NAME) compilado con éxito\n$(RESET)"
 
 clean:

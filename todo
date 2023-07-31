@@ -1,0 +1,12 @@
+ERRORES
+-Mensaje de error erroneo cmd not found(cmd owd)
+
+COSAS A MEJORAR
+-Señales
+
+DUDAS
+-¿Deberiamos sacar el nombre de la shell en caso de error?(actualmente lo
+hacemos con fallos de sintaxis), src = printf "HEY\n
+-Esto no se como definirlo, src = sleep 2 ; printf "HEY"
+-IDEM src = '\n'
+-$? Deberia dar Invalid argument? bash saca otra cosa

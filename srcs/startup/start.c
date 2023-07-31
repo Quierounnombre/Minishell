@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:56:24 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/19 20:43:30 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/31 15:20:14 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ t_bool	start(t_shell **shell, char **env)
 	{
 		if (init_shell_struct(shell))
 		{
-			if (clone_env(env, *shell))
+			if (init_signals(&(*shell)->sact))
 			{
-				(*shell)->child_status = 0;
-				return (true);
+				if (clone_env(env, *shell))
+				{
+					(*shell)->child_status = 0;
+					return (true);
+				}
+				ft_cleanshell(*shell);
 			}
-			ft_cleanshell(*shell);
 		}
 	}
 	return (false);

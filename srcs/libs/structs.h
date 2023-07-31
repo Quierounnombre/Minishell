@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:55:29 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 11:47:46 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/31 15:07:04 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,19 @@ Estructura de uso general con toda la información necesaria
 @param fd almacena los fd para la gestión de los pipes
 @param s_i cantidad de pipe y comandos
 @param child_status Codigo de ejecución del ultimo hijo
+@param sact estructura para el uso de señales
 */
 typedef struct s_shell
 {
-	char		**separate_path;
-	t_lstmng	*childs;
-	t_lstmng	*cmds;
-	char		**env;
-	int			fd[2][2];
-	t_size		s_i;
-	pid_t		self_pid;
-	int			child_status;
+	char				**separate_path;
+	t_lstmng			*childs;
+	t_lstmng			*cmds;
+	char				**env;
+	int					fd[2][2];
+	t_size				s_i;
+	pid_t				self_pid;
+	int					child_status;
+	struct sigaction	sact;
 }	t_shell;
 
 #endif

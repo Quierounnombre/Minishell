@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 20:30:14 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/31 14:09:13 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/31 14:48:46 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ static char	*create_name(void)
 				free(name);
 			}
 		}
+		return (name_file);
 	}
-	return (name_file);
+	return (NULL);
 }
 
 void	heredoc(t_red *tmp)
