@@ -3,22 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   find_string.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:59:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/23 16:52:50 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:55:38 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-Localiza un str en un env
-@param env el enviroment donde buscar
-@param target el string a encontrar
-@return la posición del string
-*/
-int	ftt_strncmp(const char *s1, const char *s2, size_t n)
+static int	ftt_strncmp(const char *s1, const char *s2, size_t n)
 {
 	while (n)
 	{
@@ -35,6 +29,12 @@ int	ftt_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
+/*
+Localiza un str en un env
+@param env el enviroment donde buscar
+@param target el string a encontrar
+@return la posición del string
+*/
 int	find_string(char **env, char *target)
 {
 	int		i;
@@ -42,7 +42,7 @@ int	find_string(char **env, char *target)
 	i = 0;
 	while (env[i])
 	{
-		if (!ftt_strncmp(target, env[i], ft_strlen(target)))//coun la funcion anterior habia un problema, eliminaba la var cuando nombre no coincidia, la he modificado un poco
+		if (!ftt_strncmp(target, env[i], ft_strlen(target)))
 			return (i);
 		i++;
 	}

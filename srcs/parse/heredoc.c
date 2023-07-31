@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 20:30:14 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/21 18:33:31 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/31 14:09:13 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,21 @@ static char	*create_name(void)
 
 	numb = 0;
 	name = ft_itoa(numb);
-	name_file = ft_strjoin("/tmp/.here_doc", name);
-	free(name);
-	while (!(access(name_file, F_OK)))
+	if (name)
 	{
-		free(name_file);
-		numb++;
-		name = ft_itoa(numb);
 		name_file = ft_strjoin("/tmp/.here_doc", name);
 		free(name);
+		while (!(access(name_file, F_OK)))
+		{
+			free(name_file);
+			numb++;
+			name = ft_itoa(numb);
+			if (name)
+			{
+				name_file = ft_strjoin("/tmp/.here_doc", name);
+				free(name);
+			}
+		}
 	}
 	return (name_file);
 }

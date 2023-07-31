@@ -47,7 +47,6 @@ FILES_UTILS = ft_cleanchild \
 			ft_storechild \
 			ft_cleancmd \
 			ft_storecmd \
-			ft_open_file \
 			ft_delete_file \
 			find_string \
 

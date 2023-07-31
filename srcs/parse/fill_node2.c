@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_node2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:33:29 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/21 19:25:27 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/31 14:07:43 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	variable_exit_code(t_shell *shell, t_cmd *new_cmd, int *c)
 
 	ptr = NULL;
 	temp = ft_itoa(shell->child_status);
-	if (new_cmd->argv[shell->s_i.ctoken])
+	if (temp && new_cmd->argv[shell->s_i.ctoken])
 	{
 		if (new_cmd->argv[shell->s_i.ctoken])
 			new_cmd->argv[shell->s_i.ctoken][shell->s_i.copy] = '\0';
