@@ -115,7 +115,8 @@ PARSE_DIR = ./srcs/parse/
 SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))
 OBJS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .o, $(FILES_PARSE)))
 
-FILES_SIGNAL = sig_handler \
+FILES_SIGNAL =	sig_handler \
+				sig_d \
 
 SIGNAL_DIR = ./srcs/signal/
 SRCS_SIGNAl = $(addprefix $(SIGNAL_DIR), $(addsuffix .c, $(FILES_SIGNAL)))

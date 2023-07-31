@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 16:57:17 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/22 11:48:08 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/31 17:02:26 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,10 @@ define redirecciones
 
 # ifndef PIPE_NEW
 #  define PIPE_NEW 1
+# endif
+
+# ifndef PROMPT
+#  define PROMPT "Minishell-> "
 # endif
 
 #endif

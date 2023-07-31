@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   sig_D.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 15:51:33 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/31 16:30:45 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/07/31 16:42:20 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/07/31 17:23:12 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-@function parse revisa la entrada y si esta bien devuelve true
-*/
-int	parse(t_shell *shell, char *input, char **env)
+void	sig_d(t_shell *shell)
 {
-	(void) env;
-	if (!check_pipes(shell, input))
-		return (0);
-	separation(shell, input);
-	return (1);
+	printf("exit\n");
+	ft_exit(shell);
 }

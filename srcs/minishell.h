@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/31 16:09:53 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/31 16:44:15 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_bool	init_signals(struct sigaction *sact);
 /*-----SIGNAL-----*/
 
 void	sig_handler(int sig);
+void	sig_d(t_shell *shell);
 
 /*-----CMD-----*/
 
