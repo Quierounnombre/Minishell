@@ -1,6 +1,8 @@
 ERRORES
 -Mensaje de error erroneo cmd not found(cmd owd)
 -SHELL LVL
+-Peta si escribes el cmd sleep sin argumentos
+-Peta al llamar a un shell dentro de otra
 
 COSAS A MEJORAR
 -Señales

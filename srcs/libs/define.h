@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 16:57:17 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/31 17:02:26 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/31 17:25:39 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define DEFINE_H
 
 # include "../minishell.h"
-
-//EN MI CASA PETA SIN ESTO
-typedef int	errno_t;
 
 /*
 define redirecciones
