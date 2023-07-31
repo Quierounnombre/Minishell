@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:43:02 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/23 11:46:41 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/31 17:38:21 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	print_echo(t_cmd *cmd, int i)
 
 void	echo(t_cmd *cmd)
 {
-	if (ft_strcmp("-n", cmd->argv[1]))
+	if (cmd->argv && cmd->argv[1] && ft_strcmp("-n", cmd->argv[1]))
 		print_echo(cmd, 2);
 	else
 	{

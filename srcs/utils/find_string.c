@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:59:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/31 13:55:38 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/07/31 17:43:17 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,14 @@ int	find_string(char **env, char *target)
 	int		i;
 
 	i = 0;
-	while (env[i])
+	if (env)
 	{
-		if (!ftt_strncmp(target, env[i], ft_strlen(target)))
-			return (i);
-		i++;
+		while (env[i])
+		{
+			if (!ftt_strncmp(target, env[i], ft_strlen(target)))
+				return (i);
+			i++;
+		}
 	}
 	return (i);
 }

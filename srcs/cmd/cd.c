@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:52:38 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 17:27:43 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/31 18:07:05 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_cd(const char *dir, t_shell *shell)
 	char	*s;
 	char	*s_old;
 
-	pos_pwd = find_string(shell->env, "PWD=");
+	pos_pwd = find_string(shell->env, "PWD");
 	s = NULL;
 	s = ft_strjoin("PWD=", dir);
 	if (s)
@@ -35,10 +35,10 @@ void	ft_cd(const char *dir, t_shell *shell)
 		}
 		s_old = shell->env[pos_pwd];
 		shell->env[pos_pwd] = s;
-		pos_pwd = find_string(shell->env, "OLDPWD=");
+		pos_pwd = find_string(shell->env, "OLDPWD");
 		free(shell->env[pos_pwd]);
 		shell->env[pos_pwd] = s_old;
 	}
-	else
+	else if (dir)
 		ft_error(shell, errno);
 }

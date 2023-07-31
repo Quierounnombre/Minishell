@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_executer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/23 12:02:45 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/07/31 18:04:59 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ la ejecución de los comandos
 static int	check_built_in(t_shell *shell)
 {
 	t_child	*child;
-	int	fd[2];
+	int		fd[2];
 
 	if (!shell->childs->current->next)
 	{
@@ -40,14 +40,14 @@ static int	check_built_in(t_shell *shell)
 			if (ft_strcmp(child->cmd->argv[0], "exit"))
 				ft_printf("exit\n");
 			do_build_in(child->cmd, shell);
-			if(dup2(fd[STDIN_FILENO], STDIN_FILENO) == -1)
+			if (dup2(fd[STDIN_FILENO], STDIN_FILENO) == -1)
 				exit(1);
 			if (dup2(fd[STDOUT_FILENO], STDOUT_FILENO) == -1)
 				exit(1);
 			return (1);
 		}
 	}
-	return(0);
+	return (0);
 }
 
 void	process_executer(t_shell *shell)
