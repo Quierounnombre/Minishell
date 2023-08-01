@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/31 16:44:15 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/01 15:35:58 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_unset(t_shell *shell, char *s);
 void	ft_exit(t_shell *shell);
 void	do_export(t_cmd *cmd, t_shell *shell);
 void	do_unset(t_cmd *cmd, t_shell *shell);
+void	sort_export(t_shell *shell);
 
 /*-----PROCESS-----*/
 

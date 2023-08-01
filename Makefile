@@ -42,6 +42,7 @@ FILES_CMD = cmd_executer \
 			exit \
 			unset \
 			more_built_in \
+			sort_export \
 
 CMD_DIR = ./srcs/cmd/
 SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))

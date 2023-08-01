@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 15:31:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/23 16:59:57 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/08/01 15:33:39 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,16 @@ static char	*load_target(char *s)
 	int		i;
 
 	i = 0;
-	while (s[i] != '=' && s[i])//es posible que el argumento de export no tiene = (eje: export hola)
+	while (s[i] != '=' && s[i])
 		i++;
 	target = NULL;
 	target = (char *)malloc(sizeof(char) * (i + 1));
 	if (target)
-		ft_strlcpy(target, s, (i + 1));//ultimo caracter del nombre de la variable no copiabas
-	if (!check_name(target))//hay que comprobar si el nombre de la variable es alfanumerico
+		ft_strlcpy(target, s, (i + 1));
+	if (!check_name(target))
 		return (NULL);
 	i = 0;
-	while (s[i] != '=' && s[i])//es posible que el argumento de export no tiene = (eje: export hola)
+	while (s[i] != '=' && s[i])
 	{
 		i++;
 		if (s[i] == '\0')
@@ -112,8 +112,8 @@ void	ft_export(t_shell *shell, char	*s)
 	target = NULL;
 	size_env = 0;
 	target = load_target(s);
-	if (!target)//cuando no existe targer bash no manda mensaje de error
-		return ;//por eso hacemos solo return
+	if (!target)
+		return ;
 	i = 0;
 	while (shell->env[size_env])
 		size_env++;
