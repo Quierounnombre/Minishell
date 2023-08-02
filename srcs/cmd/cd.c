@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:52:38 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/01 15:13:46 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/02 13:01:55 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static char	*set_pwd_str(t_shell *shell, char *pwd)
 	s = getcwd(NULL, 0);
 	if (!s)
 		ft_error(shell, errno);
+	free(s);
 	s = ft_strjoin(pwd, s);
 	if (!s)
 		ft_error(shell, errno);

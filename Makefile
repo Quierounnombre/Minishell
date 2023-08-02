@@ -2,7 +2,7 @@ NAME = minishell
 LIBFT = libft_def/libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address $(RL_INC)
+CFLAGS = -Wall -Wextra -Werror $(RL_INC)#-g3 -fsanitize=address
 LIBS_FLAGS = -lreadline
 
 RL_LIB = -L /Users/$(USER)/.brew/opt/readline/lib

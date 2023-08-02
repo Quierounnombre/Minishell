@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/01 17:22:24 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/02 12:54:40 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv, char **env)
 
 	(void) argc;
 	(void) argv;
-	//atexit(&seeleaks);
+	atexit(&seeleaks);
 	shell = malloc (sizeof(t_shell));
 	if (start(&shell, env))
 	{
