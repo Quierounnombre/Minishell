@@ -54,6 +54,10 @@ FILES_UTILS = ft_cleanchild \
 			ft_storecmd \
 			ft_delete_file \
 			find_string \
+			space_tab \
+			find_start_of_str \
+			lstadd_back_nodo \
+			ft_path \
 
 UTILS_DIR = ./srcs/utils/
 SRCS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .c, $(FILES_UTILS)))
@@ -105,12 +109,11 @@ FILES_PARSE = check_pipes \
 			  redirection \
 			  separation_nodo \
 			  separation \
-			  utils \
-			  utils2 \
 			  variable_qm \
 			  variable_qm2 \
 			  error \
 			  heredoc \
+			  check_redirection \
 
 PARSE_DIR = ./srcs/parse/
 SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))

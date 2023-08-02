@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/01 15:35:58 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:17:48 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,18 @@ void	ft_cleancmd(void *node);
 char	*ft_open_file(t_shell *shell);
 void	ft_delete_file(t_shell *shell, char *file);
 int		find_string(char **env, char *target);
+void	space_tab(char *my_input, int *count);
+void	find_start_of_str(char *ptr, int *ptr_count);
+void	lstadd_back_nodo(t_red **lst, t_red *new);
+void	ft_path(t_shell *shell, t_cmd *new_cmd);
 
 /*-----PARSE-----*/
 
 int		copy_env(t_shell *shell, char *input, char **environment_variabl);
 char	*get_ptr(t_shell *shell, char *ev);
-void	find_start_of_str(char *ptr, int *ptr_count);
 void	ptr_exists(char *ptr, int *size);
 int		argv_with_qm(t_shell *shell, char *my_input, char skip, int *size);
-void	ft_path(t_shell *shell, t_cmd *new_cmd);
 int		copy_env(t_shell *shell, char *input, char **environment_variabl);
-void	space_tab(char *my_input, int *count);
 int		this_is_redirection(t_shell *shell, t_cmd *new_cmd, char *my_input);
 void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input);
 char	*find_env(t_shell *shell, char *input, int *count);
@@ -118,13 +119,15 @@ int		copy_qm(t_shell *shell, char *argv, char *my_input, int *count_copy);
 void	check_argv(t_shell *shell, t_cmd *new_cmd);
 void	else_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c);
 int		print_err(char *text);
-int		check_redirection(t_shell *shell, char *my_input, int *count);
 int		check_redirect_env(t_shell *shell, char *input, int *count);
 void	separation(t_shell *shell, char *my_input);
-int		check_pipes(t_shell *shell, char *my_input);
-void	lstadd_back_nodo(t_red **lst, t_red *new);
 int		parse(t_shell *shell, char *input, char **env);
 void	heredoc(t_red *tmp);
 void	heredoc_unlink(t_shell *shell);
+
+/*...PARSE...*/
+
+t_bool	check_pipes(t_shell *shell, char *my_input);
+t_bool	check_redirection(t_shell *shell, char *my_input, int *count);
 
 #endif
