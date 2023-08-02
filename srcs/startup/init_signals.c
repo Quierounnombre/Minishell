@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:01:05 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/01 16:48:43 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/02 16:29:42 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ t_bool	init_signals(struct sigaction *sact)
 	sact->sa_handler = &sig_handler;
 	if (!set_sig(sact, SIGINT))
 		return (false);
-	if (!set_sig(sact, SIGQUIT))
-		return (false);
+	signal(SIGQUIT, SIG_IGN);
 	return (true);
 }
 

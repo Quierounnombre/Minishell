@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:58:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 19:02:20 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/02 16:36:29 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_child(t_shell *shell, t_child *child)
 
 static void	std_red(t_child *child, t_shell *shell)
 {
+	signal(SIGQUIT, SIG_DFL);
 	fix_the_stdred_struct(child, NULL);
 	if (!(child->cmd->redir_in) && shell->childs->size > 1)
 	{
