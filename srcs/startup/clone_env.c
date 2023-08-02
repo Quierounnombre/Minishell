@@ -6,13 +6,13 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:19:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/02 11:30:12 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:58:43 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_bool	update_sshell_lvl(t_shell *shell);
+t_bool	update_shell_lvl(t_shell *shell);
 
 //Libera el env en caso de error
 static t_bool	free_clone_env(char **env)
@@ -57,12 +57,12 @@ t_bool	clone_env(char **env, t_shell *shell)
 	}
 	local_env[i] = NULL;
 	shell->env = local_env;
-	if (!update_sshell_lvl(shell))
+	if (!update_shell_lvl(shell))
 		return (false);
 	return (true);
 }
 
-t_bool	update_sshell_lvl(t_shell *shell)
+t_bool	update_shell_lvl(t_shell *shell)
 {
 	char	*s;
 	char	*s_value;

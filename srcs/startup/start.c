@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:56:24 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/31 15:20:14 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/02 16:02:28 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Inicializa todas las estructuras y elementos necesarios para el programa
 */
 t_bool	start(t_shell **shell, char **env)
 {
-	if (shell && *shell)
+	if (shell)
 	{
 		if (init_shell_struct(shell))
 		{
