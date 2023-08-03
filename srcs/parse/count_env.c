@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:27:07 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/22 15:51:02 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/08/03 12:20:11 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@ de la variable
 @function manage_count_env copia y busca la variable y cuenta la
 cantidad de token que tiene, al final libera el nombre
 */
+
 //cuenta la cantidad de token que tiene la variable
 static void	count_env(t_shell *shell, char *ptr)
 {
 	int	count;
 
 	count = 0;
-	while (ptr[count] != '\0')
+	while (ptr[count])
 	{
+		//why not is_space?
 		if (ptr[count] == ' ' || ptr[count] == '\t')
 		{
 			space_tab(ptr, &count);
@@ -46,31 +48,6 @@ static void	check_env(t_shell *shell, char *environment_variabl)
 	ptr = get_ptr(shell, environment_variabl);
 	if (ptr)
 		count_env(shell, &ptr[ft_strlen(environment_variabl)]);
-}
-
-//copia el nombre de la variable
-int	copy_env(t_shell *shell, char *input, char **environment_variabl)
-{
-	int	count;
-
-	count = 0;
-	(void) shell;
-	while (ft_isalnum(input[count]) && input[count] != '\0')
-		count += 1;
-	if (count != 0)
-	{
-		*environment_variabl = malloc(sizeof(char) * (count + 1));
-		if (!*environment_variabl)
-			exit (1);
-		count = 0;
-		while (ft_isalnum(input[count]))
-		{
-			environment_variabl[0][count] = input[count];
-			count++;
-		}
-		environment_variabl[0][count] = '\0';
-	}
-	return (count);
 }
 
 //expande la variable y cuenta los tokens que tiene

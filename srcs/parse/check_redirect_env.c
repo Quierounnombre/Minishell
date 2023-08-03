@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_pipes2.c                                     :+:      :+:    :+:   */
+/*   check_redirect_env.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 16:51:51 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/21 15:18:22 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/08/03 12:05:15 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/08/03 12:14:41 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	check_error_redirect(char *ptr, int *ptr_count, char *envir_var)
+static t_bool	check_error_redirect(char *ptr, int *ptr_count, char *envir_var)
 {
 	if (!ptr)
 	{
 		ft_printf("Minishell $%s: ambiguous redirect\n", envir_var);
-		return (0);
+		return (false);
 	}
 	else
 	{
@@ -26,15 +26,15 @@ int	check_error_redirect(char *ptr, int *ptr_count, char *envir_var)
 			if (ptr[*ptr_count] == ' ' || ptr[*ptr_count] == '\t')
 			{
 				ft_printf("Minishell %s: ambiguous redirect\n", envir_var);
-				return (0);
+				return (false);
 			}
 			*ptr_count += 1;
 		}
 	}
-	return (1);
+	return (true);
 }
 
-int	check_redirect_env(t_shell *shell, char *input, int *count)
+t_bool	check_redirect_env(t_shell *shell, char *input, int *count)
 {
 	int		ptr_count;
 	char	*ptr;
@@ -47,8 +47,11 @@ int	check_redirect_env(t_shell *shell, char *input, int *count)
 	{
 		ptr = get_ptr(shell, environment_variabl);
 		if (!check_error_redirect(ptr, &ptr_count, environment_variabl))
-			return (0);
+		{
+			free(environment_variabl);
+			return (false);
+		}
 		free (environment_variabl);
 	}
-	return (1);
+	return (true);
 }

@@ -8,6 +8,8 @@ LIBS_FLAGS = -lreadline
 RL_LIB = -L /Users/$(USER)/.brew/opt/readline/lib
 RL_INC = -I /Users/$(USER)/.brew/opt/readline/include
 
+OBJS_DIR = ./objs/
+
 RM = rm -f
 
 BLACK = \033[0;30m
@@ -28,8 +30,8 @@ LYELLOW = \033[1;33m
 WHITE = \033[1;37m
 RESET = \033[0m
 
-FILE_MAIN = ./srcs/main.c
-OBJ_MAIN = ./srcs/main.o
+FILE_MAIN = srcs/main.c
+OBJ_MAIN = srcs/main.o
 
 FILES_CMD = cmd_executer \
 			is_built_in \
@@ -44,7 +46,7 @@ FILES_CMD = cmd_executer \
 			more_built_in \
 			sort_export \
 
-CMD_DIR = ./srcs/cmd/
+CMD_DIR = srcs/cmd/
 SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
 OBJS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .o, $(FILES_CMD)))
 
@@ -59,14 +61,14 @@ FILES_UTILS = ft_cleanchild \
 			lstadd_back_nodo \
 			ft_path \
 
-UTILS_DIR = ./srcs/utils/
+UTILS_DIR = srcs/utils/
 SRCS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .c, $(FILES_UTILS)))
 OBJS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .o, $(FILES_UTILS)))
 
 FILES_ERRORMNG = ft_cleanshell \
 				ft_error \
 
-ERRORMNG_DIR = ./srcs/errormng/
+ERRORMNG_DIR = srcs/errormng/
 SRCS_ERRORMNG = $(addprefix $(ERRORMNG_DIR), $(addsuffix .c, $(FILES_ERRORMNG)))
 OBJS_ERRORMNG = $(addprefix $(ERRORMNG_DIR), $(addsuffix .o, $(FILES_ERRORMNG)))
 
@@ -75,7 +77,7 @@ FILES_START = init_shell_struct \
 			start \
 			init_signals \
 
-START_DIR = ./srcs/startup/
+START_DIR = srcs/startup/
 SRCS_START = $(addprefix $(START_DIR), $(addsuffix .c, $(FILES_START)))
 OBJS_START = $(addprefix $(START_DIR), $(addsuffix .o, $(FILES_START)))
 
@@ -90,12 +92,12 @@ FILES_PROCESS = input_redirect \
 				reset_shell \
 				fix_the_stdred_struct \
 
-PROCESS_DIR = ./srcs/Process/
+PROCESS_DIR = srcs/Process/
 SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))
 OBJS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .o, $(FILES_PROCESS)))
 
 FILES_PARSE = check_pipes \
-			  check_pipes2 \
+			  check_redirect_env \
 			  count_env \
 			  count  \
 			  env \
@@ -114,20 +116,29 @@ FILES_PARSE = check_pipes \
 			  error \
 			  heredoc \
 			  check_redirection \
+			  copy_env \
 
-PARSE_DIR = ./srcs/parse/
+PARSE_DIR = srcs/parse/
 SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))
 OBJS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .o, $(FILES_PARSE)))
+
+FILES_COND =  is_greater_or_smaller \
+			  is_34_or_39 \
+			  is_pipe \
+
+COND_DIR = srcs/parse/conditions/
+SRCS_COND = $(addprefix $(COND_DIR), $(addsuffix .c, $(FILES_COND)))
+OBJS_COND = $(addprefix $(COND_DIR), $(addsuffix .o, $(FILES_COND)))
 
 FILES_SIGNAL =	sig_handler \
 				sig_d \
 
-SIGNAL_DIR = ./srcs/signal/
+SIGNAL_DIR = srcs/signal/
 SRCS_SIGNAl = $(addprefix $(SIGNAL_DIR), $(addsuffix .c, $(FILES_SIGNAL)))
 OBJS_SIGNAL = $(addprefix $(SIGNAL_DIR), $(addsuffix .o, $(FILES_SIGNAL)))
 
-OBJS = $(OBJS_CMD) $(OBJ_MAIN) $(OBJS_UTILS) $(OBJS_START) $(OBJS_PROCESS) $(OBJS_ERRORMNG) $(OBJS_PARSE) $(OBJS_SIGNAL)
-SRCS = $(SRCS_CMD) $(FILE_MAIN) $(SRCS_UTILS) $(SRCS_UTILS) $(SRCS_PROCESS) $(SRCS_ERRORMNG) $(SRCS_PARSE) $(SRCS_SIGNAl)
+OBJS = $(OBJS_CMD) $(OBJ_MAIN) $(OBJS_UTILS) $(OBJS_START) $(OBJS_PROCESS) $(OBJS_ERRORMNG) $(OBJS_PARSE) $(OBJS_SIGNAL) $(OBJS_COND)
+SRCS = $(SRCS_CMD) $(FILE_MAIN) $(SRCS_UTILS) $(SRCS_UTILS) $(SRCS_PROCESS) $(SRCS_ERRORMNG) $(SRCS_PARSE) $(SRCS_SIGNAl) $(SRCS_COND)
 
 all: libft $(NAME)
 

@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   is_pipe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 15:51:33 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/03 10:48:25 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/08/03 11:48:56 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/08/03 11:49:36 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
-/*
-@function parse revisa la entrada y si esta bien devuelve true
-*/
-t_bool	parse(t_shell *shell, char *input)
+t_bool	is_pipe(int c)
 {
-	if (!check_pipes(shell, input))
-		return (false);
-	separation(shell, input);
-	return (true);
+	if (c == '|')
+		return (true);
+	return (false);
 }
