@@ -105,11 +105,10 @@ FILES_PARSE = check_pipes \
 			  fill_node2 \
 			  fill_node3 \
 			  fill_node4 \
-			  new_nodo \
 			  parse \
 			  quotation_marks \
 			  redirection \
-			  separation_nodo \
+			  create_node \
 			  separation \
 			  variable_qm \
 			  variable_qm2 \
@@ -119,6 +118,8 @@ FILES_PARSE = check_pipes \
 			  check_redirection \
 			  copy_env \
 			  count_quotation_marks \
+			  set_s_i \
+			  start_nodo \
 
 PARSE_DIR = srcs/parse/
 SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))

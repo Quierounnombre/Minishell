@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_nodo.c                                         :+:      :+:    :+:   */
+/*   set_s_i.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 16:30:06 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/19 20:14:52 by lyandriy         ###   ########.fr       */
+/*   Created: 2023/08/03 14:53:31 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/08/03 14:54:11 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	start_new_nodo(t_shell *shell)
+void	set_s_i(t_shell *shell)
 {
 	shell->s_i.size_in = 0;
 	shell->s_i.size_out = 0;
@@ -21,12 +21,4 @@ void	start_new_nodo(t_shell *shell)
 	shell->s_i.ctoken = 0;
 	shell->s_i.size_pipe = 0;
 	shell->s_i.size_str = 0;
-}
-
-void	start_nodo(t_cmd *new_cmd)
-{
-	new_cmd->filepath = NULL;
-	new_cmd->argv = NULL;
-	new_cmd->redir_in = NULL;
-	new_cmd->redir_out = NULL;
 }

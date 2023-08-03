@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:40:40 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/03 14:41:58 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/03 14:56:06 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	separation(t_shell *shell, char *my_input)
 	t_cmd	*new_cmd;
 
 	count = 0;
-	start_new_nodo(shell);
+	set_s_i(shell);
 	while (my_input[count])
 	{
 		start = count;
@@ -93,7 +93,7 @@ void	separation(t_shell *shell, char *my_input)
 			create_node(shell, new_cmd, &my_input[start]);
 			if (is_pipe(my_input[count]))
 				count++;
-			start_new_nodo(shell);
+			set_s_i(shell);
 		}
 	}
 }

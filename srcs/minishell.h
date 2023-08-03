@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/03 14:50:10 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/03 14:54:38 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,6 @@ char	*find_env(t_shell *shell, char *input, int *count);
 int		exp_var_qm(t_shell *shell, char *my_input, char *argv, int *count_copy);
 void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *input);
 void	create_node(t_shell *shell, t_cmd *new_cmd, char *my_input);
-void	start_nodo(t_cmd *new_cmd);
-void	start_new_nodo(t_shell *shell);
 int		ft_calclen2(int temp);
 void	expand_env_qm(char *ptr, char *argv, int *count_copy);
 void	ft_aux(t_shell *shell, char *argv, int *count_copy);
@@ -128,6 +126,8 @@ int		copy_env(t_shell *shell, char *input, char **environment_variabl);
 char	*get_ptr(t_shell *shell, char *ev);
 int		count_quotation_marks(t_shell *shell, char *my_input);
 void	count_dollar(t_shell *shell, char *my_input, int *count);
+void	set_s_i(t_shell *shell);
+void	start_nodo(t_cmd *new_cmd);
 
 /*-----CONDITIONS-----*/
 

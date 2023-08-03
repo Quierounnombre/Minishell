@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_node.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:49:35 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/23 14:50:52 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/08/03 15:13:36 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,8 @@ void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *input)
 			count += this_is_redirection(shell, new_cmd, &input[count]);
 		if (input[count] != '\0' && input[count] != '|'
 			&& input[count] != '<' && input[count] != '>')
-			count += this_is_argv(shell, new_cmd, &input[count]);	}
+			count += this_is_argv(shell, new_cmd, &input[count]);
+	}
 	if (new_cmd->argv[0])
 		ft_path(shell, new_cmd);
 }
