@@ -100,7 +100,7 @@ FILES_PARSE = check_pipes \
 			  check_redirect_env \
 			  count_env \
 			  count  \
-			  env \
+			  this_is_env \
 			  fill_node \
 			  fill_node2 \
 			  fill_node3 \
@@ -113,7 +113,8 @@ FILES_PARSE = check_pipes \
 			  separation \
 			  variable_qm \
 			  variable_qm2 \
-			  error \
+			  print_err \
+			  get_ptr \
 			  heredoc \
 			  check_redirection \
 			  copy_env \

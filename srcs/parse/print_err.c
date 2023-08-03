@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   print_err.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 18:28:26 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/12 16:22:08 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/08/03 12:25:34 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	print_err(char *text)
+t_bool	print_err(char *text)
 {
 	ft_printf("%s\n", text);
-	return (0);
+	return (false);
 }

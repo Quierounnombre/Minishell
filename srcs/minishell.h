@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/03 12:05:48 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/03 12:29:08 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,8 @@ void	ft_path(t_shell *shell, t_cmd *new_cmd);
 
 /*-----PARSE-----*/
 
-int		copy_env(t_shell *shell, char *input, char **environment_variabl);
-char	*get_ptr(t_shell *shell, char *ev);
 void	ptr_exists(char *ptr, int *size);
 int		argv_with_qm(t_shell *shell, char *my_input, char skip, int *size);
-int		copy_env(t_shell *shell, char *input, char **environment_variabl);
 int		this_is_redirection(t_shell *shell, t_cmd *new_cmd, char *my_input);
 void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input);
 char	*find_env(t_shell *shell, char *input, int *count);
@@ -118,7 +115,6 @@ void	copy_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c);
 int		copy_qm(t_shell *shell, char *argv, char *my_input, int *count_copy);
 void	check_argv(t_shell *shell, t_cmd *new_cmd);
 void	else_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c);
-int		print_err(char *text);
 void	separation(t_shell *shell, char *my_input);
 void	heredoc(t_red *tmp);
 void	heredoc_unlink(t_shell *shell);
@@ -129,6 +125,9 @@ t_bool	check_pipes(t_shell *shell, char *my_input);
 t_bool	check_redirection(t_shell *shell, char *my_input, int *count);
 t_bool	parse(t_shell *shell, char *input);
 t_bool	check_redirect_env(t_shell *shell, char *input, int *count);
+t_bool	print_err(char *text);
+int		copy_env(t_shell *shell, char *input, char **environment_variabl);
+char	*get_ptr(t_shell *shell, char *ev);
 
 /*-----CONDITIONS-----*/
 
