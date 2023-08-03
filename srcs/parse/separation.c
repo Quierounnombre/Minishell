@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   separation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:40:40 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/22 15:51:09 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/08/03 14:41:58 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ static int	count_command_token(t_shell *shell, char *my_input)
 	int	count;
 
 	count = 0;
-	while (my_input[count] != '\0' && !ft_strchr("| \t><", my_input[count]))
+	while (my_input[count] && !ft_strchr("| \t><", my_input[count]))
 	{
-		if (my_input[count] == '\"' || my_input[count] == '\'')
+		if (is_34_or_39(my_input[count]))
 			count += count_quotation_marks(shell, &my_input[count]);
 		if (my_input[count] == '$')
 			count_dollar(shell, my_input, &count);
-		if (my_input[count] != '\0' && !ft_strchr("| \t><", my_input[count]))
+		if (my_input[count] && !ft_strchr("| \t><", my_input[count]))
 			count++;
 	}
 	space_tab(my_input, &count);
@@ -41,7 +41,7 @@ static int	count_command_token(t_shell *shell, char *my_input)
 }
 
 //cuenta la cantidad de reedirecciones que hay en cada comando
-int	count_redirects(t_shell *shell, char *my_input)
+static int	count_redirects(t_shell *shell, char *my_input)
 {
 	int	count;
 
@@ -51,49 +51,25 @@ int	count_redirects(t_shell *shell, char *my_input)
 	if (my_input[count] == '>')
 		shell->s_i.size_out += 1;
 	count++;
-	if (my_input[count] == '<' || my_input[count] == '>')
+	if (is_greater_or_smaller(my_input[count]))
 		count++;
 	space_tab(my_input, &count);
 	while (my_input[count] != ' ' && my_input[count] != '\t'
-		&& my_input[count] != '\0' && my_input[count] != '|'
-		&& my_input[count] != '<' && my_input[count] != '>')
+		&& my_input[count] && is_pipe(my_input[count])
+		&& !is_greater_or_smaller(my_input[count]))
 		count++;
 	space_tab(my_input, &count);
 	return (count);
 }
 
-void	is_exit_code(t_shell *shell, int *count, char *input)
-{
-	*count += 1;
-	if (*count == 1 && (input[*count + 1] == '\t'
-			|| input[*count + 1] == '|' || input[*count + 1] == ' '
-			|| input[*count + 1] == '<' || input[*count + 1] == '>'))
-	{
-		shell->s_i.size_token++;
-		*count += 1;
-	}
-	else if ((input[*count - 2] == '|' || input[*count - 2] == ' '
-			|| input[*count - 2] == '<' || input[*count - 2] == '>'
-			|| input[*count - 2] == '\t') && (input[*count + 1] == '\t'
-			|| input[*count + 1] == '|' || input[*count + 1] == ' '
-			|| input[*count + 1] == '<' || input[*count + 1] == '>'))
-	{
-		shell->s_i.size_token++;
-		*count += 1;
-	}
-	else
-		*count += 1;
-}
-
-
 //cuenta la cantidad de argumentos de cada comando y las redirecciones
 static void	count_size(t_shell *shell, char *input, int *count)
 {
 	space_tab(input, count);
-	if (input[*count] == '<' || input[*count] == '>')
+	if (is_greater_or_smaller(input[*count]))
 		*count += count_redirects(shell, &input[*count]);
-	if (input[*count] != '\0' && input[*count] != '|'
-		&& input[*count] != '<' && input[*count] != '>')
+	if (input[*count] && !is_pipe(input[*count])
+		&& !is_greater_or_smaller(input[*count]))
 		*count += count_command_token(shell, &input[*count]);
 }
 
@@ -106,16 +82,16 @@ void	separation(t_shell *shell, char *my_input)
 
 	count = 0;
 	start_new_nodo(shell);
-	while (my_input[count] != '\0')
+	while (my_input[count])
 	{
 		start = count;
-		while (my_input[count] != '|' && my_input[count] != '\0')
+		while (!is_pipe(my_input[count]) && my_input[count])
 			count_size(shell, my_input, &count);
-		if (my_input[count] == '|' || my_input[count] == '\0')
+		if (is_pipe(my_input[count]) || my_input[count] == '\0')
 		{
 			new_cmd = NULL;
 			create_node(shell, new_cmd, &my_input[start]);
-			if (my_input[count] == '|')
+			if (is_pipe(my_input[count]))
 				count++;
 			start_new_nodo(shell);
 		}

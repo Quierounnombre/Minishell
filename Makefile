@@ -99,7 +99,7 @@ OBJS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .o, $(FILES_PROCESS)))
 FILES_PARSE = check_pipes \
 			  check_redirect_env \
 			  count_env \
-			  count  \
+			  count_dollar  \
 			  this_is_env \
 			  fill_node \
 			  fill_node2 \
@@ -118,6 +118,7 @@ FILES_PARSE = check_pipes \
 			  heredoc \
 			  check_redirection \
 			  copy_env \
+			  count_quotation_marks \
 
 PARSE_DIR = srcs/parse/
 SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))
