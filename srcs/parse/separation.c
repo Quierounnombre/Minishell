@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:40:40 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/03 14:56:06 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/03 15:50:56 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	count_command_token(t_shell *shell, char *my_input)
 	while (my_input[count] && !ft_strchr("| \t><", my_input[count]))
 	{
 		if (is_34_or_39(my_input[count]))
-			count += count_quotation_marks(shell, &my_input[count]);
+			count += count_quotation_marks(&my_input[count]);
 		if (my_input[count] == '$')
 			count_dollar(shell, my_input, &count);
 		if (my_input[count] && !ft_strchr("| \t><", my_input[count]))
@@ -55,7 +55,7 @@ static int	count_redirects(t_shell *shell, char *my_input)
 		count++;
 	space_tab(my_input, &count);
 	while (my_input[count] != ' ' && my_input[count] != '\t'
-		&& my_input[count] && is_pipe(my_input[count])
+		&& my_input[count] && !is_pipe(my_input[count])
 		&& !is_greater_or_smaller(my_input[count]))
 		count++;
 	space_tab(my_input, &count);

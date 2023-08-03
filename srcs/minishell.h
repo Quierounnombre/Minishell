@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/03 14:54:38 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/03 15:50:46 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ t_bool	check_redirect_env(t_shell *shell, char *input, int *count);
 t_bool	print_err(char *text);
 int		copy_env(t_shell *shell, char *input, char **environment_variabl);
 char	*get_ptr(t_shell *shell, char *ev);
-int		count_quotation_marks(t_shell *shell, char *my_input);
+int		count_quotation_marks(char *my_input);
 void	count_dollar(t_shell *shell, char *my_input, int *count);
 void	set_s_i(t_shell *shell);
 void	start_nodo(t_cmd *new_cmd);
