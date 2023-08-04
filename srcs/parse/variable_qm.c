@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:16:12 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/22 12:09:44 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:46:58 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,44 +18,6 @@
 @function check_env_qw busca el puntero de la variable para luego buscarla
 @function manage_count_env_qw gestiona las variables dentro del las " "
 */
-void	expand_env_qm(char *ptr, char *argv, int *count_copy)
-{
-	int	count_ptr;
-
-	count_ptr = 0;
-	while (ptr[count_ptr] != '=')
-		count_ptr++;
-	if (ptr[count_ptr] == '=')
-		count_ptr++;
-	while (ptr[count_ptr] != '\0')
-	{
-		argv[*count_copy] = ptr[count_ptr];
-		count_ptr++;
-		*count_copy += 1;
-	}
-}
-
-void	ft_aux(t_shell *shell, char *argv, int *count_copy)
-{
-	int	len;
-
-	len = ft_calclen2(shell->child_status);
-	len += *count_copy;
-	if (shell->child_status == 0)
-	{
-		argv[*count_copy] = '0';
-		*count_copy += 1;
-	}
-	else
-	{
-		*count_copy = len;
-		while (shell->child_status > 0)
-		{
-			argv[--len] = (shell->child_status % 10) + '0';
-			shell->child_status = shell->child_status / 10;
-		}
-	}
-}
 
 static void	count_env_qm(char *ptr, int *size)
 {

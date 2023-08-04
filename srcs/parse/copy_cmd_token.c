@@ -1,50 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_node.c                                        :+:      :+:    :+:   */
+/*   copy_cmd_token.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 21:49:35 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/03 15:13:36 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/08/04 15:01:35 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/08/04 15:43:39 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/*
-@function argv_with_qm si el argv tiene comillas contara todos los caracteres
-que tienen dentro
-@function copy_argv copia el comando o el argumento
-@function this_is_cmd_argv cuenta el tamaño del comando o del argumento
-y los copia
-@function copy_cmd_token copia los comandos argumentos redirecciones
-*/
-char	*find_env(t_shell *shell, char *input, int *count)
-{
-	char	*ptr;
-	int		ptr_count;
-	char	*environment_variabl;
-
-	ptr = NULL;
-	ptr_count = 0;
-	*count += 1;
-	environment_variabl = NULL;
-	*count += copy_env(shell, &input[*count], &environment_variabl);
-	if (environment_variabl)
-	{
-		ptr = get_ptr(shell, environment_variabl);
-		if (ptr)
-			find_start_of_str(ptr, &ptr_count);
-		if (ptr)
-		{
-			free(environment_variabl);
-			return (&ptr[ptr_count]);
-		}
-		free(environment_variabl);
-	}
-	return (NULL);
-}
 
 //cuenta la longitud de argv si es una variable y tiene espacios
 static int	manage_count_env_with_space(t_shell *shell, char *input, int *size)
@@ -72,10 +38,10 @@ static int	count_tam_argv(t_shell *shell, char *input, int *c)
 	int	size;
 
 	size = 0;
-	while (input[*c] != ' ' && input[*c] != '\t' && input[*c] != '>'
-		&& input[*c] != '\0' && input[*c] != '|' && input[*c] != '<')
+	while (input[*c] != ' ' && input[*c] != '\t' && input[*c]
+		&& !is_pipe(input[*c]) && !is_greater_or_smaller(input[*c]))
 	{
-		if (input[*c] == '\"' || input[*c] == '\'')
+		if (is_34_or_39(input[*c]))
 			*c += argv_with_qm(shell, &input[*c], input[*c], &size);
 		if (input[*c] == '$'
 			&& !ft_isalnum(input[*c + 1]) && input[*c + 1] != '?')
@@ -85,9 +51,9 @@ static int	count_tam_argv(t_shell *shell, char *input, int *c)
 		}
 		else if (input[*c] == '$')
 			*c += manage_count_env_with_space(shell, &input[*c], &size);
-		else if (input[*c] != ' ' && input[*c] != '\t' && input[*c] != '\0'
-			&& input[*c] != '>' && input[*c] != '|' && input[*c] != '<'
-			&& input[*c] != '\"' && input[*c] != '\'' && input[*c] != '$')
+		else if (input[*c] != ' ' && input[*c] != '\t' && input[*c]
+			&& !is_greater_or_smaller(input[*c]) && !is_pipe(input[*c])
+			&& !is_34_or_39(input[*c]) && input[*c] != '$')
 		{
 			size++;
 			*c += 1;
@@ -121,13 +87,13 @@ void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *input)
 
 	count = 0;
 	shell->s_i.ctoken = 0;
-	while (input[count] != '|' && input[count] != '\0')
+	while (!is_pipe(input[count]) && input[count])
 	{
 		space_tab(input, &count);
-		if (input[count] == '<' || input[count] == '>')
+		if (is_greater_or_smaller(input[count]))
 			count += this_is_redirection(shell, new_cmd, &input[count]);
-		if (input[count] != '\0' && input[count] != '|'
-			&& input[count] != '<' && input[count] != '>')
+		if (input[count] && !is_pipe(input[count])
+			&& !is_greater_or_smaller(input[count]))
 			count += this_is_argv(shell, new_cmd, &input[count]);
 	}
 	if (new_cmd->argv[0])

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   variable_qm2.c                                     :+:      :+:    :+:   */
+/*   exp_var_qm.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:28:46 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/21 18:36:02 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:44:59 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,4 @@ int	exp_var_qm(t_shell *shell, char *my_input, char *argv, int *count_copy)
 		free (environment_variabl);
 	}
 	return (count);
-}
-
-int	ft_calclen2(int temp)
-{
-	int	len;
-
-	len = 0;
-	if (temp == 0)
-		return (1);
-	while (temp)
-	{
-		temp /= 10;
-		len++;
-	}
-	return (len);
 }

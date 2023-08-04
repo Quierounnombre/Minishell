@@ -101,16 +101,11 @@ FILES_PARSE = check_pipes \
 			  count_env \
 			  count_dollar  \
 			  this_is_env \
-			  fill_node \
-			  fill_node2 \
-			  fill_node3 \
 			  parse \
-			  quotation_marks \
 			  redirection \
 			  create_node \
 			  separation \
 			  variable_qm \
-			  variable_qm2 \
 			  print_err \
 			  get_ptr \
 			  heredoc \
@@ -122,6 +117,20 @@ FILES_PARSE = check_pipes \
 			  ptr_exists \
 			  expand_env \
 			  copy_argv \
+			  find_env \
+			  copy_cmd_token \
+			  else_env \
+			  argv_with_qm \
+			  copy_tex_argv \
+			  copy_text_qm \
+			  check_argv \
+			  ft_calclen2 \
+			  exp_var_qm \
+			  ft_aux \
+			  expand_env_qm \
+			  argv_alnum \
+			  copy_qm \
+			  heredoc_unlink \
 
 PARSE_DIR = srcs/parse/
 SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))

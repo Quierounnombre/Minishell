@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 17:35:26 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/21 18:34:17 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:48:12 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 @function this_is_redirection gestiona las redirecciones y las copia
 */
 //cuenta el tamaño del nombre de la redireccion
-int	count_size_red(t_shell *shell, char *input)//19
+static int	count_size_red(t_shell *shell, char *input)//19
 {
 	int	count;
 	int	size;

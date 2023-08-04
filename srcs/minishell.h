@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/04 11:41:19 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:54:47 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,30 +89,24 @@ void	ft_path(t_shell *shell, t_cmd *new_cmd);
 
 /*-----PARSE-----*/
 
-int		argv_with_qm(t_shell *shell, char *my_input, char skip, int *size);
-int		this_is_redirection(t_shell *shell, t_cmd *new_cmd, char *my_input);
-char	*find_env(t_shell *shell, char *input, int *count);
-int		exp_var_qm(t_shell *shell, char *my_input, char *argv, int *count_copy);
-void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *input);
-void	create_node(t_shell *shell, t_cmd *new_cmd, char *my_input);
-int		ft_calclen2(int temp);
-void	expand_env_qm(char *ptr, char *argv, int *count_copy);
-void	ft_aux(t_shell *shell, char *argv, int *count_copy);
-int		manage_count_env(t_shell *shell, char *my_input, int *flag);
-char	*copy_tex_argv(char *input, int *c);
-char	*copy_text_qm(t_shell *shell, char *my_input, int *count);
-int		manage_count_env_qm(t_shell *shell, char *my_input, int *size);
-void	argv_alnum(char *argv, int *count_copy, int *count);
-int		this_is_env(t_shell *shell, t_cmd *new_cmd, char *input, int *count_t);
-int		copy_qm(t_shell *shell, char *argv, char *my_input, int *count_copy);
-void	check_argv(t_shell *shell, t_cmd *new_cmd);
-void	else_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c);
-void	separation(t_shell *shell, char *my_input);
 void	heredoc(t_red *tmp);
 void	heredoc_unlink(t_shell *shell);
-
-/*...PARSE...*/
-
+void	else_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c);
+void	separation(t_shell *shell, char *my_input);
+void	check_argv(t_shell *shell, t_cmd *new_cmd);
+int		this_is_env(t_shell *shell, t_cmd *new_cmd, char *input, int *count_t);
+void	argv_alnum(char *argv, int *count_copy, int *count);
+int		copy_qm(t_shell *shell, char *argv, char *my_input, int *count_copy);
+int		manage_count_env_qm(t_shell *shell, char *my_input, int *size);
+char	*copy_text_qm(t_shell *shell, char *my_input, int *count);
+char	*copy_tex_argv(char *input, int *c);
+int		manage_count_env(t_shell *shell, char *my_input, int *flag);
+void	ft_aux(t_shell *shell, char *argv, int *count_copy);
+void	expand_env_qm(char *ptr, char *argv, int *count_copy);
+int		ft_calclen2(int temp);
+void	create_node(t_shell *shell, t_cmd *new_cmd, char *my_input);
+int		exp_var_qm(t_shell *shell, char *my_input, char *argv, int *count_copy);
+int		argv_with_qm(t_shell *shell, char *my_input, char skip, int *size);
 t_bool	check_pipes(t_shell *shell, char *my_input);
 t_bool	check_redirection(t_shell *shell, char *my_input, int *count);
 t_bool	parse(t_shell *shell, char *input);
@@ -127,6 +121,8 @@ void	start_nodo(t_cmd *new_cmd);
 void	ptr_exists(char *ptr, int *size);
 void	expand_env(char *ptr, t_cmd *new_cmd, int *i, int *copy);
 void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input);
+char	*find_env(t_shell *shell, char *input, int *count);
+void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *input);
 
 /*-----CONDITIONS-----*/
 
