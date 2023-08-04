@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/03 15:50:46 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/04 11:41:19 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,8 @@ void	ft_path(t_shell *shell, t_cmd *new_cmd);
 
 /*-----PARSE-----*/
 
-void	ptr_exists(char *ptr, int *size);
 int		argv_with_qm(t_shell *shell, char *my_input, char skip, int *size);
 int		this_is_redirection(t_shell *shell, t_cmd *new_cmd, char *my_input);
-void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input);
 char	*find_env(t_shell *shell, char *input, int *count);
 int		exp_var_qm(t_shell *shell, char *my_input, char *argv, int *count_copy);
 void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *input);
@@ -102,12 +100,10 @@ void	expand_env_qm(char *ptr, char *argv, int *count_copy);
 void	ft_aux(t_shell *shell, char *argv, int *count_copy);
 int		manage_count_env(t_shell *shell, char *my_input, int *flag);
 char	*copy_tex_argv(char *input, int *c);
-void	expand_env(char *ptr, t_cmd *new_cmd, int *i, int *copy);
 char	*copy_text_qm(t_shell *shell, char *my_input, int *count);
 int		manage_count_env_qm(t_shell *shell, char *my_input, int *size);
 void	argv_alnum(char *argv, int *count_copy, int *count);
 int		this_is_env(t_shell *shell, t_cmd *new_cmd, char *input, int *count_t);
-void	copy_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c);
 int		copy_qm(t_shell *shell, char *argv, char *my_input, int *count_copy);
 void	check_argv(t_shell *shell, t_cmd *new_cmd);
 void	else_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c);
@@ -128,6 +124,9 @@ int		count_quotation_marks(char *my_input);
 void	count_dollar(t_shell *shell, char *my_input, int *count);
 void	set_s_i(t_shell *shell);
 void	start_nodo(t_cmd *new_cmd);
+void	ptr_exists(char *ptr, int *size);
+void	expand_env(char *ptr, t_cmd *new_cmd, int *i, int *copy);
+void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input);
 
 /*-----CONDITIONS-----*/
 

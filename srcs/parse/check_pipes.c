@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 21:21:07 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/03 12:03:07 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/04 12:09:13 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,13 @@ t_bool	check_pipes(t_shell *shell, char *my_input)
 	space_tab(my_input, &count);
 	if (is_pipe(my_input[count]))
 		return (print_err("Minishell syntax error near unexpected token `|'"));
-	while (my_input[count])
+	while (my_input && my_input[count])
 	{
 		space_tab(my_input, &count);
 		if (!check_special(shell, my_input, &count))
 			return (false);
 		if (!is_pipe(my_input[count]) && !is_34_or_39(my_input[count])
-			&& !is_greater_or_smaller(my_input[count]))
+			&& !is_greater_or_smaller(my_input[count]) && my_input[count])
 			count++;
 	}
 	return (true);

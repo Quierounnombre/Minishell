@@ -4,8 +4,8 @@ ERRORES
 -Peta al llamar a printf con comillas (ej: printf 4\n -> OK. ej printf "4\n" -> buffer overflow)
 -src = '\n'
 
-COSAS A MEJORAR
--Señales
-
 DUDAS
 -$? Deberia dar Invalid argument? bash saca otra cosa
+
+BASH FURULA DISTINTO
+-ls >b | <b wc -Nosotros syntax erro near unexpected token, bash (0, 0, 0)

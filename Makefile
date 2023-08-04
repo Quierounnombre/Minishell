@@ -2,7 +2,7 @@ NAME = minishell
 LIBFT = libft_def/libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror $(RL_INC)#-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror $(RL_INC) -g3 -fsanitize=address
 LIBS_FLAGS = -lreadline
 
 RL_LIB = -L /Users/$(USER)/.brew/opt/readline/lib
@@ -104,7 +104,6 @@ FILES_PARSE = check_pipes \
 			  fill_node \
 			  fill_node2 \
 			  fill_node3 \
-			  fill_node4 \
 			  parse \
 			  quotation_marks \
 			  redirection \
@@ -120,6 +119,9 @@ FILES_PARSE = check_pipes \
 			  count_quotation_marks \
 			  set_s_i \
 			  start_nodo \
+			  ptr_exists \
+			  expand_env \
+			  copy_argv \
 
 PARSE_DIR = srcs/parse/
 SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))
