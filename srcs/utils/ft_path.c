@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:02:32 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/02 15:40:25 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/09 15:08:31 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	free_path(char **separate_path)
 		free(separate_path[i]);
 		i++;
 	}
+	free(separate_path);
 }
 
 static char	*should_get_path(t_cmd *new_cmd, t_shell *shell, int *count,

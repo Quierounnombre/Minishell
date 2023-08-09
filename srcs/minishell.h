@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/04 16:54:47 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:53:23 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	expand_env(char *ptr, t_cmd *new_cmd, int *i, int *copy);
 void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input);
 char	*find_env(t_shell *shell, char *input, int *count);
 void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *input);
+int		this_is_redirection(t_shell *shell, t_cmd *new_cmd, char *my_input);
 
 /*-----CONDITIONS-----*/
 

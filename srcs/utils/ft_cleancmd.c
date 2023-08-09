@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:35:05 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/02 14:40:03 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/09 14:41:37 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,21 @@ void	ft_cleancmd(void *node)
 	t_list	*lst;
 	t_cmd	*cmd;
 	char	*tmp_argv;
+	char	**init_argv;
 
 	lst = node;
 	cmd = lst->content;
-	while (*(cmd->argv))
+	init_argv = cmd->argv;
+	if (cmd->argv)
 	{
-		tmp_argv = *cmd->argv;
-		cmd->argv++;
-		if (*tmp_argv)
-			free(tmp_argv);
+		while (*(cmd->argv))
+		{
+			tmp_argv = *cmd->argv;
+			cmd->argv++;
+			if (*tmp_argv)
+				free(tmp_argv);
+		}
+		free(init_argv);
 	}
 	if (cmd->filepath)
 		free(cmd->filepath);

@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/04 11:43:08 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/09 15:58:30 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ int	main(int argc, char **argv, char **env)
 			if (input)
 			{
 				add_history(input);
-				if (input && parse(shell, input))
+				if (parse(shell, input))
 					process_executer(shell);
 				free(input);
+				input = NULL;
 			}
 			else
 				sig_d(shell);

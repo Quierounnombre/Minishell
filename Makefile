@@ -2,7 +2,7 @@ NAME = minishell
 LIBFT = libft_def/libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror $(RL_INC) -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror $(RL_INC) #-g3 -fsanitize=address
 LIBS_FLAGS = -lreadline
 
 RL_LIB = -L /Users/$(USER)/.brew/opt/readline/lib
@@ -98,14 +98,12 @@ OBJS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .o, $(FILES_PROCESS)))
 
 FILES_PARSE = check_pipes \
 			  check_redirect_env \
-			  count_env \
+			  manage_count_env \
 			  count_dollar  \
 			  this_is_env \
 			  parse \
-			  redirection \
 			  create_node \
 			  separation \
-			  variable_qm \
 			  print_err \
 			  get_ptr \
 			  heredoc \
@@ -131,6 +129,8 @@ FILES_PARSE = check_pipes \
 			  argv_alnum \
 			  copy_qm \
 			  heredoc_unlink \
+			  manage_count_env_qm \
+			  this_is_redirection \
 
 PARSE_DIR = srcs/parse/
 SRCS_PARSE = $(addprefix $(PARSE_DIR), $(addsuffix .c, $(FILES_PARSE)))
