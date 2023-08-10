@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:35:05 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/09 14:41:37 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/10 19:41:34 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_cleancmd(void *node)
 	t_cmd	*cmd;
 	char	*tmp_argv;
 	char	**init_argv;
-
+	
 	lst = node;
 	cmd = lst->content;
 	init_argv = cmd->argv;
@@ -50,7 +50,6 @@ static void	clean_the_redirs(t_cmd *cmd)
 {
 	if (cmd->redir_in)
 	{
-		close(cmd->redir_in->fd);
 		if (cmd->redir_in->tipe == FT_RED_HEREDOC)
 			unlink(cmd->redir_in->file);
 		free(cmd->redir_in->file);
@@ -58,7 +57,6 @@ static void	clean_the_redirs(t_cmd *cmd)
 	}
 	if (cmd->redir_out)
 	{
-		close(cmd->redir_out->fd);
 		free(cmd->redir_out->file);
 		free(cmd->redir_out);
 	}

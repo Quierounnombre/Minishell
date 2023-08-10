@@ -2,7 +2,7 @@ NAME = minishell
 LIBFT = libft_def/libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror $(RL_INC) #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror $(RL_INC) -g3 #-fsanitize=address
 LIBS_FLAGS = -lreadline
 
 RL_LIB = -L /Users/$(USER)/.brew/opt/readline/lib
@@ -157,7 +157,7 @@ SRCS = $(SRCS_CMD) $(FILE_MAIN) $(SRCS_UTILS) $(SRCS_UTILS) $(SRCS_PROCESS) $(SR
 all: libft $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(LIBS_FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(RL_LIB)
+	$(CC) $(CFLAGS) $(LIBS_FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(RL_LIB)
 	@echo "$(LBLUE)\n$(NAME) compilado con éxito\n$(RESET)"
 
 clean:
@@ -166,7 +166,7 @@ clean:
 	echo "$(YELLOW)\nArchivos .o $(NAME) eliminados\n$(RESET)"
 
 fclean:
-	@$(RM) $(OBJS)
+	$(RM) $(OBJS)
 	echo "$(YELLOW)\nArchivos .o $(NAME) eliminados\n$(RESET)"
 	@$(MAKE) fclean -C ./libft_def
 	@$(RM) $(NAME) $(MLX42)
@@ -181,4 +181,4 @@ libft:
 do_clean:	all clean
 
 .PHONY: all clean fclean re libft do_clean
-.SILENT:
+#.SILENT:

@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:42:20 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/09 14:49:22 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/10 18:03:13 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	sig_d(t_shell *shell)
 {
+	ft_printf("patata\n");
 	ft_printf("exit\n");
 	ft_exit(shell);
 }
