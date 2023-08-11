@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:35:05 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/11 11:26:36 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:42:09 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 static void	clean_the_redirs(t_cmd *cmd);
 
-/*
-Libera la memoria reservada para un nodo comando
-@param node el puntero del nodo de cmd a borrar
-*/
 void	ft_cleancmd(void *node)
 {
 	t_list	*lst;

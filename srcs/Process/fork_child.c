@@ -3,19 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   fork_child.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 15:44:09 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/17 17:00:27 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:40:17 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-Inicia un hijo y lo ejecuta
-@param estructura con información de uso general
-*/
 void	fork_child(t_shell *shell)
 {
 	t_child	*child;

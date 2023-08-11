@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:21:06 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/01 15:27:09 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:22:40 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	do_build_in(t_cmd *cmd, t_shell *shell)
 		ft_cd(cmd->argv[1], shell);
 	if (ft_strcmp(cmd->argv[0], "pwd"))
 		ft_pwd(shell->env);
-	if (ft_strcmp(cmd->argv[0], "export"))//falta export sin argumentos
+	if (ft_strcmp(cmd->argv[0], "export"))
 		do_export(cmd, shell);
 	if (ft_strcmp(cmd->argv[0], "unset"))
 		do_unset(cmd, shell);

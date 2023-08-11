@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:58:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/09 15:57:45 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:40:21 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 static void	std_red(t_child *child, t_shell *shell);
 
-/*
-Gestiona los fd del proceso hijo y ejecuta el cmd dado
-@param shell estructura de uso general con las pipes
-@param child estructura con el comando y el pid del hijo
-*/
 void	ft_child(t_shell *shell, t_child *child)
 {
 	signal(SIGQUIT, SIG_DFL);

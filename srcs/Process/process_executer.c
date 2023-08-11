@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/11 11:56:23 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:40:42 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@ static t_bool	init_pipes(t_shell *shell);
 static t_bool	make_pipes(t_shell *shell);
 static void		wait_for_all(t_shell *shell);
 static int		check_built_in(t_shell *shell);
-
-/*
-Wraper principal, es la función que gestiona todo lo que esta relacionado con
-la ejecución de los comandos
-@param Estructura de uso general
-*/
-//ejecuta los built_in si es solo un comando
 
 void	process_executer(t_shell *shell)
 {

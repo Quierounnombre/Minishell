@@ -6,13 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 15:01:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/09 14:15:07 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:35:49 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-//cuenta la longitud de argv si es una variable y tiene espacios
 static int	manage_count_env_with_space(t_shell *shell, char *input, int *size)
 {
 	int		count;
@@ -32,7 +31,6 @@ static int	manage_count_env_with_space(t_shell *shell, char *input, int *size)
 	return (count);
 }
 
-// cuenta la longitud del argumento
 static int	count_tam_argv(t_shell *shell, char *input, int *c)
 {
 	int	size;
@@ -62,7 +60,6 @@ static int	count_tam_argv(t_shell *shell, char *input, int *c)
 	return (size);
 }
 
-//cuenta la longitud y copia cada argumento
 static int	this_is_argv(t_shell *shell, t_cmd *new_cmd, char *my_input)
 {
 	int	count;
@@ -80,7 +77,6 @@ static int	this_is_argv(t_shell *shell, t_cmd *new_cmd, char *my_input)
 	return (count);
 }
 
-//llena el nodo copiandolos comandos argumentos y redirecciones
 void	copy_cmd_token(t_shell *shell, t_cmd *new_cmd, char *input)
 {
 	int	count;

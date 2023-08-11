@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:44:36 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/04 11:46:27 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:36:25 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ static int	check_spaces(t_cmd *new_cmd, char **argv_env, int *count_env,
 	}
 	return (copy);
 }
-
-//WHY count_env, is its gonna be alwaays 0
 
 static void	else_case(t_cmd *new_cmd, int *i, char **argv_env, int *copy)
 {
@@ -76,6 +74,3 @@ void	expand_env(char *ptr, t_cmd *new_cmd, int *i, int *copy)
 	*copy += check_spaces(new_cmd, argv_env, &count_env, i);
 	*copy = ft_strlen(new_cmd->argv[*i]);
 }
-
-	//No usas copy?? osea para que += si luego lo reasignas y en el proceso
-	//no se hace nada

@@ -6,34 +6,15 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:19:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/02 15:58:43 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:41:42 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_bool	update_shell_lvl(t_shell *shell);
+static t_bool	update_shell_lvl(t_shell *shell);
+static t_bool	free_clone_env(char **env);
 
-//Libera el env en caso de error
-static t_bool	free_clone_env(char **env)
-{
-	int		i;
-
-	i = 0;
-	while (env[i])
-	{
-		free(env[i]);
-		i++;
-	}
-	free(env);
-	return (false);
-}
-
-/*
-Clona la variable env para que pueda ser usarse en la shell
-@param env el env actual a la hora de crear la minishell
-@param shell almacena la variable de env
-*/
 t_bool	clone_env(char **env, t_shell *shell)
 {
 	char	**local_env;
@@ -62,7 +43,21 @@ t_bool	clone_env(char **env, t_shell *shell)
 	return (true);
 }
 
-t_bool	update_shell_lvl(t_shell *shell)
+static t_bool	free_clone_env(char **env)
+{
+	int		i;
+
+	i = 0;
+	while (env[i])
+	{
+		free(env[i]);
+		i++;
+	}
+	free(env);
+	return (false);
+}
+
+static t_bool	update_shell_lvl(t_shell *shell)
 {
 	char	*s;
 	char	*s_value;

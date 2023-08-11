@@ -6,19 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:56:24 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/02 16:02:28 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:42:57 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../minishell.h"
 
-/*
-Inicializa todas las estructuras y elementos necesarios para el programa
-@param shell recibe la dirección de memoria para cargar el puntero
-@param env el enviroment que se le pasa a la shell
-@return false en caso de error, true si todo esta bien
-*/
 t_bool	start(t_shell **shell, char **env)
 {
 	if (shell)

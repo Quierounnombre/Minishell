@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:33:29 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/04 15:53:41 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:36:12 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ static void	copy_next_var(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 	}
 }
 
-// busca la variable en env y la copia y divide en argv
 void	else_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 {
 	char	*ptr;

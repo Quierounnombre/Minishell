@@ -6,16 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:02:23 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/02 15:45:11 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:42:06 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-	libera la memoria reservada por un hijo
-	@param node el nodo de la lista con el hijo
-*/
 void	ft_cleanchild(void *node)
 {
 	t_list	*lst;

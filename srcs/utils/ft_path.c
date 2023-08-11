@@ -6,17 +6,29 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:02:32 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/09 15:08:31 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:17:26 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	free_path(char **separate_path)
+static void	fill_argv(t_cmd *new_cmd, char *path_with_command)
+{
+	free(new_cmd->argv[0]);
+	new_cmd->argv[0] = ft_strdup(path_with_command);
+	new_cmd->filepath = path_with_command;
+}
+
+static void	free_path(char **separate_path, char *path_with_command,
+	t_cmd *new_cmd)
 {
 	int	i;
 
 	i = 0;
+	if (access(path_with_command, F_OK) == 0)
+		fill_argv(new_cmd, path_with_command);
+	else
+		free(path_with_command);
 	while (separate_path[i])
 	{
 		free(separate_path[i]);
@@ -49,13 +61,6 @@ static char	*should_get_path(t_cmd *new_cmd, t_shell *shell, int *count,
 	return (ptr);
 }
 
-static void	fill_argv(t_cmd *new_cmd, char *path_with_command)
-{
-	free(new_cmd->argv[0]);
-	new_cmd->argv[0] = ft_strdup(path_with_command);
-	new_cmd->filepath = path_with_command;
-}
-
 void	ft_path(t_shell *shell, t_cmd *new_cmd)
 {
 	int		count;
@@ -79,8 +84,6 @@ void	ft_path(t_shell *shell, t_cmd *new_cmd)
 			free(path_with_slash);
 			count++;
 		}
-		if (access(path_with_command, F_OK) == 0)
-			fill_argv(new_cmd, path_with_command);
-		free_path(separate_path);
+		free_path(separate_path, path_with_command, new_cmd);
 	}
 }

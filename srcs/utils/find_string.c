@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:59:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/31 17:43:17 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:42:03 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ static int	ftt_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-/*
-Localiza un str en un env
-@param env el enviroment donde buscar
-@param target el string a encontrar
-@return la posición del string
-*/
 int	find_string(char **env, char *target)
 {
 	int		i;

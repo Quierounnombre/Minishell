@@ -6,13 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:31:23 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/03 14:49:52 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:36:03 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-//cuenta los argumentos de las variables
 void	count_dollar(t_shell *shell, char *my_input, int *count)
 {
 	int	flag;

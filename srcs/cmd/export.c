@@ -6,13 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 15:31:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/01 15:33:39 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:39:39 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-//Libera el env en caso de error
 static t_bool	free_clone_env(char **env)
 {
 	int		i;
@@ -27,7 +26,6 @@ static t_bool	free_clone_env(char **env)
 	return (false);
 }
 
-//En caso de ser necesario genera un nuevo env
 static void	make_new_env(t_shell *shell, char *s, int size)
 {
 	char	**local_env;
@@ -98,11 +96,6 @@ static char	*load_target(char *s)
 	return (target);
 }
 
-/*
-Exporta una variable al env, en caso que exista la sustituye
-@param shell donde esta el ambiente a modificar
-@param s la linea de argumentos que le pasan a export
-*/
 void	ft_export(t_shell *shell, char	*s)
 {
 	int		i;

@@ -6,21 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:40:40 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/09 14:33:51 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:37:39 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-@function count_quotation_marks si encuentra comillas recorre el contenido
-@function count_command_token recorre el contenido de un argumento normal
-@function count_redirects cuenta redirecciones y los recorre
-@function count_size cuenta el tamaño de los tokens
-@function separation cuenta tamaño de la entrada (los tokens) y crea la lista
-con el contenido
-*/
-//cuenta los argumentos de cada comando
 static int	count_command_token(t_shell *shell, char *my_input)
 {
 	int	count;
@@ -40,7 +31,6 @@ static int	count_command_token(t_shell *shell, char *my_input)
 	return (count);
 }
 
-//cuenta la cantidad de reedirecciones que hay en cada comando
 static int	count_redirects(t_shell *shell, char *my_input)
 {
 	int	count;
@@ -62,7 +52,6 @@ static int	count_redirects(t_shell *shell, char *my_input)
 	return (count);
 }
 
-//cuenta la cantidad de argumentos de cada comando y las redirecciones
 static void	count_size(t_shell *shell, char *input, int *count)
 {
 	space_tab(input, count);
@@ -73,7 +62,6 @@ static void	count_size(t_shell *shell, char *input, int *count)
 		*count += count_command_token(shell, &input[*count]);
 }
 
-//separa el input en comandos, argumentos y redirecciones
 void	separation(t_shell *shell, char *my_input)
 {
 	int		count;

@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 16:23:56 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/23 16:29:45 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:39:23 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-//Libera el env en caso de error
 static t_bool	free_clone_env(char **env)
 {
 	int		i;
@@ -50,7 +49,6 @@ static void	local_copy_env(t_shell *shell, int target, char **local_env)
 	local_env[i - correction] = NULL;
 }
 
-//En caso de ser necesario genera un nuevo env
 static void	make_new_env(t_shell *shell, int target, int size)
 {
 	char	**local_env;
@@ -79,11 +77,6 @@ static char	*load_target(char *s)
 	return (target);
 }
 
-/*
-Elimina una variable dada del env
-@param shell porta el env actual y en caso de error para eliminar la shell
-@param s la variable a eliminar
-*/
 void	ft_unset(t_shell *shell, char *s)
 {
 	int		i;

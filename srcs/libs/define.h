@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 16:57:17 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/07/31 17:25:39 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:38:51 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../minishell.h"
 
 /*
-define redirecciones
+Redirections
 */
 
 # ifndef FT_RED_STD
@@ -39,7 +39,7 @@ define redirecciones
 #  define FT_RED_HEREDOC 260
 # endif
 
-//Redefinidos sus valores para el que codigo sea compatible
+//Redefine for compatibility
 
 # ifndef RED_INPUT
 #  define RED_INPUT 21
@@ -62,7 +62,7 @@ define redirecciones
 # endif
 
 //------------------------------------------------------------
-//Define para facilitar el uso de las pipes
+//Pipes
 
 # ifndef READ
 #  define READ 0
@@ -79,6 +79,9 @@ define redirecciones
 # ifndef PIPE_NEW
 #  define PIPE_NEW 1
 # endif
+
+//------------------------------------------------------------
+//strings
 
 # ifndef PROMPT
 #  define PROMPT "Minishell-> "

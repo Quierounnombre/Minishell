@@ -6,16 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:44:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/31 14:04:21 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:40:23 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-Gestiona la apertura de la redirección del tipo '<'.
-@param shell la estructura general con toda la información relacionada
-*/
 void	input_redirect(t_cmd *cmd, t_shell *shell)
 {
 	int		fd_input;

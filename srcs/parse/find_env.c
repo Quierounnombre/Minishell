@@ -6,20 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:49:35 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/04 15:35:57 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:36:30 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-@function argv_with_qm si el argv tiene comillas contara todos los caracteres
-que tienen dentro
-@function copy_argv copia el comando o el argumento
-@function this_is_cmd_argv cuenta el tamaño del comando o del argumento
-y los copia
-@function copy_cmd_token copia los comandos argumentos redirecciones
-*/
 char	*find_env(t_shell *shell, char *input, int *count)
 {
 	char	*ptr;

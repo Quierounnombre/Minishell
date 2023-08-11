@@ -6,14 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:12:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/04 11:15:58 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:37:24 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-//cuenta la longitud de argv que es una variable con espacios,
-//lo cuenta hasta el primer espacio que encuentra
 void	ptr_exists(char *ptr, int *size)
 {
 	int	count_ptr;

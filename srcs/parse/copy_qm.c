@@ -6,19 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:33:59 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/04 16:54:38 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:35:56 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-@function copy_quotation_marks compia el contenido de las comillas
-@function this_is_quotation_marks revisa que comilla es y compia el contenido
-@function copy_qm copia el contenido de las comillas
-*/
-
-//copia el nombre de redireccion si esta entre comillas
 int	copy_qm(t_shell *shell, char *argv, char *my_input, int *count_copy)
 {
 	char	skip;

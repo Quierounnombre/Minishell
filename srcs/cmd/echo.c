@@ -6,16 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:43:02 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/31 17:38:21 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:39:53 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-Imprime el texto que se le indica por consola.
-En el caso de tener la flag -n no imprime el salto de linea
-*/
 static void	print_echo(t_cmd *cmd, int i)
 {
 	while (cmd->argv[i])

@@ -3,19 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_executer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:49:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/22 20:36:06 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:39:57 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-Seleciona el primer comando, hace el fork, gestiona los errores y lo ejecuta.
-@param shell es la estructura general de la consola, necesaria para el fork
-*/
 void	cmd_executer(t_cmd *cmd, t_shell *shell)
 {
 	if (is_built_in(cmd))

@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:52:38 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/02 13:01:55 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:40:01 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@ static void	change_dir(t_shell *shell, const char *dir);
 static char	*set_pwd_str(t_shell *shell, char *pwd);
 static void	ft_reset_to_default(t_shell *shell);
 
-/*
-Cambia de direcctorio al objetivo
-@param dir el directorio a donde vamos a cambiar
-@param shell porta el env y en caso de error para cerrar la shell
-*/
 void	ft_cd(const char *dir, t_shell *shell)
 {
 	if (dir)

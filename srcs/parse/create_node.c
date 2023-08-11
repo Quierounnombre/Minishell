@@ -6,18 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:39:31 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/09 11:20:48 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:36:08 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-@function check_size_redir revisa si hay alguna redireccion
-@function create_node creara el nodo lo llenara de informacion y lo añade a la
-lista
-*/
-//llena los nodos de informacion y crea una lista enlazada
 void	create_node(t_shell *shell, t_cmd *new_cmd, char *my_input)
 {
 	new_cmd = (t_cmd *)malloc(sizeof(t_cmd));

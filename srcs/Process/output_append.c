@@ -3,19 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   output_append.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 10:25:48 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/23 11:17:26 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:40:37 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-Gestiona la redirección del tipo '>>'
-@param shell estructura general con la información necesaria
-*/
 void	output_append(t_cmd *cmd, t_shell *shell)
 {
 	int		fd_output;

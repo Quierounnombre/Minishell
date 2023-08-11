@@ -6,18 +6,11 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:16:12 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/09 10:50:43 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:36:57 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-/*
-@function expand_variable_qw expande la variable entre las " "
-@function exp_var_qm copia el nombre lo busca en el env y lo copia
-@function count_env_qw cuenta la cantidad de caracteres de la variable expandida
-@function check_env_qw busca el puntero de la variable para luego buscarla
-@function manage_count_env_qw gestiona las variables dentro del las " "
-*/
 
 static void	count_env_qm(char *ptr, int *size)
 {

@@ -6,21 +6,13 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 17:35:26 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/09 10:51:43 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:34:51 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-@function count_size_red cuenta el tamaño del nombre de archivo de redireccion
-@function copy_red copia el nombre del archivo de redireccion
-@function lstnew_red crea el nodo y lo rellena de informacion
-@function ft_input_output indica que tipo de redireccion es
-@function this_is_redirection gestiona las redirecciones y las copia
-*/
-//cuenta el tamaño del nombre de la redireccion
-static int	count_size_red(t_shell *shell, char *input)//19
+static int	count_size_red(t_shell *shell, char *input)
 {
 	int	count;
 	int	size;
@@ -48,7 +40,6 @@ static int	count_size_red(t_shell *shell, char *input)//19
 	return (size);
 }
 
-//copia el nombre de redireccion
 static void	copy_red(t_shell *shell, char *my_input, char *file)
 {
 	int	count;
@@ -78,7 +69,6 @@ static void	copy_red(t_shell *shell, char *my_input, char *file)
 	file[count_copy] = '\0';
 }
 
-//copia el nombre de la redireccion
 static t_red	*lstnewred(t_shell *shell, t_cmd *new_cmd, char *input, int red)
 {
 	t_red	*lst;
@@ -103,7 +93,6 @@ static t_red	*lstnewred(t_shell *shell, t_cmd *new_cmd, char *input, int red)
 	return (lst);
 }
 
-//copia las redirecciones e indica que tipo de redirecion es
 static void	ft_input_output(t_shell *shell, t_cmd *new_cmd, char *input)
 {
 	t_red	*tmp;
@@ -131,7 +120,6 @@ static void	ft_input_output(t_shell *shell, t_cmd *new_cmd, char *input)
 	}
 }
 
-//copia las redirecciones e indica que tipo de redirecion es
 int	this_is_redirection(t_shell *shell, t_cmd *new_cmd, char *my_input)
 {
 	int	count;

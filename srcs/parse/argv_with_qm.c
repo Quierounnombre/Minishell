@@ -6,13 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 16:12:25 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/04 16:12:53 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:35:00 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-//tamaño de redireccion con el nombre que tiene comillas
 int	argv_with_qm(t_shell *shell, char *my_input, char skip, int *size)
 {
 	int	count;

@@ -6,13 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:14:17 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/04 11:48:02 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:35:37 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-//copia la variable expandiendola y separandola en varios argv si hace falta
 static void	copy_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 {
 	if (!ft_isalnum(input[*c + 1]) && input[*c + 1] != '?')
@@ -40,7 +39,6 @@ static void	copy_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 		else_variable(shell, new_cmd, input, c);
 }
 
-//copia el arg
 void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input)
 {
 	int	c;

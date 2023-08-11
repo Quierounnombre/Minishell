@@ -129,7 +129,6 @@ FILES_PARSE = check_pipes \
 			  expand_env_qm \
 			  argv_alnum \
 			  copy_qm \
-			  heredoc_unlink \
 			  manage_count_env_qm \
 			  this_is_redirection \
 

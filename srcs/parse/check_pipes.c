@@ -6,21 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 21:21:07 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/04 12:09:13 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:35:25 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-@function check_pipe_end revisa si el pipe esta escrito bien
-@function check_redirection revisa las redirecciones
-@function quotation_marks recorre y revisa si son par o inpar
-@function check_special checkea caracteres especiales
-@function check_pipes revisa las comillas y si los pipes estan bien y la
-cantidad de comandos
-*/
-//revisa si los pipes estan bien escritas
 static t_bool	check_pipe_end(t_shell *shell, char *my_input, int *count)
 {
 	(*count)++;
@@ -35,7 +26,6 @@ static t_bool	check_pipe_end(t_shell *shell, char *my_input, int *count)
 	return (true);
 }
 
-//revisa si las comillas estan cerradas
 static t_bool	quotation_marks(char *my_input, int *count)
 {
 	char	skip;
@@ -52,7 +42,6 @@ static t_bool	quotation_marks(char *my_input, int *count)
 	return (false);
 }
 
-//revisa las comillas pipe y redirecciones
 static t_bool	check_special(t_shell *shell, char *my_input, int *count)
 {
 	if (is_34_or_39(my_input[*count]))
@@ -76,7 +65,6 @@ static t_bool	check_special(t_shell *shell, char *my_input, int *count)
 	return (true);
 }
 
-//revisa si la entrada esta bien escrita
 t_bool	check_pipes(t_shell *shell, char *my_input)
 {
 	int	count;

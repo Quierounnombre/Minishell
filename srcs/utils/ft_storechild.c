@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_storechild.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 16:03:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/17 19:03:30 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:42:19 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 
 static void	store_in_lst(t_shell *shell, t_list *node);
 
-/*
-Store a node of the list of childs
-@param pid the value of the pid to be store
-@param shell es la estructura general
-@return true si todo va bien, false si falla
-*/
 t_bool	store_child(pid_t pid, t_shell *shell)
 {
 	t_child	*content;

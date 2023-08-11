@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_childs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 12:17:24 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/07/17 19:43:36 by lyandriy         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:40:28 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 static t_bool	free_child(t_shell *shell);
 static void		set_limits(t_shell *shell);
 
-/*
-Esta función crea una seríe n de estructuras hijo, en función del
-numero de comandos
-@param shell la estructura de uso general
-@return Verdadero si malloc no falla, falso si lo hace.
-*/
 t_bool	make_childs(t_shell *shell)
 {
 	shell->cmds->current = shell->cmds->lst_head;
@@ -35,7 +29,6 @@ t_bool	make_childs(t_shell *shell)
 	return (true);
 }
 
-//Libera la lista entera en caso de que pete
 static t_bool	free_child(t_shell *shell)
 {
 	shell->cmds->current = shell->cmds->lst_head;
