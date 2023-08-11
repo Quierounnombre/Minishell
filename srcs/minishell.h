@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/09 10:53:23 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:26:21 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	space_tab(char *my_input, int *count);
 void	find_start_of_str(char *ptr, int *ptr_count);
 void	lstadd_back_nodo(t_red **lst, t_red *new);
 void	ft_path(t_shell *shell, t_cmd *new_cmd);
+t_bool	should_be_close(int fd);
 
 /*-----PARSE-----*/
 

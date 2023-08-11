@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/10 19:19:29 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:20:41 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static t_bool	init_pipes(t_shell *shell);
 static t_bool	make_pipes(t_shell *shell);
 static void		wait_for_all(t_shell *shell);
-static int		check_built_in(t_shell *shell, int *fd);
+static int		check_built_in(t_shell *shell);
 
 /*
 Wraper principal, es la función que gestiona todo lo que esta relacionado con
@@ -23,9 +23,38 @@ la ejecución de los comandos
 @param Estructura de uso general
 */
 //ejecuta los built_in si es solo un comando
-static int	check_built_in(t_shell *shell, int *fd)
+
+void	process_executer(t_shell *shell)
+{
+	shell->childs->current = shell->childs->lst_head;
+	if (shell->cmds->lst_head && shell->cmds->lst_head->content)
+	{
+		if (make_childs(shell))
+		{
+			if (!check_built_in(shell))
+			{
+				if (init_pipes(shell))
+				{
+					while (shell->childs->current)
+					{
+						fork_child(shell);
+						shell->childs->current = shell->childs->current->next;
+						if (!make_pipes(shell))
+							break ;
+					}
+					wait_for_all(shell);
+					heredoc_unlink(shell);
+				}
+			}
+		}
+	}
+	reset_shell(shell);
+}
+
+static int	check_built_in(t_shell *shell)
 {
 	t_child	*child;
+	int		fd[2];
 
 	if (!shell->childs->current->next)
 	{
@@ -47,41 +76,6 @@ static int	check_built_in(t_shell *shell, int *fd)
 		}
 	}
 	return (0);
-}
-
-void	process_executer(t_shell *shell)
-{
-	int		backup[2];
-
-	backup[STDIN_FILENO] = dup(STDIN_FILENO);
-	backup[STDOUT_FILENO] = dup(STDOUT_FILENO);
-	shell->childs->current = shell->childs->lst_head;
-	if (shell->cmds->lst_head && shell->cmds->lst_head->content)
-	{
-		if (make_childs(shell))
-		{
-			if (!check_built_in(shell, backup))
-			{
-				if (init_pipes(shell))
-				{
-					while (shell->childs->current)
-					{
-						fork_child(shell);
-						shell->childs->current = shell->childs->current->next;
-						if (!make_pipes(shell))
-							break ;
-					}
-					wait_for_all(shell);
-					heredoc_unlink(shell);
-				}
-			}
-		}
-	}
-	if (dup2(backup[STDIN_FILENO], STDIN_FILENO) == -1)
-		exit(1);
-	if (dup2(backup[STDOUT_FILENO], STDOUT_FILENO) == -1)
-		exit(1);
-	reset_shell(shell);
 }
 
 static void	wait_for_all(t_shell *shell)
