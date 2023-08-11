@@ -1,7 +1,3 @@
-ERRORES
--Mensaje de error erroneo cmd not found(cmd owd)
--src = '\n' (INVALID ARGUMENT -> COMMAND NOT FOUND)
-
 DUDAS
 -$? Deberia dar Invalid argument? bash saca otra cosa
 
