@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/11 11:20:41 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:56:23 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	process_executer(t_shell *shell)
 							break ;
 					}
 					wait_for_all(shell);
-					heredoc_unlink(shell);
 				}
 			}
 		}

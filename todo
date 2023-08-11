@@ -1,11 +1,10 @@
 ERRORES
 -Mensaje de error erroneo cmd not found(cmd owd)
--Peta al llamar a cualquier programa (ej: "./minishell" ej: "./fdf")
--Peta al llamar a printf con comillas (ej: printf 4\n -> OK. ej printf "4\n" -> buffer overflow)
--src = '\n'
+-src = '\n' (INVALID ARGUMENT -> COMMAND NOT FOUND)
 
 DUDAS
 -$? Deberia dar Invalid argument? bash saca otra cosa
 
-BASH FURULA DISTINTO
+BASH FURULA
 -ls >b | <b wc -Nosotros syntax erro near unexpected token, bash (0, 0, 0)
+-CTRL + 4 deberia no introducir ^/
