@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 16:57:17 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/11 12:52:30 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 14:41:20 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,10 @@ Redirections
 
 # ifndef CMD_NOT_FOUND
 #  define CMD_NOT_FOUND "command not found"
+# endif
+
+# ifndef UNEXPECTED_TOKEN
+#  define UNEXPECTED_TOKEN "Minishell syntax error near unexpected token"
 # endif
 
 #endif

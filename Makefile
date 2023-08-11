@@ -92,6 +92,7 @@ FILES_PROCESS = input_redirect \
 				fork_child \
 				reset_shell \
 				fix_the_stdred_struct \
+				wait_for_all \
 
 PROCESS_DIR = srcs/Process/
 SRCS_PROCESS = $(addprefix $(PROCESS_DIR), $(addsuffix .c, $(FILES_PROCESS)))

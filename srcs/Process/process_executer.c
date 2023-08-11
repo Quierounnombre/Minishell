@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 10:34:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/11 12:47:01 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:09:44 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static t_bool	init_pipes(t_shell *shell);
 static t_bool	make_pipes(t_shell *shell);
-static void		wait_for_all(t_shell *shell);
 static int		check_built_in(t_shell *shell);
+static void		close_pipes(t_shell *shell);
 
 void	process_executer(t_shell *shell)
 {
@@ -35,6 +35,7 @@ void	process_executer(t_shell *shell)
 						if (!make_pipes(shell))
 							break ;
 					}
+					close_pipes(shell);
 					wait_for_all(shell);
 				}
 			}
@@ -70,23 +71,6 @@ static int	check_built_in(t_shell *shell)
 	return (0);
 }
 
-static void	wait_for_all(t_shell *shell)
-{
-	t_child	*child;
-
-	close(shell->fd[PIPE_OG][READ]);
-	close(shell->fd[PIPE_OG][WRITE]);
-	close(shell->fd[PIPE_NEW][READ]);
-	close(shell->fd[PIPE_NEW][WRITE]);
-	shell->childs->current = shell->childs->lst_head;
-	while (shell->childs->current)
-	{
-		child = shell->childs->current->content;
-		waitpid(child->pid, &(shell->child_status), 0);
-		shell->childs->current = shell->childs->current->next;
-	}
-}
-
 static t_bool	init_pipes(t_shell *shell)
 {
 	if (!pipe(shell->fd[PIPE_OG]))
@@ -104,4 +88,12 @@ static t_bool	make_pipes(t_shell *shell)
 	if (!pipe(shell->fd[PIPE_NEW]))
 		return (true);
 	return (false);
+}
+
+static void	close_pipes(t_shell *shell)
+{
+	close(shell->fd[PIPE_OG][READ]);
+	close(shell->fd[PIPE_OG][WRITE]);
+	close(shell->fd[PIPE_NEW][READ]);
+	close(shell->fd[PIPE_NEW][WRITE]);
 }

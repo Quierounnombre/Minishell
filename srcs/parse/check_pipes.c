@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 21:21:07 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/11 12:35:25 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:20:44 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_bool	check_pipe_end(t_shell *shell, char *my_input, int *count)
 	if (!my_input[*count])
 		return (false);
 	space_tab(my_input, count);
-	if (is_pipe(my_input[*count]) || is_greater_or_smaller(my_input[*count]))
+	if (is_pipe(my_input[*count]))
 		return (false);
 	else
 		shell->s_i.size_pipe++;
@@ -47,7 +47,7 @@ static t_bool	check_special(t_shell *shell, char *my_input, int *count)
 	if (is_34_or_39(my_input[*count]))
 	{
 		if (!(quotation_marks(my_input, count)))
-			return (print_err("Minishell syntax error near unexpected token"));
+			return (print_err(UNEXPECTED_TOKEN));
 		space_tab(my_input, count);
 	}
 	if (is_greater_or_smaller(my_input[*count]))
@@ -59,7 +59,7 @@ static t_bool	check_special(t_shell *shell, char *my_input, int *count)
 	if (is_pipe(my_input[*count]))
 	{
 		if (!check_pipe_end(shell, my_input, count))
-			return (print_err("Minishell syntax error near unexpected token"));
+			return (print_err(UNEXPECTED_TOKEN));
 		space_tab(my_input, count);
 	}
 	return (true);

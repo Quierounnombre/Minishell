@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/11 11:26:21 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:11:46 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	fork_child(t_shell *shell);
 void	process_executer(t_shell *shell);
 void	reset_shell(t_shell *shell);
 void	fix_the_stdred_struct(t_child	*child, t_red *red);
+void	wait_for_all(t_shell *shell);
 
 /*-----ERRORMNG-----*/
 

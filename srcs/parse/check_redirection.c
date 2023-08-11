@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 14:52:48 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/04 12:01:36 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/11 14:42:05 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_bool	check_redirection(t_shell *shell, char *my_input, int *count)
 		|| is_greater_or_smaller(my_input[*count])
 		|| is_pipe(my_input[*count]))
 	{
-		ft_printf("%s\n", "Minishell syntax error near unexpected token");
+		ft_printf("%s\n", UNEXPECTED_TOKEN);
 		return (false);
 	}
 	while (my_input[*count]
