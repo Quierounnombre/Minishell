@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/14 16:05:37 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:28:28 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_bool	start(t_shell **shell, char **env);
 t_bool	init_shell_struct(t_shell **shell);
 t_bool	clone_env_init(char **env, t_shell *shell);
 t_bool	init_signals(struct sigaction *sact);
+t_bool	start_env(char **env, t_shell *shell);
 
 /*-----SIGNAL-----*/
 
