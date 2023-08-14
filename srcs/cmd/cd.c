@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:52:38 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/14 16:33:10 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:14:56 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,16 @@ void	ft_cd(const char *dir, t_shell *shell)
 static char	*set_pwd_str(t_shell *shell, char *pwd)
 {
 	char	*s;
+	char	*s2;
 
-	s = ft_strdup(pwd);
+	s = getcwd(NULL, 0);
 	if (!s)
 		ft_error(shell, errno);
-	return (s);
+	s2 = ft_strjoin(pwd, s);
+	free(s);
+	if (!s2)
+		ft_error(shell, errno);
+	return (s2);
 }
 
 static void	change_dir(t_shell *shell, const char *dir)
