@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:58:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/11 12:58:08 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/14 11:15:47 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static void	cmd_not_found(t_child *child);
 
 void	ft_child(t_shell *shell, t_child *child)
 {
+	signal(SIGQUIT, SIG_DFL);
+	std_red(child, shell);
 	close_pipes(shell);
 	if (child->cmd->filepath)
 	{
-		signal(SIGQUIT, SIG_DFL);
-		std_red(child, shell);
 		mng_redirections(child->cmd, shell);
 		cmd_executer(child->cmd, shell);
 	}
