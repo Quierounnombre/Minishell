@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:35:05 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/01 16:41:19 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:10:18 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	sort_export(t_shell *shell)
 	char	**env;
 	char	*s;
 
+	ft_printf("%s%s\n\n\n\n", EXPORT_STR,
+		"https://www.man7.org/linux/man-pages/man1/export.1p.html");
 	local_shell.env = NULL;
 	if (clone_env(shell->env, &local_shell))
 	{
@@ -44,7 +46,7 @@ static void	print_formated_env(const char **env)
 {
 	while (*env)
 	{
-		ft_printf("declare -x %s\n", *env);
+		ft_printf("declare -x \"%s\"\n", *env);
 		env++;
 	}
 }

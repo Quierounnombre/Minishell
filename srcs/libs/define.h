@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 16:57:17 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/11 14:41:20 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/14 14:55:31 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,45 @@ Redirections
 
 # ifndef UNEXPECTED_TOKEN
 #  define UNEXPECTED_TOKEN "Minishell syntax error near unexpected token"
+# endif
+
+# ifndef EXPORT_STR
+#  define EXPORT_STR "The shell shall give the export attribute to the\
+variables\n\
+corresponding to the specified names, which shall cause them to\n\
+be in the environment of subsequently executed commands. If the\n\
+name of a variable is followed by =word, then the value of that\n\
+variable shall be set to word.\n\
+\n\
+The export special built-in shall support the Base Definitions\n\
+volume of POSIX.1-2017, Section 12.2, Utility Syntax Guidelines.\n\
+\n\
+When -p is specified, export shall write to the standard output\n\
+the names and values of all exported variables, in the following\n\
+format:\n\
+\n\
+	\"export %s=%s\\n\", <name>, <value>\n\
+\n\
+if name is set, and:\n\
+\n\
+	\"export %s\\n\", <name>\n\
+\n\
+if name is unset.\n\
+\n\
+The shell shall format the output, including the proper use of\n\
+quoting, so that it is suitable for reinput to the shell as\n\
+commands that achieve the same exporting results, except:\n\
+\n\
+1. Read-only variables with values cannot be reset.\n\
+\n\
+2. Variables that were unset at the time they were output need\n\
+   not be reset to the unset state if a value is assigned to the\n\
+   variable between the time the state was saved and the time at\n\
+   which the saved output is reinput to the shell.\n\
+\n\
+When no arguments are given, the results are unspecified.\n\
+\n\n\n\
+"
 # endif
 
 #endif

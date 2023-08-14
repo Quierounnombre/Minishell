@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/11 15:11:46 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:05:37 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_shell	*g_shell;
 
 t_bool	start(t_shell **shell, char **env);
 t_bool	init_shell_struct(t_shell **shell);
-t_bool	clone_env(char **env, t_shell *shell);
+t_bool	clone_env_init(char **env, t_shell *shell);
 t_bool	init_signals(struct sigaction *sact);
 
 /*-----SIGNAL-----*/
@@ -88,6 +88,8 @@ void	find_start_of_str(char *ptr, int *ptr_count);
 void	lstadd_back_nodo(t_red **lst, t_red *new);
 void	ft_path(t_shell *shell, t_cmd *new_cmd);
 t_bool	should_be_close(int fd);
+t_bool	should_be_env(char *s);
+t_bool	clone_env(char **env, t_shell *shell);
 
 /*-----PARSE-----*/
 

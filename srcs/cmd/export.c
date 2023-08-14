@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 15:31:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/11 12:39:39 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:09:29 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,15 @@ static	int	check_name(char *s)
 	int	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (s[i] != '\0' && s[i] != '=')
 	{
-		if (!ft_isalnum(s[i]))
+		if (!ft_isalnum(s[i]) || ft_isdigit(s[i]))
 		{
-			perror(s);
-			free(s);
+			ft_printf("%s: %s: '%s': %s\n",
+				"Minishell",
+				"export",
+				s,
+				"not a valid identifier");
 			return (false);
 		}
 		i++;
@@ -77,22 +80,22 @@ static char	*load_target(char *s)
 	char	*target;
 	int		i;
 
+	if (!check_name(s))
+		return (NULL);
 	i = 0;
 	while (s[i] != '=' && s[i])
 		i++;
 	target = NULL;
-	target = (char *)malloc(sizeof(char) * (i + 1));
-	if (target)
-		ft_strlcpy(target, s, (i + 1));
-	if (!check_name(target))
+	target = (char *)malloc(sizeof(char) * (i + 2));
+	if (!target)
 		return (NULL);
 	i = 0;
-	while (s[i] != '=' && s[i])
+	while (s[i] && s[i] != '=')
 	{
+		target[i] = s[i];
 		i++;
-		if (s[i] == '\0')
-			return (NULL);
 	}
+	target[i] = '\0';
 	return (target);
 }
 

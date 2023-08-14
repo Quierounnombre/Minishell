@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   should_be_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 13:01:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/14 12:16:30 by vicgarci         ###   ########.fr       */
+/*   Created: 2023/08/14 11:54:51 by vicgarci          #+#    #+#             */
+/*   Updated: 2023/08/14 12:10:55 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_env(char	**env)
+t_bool	should_be_env(char *s)
 {
 	int	i;
 
 	i = 0;
-	while (env[i])
+	while (s[i])
 	{
-		if (should_be_env(env[i]))
-			ft_printf("%s\n", env[i]);
+		if (s[i] == '=')
+			return (true);
 		i++;
 	}
+	return (false);
 }
