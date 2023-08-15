@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:59:30 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/11 12:42:03 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/15 11:40:31 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ int	find_string(char **env, char *target)
 			i++;
 		}
 	}
-	return (i);
+	return (FT_INVALID_POS);
 }

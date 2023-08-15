@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:19:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/14 16:03:14 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/15 14:50:33 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ static t_bool	update_shell_lvl(t_shell *shell)
 			shell->env[pos_shell_lvl] = s;
 			return (true);
 		}
+		free(s_value);
 		return (false);
 	}
 	return (false);

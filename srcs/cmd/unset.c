@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 16:23:56 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/11 12:39:23 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/15 12:21:41 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	local_copy_env(t_shell *shell, int target, char **local_env)
 	local_env[i - correction] = NULL;
 }
 
-static void	make_new_env(t_shell *shell, int target, int size)
+static void	make_env(t_shell *shell, int target, int size)
 {
 	char	**local_env;
 
@@ -93,6 +93,6 @@ void	ft_unset(t_shell *shell, char *s)
 		size_env++;
 	i = find_string(shell->env, target);
 	if (shell->env[i] != NULL)
-		make_new_env(shell, i, size_env);
+		make_env(shell, i, size_env);
 	free(target);
 }

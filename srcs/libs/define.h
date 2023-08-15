@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 16:57:17 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/14 14:55:31 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/15 14:37:02 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 # include "../minishell.h"
 
-/*
-Redirections
-*/
+//------------------------------------------------------------
+//Redirections
 
 # ifndef FT_RED_STD
 #  define FT_RED_STD 5
@@ -39,6 +38,7 @@ Redirections
 #  define FT_RED_HEREDOC 260
 # endif
 
+//------------------------------------------------------------
 //Redefine for compatibility
 
 # ifndef RED_INPUT
@@ -78,6 +78,32 @@ Redirections
 
 # ifndef PIPE_NEW
 #  define PIPE_NEW 1
+# endif
+
+//------------------------------------------------------------
+//find_string
+
+# ifndef FT_INVALID_POS
+#  define FT_INVALID_POS -1
+# endif
+
+//------------------------------------------------------------
+//ENV DEFAULTS
+
+# ifndef PWD_DEFAULT
+#  define PWD_DEFAULT "PWD=/"
+# endif
+
+# ifndef OLDPWD_DEFAULT
+#  define OLDPWD_DEFAULT "OLDPWD=/"
+# endif
+
+# ifndef HOME_DEFAULT
+#  define HOME_DEFAULT "HOME=/"
+# endif
+
+# ifndef DEFAULT_ROOT
+#  define DEFAULT_ROOT "/"
 # endif
 
 //------------------------------------------------------------

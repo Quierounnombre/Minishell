@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/14 17:28:28 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/15 14:39:09 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ void	do_export(t_cmd *cmd, t_shell *shell);
 void	do_unset(t_cmd *cmd, t_shell *shell);
 void	sort_export(t_shell *shell);
 
+//CD
+void	change_dir(t_shell *shell, char *dir);
+void	ft_reset_to_default(t_shell *shell);
+char	*set_pwd_str(t_shell *shell, char *pwd);
+
 /*-----PROCESS-----*/
 
 t_bool	add_pid_to_lst(t_lstmng *mng, pid_t pid);
@@ -91,6 +96,7 @@ void	ft_path(t_shell *shell, t_cmd *new_cmd);
 t_bool	should_be_close(int fd);
 t_bool	should_be_env(char *s);
 t_bool	clone_env(char **env, t_shell *shell);
+void	make_new_env(t_shell *shell, char *s, int size);
 
 /*-----PARSE-----*/
 

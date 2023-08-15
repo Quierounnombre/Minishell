@@ -50,6 +50,14 @@ CMD_DIR = srcs/cmd/
 SRCS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .c, $(FILES_CMD)))
 OBJS_CMD = $(addprefix $(CMD_DIR), $(addsuffix .o, $(FILES_CMD)))
 
+FILES_CD =	change_dir \
+			ft_reset_to_default \
+			set_pwd_str \
+
+CD_DIR =	srcs/cmd/cd/
+SRCS_CD = $(addprefix $(CD_DIR), $(addsuffix .c, $(FILES_CD)))
+OBJS_CD = $(addprefix $(CD_DIR), $(addsuffix .o, $(FILES_CD)))
+
 FILES_UTILS = ft_cleanchild \
 			ft_storechild \
 			ft_cleancmd \
@@ -63,6 +71,7 @@ FILES_UTILS = ft_cleanchild \
 			should_be_close \
 			should_be_env \
 			clone_env \
+			make_new_env \
 
 UTILS_DIR = srcs/utils/
 SRCS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .c, $(FILES_UTILS)))
@@ -155,8 +164,8 @@ SIGNAL_DIR = srcs/signal/
 SRCS_SIGNAl = $(addprefix $(SIGNAL_DIR), $(addsuffix .c, $(FILES_SIGNAL)))
 OBJS_SIGNAL = $(addprefix $(SIGNAL_DIR), $(addsuffix .o, $(FILES_SIGNAL)))
 
-OBJS = $(OBJS_CMD) $(OBJ_MAIN) $(OBJS_UTILS) $(OBJS_START) $(OBJS_PROCESS) $(OBJS_ERRORMNG) $(OBJS_PARSE) $(OBJS_SIGNAL) $(OBJS_COND)
-SRCS = $(SRCS_CMD) $(FILE_MAIN) $(SRCS_UTILS) $(SRCS_UTILS) $(SRCS_PROCESS) $(SRCS_ERRORMNG) $(SRCS_PARSE) $(SRCS_SIGNAl) $(SRCS_COND)
+OBJS = $(OBJS_CMD) $(OBJ_MAIN) $(OBJS_UTILS) $(OBJS_START) $(OBJS_PROCESS) $(OBJS_ERRORMNG) $(OBJS_PARSE) $(OBJS_SIGNAL) $(OBJS_COND) $(OBJS_CD)
+SRCS = $(SRCS_CMD) $(FILE_MAIN) $(SRCS_UTILS) $(SRCS_UTILS) $(SRCS_PROCESS) $(SRCS_ERRORMNG) $(SRCS_PARSE) $(SRCS_SIGNAl) $(SRCS_COND) $(SRCS_CD)
 
 all: libft $(NAME)
 
