@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 15:31:18 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/15 12:18:20 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/15 16:26:51 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,15 @@ void	ft_export(t_shell *shell, char	*s)
 	char	*target;
 
 	target = NULL;
-	size_env = 0;
 	target = load_target(s);
 	if (!target)
 		return ;
-	i = 0;
+	size_env = 0;
 	while (shell->env[size_env])
 		size_env++;
+	i = 0;
 	i = find_string(shell->env, target);
-	if (shell->env[i] == NULL)
+	if (i == FT_INVALID_POS)
 		make_new_env(shell, s, size_env);
 	else
 	{
