@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:31:23 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/11 12:36:03 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/15 10:55:20 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	count_dollar(t_shell *shell, char *my_input, int *count)
 			&& my_input[*count] != ' ' && my_input[*count] != '\t'
 			&& !is_pipe(my_input[*count])
 			&& !is_greater_or_smaller(my_input[*count])
-			&& !is_34_or_39(my_input[*count]))
+			&& !is_34_or_39(my_input[*count])
+			&& my_input[*count])
 		{
 			if (my_input[*count] == '$'
 				&& ft_strchr("| \t><", my_input[*count - 1]))

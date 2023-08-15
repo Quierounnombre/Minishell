@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:58:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/14 11:15:47 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/15 11:07:12 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	ft_child(t_shell *shell, t_child *child)
 		mng_redirections(child->cmd, shell);
 		cmd_executer(child->cmd, shell);
 	}
-	else
+	else if (child->cmd->argv[0])
 		cmd_not_found(child);
-	exit(127);
+	exit(0);
 }
 
 static void	std_red(t_child *child, t_shell *shell)
@@ -63,4 +63,5 @@ static void	cmd_not_found(t_child *child)
 		"Minishell",
 		*(child->cmd->argv),
 		CMD_NOT_FOUND);
+	exit(127);
 }
