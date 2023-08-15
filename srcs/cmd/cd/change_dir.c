@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 11:54:37 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/15 15:04:25 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/15 15:42:55 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void		change_pwd(t_shell *shell);
 static t_bool	change_oldpwd(t_shell *shell);
+static void		set_pwd_path(t_shell *shell);
 
 void	change_dir(t_shell *shell, char *dir)
 {
@@ -71,10 +72,28 @@ static void	change_pwd(t_shell *shell)
 		free(s_old);
 	}
 	else
-	{
-		pos_pwd = 0;
-		while (shell->env[pos_pwd])
-			pos_pwd++;
+		set_pwd_path(shell);
+}
+
+static void	set_pwd_path(t_shell *shell)
+{
+	int		pos_pwd;
+	char	*s;
+	char	*s2;
+
+	pos_pwd = 0;
+	while (shell->env[pos_pwd])
+		pos_pwd++;
+	s = getcwd(NULL, 0);
+	if (!s)
 		make_new_env(shell, PWD_DEFAULT, pos_pwd);
+	else
+	{
+		s2 = ft_strjoin("PWD=", s);
+		if (!s2)
+			ft_error(shell, errno);
+		free(s);
+		make_new_env(shell, s2, pos_pwd);
+		free(s2);
 	}
 }
