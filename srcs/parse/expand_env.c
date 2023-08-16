@@ -6,11 +6,22 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:44:36 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/11 12:36:25 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:00:44 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+static char	**protected_ft_split(char *ptr, char c)
+{
+	char	**argv_env;
+
+	argv_env = NULL;
+	argv_env = ft_split(ptr, c);
+	if (!argv_env)
+		exit(1);
+	return (argv_env);
+}
 
 static int	check_spaces(t_cmd *new_cmd, char **argv_env, int *count_env,
 	int *i)
@@ -53,7 +64,7 @@ void	expand_env(char *ptr, t_cmd *new_cmd, int *i, int *copy)
 	int		count_env;
 
 	count_env = 0;
-	argv_env = ft_split(ptr, ' ');
+	argv_env = protected_ft_split(ptr, ' ');
 	if (new_cmd && new_cmd->argv && new_cmd->argv[*i] && argv_env)
 	{
 		new_cmd->argv[*i][*copy] = '\0';
@@ -72,5 +83,6 @@ void	expand_env(char *ptr, t_cmd *new_cmd, int *i, int *copy)
 		else_case(new_cmd, i, argv_env, copy);
 	count_env++;
 	*copy += check_spaces(new_cmd, argv_env, &count_env, i);
+	free(argv_env);
 	*copy = ft_strlen(new_cmd->argv[*i]);
 }

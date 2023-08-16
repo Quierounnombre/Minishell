@@ -6,13 +6,12 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:19:52 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/15 14:50:33 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:32:13 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static t_bool	update_shell_lvl(t_shell *shell);
 static char		**free_clone_env(char **env);
 static int		get_leght_of_env(char **env);
 static char		**selective_clone(char **env, char **local_env);
@@ -48,35 +47,6 @@ static char	**free_clone_env(char **env)
 	}
 	free(env);
 	return (NULL);
-}
-
-static t_bool	update_shell_lvl(t_shell *shell)
-{
-	char	*s;
-	char	*s_value;
-	int		pos_shell_lvl;
-	int		value;
-
-	pos_shell_lvl = find_string(shell->env, "SHLVL");
-	s = shell->env[pos_shell_lvl];
-	s += 6;
-	value = ft_atoi(s);
-	value++;
-	s_value = ft_itoa(value);
-	if (s_value)
-	{
-		s = ft_strjoin("SHLVL=", s_value);
-		if (s)
-		{
-			free(s_value);
-			free(shell->env[pos_shell_lvl]);
-			shell->env[pos_shell_lvl] = s;
-			return (true);
-		}
-		free(s_value);
-		return (false);
-	}
-	return (false);
 }
 
 static int	get_leght_of_env(char **env)

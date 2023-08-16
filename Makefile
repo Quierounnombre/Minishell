@@ -72,6 +72,7 @@ FILES_UTILS = ft_cleanchild \
 			should_be_env \
 			clone_env \
 			make_new_env \
+			save_memory_dir \
 
 UTILS_DIR = srcs/utils/
 SRCS_UTILS = $(addprefix $(UTILS_DIR), $(addsuffix .c, $(FILES_UTILS)))
@@ -89,6 +90,7 @@ FILES_START = init_shell_struct \
 			start \
 			init_signals \
 			start_env \
+			update_shell_lvl \
 
 START_DIR = srcs/startup/
 SRCS_START = $(addprefix $(START_DIR), $(addsuffix .c, $(FILES_START)))
