@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:43:39 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/16 17:17:08 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/16 19:54:30 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	main(int argc, char **argv, char **env)
 		while (true)
 		{
 			input = readline(PROMPT);
-			save_memory_dir((unsigned long long)input);
 			if (input)
 			{
 				add_history(input);
