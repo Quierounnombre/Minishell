@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_cmd_token.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 15:01:35 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/11 12:35:49 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/16 19:40:27 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ static int	manage_count_env_with_space(t_shell *shell, char *input, int *size)
 	return (count);
 }
 
+static void	type_variable(char *input, int *c, t_shell *shell, int *size)
+{
+	if (is_34_or_39(input[*c + 1]))
+		*c += 1;
+	else
+		*c += manage_count_env_with_space(shell, &input[*c], size);
+}
+
 static int	count_tam_argv(t_shell *shell, char *input, int *c)
 {
 	int	size;
@@ -41,14 +49,14 @@ static int	count_tam_argv(t_shell *shell, char *input, int *c)
 	{
 		if (is_34_or_39(input[*c]))
 			*c += argv_with_qm(shell, &input[*c], input[*c], &size);
-		if (input[*c] == '$'
+		if (input[*c] == '$' && !is_34_or_39(input[*c + 1])
 			&& !ft_isalnum(input[*c + 1]) && input[*c + 1] != '?')
 		{
 			size += 2;
 			*c += 2;
 		}
 		else if (input[*c] == '$')
-			*c += manage_count_env_with_space(shell, &input[*c], &size);
+			type_variable(input, c, shell, &size);
 		else if (input[*c] != ' ' && input[*c] != '\t' && input[*c]
 			&& !is_greater_or_smaller(input[*c]) && !is_pipe(input[*c])
 			&& !is_34_or_39(input[*c]) && input[*c] != '$')

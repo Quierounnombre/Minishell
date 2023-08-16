@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_argv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lyandriy <lyandriy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:14:17 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/11 12:35:37 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/16 19:35:20 by lyandriy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,21 @@ static void	copy_variable(t_shell *shell, t_cmd *new_cmd, char *input, int *c)
 		else_variable(shell, new_cmd, input, c);
 }
 
+int	variable_type(char *input, t_shell *shell, t_cmd *new_cmd, int *i)
+{
+	int	c;
+
+	c = 0;
+	if (is_34_or_39(input[c + 1]))
+	{
+		c++;
+		c += copy_qm(shell, new_cmd->argv[*i], &input[c], &shell->s_i.copy);
+	}
+	else
+		copy_variable(shell, new_cmd, input, &c);
+	return (c);
+}
+
 void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input)
 {
 	int	c;
@@ -53,7 +68,7 @@ void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input)
 		if (is_34_or_39(input[c]))
 			c += copy_qm(shell, new_cmd->argv[*i], &input[c], &shell->s_i.copy);
 		if (input[c] == '$')
-			copy_variable(shell, new_cmd, input, &c);
+			c += variable_type(&input[c], shell, new_cmd, i);
 		else if (input[c] != ' ' && input[c] != '\t' && input[c]
 			&& !is_pipe(input[c]) && !is_greater_or_smaller(input[c])
 			&& !is_34_or_39(input[c]) && input[c] != '$')
