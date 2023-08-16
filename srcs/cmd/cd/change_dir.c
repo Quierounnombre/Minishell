@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 11:54:37 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/15 15:42:55 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/16 13:51:10 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	change_dir(t_shell *shell, char *dir)
 		if (change_oldpwd(shell))
 			dir = DEFAULT_ROOT;
 		if (chdir(dir) == -1)
+		{
 			perror("cd");
+			g_shell->child_status = 1;
+		}
 		change_pwd(shell);
 	}
 	else
