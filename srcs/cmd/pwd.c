@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:44:42 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/15 16:21:42 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/16 11:55:36 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,21 @@
 
 void	ft_pwd(char **env)
 {
+	int		pos_pwd;
 	char	*pwd;
 
-	(void) env;
-	pwd = getcwd(NULL, 0);
+	pos_pwd = find_string(env, "PWD");
+	if (pos_pwd == FT_INVALID_POS)
+		pwd = getcwd(NULL, 0);
+	else
+	{
+		pwd = env[pos_pwd];
+		pwd += 4;
+	}
 	if (pwd)
 	{
 		printf("%s\n", pwd);
-		free(pwd);
+		if (pos_pwd == FT_INVALID_POS)
+			free(pwd);
 	}
 }

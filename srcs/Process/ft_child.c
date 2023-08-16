@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 11:58:27 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/15 16:19:37 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:30:49 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_child(t_shell *shell, t_child *child)
 	std_red(child, shell);
 	close_pipes(shell);
 	mng_redirections(child->cmd, shell);
-	if (child->cmd->filepath)
+	if (child->cmd->filepath && ft_strchr(child->cmd->filepath, '/'))
 		cmd_executer(child->cmd, shell);
 	else if (child->cmd->argv[0])
 		cmd_not_found(child);
@@ -56,10 +56,13 @@ static void	close_pipes(t_shell *shell)
 
 static void	cmd_not_found(t_child *child)
 {
-	g_shell->child_status = 127;
-	ft_printf("%s: %s: %s\n",
-		"Minishell",
-		*(child->cmd->argv),
-		CMD_NOT_FOUND);
-	exit(127);
+	if (!is_built_in(child->cmd))
+	{
+		g_shell->child_status = 127;
+		ft_printf("%s: %s: %s\n",
+			"Minishell",
+			*(child->cmd->argv),
+			CMD_NOT_FOUND);
+		exit(127);
+	}
 }

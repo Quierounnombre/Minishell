@@ -6,11 +6,22 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 20:30:14 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/11 11:52:58 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:37:30 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+static char	*protected_ft_strjoin(char *s1, char *s2)
+{
+	char	*r;
+
+	r = NULL;
+	r = ft_strjoin(s1, s2);
+	if (!r)
+		exit(1);
+	return (r);
+}
 
 static int	strcmpare(const char *s1, const char *s2)
 {
@@ -40,7 +51,7 @@ static char	*create_name(void)
 	name = ft_itoa(numb);
 	if (name)
 	{
-		name_file = ft_strjoin("/tmp/.here_doc", name);
+		name_file = protected_ft_strjoin("/tmp/.here_doc", name);
 		free(name);
 		while (!(access(name_file, F_OK)))
 		{
@@ -49,7 +60,7 @@ static char	*create_name(void)
 			name = ft_itoa(numb);
 			if (name)
 			{
-				name_file = ft_strjoin("/tmp/.here_doc", name);
+				name_file = protected_ft_strjoin("/tmp/.here_doc", name);
 				free(name);
 			}
 		}
