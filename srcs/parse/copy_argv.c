@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:14:17 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/11 12:35:37 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:01:09 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void	copy_argv(t_shell *shell, t_cmd *new_cmd, char *input)
 		if (is_34_or_39(input[c]))
 			c += copy_qm(shell, new_cmd->argv[*i], &input[c], &shell->s_i.copy);
 		if (input[c] == '$')
+		{
 			copy_variable(shell, new_cmd, input, &c);
+		}
 		else if (input[c] != ' ' && input[c] != '\t' && input[c]
 			&& !is_pipe(input[c]) && !is_greater_or_smaller(input[c])
 			&& !is_34_or_39(input[c]) && input[c] != '$')
