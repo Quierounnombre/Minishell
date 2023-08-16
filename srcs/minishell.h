@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:50:19 by vicgarci          #+#    #+#             */
-/*   Updated: 2023/08/15 14:39:09 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/16 16:45:39 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ t_bool	should_be_close(int fd);
 t_bool	should_be_env(char *s);
 t_bool	clone_env(char **env, t_shell *shell);
 void	make_new_env(t_shell *shell, char *s, int size);
+void	save_memory_dir(unsigned long long dir);
 
 /*-----PARSE-----*/
 
