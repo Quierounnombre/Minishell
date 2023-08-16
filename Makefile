@@ -90,6 +90,7 @@ FILES_START = init_shell_struct \
 			start \
 			init_signals \
 			start_env \
+			update_shell_lvl \
 
 START_DIR = srcs/startup/
 SRCS_START = $(addprefix $(START_DIR), $(addsuffix .c, $(FILES_START)))

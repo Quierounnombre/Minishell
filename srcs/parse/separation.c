@@ -6,7 +6,7 @@
 /*   By: vicgarci <vicgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 21:40:40 by lyandriy          #+#    #+#             */
-/*   Updated: 2023/08/16 17:18:13 by vicgarci         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:35:29 by vicgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static int	count_command_token(t_shell *shell, char *my_input)
 			count += count_quotation_marks(&my_input[count]);
 		if (my_input[count] == '$')
 			count_dollar(shell, my_input, &count);
-		if (my_input[count] && !ft_strchr("| \t><", my_input[count]))
+		if (my_input[count] && !ft_strchr("| \t><", my_input[count])
+			&& !is_34_or_39(my_input[count]))
 			count++;
 	}
 	space_tab(my_input, &count);
